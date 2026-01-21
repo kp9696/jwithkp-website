@@ -2,240 +2,205 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>JwithKP | IT Consulting for Startups</title>
+<title>JwithKP | IT Consulting for Startups & Growing Businesses</title>
 
 <!-- SEO -->
-<meta name="description" content="JwithKP provides IT consulting for startups using open-source and practical IT solutions. Firewall, monitoring, cloud, security, and cost-optimised infrastructure.">
-<meta name="keywords" content="startup IT consulting, firewall, monitoring, Office 365, Google Workspace, Active Directory, DLP">
+<meta name="description" content="IT Consulting for Startups & Growing Businesses. Secure, scalable, and cost-efficient IT infrastructure built with open-source tools and real-world engineering.">
+<meta name="keywords" content="IT consulting for startups, firewall security, monitoring, Office 365, Google Workspace, startup IT setup">
 <meta name="author" content="JwithKP">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- FAVICON -->
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png">
-<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png">
 
 <style>
-:root {
-    --primary:#1e40af;
-    --dark:#0f172a;
-    --accent:#f97316;
-    --light:#f8fafc;
-    --muted:#64748b;
-    --badge-bg:#dcfce7;
-    --badge-text:#166534;
+:root{
+  --dark:#0f172a;
+  --primary:#1e40af;
+  --accent:#f97316;
+  --light:#f8fafc;
+  --muted:#64748b;
+  --badge-bg:#dcfce7;
+  --badge-text:#166534;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-    font-family: "Segoe UI", system-ui, sans-serif;
-    line-height:1.6;
-    color:#1e293b;
+body{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  line-height:1.7;
+  color:#1e293b;
 }
 
 /* NAV */
-nav {
-    position:fixed;
-    top:0;
-    width:100%;
-    background:rgba(15,23,42,0.9);
-    backdrop-filter: blur(8px);
-    padding:14px 0;
-    z-index:1000;
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(15,23,42,.9);
+  backdrop-filter:blur(8px);
+  padding:14px 0;
+  z-index:1000;
 }
-.nav-container {
-    max-width:1200px;
-    margin:auto;
-    padding:0 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.nav-container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.logo-link img { height:46px; }
-.nav-links {
-    list-style:none;
-    display:flex;
-    gap:28px;
+.logo-link img{height:46px;}
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:28px;
 }
-.nav-links a {
-    color:#fff;
-    text-decoration:none;
-    font-weight:500;
-    opacity:0.9;
-}
-
-/* HERO SECTION */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 160px 20px 100px;
-    background: linear-gradient(120deg, #0f172a, #1e40af, #2563eb);
-    background-size: 300% 300%;
-    animation: heroGradient 14s ease infinite;
-    color: #ffffff;
-    position: relative;
-    overflow: hidden;
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  opacity:.9;
 }
 
-.hero-inner {
-    max-width: 900px;
-    margin: auto;
-    animation: fadeUp 1s ease forwards;
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:160px 20px 100px;
+  background:linear-gradient(120deg,#0f172a,#1e40af,#2563eb);
+  background-size:300% 300%;
+  animation:gradientMove 14s ease infinite;
+  color:#fff;
+}
+.hero-inner{
+  max-width:900px;
+  animation:fadeUp 1s ease forwards;
+}
+.hero h1{
+  font-size:3.2rem;
+  margin-bottom:1.2rem;
+}
+.hero h1 span{color:var(--accent);}
+.hero p{
+  color:#e5e7eb;
+  font-size:1.15rem;
+  margin-bottom:1.2rem;
+}
+.cta{
+  display:inline-block;
+  margin-top:1.5rem;
+  padding:14px 34px;
+  background:var(--accent);
+  color:white;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+}
+.hero-note{
+  margin-top:1.4rem;
+  font-size:.95rem;
+  color:#d1d5db;
 }
 
-.hero h1 {
-    font-size: 3.2rem;
-    line-height: 1.2;
-    margin-bottom: 1.2rem;
-}
+/* SECTIONS */
+section{padding:100px 20px;}
+.container{max-width:1200px;margin:auto;}
+.light{background:var(--light);}
 
-.hero h1 span {
-    color: #f97316;
+.section-title{
+  font-size:2.6rem;
+  text-align:center;
+  margin-bottom:14px;
+  color:var(--dark);
 }
-
-.hero-lead {
-    font-size: 1.25rem;
-    color: #e5e7eb;
-    margin-bottom: 1.2rem;
-}
-
-.hero-sub {
-    font-size: 1.05rem;
-    color: #cbd5f5;
-    margin-bottom: 2.2rem;
-}
-
-.cta {
-    display: inline-block;
-    padding: 14px 34px;
-    background: #f97316;
-    color: #ffffff;
-    border-radius: 999px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(249, 115, 22, 0.4);
-}
-
-.hero-note {
-    margin-top: 1.4rem;
-    font-size: 0.95rem;
-    color: #d1d5db;
-}
-
-/* Animations */
-@keyframes heroGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.2rem;
-    }
+.section-subtitle{
+  text-align:center;
+  color:var(--muted);
+  max-width:820px;
+  margin:auto auto 70px;
 }
 
 /* GRID */
-.grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
 }
-.card {
-    background:white;
-    border-radius:18px;
-    padding:34px;
-    box-shadow:0 20px 40px rgba(2,6,23,.08);
-    border-left:5px solid var(--accent);
-    position:relative;
+.card{
+  background:white;
+  border-radius:18px;
+  padding:34px;
+  box-shadow:0 20px 40px rgba(2,6,23,.08);
+  border-left:5px solid var(--accent);
 }
-.card h3 { margin-bottom:12px; }
+.card h3{margin-bottom:12px;}
+.card ul{
+  padding-left:18px;
+}
+.card ul li{
+  margin-bottom:8px;
+  color:#334155;
+}
 
 /* BADGE */
-.badge {
-    display:inline-block;
-    font-size:.75rem;
-    font-weight:600;
-    padding:4px 10px;
-    border-radius:999px;
-    background:var(--badge-bg);
-    color:var(--badge-text);
-    margin-bottom:10px;
+.badge{
+  display:inline-block;
+  font-size:.75rem;
+  font-weight:600;
+  padding:4px 10px;
+  border-radius:999px;
+  background:var(--badge-bg);
+  color:var(--badge-text);
+  margin-bottom:10px;
 }
-
-/* LIGHT */
-.light { background:var(--light); }
 
 /* CONTACT */
-.contact-box {
-    background:linear-gradient(135deg,#1e40af,#0f172a);
-    color:white;
-    padding:50px;
-    border-radius:20px;
-    text-align:center;
-    max-width:520px;
-    margin:auto;
+.contact-box{
+  background:linear-gradient(135deg,#1e40af,#0f172a);
+  color:white;
+  padding:50px;
+  border-radius:20px;
+  text-align:center;
+  max-width:600px;
+  margin:auto;
 }
-.contact-phone {
-    display:inline-block;
-    margin-top:14px;
-    font-size:2rem;
-    font-weight:bold;
-    color:white;
-    text-decoration:none;
+.contact-phone{
+  display:inline-block;
+  margin-top:14px;
+  font-size:2rem;
+  font-weight:bold;
+  color:white;
+  text-decoration:none;
 }
 
 /* FOOTER */
-footer {
-    background:#020617;
-    color:#94a3b8;
-    text-align:center;
-    padding:30px;
+footer{
+  background:#020617;
+  color:#94a3b8;
+  text-align:center;
+  padding:30px;
 }
 
-/* ANIMATIONS */
-@keyframes gradientMove {
-    0% { background-position:0% 50%; }
-    50% { background-position:100% 50%; }
-    100% { background-position:0% 50%; }
+/* ANIMATION */
+@keyframes gradientMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
-@keyframes fadeUp {
-    to { opacity:1; transform:translateY(0); }
-}
-@keyframes float {
-    0%,100% { transform:translateY(0); }
-    50% { transform:translateY(-40px); }
-}
-@keyframes pulse {
-    0%,100% { opacity:.4; }
-    50% { opacity:.8; }
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 /* RESPONSIVE */
 @media(max-width:768px){
-    .hero h1 { font-size:2.2rem; }
-    .nav-links { display:none; }
+  .hero h1{font-size:2.2rem;}
+  .nav-links{display:none;}
 }
 </style>
 </head>
@@ -250,143 +215,108 @@ footer {
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#solutions">Solutions</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>
-      IT Consulting for<br>
-      <span>Startups & Growing Businesses</span>
-    </h1>
-      
-<!-- Hero -->
-    <p class="hero-lead">
-      Secure, scalable, and cost-efficient IT infrastructure built with
-      open-source tools and real-world engineering.
-    </p>
-
-    <p class="hero-sub">
-      We help startups and small teams build IT systems that are reliable
-      from day one and ready to scale—without enterprise-level costs or
-      unnecessary complexity.
-    </p>
-
-    <a href="#contact" class="cta">
-      🎯 Get a Free IT Assessment
-    </a>
-
+    <h1>IT Consulting for <span>Startups & Growing Businesses</span></h1>
+    <p>Secure, scalable, and cost-efficient IT infrastructure built with open-source tools and real-world engineering.</p>
+    <p>We help startups and small teams build IT systems that are reliable from day one and ready to scale—without enterprise-level costs or unnecessary complexity.</p>
+    <a href="#contact" class="cta">🎯 Get a Free IT Assessment</a>
     <p class="hero-note">
-      Understand your current IT gaps, security risks, and growth readiness —
-      <strong>no sales pressure</strong>, just clear guidance.
+      Understand your IT gaps, security risks, and growth readiness — no sales pressure, just clear guidance.
     </p>
   </div>
 </section>
 
-<!-- ABOUTUS -->
+<!-- ABOUT -->
 <section id="about" class="light">
   <div class="container">
-    <h2 class="section-title">Journey with Knowledge & Practice</h2>
-    <p class="section-subtitle">A long-term, hands-on IT consulting philosophy.</p>
+    <h2 class="section-title">Our Consulting Philosophy: Knowledge + Practice</h2>
+    <p class="section-subtitle">
+      We don’t just advise. We design, implement, and support IT environments that actually work in production.
+    </p>
 
     <div class="grid">
-      <div class="card"><h3>🧭 Journey</h3><p>Long-term IT roadmaps aligned with growth.</p></div>
-      <div class="card"><h3>🤝 Partnership</h3><p>We work with founders and teams.</p></div>
-      <div class="card"><h3>📘 Knowledge</h3><p>Networking, security, Linux, cloud fundamentals.</p></div>
-      <div class="card"><h3>🛠 Practice</h3><p>Real-world implementations that scale.</p></div>
+      <div class="card">
+        <h3>🧭 Journey</h3>
+        <p>Long-term IT roadmaps aligned with your business growth. Infrastructure that evolves as your team and workload expand.</p>
+      </div>
+
+      <div class="card">
+        <h3>🤝 Partnership</h3>
+        <p>Work closely with founders and internal teams. Act as your extended IT team, not just a vendor.</p>
+      </div>
+
+      <div class="card">
+        <h3>📘 Knowledge</h3>
+        <p>Strong fundamentals in networking, security, Linux, and cloud. Right-sized solutions based on best practices, not buzzwords.</p>
+      </div>
+
+      <div class="card">
+        <h3>🛠 Practice</h3>
+        <p>Hands-on implementation and documentation. Real-world setups tested for performance, security, and reliability.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- CORE SERVICES -->
 <section id="services">
   <div class="container">
-    <h2 class="section-title">Our Core Services</h2>
-    <p class="section-subtitle">Focused on startups and small offices.</p>
+    <h2 class="section-title">Core IT Services</h2>
+    <p class="section-subtitle">Designed specifically for startups and small offices.</p>
 
     <div class="grid">
       <div class="card">
         <span class="badge">Recommended for Startups</span>
         <h3>🔐 Firewall & Network Security</h3>
-        <p>Firewall setup, VPNs, and secure internet access.</p>
+        <ul>
+          <li>Firewall deployment and hardening</li>
+          <li>Secure VPN access for remote teams</li>
+          <li>Internet security, segmentation, and access control</li>
+        </ul>
       </div>
 
       <div class="card">
         <span class="badge">Recommended for Startups</span>
         <h3>📊 Monitoring & Alerts</h3>
-        <p>Proactive monitoring for servers and networks.</p>
+        <ul>
+          <li>Server, network, and service monitoring</li>
+          <li>Real-time alerts to prevent downtime</li>
+          <li>Visibility into performance and system health</li>
+        </ul>
       </div>
 
       <div class="card">
         <span class="badge">Recommended for Startups</span>
         <h3>☁️ Email & Collaboration</h3>
-        <p>Office 365 and Google Workspace setup.</p>
+        <ul>
+          <li>Microsoft 365 or Google Workspace setup</li>
+          <li>Secure email, file sharing, and collaboration</li>
+          <li>Domain integration and user management</li>
+        </ul>
       </div>
 
       <div class="card">
         <span class="badge">Recommended for Startups</span>
         <h3>🏢 Office IT Setup</h3>
-        <p>Complete office IT and Wi-Fi setup.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOLUTIONS -->
-<section id="solutions" class="light">
-  <div class="container">
-    <h2 class="section-title">Advanced IT Solutions</h2>
-
-    <div class="grid">
-        <div class="card">
-        <span class="badge">Recommended for Startups</span>
-  <h3>☁️ Office Suite (Microsoft 365 & Google Workspace)</h3>
-  <p>
-    Email, document collaboration, meetings, and productivity tools
-    configured for security and scale. We help you choose the right
-    plan, configure users, apply security best practices, and manage
-    licenses as your team grows.
-  </p>
-</div>
-    
-      <div class="card">
-        <span class="badge">Recommended for Startups</span>
-        <h3>🧑‍💼 Active Directory Setup</h3>
-        <p>Centralized user and device management
-            Group policies and access control
-            On-prem, cloud, or hybrid environments.</p>
-      </div>
-
-      <div class="card">
-        <h3>🛡 DLP Solutions</h3>
-        <p>Protect sensitive business and customer data
-            Control data sharing and access
-            Reduce risk of leaks and compliance issues.</p>
-      </div>
-
-      <div class="card">
-        <span class="badge">Recommended for Startups</span>
-        <h3>🌐 Startup Website Setup</h3>
-        <p>Domain, hosting, SSL, and deployment
-            Secure and optimized configurations
-            Suitable for both static and dynamic websites.</p>
-      </div>
-
-      <div class="card">
-        <h3>📁 Private Cloud</h3>
-        <p>Internal file storage and collaboration
-            Better control than public cloud drives
-            Designed for security and performance.</p>
+        <ul>
+          <li>Complete office network and Wi-Fi design</li>
+          <li>Secure device connectivity</li>
+          <li>Scalable setup for future expansion</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="light">
   <div class="container">
     <h2 class="section-title">Talk to an IT Consultant</h2>
     <div class="contact-box">
