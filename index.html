@@ -5,8 +5,8 @@
 <title>JwithKP | IT Consulting for Startups</title>
 
 <!-- SEO -->
-<meta name="description" content="JwithKP provides IT consulting for startups using open-source and practical solutions. Firewall, monitoring, cloud, security, and cost-optimised IT infrastructure.">
-<meta name="keywords" content="startup IT consulting, firewall setup, monitoring, Office 365, Google Workspace, Active Directory, DLP">
+<meta name="description" content="JwithKP provides IT consulting for startups using open-source and practical IT solutions. Firewall, monitoring, cloud, security, and cost-optimised infrastructure.">
+<meta name="keywords" content="startup IT consulting, firewall, monitoring, Office 365, Google Workspace, Active Directory, DLP">
 <meta name="author" content="JwithKP">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,20 +68,56 @@ nav {
 /* HERO */
 .hero {
     min-height:100vh;
-    background:radial-gradient(circle at top right,#2563eb,#0f172a 60%);
+    position:relative;
+    overflow:hidden;
+    background: linear-gradient(120deg, #0f172a, #1e40af, #2563eb);
+    background-size:300% 300%;
+    animation: gradientMove 12s ease infinite;
     color:#fff;
     display:flex;
     align-items:center;
     text-align:center;
     padding:160px 20px 100px;
 }
-.hero-inner { max-width:900px; margin:auto; }
-.hero h1 { font-size:3.2rem; margin-bottom:1rem; }
+
+.hero::before,
+.hero::after {
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    background:rgba(255,255,255,0.08);
+    border-radius:50%;
+    filter:blur(40px);
+    animation: float 10s infinite ease-in-out;
+}
+.hero::before { top:10%; left:15%; }
+.hero::after { bottom:15%; right:20%; animation-delay:4s; }
+
+.hero-inner { max-width:900px; margin:auto; position:relative; }
+
+.hero h1,
+.hero p,
+.hero .cta {
+    opacity:0;
+    transform:translateY(30px);
+    animation: fadeUp .9s ease forwards;
+}
+.hero p { animation-delay:.2s; }
+.hero .cta { animation-delay:.4s; }
+
+.hero h1 {
+    font-size:3.2rem;
+    margin-bottom:1rem;
+}
+.hero h1 span { color:var(--accent); }
+
 .hero p {
     font-size:1.25rem;
     color:#e5e7eb;
     margin-bottom:2.5rem;
 }
+
 .cta {
     padding:14px 34px;
     background:var(--accent);
@@ -89,6 +125,18 @@ nav {
     border-radius:999px;
     font-weight:600;
     text-decoration:none;
+    position:relative;
+}
+
+.cta::after {
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border-radius:999px;
+    background:rgba(249,115,22,0.4);
+    filter:blur(18px);
+    z-index:-1;
+    animation:pulse 2.5s infinite;
 }
 
 /* SECTIONS */
@@ -127,7 +175,7 @@ section { padding:100px 20px; }
 /* BADGE */
 .badge {
     display:inline-block;
-    font-size:0.75rem;
+    font-size:.75rem;
     font-weight:600;
     padding:4px 10px;
     border-radius:999px;
@@ -166,6 +214,24 @@ footer {
     padding:30px;
 }
 
+/* ANIMATIONS */
+@keyframes gradientMove {
+    0% { background-position:0% 50%; }
+    50% { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
+}
+@keyframes fadeUp {
+    to { opacity:1; transform:translateY(0); }
+}
+@keyframes float {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-40px); }
+}
+@keyframes pulse {
+    0%,100% { opacity:.4; }
+    50% { opacity:.8; }
+}
+
 /* RESPONSIVE */
 @media(max-width:768px){
     .hero h1 { font-size:2.2rem; }
@@ -176,7 +242,6 @@ footer {
 
 <body id="top">
 
-<!-- NAV -->
 <nav>
   <div class="nav-container">
     <a href="#top" class="logo-link">
@@ -194,8 +259,8 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>IT Consulting for Startups & Growing Businesses</h1>
-    <p>Secure, scalable, and cost-efficient IT infrastructure using open-source and practical solutions.</p>
+    <h1>IT Consulting for <span>Startups & Growing Businesses</span></h1>
+    <p>Secure, scalable, and cost-efficient IT infrastructure using open-source and practical engineering.</p>
     <a href="#contact" class="cta">Get Free IT Assessment</a>
   </div>
 </section>
@@ -204,7 +269,7 @@ footer {
 <section id="about" class="light">
   <div class="container">
     <h2 class="section-title">Journey with Knowledge & Practice</h2>
-    <p class="section-subtitle">Our long-term, hands-on IT consulting philosophy.</p>
+    <p class="section-subtitle">A long-term, hands-on IT consulting philosophy.</p>
 
     <div class="grid">
       <div class="card"><h3>🧭 Journey</h3><p>Long-term IT roadmaps aligned with growth.</p></div>
