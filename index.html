@@ -65,95 +65,95 @@ nav {
     opacity:0.9;
 }
 
-/* HERO */
+/* HERO SECTION */
 .hero {
-    min-height:100vh;
-    position:relative;
-    overflow:hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 160px 20px 100px;
     background: linear-gradient(120deg, #0f172a, #1e40af, #2563eb);
-    background-size:300% 300%;
-    animation: gradientMove 12s ease infinite;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    text-align:center;
-    padding:160px 20px 100px;
+    background-size: 300% 300%;
+    animation: heroGradient 14s ease infinite;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
 }
 
-.hero::before,
-.hero::after {
-    content:"";
-    position:absolute;
-    width:220px;
-    height:220px;
-    background:rgba(255,255,255,0.08);
-    border-radius:50%;
-    filter:blur(40px);
-    animation: float 10s infinite ease-in-out;
+.hero-inner {
+    max-width: 900px;
+    margin: auto;
+    animation: fadeUp 1s ease forwards;
 }
-.hero::before { top:10%; left:15%; }
-.hero::after { bottom:15%; right:20%; animation-delay:4s; }
-
-.hero-inner { max-width:900px; margin:auto; position:relative; }
-
-.hero h1,
-.hero p,
-.hero .cta {
-    opacity:0;
-    transform:translateY(30px);
-    animation: fadeUp .9s ease forwards;
-}
-.hero p { animation-delay:.2s; }
-.hero .cta { animation-delay:.4s; }
 
 .hero h1 {
-    font-size:3.2rem;
-    margin-bottom:1rem;
+    font-size: 3.2rem;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
 }
-.hero h1 span { color:var(--accent); }
 
-.hero p {
-    font-size:1.25rem;
-    color:#e5e7eb;
-    margin-bottom:2.5rem;
+.hero h1 span {
+    color: #f97316;
+}
+
+.hero-lead {
+    font-size: 1.25rem;
+    color: #e5e7eb;
+    margin-bottom: 1.2rem;
+}
+
+.hero-sub {
+    font-size: 1.05rem;
+    color: #cbd5f5;
+    margin-bottom: 2.2rem;
 }
 
 .cta {
-    padding:14px 34px;
-    background:var(--accent);
-    color:white;
-    border-radius:999px;
-    font-weight:600;
-    text-decoration:none;
-    position:relative;
+    display: inline-block;
+    padding: 14px 34px;
+    background: #f97316;
+    color: #ffffff;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cta::after {
-    content:"";
-    position:absolute;
-    inset:-6px;
-    border-radius:999px;
-    background:rgba(249,115,22,0.4);
-    filter:blur(18px);
-    z-index:-1;
-    animation:pulse 2.5s infinite;
+.cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(249, 115, 22, 0.4);
 }
 
-/* SECTIONS */
-section { padding:100px 20px; }
-.container { max-width:1200px; margin:auto; }
-
-.section-title {
-    font-size:2.6rem;
-    text-align:center;
-    margin-bottom:12px;
-    color:var(--dark);
+.hero-note {
+    margin-top: 1.4rem;
+    font-size: 0.95rem;
+    color: #d1d5db;
 }
-.section-subtitle {
-    text-align:center;
-    color:var(--muted);
-    max-width:760px;
-    margin:auto auto 70px;
+
+/* Animations */
+@keyframes heroGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
 }
 
 /* GRID */
@@ -256,16 +256,37 @@ footer {
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>IT Consulting for <span>Startups & Growing Businesses</span></h1>
-    <p>Secure, scalable, and cost-efficient IT infrastructure using open-source and practical engineering.</p>
-    <a href="#contact" class="cta">Get Free IT Assessment</a>
+    <h1>
+      IT Consulting for<br>
+      <span>Startups & Growing Businesses</span>
+    </h1>
+      
+<!-- Hero -->
+    <p class="hero-lead">
+      Secure, scalable, and cost-efficient IT infrastructure built with
+      open-source tools and real-world engineering.
+    </p>
+
+    <p class="hero-sub">
+      We help startups and small teams build IT systems that are reliable
+      from day one and ready to scale—without enterprise-level costs or
+      unnecessary complexity.
+    </p>
+
+    <a href="#contact" class="cta">
+      🎯 Get a Free IT Assessment
+    </a>
+
+    <p class="hero-note">
+      Understand your current IT gaps, security risks, and growth readiness —
+      <strong>no sales pressure</strong>, just clear guidance.
+    </p>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUTUS -->
 <section id="about" class="light">
   <div class="container">
     <h2 class="section-title">Journey with Knowledge & Practice</h2>
