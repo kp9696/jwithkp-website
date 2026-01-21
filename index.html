@@ -5,7 +5,7 @@
 <title>JwithKP | IT Consulting for Startups</title>
 
 <!-- SEO -->
-<meta name="description" content="JwithKP provides IT consulting for startups using open-source and commercial solutions. Firewall, monitoring, cloud, security, and cost-optimised IT infrastructure.">
+<meta name="description" content="JwithKP provides IT consulting for startups using open-source and practical solutions. Firewall, monitoring, cloud, security, and cost-optimised IT infrastructure.">
 <meta name="keywords" content="startup IT consulting, firewall setup, monitoring, Office 365, Google Workspace, Active Directory, DLP">
 <meta name="author" content="JwithKP">
 <meta name="robots" content="index, follow">
@@ -22,6 +22,8 @@
     --accent:#f97316;
     --light:#f8fafc;
     --muted:#64748b;
+    --badge-bg:#dcfce7;
+    --badge-text:#166534;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -118,8 +120,21 @@ section { padding:100px 20px; }
     padding:34px;
     box-shadow:0 20px 40px rgba(2,6,23,.08);
     border-left:5px solid var(--accent);
+    position:relative;
 }
 .card h3 { margin-bottom:12px; }
+
+/* BADGE */
+.badge {
+    display:inline-block;
+    font-size:0.75rem;
+    font-weight:600;
+    padding:4px 10px;
+    border-radius:999px;
+    background:var(--badge-bg);
+    color:var(--badge-text);
+    margin-bottom:10px;
+}
 
 /* LIGHT */
 .light { background:var(--light); }
@@ -192,22 +207,10 @@ footer {
     <p class="section-subtitle">Our long-term, hands-on IT consulting philosophy.</p>
 
     <div class="grid">
-      <div class="card">
-        <h3>🧭 Journey</h3>
-        <p>We build long-term IT roadmaps aligned with your business growth.</p>
-      </div>
-      <div class="card">
-        <h3>🤝 Partnership</h3>
-        <p>We work with founders and teams, not just deliver and disappear.</p>
-      </div>
-      <div class="card">
-        <h3>📘 Knowledge</h3>
-        <p>Strong fundamentals in networking, security, Linux, cloud, and infrastructure.</p>
-      </div>
-      <div class="card">
-        <h3>🛠 Practice</h3>
-        <p>Real implementations using open-source, automation, and cost-optimised design.</p>
-      </div>
+      <div class="card"><h3>🧭 Journey</h3><p>Long-term IT roadmaps aligned with growth.</p></div>
+      <div class="card"><h3>🤝 Partnership</h3><p>We work with founders and teams.</p></div>
+      <div class="card"><h3>📘 Knowledge</h3><p>Networking, security, Linux, cloud fundamentals.</p></div>
+      <div class="card"><h3>🛠 Practice</h3><p>Real-world implementations that scale.</p></div>
     </div>
   </div>
 </section>
@@ -216,24 +219,31 @@ footer {
 <section id="services">
   <div class="container">
     <h2 class="section-title">Our Core Services</h2>
-    <p class="section-subtitle">What we help startups and offices with.</p>
+    <p class="section-subtitle">Focused on startups and small offices.</p>
 
     <div class="grid">
       <div class="card">
+        <span class="badge">Recommended for Startups</span>
         <h3>🔐 Firewall & Network Security</h3>
-        <p>Firewall setup, VPN, secure internet access, and network segmentation.</p>
+        <p>Firewall setup, VPNs, and secure internet access.</p>
       </div>
+
       <div class="card">
+        <span class="badge">Recommended for Startups</span>
         <h3>📊 Monitoring & Alerts</h3>
-        <p>Server, network, and service monitoring with proactive alerts.</p>
+        <p>Proactive monitoring for servers and networks.</p>
       </div>
+
       <div class="card">
+        <span class="badge">Recommended for Startups</span>
         <h3>☁️ Email & Collaboration</h3>
-        <p>Office 365 and Google Workspace setup, licensing, and migration.</p>
+        <p>Office 365 and Google Workspace setup.</p>
       </div>
+
       <div class="card">
+        <span class="badge">Recommended for Startups</span>
         <h3>🏢 Office IT Setup</h3>
-        <p>Complete office IT including Wi-Fi, firewall, switches, and access control.</p>
+        <p>Complete office IT and Wi-Fi setup.</p>
       </div>
     </div>
   </div>
@@ -243,24 +253,28 @@ footer {
 <section id="solutions" class="light">
   <div class="container">
     <h2 class="section-title">Advanced IT Solutions</h2>
-    <p class="section-subtitle">Security, identity, and data protection services.</p>
 
     <div class="grid">
       <div class="card">
+        <span class="badge">Recommended for Startups</span>
         <h3>🧑‍💼 Active Directory Setup</h3>
-        <p>On-prem AD, Azure AD, user policies, and access management.</p>
+        <p>User management, policies, and access control.</p>
       </div>
+
       <div class="card">
         <h3>🛡 DLP Solutions</h3>
-        <p>Protect sensitive company data from leaks and misuse.</p>
+        <p>Protect sensitive company data.</p>
       </div>
+
       <div class="card">
+        <span class="badge">Recommended for Startups</span>
         <h3>🌐 Startup Website Setup</h3>
-        <p>Domain, hosting, email, and secure website deployment.</p>
+        <p>Domain, hosting, and secure deployment.</p>
       </div>
+
       <div class="card">
         <h3>📁 Private Cloud</h3>
-        <p>Secure internal file sharing using private cloud solutions.</p>
+        <p>Internal file sharing and collaboration.</p>
       </div>
     </div>
   </div>
@@ -272,7 +286,7 @@ footer {
     <h2 class="section-title">Talk to an IT Consultant</h2>
     <div class="contact-box">
       <p>Call / WhatsApp</p>
-      <a href="tel:+917982912207" class="contact-phone">+91 7982912207</a>
+      <a href="tel:+917398102456" class="contact-phone">+91 7398102456</a>
     </div>
   </div>
 </section>
