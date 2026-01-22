@@ -5,15 +5,15 @@
 
 <title>IT Consulting, Domain & Hosting Services for Startups | JwithKP</title>
 
-<meta name="description" content="IT consulting for startups and small businesses. Domain registration, website hosting, DNS, email setup, firewall security, and scalable IT infrastructure with hands-on support.">
-<meta name="keywords" content="IT consulting for startups, domain registration, website hosting, DNS setup, email hosting, firewall security, Office 365, Google Workspace, startup IT setup">
+<meta name="description" content="Premium IT consulting for startups and growing businesses. Domain registration, hosting, security architecture, monitoring, and scalable IT systems with hands-on execution.">
+<meta name="keywords" content="premium IT consulting, startup IT strategy, domain hosting consulting, infrastructure architecture, firewall security, Office 365, Google Workspace">
 <meta name="author" content="JwithKP">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png">
 
-<!-- SCHEMA: LocalBusiness + Services -->
+<!-- SCHEMA -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -21,29 +21,23 @@
   "name": "JwithKP",
   "url": "https://www.jwithkp.com/",
   "logo": "https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png",
-  "description": "IT consulting for startups including domain registration, website hosting, email setup, network security, monitoring, and scalable IT infrastructure.",
+  "description": "Premium IT consulting firm offering domain, hosting, security architecture, monitoring, and scalable infrastructure for startups and growing businesses.",
   "telephone": "+91-7982912207",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "IN"
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "India"
-  }
+  "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+  "areaServed": { "@type": "Country", "name": "India" }
 }
 </script>
 
-<!-- React (CDN) -->
+<!-- React -->
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <style>
-:root {
-  --primary:#1e40af;--dark:#020617;--accent:#f97316;
-  --light:#f8fafc;--soft:#f1f5f9;--muted:#64748b;
-  --badge-bg:#ecfdf5;--badge-border:#bbf7d0;--badge-text:#065f46;
+:root{
+--primary:#1e40af;--dark:#020617;--accent:#f97316;
+--light:#f8fafc;--soft:#f1f5f9;--muted:#64748b;
+--badge-bg:#ecfdf5;--badge-border:#bbf7d0;--badge-text:#065f46;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Segoe UI",system-ui;line-height:1.7;background:var(--soft);color:#1e293b}
@@ -56,44 +50,106 @@ nav{position:fixed;top:0;width:100%;background:rgba(2,6,23,.9);backdrop-filter:b
 .nav-links a{color:#fff;text-decoration:none;opacity:.9}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:160px 20px 100px;background:linear-gradient(120deg,#020617,#0f172a,#1e3a8a);color:#fff}
-.hero-inner{max-width:900px}
-.hero h1{font-size:3.2rem;margin-bottom:1rem}
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:160px 20px 100px;
+background:linear-gradient(120deg,#020617,#0f172a,#1e3a8a);
+color:#fff
+}
+.hero-inner{max-width:920px}
+.hero h1{font-size:3.2rem;margin-bottom:1.2rem}
 .hero h1 span{color:var(--accent)}
-.hero p{max-width:760px;margin:0 auto 1rem;color:#e5e7eb}
-.cta{display:inline-block;margin-top:1.5rem;padding:14px 34px;background:var(--accent);color:#fff;border-radius:999px;text-decoration:none;font-weight:600}
+.hero p{max-width:780px;margin:0 auto 1rem;color:#e5e7eb;font-size:1.25rem}
+.cta{
+display:inline-block;
+margin-top:2rem;
+padding:14px 34px;
+background:var(--accent);
+color:#fff;
+border-radius:999px;
+text-decoration:none;
+font-weight:600
+}
 
 /* SECTIONS */
 section{padding:110px 20px}
 .container{max-width:1200px;margin:auto}
 .light{background:linear-gradient(180deg,#f8fafc,#eef2ff)}
 .section-title{text-align:center;font-size:2.6rem;margin-bottom:14px}
-.section-subtitle{text-align:center;color:var(--muted);max-width:820px;margin:0 auto 70px}
+.section-subtitle{text-align:center;color:var(--muted);max-width:980px;margin:0 auto 70px}
 
 /* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
-.card{background:#fff;border-radius:20px;padding:36px;border-left:4px solid var(--accent);box-shadow:0 10px 30px rgba(15,23,42,.08)}
-.badge{display:inline-block;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:999px;background:var(--badge-bg);border:1px solid var(--badge-border);color:var(--badge-text);margin-bottom:10px}
+.card{
+background:#fff;
+border-radius:20px;
+padding:36px;
+border-left:4px solid var(--accent);
+box-shadow:0 10px 30px rgba(15,23,42,.08);
+transition:.3s
+}
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 25px 50px rgba(15,23,42,.15)
+}
+.badge{
+display:inline-block;
+font-size:.75rem;
+font-weight:600;
+padding:4px 12px;
+border-radius:999px;
+background:var(--badge-bg);
+border:1px solid var(--badge-border);
+color:var(--badge-text);
+margin-bottom:10px
+}
 
 /* CONTACT */
-.contact-box{background:linear-gradient(135deg,#1e40af,#020617);color:#fff;padding:50px;border-radius:22px;text-align:center;max-width:600px;margin:auto}
+.contact-box{
+background:linear-gradient(135deg,#1e40af,#020617);
+color:#fff;
+padding:50px;
+border-radius:22px;
+text-align:center;
+max-width:600px;
+margin:auto
+}
 .contact-phone{font-size:2rem;color:#fff;text-decoration:none}
 
 /* FOOTER */
 footer{background:#020617;color:#94a3b8;text-align:center;padding:30px}
 
+/* ANIMATION */
+.fade-up{opacity:0;transform:translateY(24px);transition:.8s}
+.fade-up.visible{opacity:1;transform:none}
+
 /* WHATSAPP */
 .whatsapp-float{
-  position:fixed;bottom:22px;right:22px;
-  background:#25d366;color:#fff;width:56px;height:56px;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:28px;box-shadow:0 10px 25px rgba(0,0,0,.25);
-  z-index:2000;text-decoration:none;
+position:fixed;
+bottom:22px;
+right:22px;
+background:#25d366;
+color:#fff;
+width:56px;
+height:56px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+z-index:2000;
+text-decoration:none
 }
 
+/* RESPONSIVE */
 @media(max-width:768px){
-  .hero h1{font-size:2.2rem}
-  .nav-links{display:none}
+.hero h1{font-size:2.2rem}
+.nav-links{display:none}
 }
 </style>
 </head>
@@ -102,104 +158,141 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:30px}
 <div id="root"></div>
 
 <script type="text/babel">
-const Navbar = () => (
-  <nav>
-    <div className="nav-container">
-      <a href="#top" className="logo-link">
-        <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png" />
-      </a>
-      <ul className="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+const useScrollReveal=()=>{React.useEffect(()=>{const e=document.querySelectorAll(".fade-up");const o=new IntersectionObserver(i=>{i.forEach(t=>t.isIntersecting&&t.target.classList.add("visible"))},{threshold:.15});e.forEach(t=>o.observe(t));return()=>o.disconnect()},[])}
+
+const Navbar=()=>(
+<nav>
+  <div className="nav-container">
+    <a href="#top" className="logo-link">
+      <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png"/>
+    </a>
+    <ul className="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 );
 
-const Hero = () => (
-  <section className="hero" id="top">
-    <div className="hero-inner">
-      <h1>IT Consulting for <span>Startups & Growing Businesses</span></h1>
-      <p>IT consulting, domain registration, website hosting, and secure infrastructure built for startups.</p>
-      <p>From domain and hosting to security and scaling — we handle IT so you can focus on growth.</p>
-      <a href="#contact" className="cta">Get a Free IT Assessment</a>
-    </div>
-  </section>
+/* CLEAN, STATIC HERO */
+const Hero=()=>(
+<section className="hero" id="top">
+  <div className="hero-inner fade-up">
+    <h1>
+      IT Consulting for <span>Founders Who Care About Scale</span>
+    </h1>
+
+    <p>
+      We design and operate secure, scalable IT foundations —
+      so technology never becomes your bottleneck.
+    </p>
+
+    <p style={{fontSize:"1rem",color:"#cbd5f5"}}>
+      Domains • Hosting • Security • Reliability • Advisory
+    </p>
+
+    <a href="#contact" className="cta">Get a Free IT Assessment</a>
+
+    <p style={{marginTop:"18px",fontSize:"0.9rem",color:"#c7d2fe"}}>
+      Advisory-led • Security-first • Built for long-term stability
+    </p>
+  </div>
+</section>
 );
 
-const About = () => (
-  <section id="about" className="light">
-    <div className="container">
-      <h2 className="section-title">Our Consulting Philosophy: Knowledge + Practice</h2>
-      <p className="section-subtitle">
-        Practical IT consulting for startups—covering domains, hosting, email, networking,
-        and security—with hands-on implementation.
-      </p>
-      <div className="grid">
-        <div className="card"><h3>🧭 Journey</h3><p>Long-term IT roadmaps aligned with business growth.</p></div>
-        <div className="card"><h3>🤝 Partnership</h3><p>We act as your extended IT team.</p></div>
-        <div className="card"><h3>📘 Knowledge</h3><p>Strong fundamentals across networking, cloud, hosting, and security.</p></div>
-        <div className="card"><h3>🛠 Practice</h3><p>Hands-on setup of domains, hosting, email, firewalls, and monitoring.</p></div>
-      </div>
-    </div>
-  </section>
+const About=()=>(
+<section id="about" className="light fade-up">
+<div className="container">
+<h2 className="section-title">Journey with Knowledge & Practice</h2>
+
+<p className="section-subtitle">
+At JwithKP, we believe strong IT systems are built through clear thinking,
+deep technical knowledge, and real-world execution.
+</p>
+
+<p style={{maxWidth:"920px",margin:"0 auto 50px",textAlign:"center",color:"#475569"}}>
+Our philosophy — <strong>Journey with Knowledge & Practice</strong> — means we continuously
+learn, apply, and refine technology in production environments,
+ensuring decisions stand the test of time.
+</p>
+
+<div className="grid">
+  <div className="card"><h3>Strategic Thinking First</h3><p>Business goals before tools.</p></div>
+  <div className="card"><h3>Knowledge-Driven Decisions</h3><p>Strong fundamentals, no shortcuts.</p></div>
+  <div className="card"><h3>Practice Over Theory</h3><p>Hands-on implementation and ownership.</p></div>
+  <div className="card"><h3>Long-Term Partnership</h3><p>We grow with your business.</p></div>
+</div>
+</div>
+</section>
 );
 
-const Services = () => (
-  <section id="services">
-    <div className="container">
-      <h2 className="section-title">Core IT Services</h2>
-      <p className="section-subtitle">End-to-end IT setup for startups.</p>
-      <div className="grid">
-        <div className="card"><span className="badge">Security</span><h3>🔐 Firewall & Network</h3><p>Firewalls, VPN, segmentation</p></div>
-        <div className="card"><span className="badge">Reliability</span><h3>📊 Monitoring</h3><p>Uptime & alerts</p></div>
-        <div className="card"><span className="badge">Collaboration</span><h3>☁️ Email</h3><p>Microsoft 365 / Google Workspace</p></div>
-        <div className="card"><span className="badge">Startup</span><h3>🌐 Domain & Hosting</h3><p>Domain, DNS, hosting, SSL</p></div>
-        <div className="card"><span className="badge">Office</span><h3>🏢 Office IT</h3><p>Wi-Fi & office network</p></div>
-      </div>
-    </div>
-  </section>
+const Services=()=>(
+<section id="services" className="fade-up">
+<div className="container">
+<h2 className="section-title">Core Consulting Services</h2>
+<p className="section-subtitle">
+End-to-end IT consulting designed to support growth, reduce risk,
+and bring operational clarity.
+</p>
+
+<div className="grid">
+{[
+["IT Strategy & Architecture","Technology roadmaps and infrastructure design"],
+["Domain & Hosting Architecture","Domain strategy, DNS, hosting, SSL"],
+["Security & Risk Management","Firewalls, VPNs, access control"],
+["Monitoring & Reliability","Uptime monitoring and alerts"],
+["Email & Collaboration","Microsoft 365 / Google Workspace"],
+["Office & Remote IT","Office networks and secure remote access"],
+["Ongoing Advisory","Continuous guidance and optimization"]
+].map(s=>(
+<div className="card" key={s[0]}>
+<span className="badge">Consulting</span>
+<h3>{s[0]}</h3>
+<p>{s[1]}</p>
+</div>
+))}
+</div>
+</div>
+</section>
 );
 
-const Contact = () => (
-  <section id="contact" className="light">
-    <div className="container">
-      <h2 className="section-title">Talk to an IT Consultant</h2>
-      <div className="contact-box">
-        <p>Call / WhatsApp</p>
-        <a className="contact-phone" href="tel:+917982912207">+91 7982912207</a>
-      </div>
-    </div>
-  </section>
+const Contact=()=>(
+<section id="contact" className="light fade-up">
+<div className="container">
+<h2 className="section-title">Talk to an IT Consultant</h2>
+<div className="contact-box">
+<p>Call / WhatsApp</p>
+<a href="tel:+917982912207" className="contact-phone">+91 7982912207</a>
+</div>
+</div>
+</section>
 );
 
-const Footer = () => (
-  <footer>© 2026 JwithKP · Journey with Knowledge & Practice</footer>
+const Footer=()=>(
+<footer>© 2026 JwithKP · Journey with Knowledge & Practice</footer>
 );
 
-const WhatsAppWidget = () => (
-  <a
-    href="https://wa.me/917982912207?text=Hi%20I%20would%20like%20to%20discuss%20IT%20consulting"
-    className="whatsapp-float"
-    target="_blank"
-    rel="noopener noreferrer"
-  >💬</a>
+const WhatsAppWidget=()=>(
+<a href="https://wa.me/917982912207?text=Hi%20I%20would%20like%20to%20discuss%20IT%20consulting" className="whatsapp-float" target="_blank">💬</a>
 );
 
-const App = () => (
-  <>
-    <Navbar />
-    <Hero />
-    <About />
-    <Services />
-    <Contact />
-    <Footer />
-    <WhatsAppWidget />
-  </>
-);
+const App=()=>{
+useScrollReveal();
+return(
+<>
+<Navbar/>
+<Hero/>
+<About/>
+<Services/>
+<Contact/>
+<Footer/>
+<WhatsAppWidget/>
+</>
+)
+}
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>
