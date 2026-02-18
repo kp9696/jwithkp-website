@@ -5,6 +5,14 @@
 <title>JwithKP | Future-Ready IT Consulting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Future-ready IT consulting for startups and growing businesses. Secure, scalable, and professionally engineered IT infrastructure.">
+<!-- Social Media Meta Tags -->
+<meta property="og:title" content="JwithKP - Future-Ready IT Consulting">
+<meta property="og:description" content="Secure, scalable IT infrastructure for startups and growing businesses.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JwithKP - Future-Ready IT Consulting">
+<meta name="twitter:description" content="Professional IT consulting for modern businesses.">
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -17,6 +25,7 @@
   --accent:#22d3ee;  
   --text:#e5e7eb;  
   --muted:#94a3b8;
+  --focus-ring: 0 0 0 3px rgba(56, 189, 248, 0.5);
 }
 /* LIGHT MODE VARIABLES */
 [data-theme="light"]{  
@@ -36,6 +45,30 @@ body{
   background:var(--bg);  
   color:var(--text);  
   overflow-x:hidden;
+}
+/* Skip Navigation Link - Accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: #020617;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 1001;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+/* Focus Styles for Accessibility */
+a:focus, button:focus, [tabindex]:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  transition: box-shadow 0.2s;
 }
 /* PARTICLE / MESH BACKGROUND */
 canvas{position:fixed; inset:0; z-index:0;}
@@ -76,9 +109,71 @@ nav{
   color:#fff;  
   opacity:.85;  
   transition:.3s;
+  padding: 8px 4px;
+  border-radius: 4px;
 }
 [data-theme="light"] .nav-links a{color:var(--text);}
 .nav-links a:hover{opacity:1;text-shadow:0 0 16px var(--accent);}
+/* Mobile Navigation Menu */
+.menu-toggle {
+  display: none;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .3s;
+  line-height: 1;
+}
+.menu-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--accent);
+}
+.menu-toggle[aria-expanded="true"] + .nav-links {
+  display: flex;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: inherit;
+    backdrop-filter: blur(18px);
+    padding: 20px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .nav-links li {
+    width: 100%;
+  }
+  .nav-links a {
+    display: block;
+    padding: 12px 16px;
+    text-align: center;
+    background: var(--glass);
+    border-radius: 8px;
+    font-size: 1.1rem;
+  }
+  .nav-links a:hover {
+    background: rgba(255,255,255,0.15);
+  }
+  /* Reduce particle count on mobile for performance */
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
 #themeToggle{  
   background:var(--glass);  
   border:1px solid var(--border);  
@@ -102,7 +197,7 @@ nav{
 }
 .hero-inner{max-width:960px;padding:0 20px;}
 .hero h1{  
-  font-size:3.7rem;  
+  font-size:clamp(2rem, 5vw, 3.7rem);  
   line-height:1.15;  
   margin-bottom:1.2rem;  
   font-family:Orbitron, sans-serif;
@@ -113,7 +208,7 @@ nav{
 }
 [data-theme="light"] .hero h1 span{text-shadow:0 0 60px var(--accent);}
 .hero p{  
-  font-size:1.1rem;  
+  font-size:clamp(1rem, 2vw, 1.1rem);  
   color:#cbd5f5;  
   max-width:820px;  
   margin:0 auto 1.4rem;
@@ -138,7 +233,7 @@ nav{
 section{padding:130px 20px;position:relative;z-index:1;}
 .container{max-width:1200px;margin:auto;}
 .section-title{  
-  font-size:2.9rem;  
+  font-size:clamp(2rem, 4vw, 2.9rem);  
   text-align:center;  
   margin-bottom:16px;  
   font-family:Orbitron,sans-serif;  
@@ -150,7 +245,7 @@ section{padding:130px 20px;position:relative;z-index:1;}
   color:var(--muted);  
   max-width:860px;  
   margin:0 auto 90px;  
-  font-size:1.05rem;
+  font-size:clamp(0.95rem, 2vw, 1.05rem);
 }
 [data-theme="light"] .section-subtitle{color:#334155;}
 /* GRID + CARDS */
@@ -172,9 +267,9 @@ section{padding:130px 20px;position:relative;z-index:1;}
 [data-theme="light"] .card p{color:#0f172a;}
 [data-theme="light"] .card{background:rgba(255,255,255,0.8);border:1px solid rgba(0,0,0,0.15);box-shadow:0 0 30px var(--accent, #06b6d4);}
 /* CONTACT */
-.contact-box{background:linear-gradient(135deg,rgba(2,6,23,.9),rgba(30,64,175,.9));backdrop-filter:blur(28px);border:1px solid var(--border);padding:80px;border-radius:38px;text-align:center;}
+.contact-box{background:linear-gradient(135deg,rgba(2,6,23,.9),rgba(30,64,175,.9));backdrop-filter:blur(28px);border:1px solid var(--border);padding:clamp(30px, 6vw, 80px);border-radius:38px;text-align:center;}
 [data-theme="light"] .contact-box{background:linear-gradient(135deg,rgba(240,248,255,0.9),rgba(240,248,255,0.8));border:1px solid rgba(0,0,0,0.15);box-shadow:0 0 50px var(--accent);}
-.contact-phone{display:inline-block;margin-top:26px;font-size:2.2rem;color:#fff;text-decoration:none;text-shadow:0 0 35px var(--accent);transition:.3s;}
+.contact-phone{display:inline-block;margin-top:26px;font-size:clamp(1.2rem, 4vw, 2.2rem);color:#fff;text-decoration:none;text-shadow:0 0 35px var(--accent);transition:.3s;word-break:break-word;}
 [data-theme="light"] .contact-phone{color:#0f172a;text-shadow:0 0 20px var(--accent);}
 .contact-phone:hover{transform:scale(1.05);}
 /* FOOTER */
@@ -183,90 +278,114 @@ footer{padding:36px;text-align:center;color:#64748b;position:relative;z-index:1;
 /* SCROLL ANIMATION */
 .reveal{opacity:0;transform:translateY(70px);transition:1.2s ease;}
 .reveal.active{opacity:1;transform:translateY(0);}
-@media(max-width:768px){.hero h1{font-size:2.4rem}.nav-links{display:none;}}
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary: #0057b3;
+    --accent: #008299;
+    --border: rgba(0,0,0,0.5);
+  }
+  .card {
+    border: 2px solid currentColor;
+  }
+}
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 </style>
 </head>
 
 <body>
+<!-- Skip Navigation Link for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <canvas id="particles"></canvas>
 
-<nav>  
+<nav aria-label="Main navigation">  
   <div class="nav-container">    
-    <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png" height="46">    
+    <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png" height="46" alt="JwithKP company logo">    
     <div class="nav-right">      
-      <ul class="nav-links">        
-        <li><a href="#about">About</a></li>        
-        <li><a href="#services">Services</a></li>        
-        <li><a href="#why">Why Us</a></li>        
-        <li><a href="#contact">Contact</a></li>      
+      <!-- Mobile Menu Toggle -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+      <ul class="nav-links" id="navLinks" role="list">        
+        <li role="listitem"><a href="#about" aria-label="About Us section">About</a></li>        
+        <li role="listitem"><a href="#services" aria-label="Our Services section">Services</a></li>        
+        <li role="listitem"><a href="#why" aria-label="Why Choose Us section">Why Us</a></li>        
+        <li role="listitem"><a href="#contact" aria-label="Contact section">Contact</a></li>      
       </ul>      
-      <button id="themeToggle" aria-label="Toggle Theme">🌙</button>    
+      <button id="themeToggle" aria-label="Toggle dark or light theme" aria-pressed="false">🌙</button>    
     </div>  
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">  
-  <div class="hero-inner reveal">    
+<section class="hero" aria-label="Hero section">  
+  <div class="hero-inner reveal" id="main-content" tabindex="-1">    
     <h1>Future-Ready <span>IT Consulting</span></h1>    
     <p>We design, secure, and scale modern IT infrastructure for startups and growing businesses using proven engineering practices and next-generation technologies.</p>    
     <p>Your IT should accelerate growth — not slow it down.</p>    
-    <a href="#contact" class="cta">🚀 Free IT Architecture Review</a>  
+    <a href="#contact" class="cta" aria-label="Free IT Architecture Review, starts at contact section">🚀 Free IT Architecture Review</a>  
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">  
+<section id="about" aria-labelledby="about-title">  
   <div class="container">    
-    <h2 class="section-title reveal">Engineered for Real-World Business</h2>    
+    <h2 class="section-title reveal" id="about-title">Engineered for Real-World Business</h2>    
     <p class="section-subtitle reveal">JwithKP helps organizations build reliable, secure, and scalable IT foundations that support long-term growth.</p>    
     <div class="grid">      
-      <div class="card reveal"><h3>🧠 Engineering-First</h3><p>We focus on fundamentals: networking, security, reliability, and scalability.</p></div>      
-      <div class="card reveal"><h3>🔒 Security-Driven</h3><p>Security is built into every layer, not added later.</p></div>      
-      <div class="card reveal"><h3>📈 Growth-Ready</h3><p>Infrastructure that evolves as your business scales.</p></div>    
+      <div class="card reveal" tabindex="0"><h3>🧠 Engineering-First</h3><p>We focus on fundamentals: networking, security, reliability, and scalability.</p></div>      
+      <div class="card reveal" tabindex="0"><h3>🔒 Security-Driven</h3><p>Security is built into every layer, not added later.</p></div>      
+      <div class="card reveal" tabindex="0"><h3>📈 Growth-Ready</h3><p>Infrastructure that evolves as your business scales.</p></div>    
     </div>  
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services">  
+<section id="services" aria-labelledby="services-title">  
   <div class="container">    
-    <h2 class="section-title reveal">Core IT Services</h2>    
+    <h2 class="section-title reveal" id="services-title">Core IT Services</h2>    
     <p class="section-subtitle reveal">Professional IT solutions designed for modern organizations.</p>    
     <div class="grid">      
-      <div class="card reveal"><h3>🔐 Network & Firewall Security</h3><p>Enterprise-grade firewalls, VPNs, segmentation, and access control.</p></div>      
-      <div class="card reveal"><h3>📊 Monitoring & Reliability</h3><p>Real-time visibility, alerts, and performance monitoring.</p></div>      
-      <div class="card reveal"><h3>☁️ Cloud & Collaboration</h3><p>Microsoft 365 & Google Workspace secure deployments.</p></div>      
-      <div class="card reveal"><h3>🏢 Office & Remote IT</h3><p>Scalable office networks, Wi-Fi, and remote work enablement.</p></div>    
+      <div class="card reveal" tabindex="0"><h3>🔐 Network & Firewall Security</h3><p>Enterprise-grade firewalls, VPNs, segmentation, and access control.</p></div>      
+      <div class="card reveal" tabindex="0"><h3>📊 Monitoring & Reliability</h3><p>Real-time visibility, alerts, and performance monitoring.</p></div>      
+      <div class="card reveal" tabindex="0"><h3>☁️ Cloud & Collaboration</h3><p>Microsoft 365 & Google Workspace secure deployments.</p></div>      
+      <div class="card reveal" tabindex="0"><h3>🏢 Office & Remote IT</h3><p>Scalable office networks, Wi-Fi, and remote work enablement.</p></div>    
     </div>  
   </div>
 </section>
 
 <!-- WHY -->
-<section id="why">  
+<section id="why" aria-labelledby="why-title">  
   <div class="container">    
-    <h2 class="section-title reveal">Why Choose JwithKP</h2>    
+    <h2 class="section-title reveal" id="why-title">Why Choose JwithKP</h2>    
     <p class="section-subtitle reveal">Because strong IT foundations prevent costly failures.</p>    
     <div class="grid">      
-      <div class="card reveal"><h3>💡 Clear Strategy</h3><p>Actionable guidance without unnecessary complexity.</p></div>      
-      <div class="card reveal"><h3>🤝 Long-Term Partner</h3><p>We grow with your business as your trusted IT team.</p></div>      
-      <div class="card reveal"><h3>⚙️ Production-Proven</h3><p>Everything we design is tested in real environments.</p></div>    
+      <div class="card reveal" tabindex="0"><h3>💡 Clear Strategy</h3><p>Actionable guidance without unnecessary complexity.</p></div>      
+      <div class="card reveal" tabindex="0"><h3>🤝 Long-Term Partner</h3><p>We grow with your business as your trusted IT team.</p></div>      
+      <div class="card reveal" tabindex="0"><h3>⚙️ Production-Proven</h3><p>Everything we design is tested in real environments.</p></div>    
     </div>  
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">  
+<section id="contact" aria-labelledby="contact-title">  
   <div class="container">    
-    <h2 class="section-title reveal">Talk to an IT Consultant</h2>    
+    <h2 class="section-title reveal" id="contact-title">Talk to an IT Consultant</h2>    
     <div class="contact-box reveal">      
       <p>Chat directly on WhatsApp for a free consultation</p>      
-      <a class="contact-phone" href="https://wa.me/917982912207?text=Hello%20JwithKP%2C%20I%20am%20interested%20in%20IT%20consulting%20services." target="_blank" rel="noopener">💬 WhatsApp: +91 7982912207</a>    
+      <a class="contact-phone" href="https://wa.me/917982912207?text=Hello%20JwithKP%2C%20I%20am%20interested%20in%20IT%20consulting%20services." target="_blank" rel="noopener" aria-label="Contact us on WhatsApp at +91 7982912207">💬 WhatsApp: +91 7982912207</a>    
     </div>  
   </div>
 </section>
 
-<footer>© 2026 JwithKP · Journey with Knowledge & Practice</footer>
+<footer role="contentinfo">© 2026 JwithKP · Journey with Knowledge & Practice</footer>
 
 <script>
 /* ================= SCROLL REVEAL ================= */
@@ -276,24 +395,104 @@ const observer=new IntersectionObserver(e=>{
 },{threshold:.2});
 reveals.forEach(el=>observer.observe(el));
 
+/* ================= MOBILE MENU ================= */
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+let menuOpen = false;
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    navLinks.classList.toggle('show');
+    menuToggle.setAttribute('aria-expanded', menuOpen);
+    menuToggle.textContent = menuOpen ? '✕' : '☰';
+  });
+
+  // Close menu when clicking a link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('show');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+      menuOpen = false;
+    });
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuOpen) {
+      navLinks.classList.remove('show');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+      menuOpen = false;
+      menuToggle.focus();
+    }
+  });
+}
+
 /* ================= BUBBLE MESH BACKGROUND ================= */
 const c=document.getElementById("particles"),ctx=c.getContext("2d");
-let w,h,bubbles=[],COUNT=100,MAX_DIST=150;
-function resize(){w=c.width=innerWidth;h=c.height=innerHeight;}
-window.addEventListener("resize",resize);resize();
-function bubbleColor(){return document.documentElement.getAttribute("data-theme")==="light"?"rgba(6,182,212,0.35)":"rgba(56,189,248,0.45)";}
+let w,h,bubbles=[];
+// Adjust particle count based on screen size for performance
+const COUNT = window.innerWidth < 768 ? 50 : 100;
+const MAX_DIST = 150;
+
+function resize(){
+  w=c.width=innerWidth;
+  h=c.height=innerHeight;
+  // Reinitialize bubbles on resize
+  initBubbles();
+}
+window.addEventListener("resize",resize);
+
+function initBubbles() {
+  bubbles = [];
+  for(let i=0;i<COUNT;i++){
+    bubbles.push({
+      x:Math.random()*w,
+      y:Math.random()*h,
+      r:Math.random()*4+2,
+      dx:(Math.random()-.5)*0.4,
+      dy:(Math.random()-.5)*0.4
+    });
+  }
+}
+
+function bubbleColor(){
+  return document.documentElement.getAttribute("data-theme")==="light" ? "rgba(6,182,212,0.35)" : "rgba(56,189,248,0.45)";
+}
 function lineColor(alpha){return `rgba(34,211,238,${alpha})`;}
-for(let i=0;i<COUNT;i++){bubbles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*4+2,dx:(Math.random()-.5)*0.4,dy:(Math.random()-.5)*0.4});}
+
+initBubbles();
+
 function animate(){
   ctx.clearRect(0,0,w,h);
   for(let i=0;i<bubbles.length;i++){
-    const b=bubbles[i]; b.x+=b.dx; b.y+=b.dy;
+    const b=bubbles[i]; 
+    b.x+=b.dx; 
+    b.y+=b.dy;
     if(b.x<0||b.x>w) b.dx*=-1;
     if(b.y<0||b.y>h) b.dy*=-1;
-    ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,Math.PI*2); ctx.fillStyle=bubbleColor(); ctx.fill();
-    for(let j=i+1;j<bubbles.length;j++){
-      const dx=b.x-bubbles[j].x, dy=b.y-bubbles[j].y, dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<MAX_DIST){ctx.strokeStyle=lineColor(1-dist/MAX_DIST);ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(b.x,b.y);ctx.lineTo(bubbles[j].x,bubbles[j].y);ctx.stroke();}
+    ctx.beginPath(); 
+    ctx.arc(b.x,b.y,b.r,0,Math.PI*2); 
+    ctx.fillStyle=bubbleColor(); 
+    ctx.fill();
+    
+    // Only draw connections on larger screens for performance
+    if (window.innerWidth >= 768) {
+      for(let j=i+1;j<bubbles.length;j++){
+        const dx=b.x-bubbles[j].x, 
+              dy=b.y-bubbles[j].y, 
+              dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<MAX_DIST){
+          ctx.strokeStyle=lineColor(1-dist/MAX_DIST);
+          ctx.lineWidth=.6;
+          ctx.beginPath();
+          ctx.moveTo(b.x,b.y);
+          ctx.lineTo(bubbles[j].x,bubbles[j].y);
+          ctx.stroke();
+        }
+      }
     }
   }
   requestAnimationFrame(animate);
@@ -304,8 +503,47 @@ animate();
 const toggle=document.getElementById("themeToggle");
 const root=document.documentElement;
 const savedTheme=localStorage.getItem("theme");
-if(savedTheme){root.setAttribute("data-theme",savedTheme); toggle.textContent=savedTheme==="light"?"🌞":"🌙";}
-toggle.onclick=()=>{const isLight=root.getAttribute("data-theme")==="light";root.setAttribute("data-theme",isLight?"dark":"light");localStorage.setItem("theme",isLight?"dark":"light");toggle.textContent=isLight?"🌙":"🌞";}
+if(savedTheme){
+  root.setAttribute("data-theme",savedTheme); 
+  toggle.textContent=savedTheme==="light"?"🌞":"🌙";
+  toggle.setAttribute('aria-pressed', savedTheme==="light");
+}
+toggle.onclick=()=>{
+  const isLight=root.getAttribute("data-theme")==="light";
+  const newTheme = isLight ? "dark" : "light";
+  root.setAttribute("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme);
+  toggle.textContent = isLight ? "🌙" : "🌞";
+  toggle.setAttribute('aria-pressed', !isLight);
+}
+
+/* ================= FOCUS MANAGEMENT ================= */
+// Make sure main content is focusable but remove tabindex after blur
+const mainContent = document.getElementById('main-content');
+if (mainContent) {
+  mainContent.addEventListener('blur', () => {
+    mainContent.removeAttribute('tabindex');
+  });
+}
+
+// Trap focus in mobile menu when open
+if (menuToggle) {
+  menuToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' && menuOpen) {
+      const focusableElements = navLinks.querySelectorAll('a');
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    }
+  });
+}
 </script>
 </body>
 </html>
