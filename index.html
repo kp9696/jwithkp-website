@@ -1,2450 +1,1441 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>JwithKP | Enterprise IT Consulting & Digital Transformation</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- PRIMARY META TAGS -->
-<meta name="description" content="JwithKP provides enterprise-grade IT consulting, digital transformation, and managed IT services for startups, SMBs, and growing enterprises. Specializing in cloud architecture, cybersecurity, and infrastructure automation.">
-<meta name="keywords" content="IT consulting, managed IT services, cloud architecture, cybersecurity, digital transformation, infrastructure automation, DevOps consulting, network security, Microsoft 365, Google Workspace, IT support India">
-<meta name="author" content="JwithKP">
-<meta name="robots" content="index, follow">
-<meta name="language" content="English">
-<meta name="revisit-after" content="7 days">
-
-<!-- CANONICAL URL -->
-<link rel="canonical" href="https://jwithkp.com">
-
-<!-- SOCIAL MEDIA META TAGS -->
-<meta property="og:title" content="JwithKP - Enterprise IT Consulting & Digital Transformation">
-<meta property="og:description" content="Future-ready IT consulting for modern businesses. Cloud architecture, cybersecurity, and managed IT services.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://jwithkp.com">
-<meta property="og:image" content="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png">
-<meta property="og:site_name" content="JwithKP">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="JwithKP - IT Consulting & Digital Transformation">
-<meta name="twitter:description" content="Expert IT consulting for modern businesses. Cloud, security, and infrastructure solutions.">
-
-<!-- FAVICON -->
-<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png">
-<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png">
-
-<!-- FONTS -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- FONT AWESOME -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<!-- ANIMATE.CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-<!-- AOS (Animate on Scroll) -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-<!-- SWIPER SLIDER -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-<style>
-/* ================= GLOBAL VARIABLES ================= */
-:root {
-  /* Dark Theme (Default) */
-  --bg-primary: #0a0f1e;
-  --bg-secondary: #111827;
-  --bg-card: rgba(17, 25, 40, 0.75);
-  --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --accent-primary: #3b82f6;
-  --accent-secondary: #8b5cf6;
-  --accent-glow: #22d3ee;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --border: rgba(255, 255, 255, 0.1);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  --gradient-2: linear-gradient(135deg, #22d3ee, #3b82f6);
-  --gradient-3: linear-gradient(135deg, #f59e0b, #ef4444);
-}
-
-/* Light Theme */
-[data-theme="light"] {
-  --bg-primary: #f9fafb;
-  --bg-secondary: #f3f4f6;
-  --bg-card: rgba(255, 255, 255, 0.9);
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
-  --text-muted: #6b7280;
-  --accent-primary: #2563eb;
-  --accent-secondary: #7c3aed;
-  --accent-glow: #0891b2;
-  --border: rgba(0, 0, 0, 0.1);
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-/* ================= RESET & BASE ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  line-height: 1.6;
-  overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* ================= TYPOGRAPHY ================= */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.section-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
-  background: var(--gradient-1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  text-align: center;
-}
-
-/* ================= UTILITY CLASSES ================= */
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.gradient-text {
-  background: var(--gradient-1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  font-size: 1rem;
-}
-
-.btn-primary {
-  background: var(--gradient-1);
-  color: white;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.6);
-}
-
-.btn-secondary {
-  background: transparent;
-  border: 2px solid var(--accent-primary);
-  color: var(--text-primary);
-}
-
-.btn-secondary:hover {
-  background: var(--accent-primary);
-  color: white;
-}
-
-/* ================= NAVIGATION ================= */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
-  background: rgba(var(--bg-primary-rgb), 0.8);
-  border-bottom: 1px solid var(--border);
-  transition: all 0.3s ease;
-}
-
-.navbar.scrolled {
-  padding: 0.5rem 0;
-  background: var(--bg-primary);
-  box-shadow: var(--shadow);
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo img {
-  height: 50px;
-  transition: transform 0.3s ease;
-}
-
-.logo img:hover {
-  transform: scale(1.05);
-}
-
-.logo-text {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: var(--gradient-1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  list-style: none;
-}
-
-.nav-menu li a {
-  text-decoration: none;
-  color: var(--text-primary);
-  font-weight: 500;
-  transition: color 0.3s ease;
-  position: relative;
-}
-
-.nav-menu li a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-1);
-  transition: width 0.3s ease;
-}
-
-.nav-menu li a:hover::after,
-.nav-menu li a.active::after {
-  width: 100%;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.theme-toggle {
-  background: var(--glass-bg);
-  border: 1px solid var(--border);
-  color: var(--text-primary);
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  background: var(--accent-primary);
-  color: white;
-}
-
-.menu-toggle {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--text-primary);
-}
-
-/* ================= HERO SECTION ================= */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  padding: 6rem 0;
-}
-
-.hero-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.hero-badge {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--border);
-  border-radius: 50px;
-  font-size: 0.9rem;
-  color: var(--accent-primary);
-  margin-bottom: 1.5rem;
-  backdrop-filter: blur(10px);
-}
-
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  max-width: 600px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.hero-stats {
-  display: flex;
-  gap: 3rem;
-  margin-top: 3rem;
-}
-
-.stat-item h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--accent-primary);
-  margin-bottom: 0.25rem;
-}
-
-.stat-item p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 0;
-}
-
-.hero-visual {
-  position: relative;
-}
-
-.hero-image {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-.hero-shape {
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
-  background: var(--gradient-1);
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.3;
-  z-index: -1;
-}
-
-/* ================= CLIENTS SECTION ================= */
-.clients {
-  padding: 4rem 0;
-  background: var(--bg-secondary);
-  overflow: hidden;
-}
-
-.clients h2 {
-  text-align: center;
-  margin-bottom: 3rem;
-  font-size: 2rem;
-  color: var(--text-secondary);
-}
-
-.client-slider {
-  display: flex;
-  gap: 4rem;
-  animation: slide 20s linear infinite;
-}
-
-.client-slider img {
-  height: 40px;
-  filter: grayscale(1);
-  opacity: 0.6;
-  transition: all 0.3s ease;
-}
-
-.client-slider img:hover {
-  filter: grayscale(0);
-  opacity: 1;
-}
-
-@keyframes slide {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
-/* ================= SERVICES SECTION ================= */
-.services {
-  padding: 6rem 0;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.service-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow);
-  border-color: var(--accent-primary);
-}
-
-.service-icon {
-  width: 60px;
-  height: 60px;
-  background: var(--gradient-1);
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-  color: white;
-}
-
-.service-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.service-card p {
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-}
-
-.service-features {
-  list-style: none;
-  margin-bottom: 1.5rem;
-}
-
-.service-features li {
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-secondary);
-}
-
-.service-features li i {
-  color: var(--success);
-  font-size: 0.9rem;
-}
-
-.service-link {
-  color: var(--accent-primary);
-  text-decoration: none;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: gap 0.3s ease;
-}
-
-.service-link:hover {
-  gap: 1rem;
-}
-
-/* ================= ABOUT SECTION ================= */
-.about {
-  padding: 6rem 0;
-  background: var(--bg-secondary);
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.about-content h2 {
-  text-align: left;
-  margin-bottom: 1.5rem;
-}
-
-.about-content p {
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-}
-
-.about-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin: 2rem 0;
-}
-
-.about-stat {
-  text-align: center;
-}
-
-.about-stat h4 {
-  font-size: 2rem;
-  color: var(--accent-primary);
-  margin-bottom: 0.5rem;
-}
-
-.about-stat p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 0;
-}
-
-.about-image {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.about-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.about-image:hover img {
-  transform: scale(1.05);
-}
-
-.experience-badge {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: var(--gradient-1);
-  color: white;
-  padding: 1.5rem;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-weight: 700;
-  box-shadow: var(--shadow);
-}
-
-.experience-badge span {
-  font-size: 1.8rem;
-  line-height: 1;
-}
-
-/* ================= PROCESS SECTION ================= */
-.process {
-  padding: 6rem 0;
-}
-
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.process-step {
-  text-align: center;
-  padding: 2rem;
-  position: relative;
-}
-
-.process-step:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 50px;
-  right: -30px;
-  width: 60px;
-  height: 2px;
-  background: var(--gradient-1);
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .process-step:not(:last-child)::after {
-    display: block;
-  }
-}
-
-.step-number {
-  width: 60px;
-  height: 60px;
-  background: var(--gradient-1);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0 auto 1.5rem;
-}
-
-.process-step h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-.process-step p {
-  color: var(--text-secondary);
-}
-
-/* ================= CASE STUDIES SECTION ================= */
-.case-studies {
-  padding: 6rem 0;
-  background: var(--bg-secondary);
-}
-
-.case-studies-slider {
-  margin-top: 3rem;
-  overflow: hidden;
-}
-
-.case-study-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.case-study-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow);
-}
-
-.case-study-image {
-  width: 100%;
-  height: 250px;
-  overflow: hidden;
-}
-
-.case-study-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.case-study-card:hover .case-study-image img {
-  transform: scale(1.1);
-}
-
-.case-study-content {
-  padding: 2rem;
-}
-
-.case-study-category {
-  color: var(--accent-primary);
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.case-study-content h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-.case-study-content p {
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-}
-
-.case-study-stats {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-  padding: 1rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.case-stat {
-  text-align: center;
-}
-
-.case-stat .stat-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  display: block;
-}
-
-.case-stat .stat-value {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--accent-primary);
-}
-
-/* ================= TESTIMONIALS SECTION ================= */
-.testimonials {
-  padding: 6rem 0;
-}
-
-.testimonials-slider {
-  margin-top: 3rem;
-}
-
-.testimonial-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow);
-}
-
-.testimonial-rating {
-  color: #fbbf24;
-  margin-bottom: 1rem;
-}
-
-.testimonial-text {
-  font-size: 1.1rem;
-  font-style: italic;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.author-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.author-info h4 {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-}
-
-.author-info p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-/* ================= PRICING SECTION ================= */
-.pricing {
-  padding: 6rem 0;
-  background: var(--bg-secondary);
-}
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.pricing-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.pricing-card.popular {
-  transform: scale(1.05);
-  border-color: var(--accent-primary);
-  box-shadow: var(--shadow);
-}
-
-.popular-badge {
-  position: absolute;
-  top: 20px;
-  right: -30px;
-  background: var(--gradient-1);
-  color: white;
-  padding: 0.5rem 3rem;
-  transform: rotate(45deg);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.pricing-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.pricing-header h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.price {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--accent-primary);
-}
-
-.price span {
-  font-size: 1rem;
-  color: var(--text-muted);
-  font-weight: 400;
-}
-
-.pricing-features {
-  list-style: none;
-  margin-bottom: 2rem;
-}
-
-.pricing-features li {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-secondary);
-}
-
-.pricing-features li i {
-  color: var(--success);
-}
-
-.pricing-features li.disabled {
-  opacity: 0.5;
-}
-
-.pricing-features li.disabled i {
-  color: var(--danger);
-}
-
-.pricing-card .btn {
-  width: 100%;
-  text-align: center;
-}
-
-/* ================= BLOG SECTION ================= */
-.blog {
-  padding: 6rem 0;
-}
-
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.blog-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.blog-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow);
-}
-
-.blog-image {
-  width: 100%;
-  height: 250px;
-  overflow: hidden;
-}
-
-.blog-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.blog-card:hover .blog-image img {
-  transform: scale(1.1);
-}
-
-.blog-content {
-  padding: 2rem;
-}
-
-.blog-meta {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.blog-meta i {
-  margin-right: 0.25rem;
-}
-
-.blog-content h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-.blog-content p {
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-}
-
-.read-more {
-  color: var(--accent-primary);
-  text-decoration: none;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: gap 0.3s ease;
-}
-
-.read-more:hover {
-  gap: 1rem;
-}
-
-/* ================= CONTACT SECTION ================= */
-.contact {
-  padding: 6rem 0;
-  background: var(--bg-secondary);
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.contact-info h2 {
-  text-align: left;
-  margin-bottom: 1.5rem;
-}
-
-.contact-info p {
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-}
-
-.contact-details {
-  margin: 2rem 0;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.contact-icon {
-  width: 50px;
-  height: 50px;
-  background: var(--gradient-1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-}
-
-.contact-text h4 {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-}
-
-.contact-text a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-text a:hover {
-  color: var(--accent-primary);
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.social-link {
-  width: 40px;
-  height: 40px;
-  background: var(--glass-bg);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.social-link:hover {
-  background: var(--gradient-1);
-  color: white;
-  transform: translateY(-3px);
-}
-
-.contact-form {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem;
-  backdrop-filter: blur(10px);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 1rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text-primary);
-  font-family: inherit;
-  transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.form-group textarea {
-  height: 150px;
-  resize: vertical;
-}
-
-/* ================= NEWSLETTER SECTION ================= */
-.newsletter {
-  padding: 4rem 0;
-  background: var(--gradient-1);
-  position: relative;
-  overflow: hidden;
-}
-
-.newsletter::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
-  animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.newsletter-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.newsletter-content h2 {
-  color: white;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.newsletter-content p {
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 2rem;
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 1rem;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.newsletter-form input {
-  flex: 1;
-  padding: 1rem;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-}
-
-.newsletter-form button {
-  padding: 1rem 2rem;
-  background: var(--bg-primary);
-  color: var(--accent-primary);
-  border: none;
-  border-radius: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.newsletter-form button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-/* ================= FOOTER ================= */
-.footer {
-  background: var(--bg-primary);
-  border-top: 1px solid var(--border);
-  padding: 4rem 0 2rem;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
-}
-
-.footer-about p {
-  color: var(--text-secondary);
-  margin: 1rem 0;
-}
-
-.footer-links h4 {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
-.footer-links ul {
-  list-style: none;
-}
-
-.footer-links ul li {
-  margin-bottom: 0.75rem;
-}
-
-.footer-links ul li a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links ul li a:hover {
-  color: var(--accent-primary);
-}
-
-.footer-contact p {
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.footer-contact i {
-  color: var(--accent-primary);
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
-  color: var(--text-muted);
-}
-
-/* ================= COOKIE CONSENT ================= */
-.cookie-consent {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  max-width: 400px;
-  background: var(--bg-card);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  z-index: 9999;
-  display: none;
-}
-
-.cookie-consent.show {
-  display: block;
-  animation: slideUp 0.5s ease;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.cookie-consent p {
-  margin-bottom: 1rem;
-  color: var(--text-secondary);
-}
-
-.cookie-buttons {
-  display: flex;
-  gap: 1rem;
-}
-
-.cookie-btn {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.cookie-btn.accept {
-  background: var(--gradient-1);
-  color: white;
-}
-
-.cookie-btn.decline {
-  background: var(--glass-bg);
-  border: 1px solid var(--border);
-  color: var(--text-primary);
-}
-
-/* ================= BACK TO TOP ================= */
-.back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: var(--gradient-1);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 999;
-}
-
-.back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.back-to-top:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-}
-
-/* ================= LOADER ================= */
-.loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--bg-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.loader.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loader-content {
-  text-align: center;
-}
-
-.loader-spinner {
-  width: 50px;
-  height: 50px;
-  border: 3px solid var(--border);
-  border-top-color: var(--accent-primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 1rem;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* ================= RESPONSIVE DESIGN ================= */
-@media (max-width: 1024px) {
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JwithKP - Smart IT Implementation | Open Source & Commercial Solutions</title>
   
-  .process-step:not(:last-child)::after {
-    display: none;
-  }
-}
+  <!-- Meta Tags -->
+  <meta name="description" content="JwithKP helps businesses reduce IT costs by implementing powerful open-source solutions (Proxmox, Wazuh, pfSense, Zabbix) alongside commercial platforms. Save up to 70% on IT infrastructure.">
+  <meta name="keywords" content="Proxmox implementation, Wazuh security, pfSense firewall, Zabbix monitoring, Office 365 setup, network design, CMS website, IT cost optimization">
+  <meta name="author" content="JwithKP">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="JwithKP - Smart IT Implementation">
+  <meta property="og:description" content="Reduce IT costs with hybrid open-source and commercial solutions. Save up to 70% on virtualization, security, and monitoring.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jwithkp.com">
+  <meta property="og:image" content="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png">
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    /* ========== GLOBAL VARIABLES ========== */
+    :root {
+      --bg-primary: #0a0f1e;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 25, 40, 0.8);
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-primary: #3b82f6;
+      --accent-secondary: #8b5cf6;
+      --accent-success: #10b981;
+      --border: rgba(255, 255, 255, 0.1);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      --gradient-2: linear-gradient(135deg, #10b981, #3b82f6);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
 
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-  
-  .nav-menu {
-    position: fixed;
-    top: 80px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 80px);
-    background: var(--bg-primary);
-    flex-direction: column;
-    padding: 2rem;
-    transition: left 0.3s ease;
-    overflow-y: auto;
-  }
-  
-  .nav-menu.active {
-    left: 0;
-  }
-  
-  .hero-content,
-  .about-grid,
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .hero-visual {
-    order: -1;
-  }
-  
-  .pricing-card.popular {
-    transform: scale(1);
-  }
-  
-  .newsletter-form {
-    flex-direction: column;
-  }
-  
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .process-step:not(:last-child)::after {
-    display: none;
-  }
-}
+    [data-theme="light"] {
+      --bg-primary: #f9fafb;
+      --bg-secondary: #f3f4f6;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --text-muted: #6b7280;
+      --border: rgba(0, 0, 0, 0.1);
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
 
-@media (max-width: 480px) {
-  .hero-buttons {
-    flex-direction: column;
-  }
-  
-  .hero-stats {
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-  
-  .about-stats {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .blog-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    /* ========== RESET & BASE ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* ================= ANIMATIONS ================= */
-[data-aos] {
-  pointer-events: none;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-[data-aos].aos-animate {
-  pointer-events: auto;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-.hover-glow {
-  transition: all 0.3s ease;
-}
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-.hover-glow:hover {
-  box-shadow: 0 0 30px var(--accent-primary);
-}
+    /* ========== UTILITY CLASSES ========== */
+    .gradient-text {
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-/* ================= CUSTOM SCROLLBAR ================= */
-::-webkit-scrollbar {
-  width: 10px;
-}
+    .section-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--gradient-1);
+      color: white;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-}
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
 
-::-webkit-scrollbar-thumb {
-  background: var(--gradient-1);
-  border-radius: 5px;
-}
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-secondary);
-}
-</style>
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gradient-1);
+      color: white;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.6);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--accent-primary);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-primary);
+      color: white;
+    }
+
+    /* ========== NAVIGATION ========== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(var(--bg-primary-rgb), 0.8);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: var(--bg-primary);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--accent-primary);
+    }
+
+    .theme-toggle {
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      color: var(--accent-primary);
+    }
+
+    /* ========== TECH STACK SECTION ========== */
+    .tech-stack {
+      padding: 6rem 0;
+      background: var(--bg-secondary);
+    }
+
+    .stack-category {
+      margin-bottom: 4rem;
+    }
+
+    .category-title {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .category-title i {
+      color: var(--accent-primary);
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .tech-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent-primary);
+    }
+
+    .tech-logo {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-logo img {
+      max-height: 60px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .tech-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-card p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .savings-badge {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      color: #10b981;
+    }
+
+    /* ========== ROI CALCULATOR ========== */
+    .roi-calculator {
+      padding: 6rem 0;
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .calculator-card, .results-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 2.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .calc-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .calc-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .currency {
+      padding: 1rem;
+      background: var(--gradient-1);
+      color: white;
+    }
+
+    .input-wrapper input {
+      flex: 1;
+      padding: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+    }
+
+    .input-wrapper input:focus {
+      outline: none;
+    }
+
+    input[type=range] {
+      width: 100%;
+      height: 5px;
+      background: var(--border);
+      border-radius: 5px;
+      -webkit-appearance: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--gradient-1);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .result-item.highlight {
+      background: var(--gradient-1);
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      margin: 1rem 0;
+    }
+
+    .savings-big {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #10b98120, #05966920);
+      border-radius: 20px;
+      margin: 1.5rem 0;
+    }
+
+    .savings-number {
+      display: block;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #10b981;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient-2);
+      transition: width 0.3s;
+    }
+
+    /* ========== SERVICES SECTION ========== */
+    .services {
+      padding: 6rem 0;
+      background: var(--bg-secondary);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-1);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .service-features li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+    }
+
+    .service-features i {
+      color: #10b981;
+    }
+
+    /* ========== CONTACT SECTION ========== */
+    .contact-enhanced {
+      padding: 6rem 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+    }
+
+    .interest-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .tag {
+      padding: 0.5rem 1rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tag:hover {
+      background: var(--gradient-1);
+      color: white;
+      border-color: transparent;
+    }
+
+    .contact-form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 2.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+
+    .submit-btn {
+      width: 100%;
+      font-size: 1.1rem;
+    }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .form-footer i {
+      margin-right: 0.5rem;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--bg-secondary);
+      padding: 4rem 0 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-primary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--bg-primary);
+        flex-direction: column;
+        padding: 2rem;
+        transition: left 0.3s;
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .hero-content,
+      .calculator-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========== ANIMATIONS ========== */
+    [data-aos] {
+      pointer-events: none;
+    }
+
+    [data-aos].aos-animate {
+      pointer-events: auto;
+    }
+
+    .highlight-results {
+      animation: pulse 0.5s ease;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 1rem 2rem;
+      background: var(--gradient-1);
+      color: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      z-index: 9999;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-content">
-    <div class="loader-spinner"></div>
-    <p>Loading JwithKP...</p>
-  </div>
-</div>
-
-<!-- NAVIGATION -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png" alt="JwithKP Logo">
-      <span class="logo-text">JwithKP</span>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png" alt="JwithKP">
+        <span>JwithKP</span>
+      </div>
+      
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tech-stack">Technology</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#roi-calculator">ROI Calculator</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </div>
-    
-    <ul class="nav-menu" id="navMenu">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#case-studies">Case Studies</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
-      </button>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- HERO SECTION -->
-<section id="home" class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-text" data-aos="fade-right">
-        <span class="hero-badge">🚀 Future-Ready IT Solutions</span>
-        <h1>Transform Your Business with <span class="gradient-text">Enterprise IT Consulting</span></h1>
-        <p>We help startups and enterprises build secure, scalable, and innovative IT infrastructure that drives growth and digital transformation.</p>
-        <div class="hero-buttons">
-          <a href="#contact" class="btn btn-primary">Get Free Consultation</a>
-          <a href="#services" class="btn btn-secondary">Explore Services</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <h3>150+</h3>
-            <p>Projects Delivered</p>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div data-aos="fade-right">
+          <span class="section-badge">Smart IT Implementation</span>
+          <h1>Slash IT Costs <span class="gradient-text">70%</span> Without Slashing Quality</h1>
+          <p>We implement powerful open-source solutions alongside commercial platforms to give you enterprise-grade IT at startup-friendly prices.</p>
+          <div class="hero-buttons">
+            <a href="#roi-calculator" class="btn btn-primary">Calculate Your Savings</a>
+            <a href="#contact" class="btn btn-secondary">Free Consultation</a>
           </div>
-          <div class="stat-item">
-            <h3>98%</h3>
-            <p>Client Satisfaction</p>
-          </div>
-          <div class="stat-item">
-            <h3>24/7</h3>
-            <p>Support Available</p>
-          </div>
-        </div>
-      </div>
-      <div class="hero-visual" data-aos="fade-left">
-        <div class="hero-shape"></div>
-        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="IT Consulting" class="hero-image">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CLIENTS SECTION -->
-<section class="clients">
-  <div class="container">
-    <h2 data-aos="fade-up">Trusted by Innovative Companies</h2>
-    <div class="client-slider" data-aos="fade-up">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png" alt="Google">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Amazon_Web_Services_Logo.svg/2560px-Amazon_Web_Services_Logo.svg.png" alt="AWS">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png" alt="Azure">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" alt="Facebook">
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES SECTION -->
-<section id="services" class="services">
-  <div class="container">
-    <h2 class="section-title" data-aos="fade-up">Our IT Services</h2>
-    <p class="section-subtitle" data-aos="fade-up">Comprehensive technology solutions tailored to your business needs</p>
-    
-    <div class="services-grid">
-      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="service-icon">
-          <i class="fas fa-shield-alt"></i>
-        </div>
-        <h3>Cybersecurity</h3>
-        <p>Protect your business with enterprise-grade security solutions.</p>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> Network Security</li>
-          <li><i class="fas fa-check"></i> Endpoint Protection</li>
-          <li><i class="fas fa-check"></i> Security Audits</li>
-        </ul>
-        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      
-      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="service-icon">
-          <i class="fas fa-cloud"></i>
-        </div>
-        <h3>Cloud Solutions</h3>
-        <p>Scalable cloud architecture and migration services.</p>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> AWS/Azure/GCP</li>
-          <li><i class="fas fa-check"></i> Cloud Migration</li>
-          <li><i class="fas fa-check"></i> Cost Optimization</li>
-        </ul>
-        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      
-      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="service-icon">
-          <i class="fas fa-code"></i>
-        </div>
-        <h3>DevOps & Automation</h3>
-        <p>Streamline development and operations with automation.</p>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> CI/CD Pipelines</li>
-          <li><i class="fas fa-check"></i> Infrastructure as Code</li>
-          <li><i class="fas fa-check"></i> Containerization</li>
-        </ul>
-        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      
-      <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-        <div class="service-icon">
-          <i class="fas fa-database"></i>
-        </div>
-        <h3>Data & Analytics</h3>
-        <p>Turn data into actionable insights.</p>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> Big Data Solutions</li>
-          <li><i class="fas fa-check"></i> Business Intelligence</li>
-          <li><i class="fas fa-check"></i> Data Warehousing</li>
-        </ul>
-        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      
-      <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-        <div class="service-icon">
-          <i class="fas fa-network-wired"></i>
-        </div>
-        <h3>Network Infrastructure</h3>
-        <p>Design and implement robust network solutions.</p>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> Network Design</li>
-          <li><i class="fas fa-check"></i> SD-WAN</li>
-          <li><i class="fas fa-check"></i> VoIP Solutions</li>
-        </ul>
-        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-      
-      <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-        <div class="service-icon">
-          <i class="fas fa-headset"></i>
-        </div>
-        <h3>IT Support</h3>
-        <p>24/7 managed IT services and help desk support.</p>
-        <ul class="service-features">
-          <li><i class="fas fa-check"></i> Help Desk</li>
-          <li><i class="fas fa-check"></i> Remote Support</li>
-          <li><i class="fas fa-check"></i> On-site Support</li>
-        </ul>
-        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT SECTION -->
-<section id="about" class="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-content" data-aos="fade-right">
-        <h2 class="section-title">About JwithKP</h2>
-        <p>Founded in 2020, JwithKP has been at the forefront of digital transformation, helping businesses leverage technology for competitive advantage. Our team of certified experts brings decades of combined experience in enterprise IT.</p>
-        
-        <div class="about-stats">
-          <div class="about-stat">
-            <h4>50+</h4>
-            <p>IT Experts</p>
-          </div>
-          <div class="about-stat">
-            <h4>500+</h4>
-            <p>Clients Worldwide</p>
-          </div>
-          <div class="about-stat">
-            <h4>15+</h4>
-            <p>Industry Awards</p>
-          </div>
-        </div>
-        
-        <p>We believe in building long-term partnerships with our clients, understanding their unique challenges, and delivering solutions that drive real business value.</p>
-        
-        <a href="#contact" class="btn btn-primary" style="margin-top: 1rem;">Meet Our Team</a>
-      </div>
-      
-      <div class="about-image" data-aos="fade-left">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="JwithKP Team">
-        <div class="experience-badge">
-          <span>5+</span>
-          Years
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS SECTION -->
-<section class="process">
-  <div class="container">
-    <h2 class="section-title" data-aos="fade-up">Our Process</h2>
-    <p class="section-subtitle" data-aos="fade-up">A systematic approach to delivering exceptional results</p>
-    
-    <div class="process-grid">
-      <div class="process-step" data-aos="fade-up" data-aos-delay="100">
-        <div class="step-number">1</div>
-        <h3>Discovery</h3>
-        <p>We analyze your business needs, current infrastructure, and goals to create a comprehensive strategy.</p>
-      </div>
-      
-      <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-        <div class="step-number">2</div>
-        <h3>Planning</h3>
-        <p>Our experts design a tailored solution with clear milestones, timelines, and deliverables.</p>
-      </div>
-      
-      <div class="process-step" data-aos="fade-up" data-aos-delay="300">
-        <div class="step-number">3</div>
-        <h3>Implementation</h3>
-        <p>We execute the plan with precision, ensuring minimal disruption to your business operations.</p>
-      </div>
-      
-      <div class="process-step" data-aos="fade-up" data-aos-delay="400">
-        <div class="step-number">4</div>
-        <h3>Optimization</h3>
-        <p>Continuous monitoring and improvement to ensure peak performance and ROI.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CASE STUDIES SECTION -->
-<section id="case-studies" class="case-studies">
-  <div class="container">
-    <h2 class="section-title" data-aos="fade-up">Success Stories</h2>
-    <p class="section-subtitle" data-aos="fade-up">Real results for real businesses</p>
-    
-    <div class="swiper case-studies-slider" data-aos="fade-up">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="case-study-card">
-            <div class="case-study-image">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" alt="Case Study">
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3>70%</h3>
+              <p>Avg. Cost Reduction</p>
             </div>
-            <div class="case-study-content">
-              <span class="case-study-category">Cloud Migration</span>
-              <h3>FinTech Startup Scales 300% with AWS</h3>
-              <p>Helped a financial services company migrate legacy systems to cloud, reducing costs by 40%.</p>
-              <div class="case-study-stats">
-                <div class="case-stat">
-                  <span class="stat-label">Cost Reduction</span>
-                  <span class="stat-value">40%</span>
-                </div>
-                <div class="case-stat">
-                  <span class="stat-label">Performance</span>
-                  <span class="stat-value">3x</span>
-                </div>
-                <div class="case-stat">
-                  <span class="stat-label">Uptime</span>
-                  <span class="stat-value">99.9%</span>
-                </div>
+            <div class="stat-item">
+              <h3>50+</h3>
+              <p>Projects Delivered</p>
+            </div>
+            <div class="stat-item">
+              <h3>24h</h3>
+              <p>Response Time</p>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-left">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="IT Infrastructure" style="width:100%; border-radius:20px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Stack Section -->
+  <section id="tech-stack" class="tech-stack">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-badge">Our Technology Stack</span>
+        <h2 class="section-title">Best Tools, <span class="gradient-text">Zero Waste</span></h2>
+        <p class="section-subtitle">We strategically combine powerful open-source solutions with enterprise-grade commercial platforms</p>
+      </div>
+
+      <!-- Open Source Stack -->
+      <div class="stack-category" data-aos="fade-up">
+        <h3 class="category-title">
+          <i class="fas fa-code-branch"></i>
+          Open-Source Core (Zero Licensing Fees)
+        </h3>
+        <div class="tech-grid">
+          <div class="tech-card">
+            <div class="tech-logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Proxmox_logo_%282022%29.svg/1280px-Proxmox_logo_%282022%29.svg.png" alt="Proxmox">
+            </div>
+            <h4>Proxmox VE</h4>
+            <p>Enterprise Virtualization</p>
+            <span class="savings-badge">Save 70% vs VMware</span>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-logo">
+              <img src="https://wazuh.com/uploads/logo-home_98b933726b.svg" alt="Wazuh">
+            </div>
+            <h4>Wazuh</h4>
+            <p>Security Platform (SIEM)</p>
+            <span class="savings-badge">Free SIEM Alternative</span>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-logo">
+              <img src="https://www.pfsense.org/img/logo-pfsense.png" alt="pfSense">
+            </div>
+            <h4>pfSense</h4>
+            <p>Enterprise Firewall</p>
+            <span class="savings-badge">No License Fees</span>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Zabbix_logo.svg/1280px-Zabbix_logo.svg.png" alt="Zabbix">
+            </div>
+            <h4>Zabbix</h4>
+            <p>Infrastructure Monitoring</p>
+            <span class="savings-badge">Save vs SolarWinds</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Commercial Stack -->
+      <div class="stack-category" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="category-title">
+          <i class="fas fa-briefcase"></i>
+          Commercial & Enterprise Solutions
+        </h3>
+        <div class="tech-grid">
+          <div class="tech-card">
+            <div class="tech-logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Fortinet_logo.svg/1280px-Fortinet_logo.svg.png" alt="Fortinet">
+            </div>
+            <h4>Fortinet</h4>
+            <p>Next-Gen Firewalls</p>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Sophos_logo.svg/1280px-Sophos_logo.svg.png" alt="Sophos">
+            </div>
+            <h4>Sophos</h4>
+            <p>Endpoint Security</p>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft 365">
+            </div>
+            <h4>Microsoft 365</h4>
+            <p>Productivity Suite</p>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-logo">
+              <img src="https://s.w.org/style/images/about/WordPress-logotype-standard.png" alt="WordPress">
+            </div>
+            <h4>CMS Solutions</h4>
+            <p>WordPress, Shopify, Webflow</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator Section -->
+  <section id="roi-calculator" class="roi-calculator">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-badge">ROI Calculator</span>
+        <h2 class="section-title">See Your <span class="gradient-text">Potential Savings</span></h2>
+        <p class="section-subtitle">Calculate how much you could save by optimizing your IT stack with our hybrid approach</p>
+      </div>
+
+      <div class="calculator-grid" data-aos="fade-up">
+        <!-- Calculator Form -->
+        <div class="calculator-card">
+          <h3>📊 IT Cost Optimizer</h3>
+          <p class="calculator-note">Enter your current annual spending (estimates are fine)</p>
+
+          <div class="calc-group">
+            <label><i class="fas fa-server"></i> Virtualization (VMware/Hyper-V)</label>
+            <div class="input-wrapper">
+              <span class="currency">$</span>
+              <input type="number" id="virt-cost" value="25000" step="1000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label><i class="fas fa-chart-line"></i> Monitoring (SolarWinds/PRTG)</label>
+            <div class="input-wrapper">
+              <span class="currency">$</span>
+              <input type="number" id="mon-cost" value="15000" step="1000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label><i class="fas fa-shield-alt"></i> Security (SIEM/EDR)</label>
+            <div class="input-wrapper">
+              <span class="currency">$</span>
+              <input type="number" id="sec-cost" value="20000" step="1000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label><i class="fas fa-firewall"></i> Firewall Subscriptions</label>
+            <div class="input-wrapper">
+              <span class="currency">$</span>
+              <input type="number" id="fw-cost" value="8000" step="1000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label><i class="fas fa-users"></i> Company Size</label>
+            <input type="range" id="company-size" min="10" max="1000" value="100" step="10">
+            <div style="display:flex; justify-content:space-between; margin-top:0.5rem;">
+              <span>10</span>
+              <span id="size-display">100</span>
+              <span>1000+</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary calc-btn" onclick="calculateROI()">
+            <i class="fas fa-calculator"></i> Calculate Savings
+          </button>
+        </div>
+
+        <!-- Results Panel -->
+        <div class="results-card" id="roiResults">
+          <h3>💰 Your Savings Estimate</h3>
+          
+          <div class="result-item">
+            <span>Current Annual Spend:</span>
+            <span id="current-spend">$68,000</span>
+          </div>
+
+          <div class="result-item highlight">
+            <span>With JwithKP Hybrid Stack:</span>
+            <span id="optimized-spend">$23,800</span>
+          </div>
+
+          <div class="savings-big">
+            <span class="savings-label">Annual Savings</span>
+            <span class="savings-number" id="annual-savings">$44,200</span>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="savings-progress" style="width: 65%"></div>
+          </div>
+          <div style="text-align:center; margin-bottom:1.5rem;" id="savings-percent">65% Cost Reduction</div>
+
+          <div class="breakdown-details">
+            <h4>Savings Breakdown</h4>
+            <ul id="savings-breakdown" style="list-style:none;">
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Virtualization: Save $17,500 (70%)</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Monitoring: Save $12,000 (80%)</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Security: Save $14,000 (70%)</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Firewall: Save $4,000 (50%)</li>
+            </ul>
+          </div>
+
+          <div class="results-cta" style="text-align:center; margin-top:2rem;">
+            <a href="#contact" class="btn btn-primary">Get Exact Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-badge">Our Services</span>
+        <h2 class="section-title">Comprehensive <span class="gradient-text">IT Solutions</span></h2>
+        <p class="section-subtitle">From open-source implementation to commercial platform integration</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon"><i class="fas fa-server"></i></div>
+          <h3>Proxmox Virtualization</h3>
+          <p>Enterprise-grade virtualization without the licensing costs. Perfect for VMware/Hyper-V migration.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> High Availability Clusters</li>
+            <li><i class="fas fa-check"></i> Live Migration</li>
+            <li><i class="fas fa-check"></i> Backup & DR Solutions</li>
+          </ul>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Wazuh Security Platform</h3>
+          <p>Complete security monitoring, threat detection, and compliance management.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> SIEM & XDR</li>
+            <li><i class="fas fa-check"></i> File Integrity Monitoring</li>
+            <li><i class="fas fa-check"></i> Compliance (GDPR/HIPAA)</li>
+          </ul>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon"><i class="fas fa-firewall"></i></div>
+          <h3>pfSense Firewall</h3>
+          <p>Enterprise firewall features with zero licensing costs. Fortinet/Sophos alternatives.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> VPN & Site-to-Site</li>
+            <li><i class="fas fa-check"></i> Traffic Shaping</li>
+            <li><i class="fas fa-check"></i> Failover & Load Balancing</li>
+          </ul>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Zabbix Monitoring</h3>
+          <p>Comprehensive infrastructure and application monitoring.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Real-time Alerts</li>
+            <li><i class="fas fa-check"></i> Custom Dashboards</li>
+            <li><i class="fas fa-check"></i> Capacity Planning</li>
+          </ul>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+          <h3>Network Design</h3>
+          <p>Complete network architecture and implementation.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Office Networking</li>
+            <li><i class="fas fa-check"></i> SD-WAN Implementation</li>
+            <li><i class="fas fa-check"></i> WiFi Design & Deployment</li>
+          </ul>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="service-icon"><i class="fas fa-globe"></i></div>
+          <h3>CMS & E-commerce</h3>
+          <p>Custom websites and e-commerce solutions.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> WordPress Development</li>
+            <li><i class="fas fa-check"></i> Shopify Stores</li>
+            <li><i class="fas fa-check"></i> Custom CMS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Contact Section -->
+  <section id="contact" class="contact-enhanced">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Left Column -->
+        <div data-aos="fade-right">
+          <span class="section-badge">Start Your Journey</span>
+          <h2 class="section-title">Ready to Optimize <span class="gradient-text">Your IT?</span></h2>
+          <p class="info-text">Tell us what you need, and we'll create a customized plan that combines the best open-source and commercial solutions.</p>
+
+          <!-- Quick Interest Tags -->
+          <div class="interest-tags">
+            <span class="tag" onclick="setInterest('open-source')">🔓 Open-Source Implementation</span>
+            <span class="tag" onclick="setInterest('office365')">📧 Office 365 Setup</span>
+            <span class="tag" onclick="setInterest('network')">🌐 Network Design</span>
+            <span class="tag" onclick="setInterest('ecom')">🛒 E-commerce CMS</span>
+            <span class="tag" onclick="setInterest('security')">🔒 Security Audit</span>
+            <span class="tag" onclick="setInterest('virtualization')">🖥️ Virtualization</span>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="quick-stats" style="display:flex; gap:2rem; margin-top:2rem;">
+            <div>
+              <div style="font-size:2rem; color:var(--accent-primary);">24h</div>
+              <div>Response Time</div>
+            </div>
+            <div>
+              <div style="font-size:2rem; color:var(--accent-primary);">100%</div>
+              <div>Free Consultation</div>
+            </div>
+            <div>
+              <div style="font-size:2rem; color:var(--accent-primary);">50+</div>
+              <div>Projects</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Smart Form -->
+        <div class="contact-form-card" data-aos="fade-left">
+          <h3 style="margin-bottom:2rem;">Tell Us About Your Project</h3>
+          <form id="smartContactForm" onsubmit="handleSubmit(event)">
+            <!-- Name -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name *</label>
+                <input type="text" id="first-name" required placeholder="John">
               </div>
-              <a href="#" class="service-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="swiper-slide">
-          <div class="case-study-card">
-            <div class="case-study-image">
-              <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Case Study">
-            </div>
-            <div class="case-study-content">
-              <span class="case-study-category">Security</span>
-              <h3>Healthcare Provider Achieves Compliance</h3>
-              <p>Implemented comprehensive security framework for HIPAA compliance.</p>
-              <div class="case-study-stats">
-                <div class="case-stat">
-                  <span class="stat-label">Security Incidents</span>
-                  <span class="stat-value">0</span>
-                </div>
-                <div class="case-stat">
-                  <span class="stat-label">Compliance</span>
-                  <span class="stat-value">100%</span>
-                </div>
-                <div class="case-stat">
-                  <span class="stat-label">Audit Score</span>
-                  <span class="stat-value">98%</span>
-                </div>
-              </div>
-              <a href="#" class="service-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="swiper-slide">
-          <div class="case-study-card">
-            <div class="case-study-image">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Case Study">
-            </div>
-            <div class="case-study-content">
-              <span class="case-study-category">DevOps</span>
-              <h3>E-commerce Platform Deploys 10x Faster</h3>
-              <p>Implemented CI/CD pipeline reducing deployment time from days to minutes.</p>
-              <div class="case-study-stats">
-                <div class="case-stat">
-                  <span class="stat-label">Deployment Time</span>
-                  <span class="stat-value">-90%</span>
-                </div>
-                <div class="case-stat">
-                  <span class="stat-label">Revenue</span>
-                  <span class="stat-value">+45%</span>
-                </div>
-                <div class="case-stat">
-                  <span class="stat-label">Bugs</span>
-                  <span class="stat-value">-60%</span>
-                </div>
-              </div>
-              <a href="#" class="service-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS SECTION -->
-<section class="testimonials">
-  <div class="container">
-    <h2 class="section-title" data-aos="fade-up">What Our Clients Say</h2>
-    <p class="section-subtitle" data-aos="fade-up">Trusted by industry leaders worldwide</p>
-    
-    <div class="swiper testimonials-slider" data-aos="fade-up">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="testimonial-card">
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="testimonial-text">"JwithKP transformed our IT infrastructure completely. Their expertise in cloud solutions helped us scale efficiently while maintaining security."</p>
-            <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Smith" class="author-avatar">
-              <div class="author-info">
-                <h4>John Smith</h4>
-                <p>CTO, TechCorp</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="swiper-slide">
-          <div class="testimonial-card">
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="testimonial-text">"The team's deep technical knowledge and professional approach made our digital transformation journey smooth and successful."</p>
-            <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="author-avatar">
-              <div class="author-info">
-                <h4>Sarah Johnson</h4>
-                <p>CEO, InnovateLabs</p>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="last-name" placeholder="Doe">
               </div>
             </div>
-          </div>
-        </div>
-        
-        <div class="swiper-slide">
-          <div class="testimonial-card">
-            <div class="testimonial-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <p class="testimonial-text">"Outstanding support and expertise. They're not just vendors, they're true partners in our success."</p>
-            <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Mike Chen" class="author-avatar">
-              <div class="author-info">
-                <h4>Mike Chen</h4>
-                <p>Founder, StartUpHub</p>
+
+            <!-- Contact -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Work Email *</label>
+                <input type="email" id="contact-email" required placeholder="john@company.com">
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" id="contact-phone" placeholder="+91 98765 43210">
               </div>
             </div>
-          </div>
+
+            <!-- Company -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" id="company-name" placeholder="Your Business">
+              </div>
+              <div class="form-group">
+                <label>Company Size</label>
+                <select id="company-size-select">
+                  <option value="">Select size</option>
+                  <option value="1-10">1-10 employees</option>
+                  <option value="11-50">11-50 employees</option>
+                  <option value="51-200">51-200 employees</option>
+                  <option value="201-500">201-500 employees</option>
+                  <option value="500+">500+ employees</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- SMART DROPDOWN -->
+            <div class="form-group">
+              <label>I'm interested in *</label>
+              <select id="interest" required onchange="updateSubOptions()">
+                <option value="" disabled selected>-- Select your primary need --</option>
+                <option value="open-source">🔓 Open-Source Implementation</option>
+                <option value="office365">📧 Office 365 / Domain Setup</option>
+                <option value="network">🌐 Network Design & Implementation</option>
+                <option value="ecom">🛒 E-commerce / CMS Website</option>
+                <option value="security">🔒 Security / Firewall</option>
+                <option value="virtualization">🖥️ Virtualization (Proxmox)</option>
+                <option value="monitoring">📊 Monitoring (Zabbix)</option>
+                <option value="endpoint">💻 Endpoint Security</option>
+                <option value="hybrid">🔄 Hybrid Cost Optimization</option>
+              </select>
+            </div>
+
+            <!-- Dynamic Sub-options -->
+            <div class="form-group" id="sub-options-container" style="display: none;">
+              <label>Tell us more specifically:</label>
+              <select id="sub-interest">
+                <!-- Populated by JavaScript -->
+              </select>
+            </div>
+
+            <!-- Budget -->
+            <div class="form-group" id="budget-container" style="display: none;">
+              <label>Approximate Budget</label>
+              <select id="budget">
+                <option value="<5k">Under $5,000</option>
+                <option value="5k-15k">$5,000 - $15,000</option>
+                <option value="15k-50k">$15,000 - $50,000</option>
+                <option value="50k+">$50,000+</option>
+                <option value="unknown">Need guidance</option>
+              </select>
+            </div>
+
+            <!-- Timeline -->
+            <div class="form-group">
+              <label>Timeline</label>
+              <select id="timeline">
+                <option value="asap">ASAP (within a week)</option>
+                <option value="month">Within a month</option>
+                <option value="quarter">Next quarter</option>
+                <option value="exploring">Just exploring</option>
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+              <label>Tell us more</label>
+              <textarea id="message" rows="4" placeholder="Current setup, challenges, goals..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit-btn">
+              <i class="fas fa-paper-plane"></i> Send Request
+            </button>
+
+            <p class="form-footer">
+              <i class="fas fa-lock"></i> Free consultation • No obligation • 24h response
+            </p>
+          </form>
         </div>
       </div>
-      <div class="swiper-pagination"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PRICING SECTION -->
-<section id="pricing" class="pricing">
-  <div class="container">
-    <h2 class="section-title" data-aos="fade-up">Simple, Transparent Pricing</h2>
-    <p class="section-subtitle" data-aos="fade-up">Choose the plan that fits your business needs</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="logo" style="margin-bottom:1rem;">
+            <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png" alt="JwithKP" height="40">
+            <span>JwithKP</span>
+          </div>
+          <p>Smart IT implementation combining open-source power with commercial reliability. Save up to 70% on IT infrastructure.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#tech-stack">Technology</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#roi-calculator">ROI Calculator</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Proxmox Implementation</a></li>
+            <li><a href="#">Wazuh Security</a></li>
+            <li><a href="#">pfSense Firewall</a></li>
+            <li><a href="#">Zabbix Monitoring</a></li>
+            <li><a href="#">Network Design</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-phone"></i> +91 79829 12207</p>
+          <p><i class="fas fa-envelope"></i> info@jwithkp.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+          <p><i class="fab fa-whatsapp"></i> WhatsApp Available</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge & Practice</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
     
-    <div class="pricing-grid">
-      <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="pricing-header">
-          <h3>Starter</h3>
-          <div class="price">$999<span>/month</span></div>
-        </div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Basic Security Assessment</li>
-          <li><i class="fas fa-check"></i> Cloud Monitoring</li>
-          <li><i class="fas fa-check"></i> 5 Hours Support</li>
-          <li class="disabled"><i class="fas fa-times"></i> 24/7 Emergency Support</li>
-          <li class="disabled"><i class="fas fa-times"></i> Dedicated Account Manager</li>
-        </ul>
-        <a href="#contact" class="btn btn-secondary">Get Started</a>
-      </div>
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = root.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', newTheme);
       
-      <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="200">
-        <div class="popular-badge">Most Popular</div>
-        <div class="pricing-header">
-          <h3>Professional</h3>
-          <div class="price">$2,499<span>/month</span></div>
-        </div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Advanced Security Suite</li>
-          <li><i class="fas fa-check"></i> 24/7 Monitoring</li>
-          <li><i class="fas fa-check"></i> 20 Hours Support</li>
-          <li><i class="fas fa-check"></i> 24/7 Emergency Support</li>
-          <li class="disabled"><i class="fas fa-times"></i> Dedicated Account Manager</li>
-        </ul>
-        <a href="#contact" class="btn btn-primary">Get Started</a>
-      </div>
-      
-      <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="pricing-header">
-          <h3>Enterprise</h3>
-          <div class="price">$4,999<span>/month</span></div>
-        </div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> Comprehensive Security</li>
-          <li><i class="fas fa-check"></i> Advanced Analytics</li>
-          <li><i class="fas fa-check"></i> Unlimited Support</li>
-          <li><i class="fas fa-check"></i> 24/7 Emergency Support</li>
-          <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
-        </ul>
-        <a href="#contact" class="btn btn-secondary">Contact Sales</a>
-      </div>
-    </div>
-  </div>
-</section>
+      const icon = themeToggle.querySelector('i');
+      if (newTheme === 'light') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
 
-<!-- BLOG SECTION -->
-<section id="blog" class="blog">
-  <div class="container">
-    <h2 class="section-title" data-aos="fade-up">Latest Insights</h2>
-    <p class="section-subtitle" data-aos="fade-up">Expert perspectives on technology and business</p>
+    // Mobile Menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
     
-    <div class="blog-grid">
-      <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1639322537228-f71034b1c1a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80" alt="Cybersecurity Trends">
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span><i class="far fa-calendar"></i> Mar 15, 2026</span>
-            <span><i class="far fa-user"></i> By Alex Kumar</span>
-          </div>
-          <h3>Top 5 Cybersecurity Trends in 2026</h3>
-          <p>Stay ahead of threats with these emerging security technologies and best practices.</p>
-          <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // ROI Calculator
+    function calculateROI() {
+      const virtCost = parseFloat(document.getElementById('virt-cost').value) || 0;
+      const monCost = parseFloat(document.getElementById('mon-cost').value) || 0;
+      const secCost = parseFloat(document.getElementById('sec-cost').value) || 0;
+      const fwCost = parseFloat(document.getElementById('fw-cost').value) || 0;
+      const companySize = parseInt(document.getElementById('company-size').value) || 100;
       
-      <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Cloud Computing">
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span><i class="far fa-calendar"></i> Feb 28, 2026</span>
-            <span><i class="far fa-user"></i> By Priya Singh</span>
-          </div>
-          <h3>Cloud Migration Strategy for 2026</h3>
-          <p>A step-by-step guide to successful cloud adoption for your business.</p>
-          <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
+      document.getElementById('size-display').textContent = companySize;
       
-      <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2034&q=80" alt="DevOps">
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span><i class="far fa-calendar"></i> Jan 12, 2026</span>
-            <span><i class="far fa-user"></i> By Rahul Verma</span>
-          </div>
-          <h3>DevOps Best Practices for Startups</h3>
-          <p>How to implement DevOps principles from day one for maximum efficiency.</p>
-          <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT SECTION -->
-<section id="contact" class="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info" data-aos="fade-right">
-        <h2 class="section-title">Let's Talk About Your Project</h2>
-        <p>Ready to transform your IT infrastructure? Our experts are here to help.</p>
-        
-        <div class="contact-details">
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div class="contact-text">
-              <h4>Call Us</h4>
-              <a href="tel:+917982912207">+91 79829 12207</a>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-text">
-              <h4>Email Us</h4>
-              <a href="mailto:info@jwithkp.com">info@jwithkp.com</a>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="contact-text">
-              <h4>Visit Us</h4>
-              <p>Bangalore, India (Remote Worldwide)</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="social-links">
-          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/917982912207" class="social-link"><i class="fab fa-whatsapp"></i></a>
-        </div>
-      </div>
+      const virtOptimized = virtCost * 0.3; // 70% savings
+      const monOptimized = monCost * 0.2;    // 80% savings
+      const secOptimized = secCost * 0.3;    // 70% savings
+      const fwOptimized = fwCost * 0.5;      // 50% savings
       
-      <div class="contact-form" data-aos="fade-left">
-        <form id="contactForm">
-          <div class="form-group">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone">
-          </div>
-          
-          <div class="form-group">
-            <label for="service">Service Interested In</label>
-            <select id="service" name="service">
-              <option value="">Select a service</option>
-              <option value="cybersecurity">Cybersecurity</option>
-              <option value="cloud">Cloud Solutions</option>
-              <option value="devops">DevOps & Automation</option>
-              <option value="data">Data & Analytics</option>
-              <option value="network">Network Infrastructure</option>
-              <option value="support">IT Support</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Message *</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-          
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NEWSLETTER SECTION -->
-<section class="newsletter">
-  <div class="container">
-    <div class="newsletter-content" data-aos="fade-up">
-      <h2>Stay Updated with Tech Insights</h2>
-      <p>Subscribe to our newsletter for the latest in IT trends, security tips, and exclusive offers.</p>
-      <form class="newsletter-form" id="newsletterForm">
-        <input type="email" placeholder="Enter your email address" required>
-        <button type="submit">Subscribe</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-about">
-        <div class="logo">
-          <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png" alt="JwithKP Logo" height="40">
-          <span class="logo-text">JwithKP</span>
-        </div>
-        <p>Future-ready IT consulting and digital transformation services for businesses of all sizes.</p>
-        <div class="social-links">
-          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
+      const currentTotal = virtCost + monCost + secCost + fwCost;
+      const optimizedTotal = virtOptimized + monOptimized + secOptimized + fwOptimized;
+      const savingsTotal = currentTotal - optimizedTotal;
+      const savingsPercent = Math.round((savingsTotal / currentTotal) * 100);
       
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#case-studies">Case Studies</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+      document.getElementById('current-spend').textContent = '$' + currentTotal.toLocaleString();
+      document.getElementById('optimized-spend').textContent = '$' + Math.round(optimizedTotal).toLocaleString();
+      document.getElementById('annual-savings').textContent = '$' + Math.round(savingsTotal).toLocaleString();
+      document.getElementById('savings-progress').style.width = savingsPercent + '%';
+      document.getElementById('savings-percent').textContent = savingsPercent + '% Cost Reduction';
       
-      <div class="footer-links">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#">Cybersecurity</a></li>
-          <li><a href="#">Cloud Solutions</a></li>
-          <li><a href="#">DevOps & Automation</a></li>
-          <li><a href="#">Data & Analytics</a></li>
-          <li><a href="#">Network Infrastructure</a></li>
-          <li><a href="#">IT Support</a></li>
-        </ul>
-      </div>
+      const virtSavings = Math.round(virtCost - virtOptimized);
+      const monSavings = Math.round(monCost - monOptimized);
+      const secSavings = Math.round(secCost - secOptimized);
+      const fwSavings = Math.round(fwCost - fwOptimized);
       
-      <div class="footer-contact">
-        <h4>Contact Info</h4>
-        <p><i class="fas fa-phone"></i> +91 79829 12207</p>
-        <p><i class="fas fa-envelope"></i> info@jwithkp.com</p>
-        <p><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
-        <p><i class="far fa-clock"></i> Mon-Fri: 9AM - 6PM IST</p>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge & Practice</p>
-      <p style="margin-top: 0.5rem; font-size: 0.8rem;">
-        <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a> | 
-        <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a> | 
-        <a href="#" style="color: var(--text-muted); text-decoration: none;">Cookie Policy</a>
-      </p>
-    </div>
-  </div>
-</footer>
-
-<!-- COOKIE CONSENT -->
-<div class="cookie-consent" id="cookieConsent">
-  <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
-  <div class="cookie-buttons">
-    <button class="cookie-btn accept" id="acceptCookies">Accept</button>
-    <button class="cookie-btn decline" id="declineCookies">Decline</button>
-  </div>
-</div>
-
-<!-- BACK TO TOP BUTTON -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top">
-  <i class="fas fa-arrow-up"></i>
-</button>
-
-<!-- SCRIPTS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-// Initialize AOS
-AOS.init({
-  duration: 1000,
-  once: true,
-  offset: 100
-});
-
-// Loader
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    document.getElementById('loader').classList.add('hidden');
-  }, 1000);
-});
-
-// Navbar Scroll Effect
-window.addEventListener('scroll', function() {
-  const navbar = document.getElementById('navbar');
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
-
-// Mobile Menu Toggle
-const menuToggle = document.getElementById('menuToggle');
-const navMenu = document.getElementById('navMenu');
-
-menuToggle.addEventListener('click', function() {
-  navMenu.classList.toggle('active');
-  const icon = menuToggle.querySelector('i');
-  if (navMenu.classList.contains('active')) {
-    icon.classList.remove('fa-bars');
-    icon.classList.add('fa-times');
-  } else {
-    icon.classList.remove('fa-times');
-    icon.classList.add('fa-bars');
-  }
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('active');
-    const icon = menuToggle.querySelector('i');
-    icon.classList.remove('fa-times');
-    icon.classList.add('fa-bars');
-  });
-});
-
-// Theme Toggle
-const themeToggle = document.getElementById('themeToggle');
-const root = document.documentElement;
-const savedTheme = localStorage.getItem('theme');
-
-if (savedTheme) {
-  root.setAttribute('data-theme', savedTheme);
-  updateThemeIcon(savedTheme);
-}
-
-themeToggle.addEventListener('click', function() {
-  const currentTheme = root.getAttribute('data-theme');
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-  
-  root.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  updateThemeIcon(newTheme);
-});
-
-function updateThemeIcon(theme) {
-  const icon = themeToggle.querySelector('i');
-  if (theme === 'light') {
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  } else {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
-  }
-}
-
-// Initialize Swiper
-const caseStudiesSwiper = new Swiper('.case-studies-slider', {
-  slidesPerView: 1,
-  spaceBetween: 30,
-  loop: true,
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 2
-    },
-    1024: {
-      slidesPerView: 3
+      document.getElementById('savings-breakdown').innerHTML = `
+        <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Virtualization: Save $${virtSavings.toLocaleString()} (${Math.round((virtSavings/virtCost)*100)}%)</li>
+        <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Monitoring: Save $${monSavings.toLocaleString()} (${Math.round((monSavings/monCost)*100)}%)</li>
+        <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Security: Save $${secSavings.toLocaleString()} (${Math.round((secSavings/secCost)*100)}%)</li>
+        <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Firewall: Save $${fwSavings.toLocaleString()} (${Math.round((fwSavings/fwCost)*100)}%)</li>
+      `;
     }
-  }
-});
 
-const testimonialsSwiper = new Swiper('.testimonials-slider', {
-  slidesPerView: 1,
-  spaceBetween: 30,
-  loop: true,
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true
-  },
-  breakpoints: {
-    768: {
-      slidesPerView: 2
-    },
-    1024: {
-      slidesPerView: 3
+    // Form Functions
+    function setInterest(interest) {
+      const select = document.getElementById('interest');
+      select.value = interest;
+      updateSubOptions();
+      document.querySelector('.contact-form-card').scrollIntoView({ behavior: 'smooth' });
     }
-  }
-});
 
-// Back to Top Button
-const backToTop = document.getElementById('backToTop');
-
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 300) {
-    backToTop.classList.add('show');
-  } else {
-    backToTop.classList.remove('show');
-  }
-});
-
-backToTop.addEventListener('click', function() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
-
-// Cookie Consent
-const cookieConsent = document.getElementById('cookieConsent');
-const acceptCookies = document.getElementById('acceptCookies');
-const declineCookies = document.getElementById('declineCookies');
-
-if (!localStorage.getItem('cookieConsent')) {
-  setTimeout(() => {
-    cookieConsent.classList.add('show');
-  }, 2000);
-}
-
-acceptCookies.addEventListener('click', function() {
-  localStorage.setItem('cookieConsent', 'accepted');
-  cookieConsent.classList.remove('show');
-});
-
-declineCookies.addEventListener('click', function() {
-  localStorage.setItem('cookieConsent', 'declined');
-  cookieConsent.classList.remove('show');
-});
-
-// Contact Form Submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  // Get form data
-  const formData = new FormData(this);
-  const data = Object.fromEntries(formData);
-  
-  // Here you would typically send the data to your server
-  console.log('Form submitted:', data);
-  
-  // Show success message
-  alert('Thank you for contacting us! We will get back to you soon.');
-  this.reset();
-});
-
-// Newsletter Form Submission
-document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const email = this.querySelector('input[type="email"]').value;
-  
-  // Here you would typically send to your newsletter service
-  console.log('Newsletter subscription:', email);
-  
-  // Show success message
-  alert('Thank you for subscribing to our newsletter!');
-  this.reset();
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+    function updateSubOptions() {
+      const interest = document.getElementById('interest').value;
+      const subContainer = document.getElementById('sub-options-container');
+      const subSelect = document.getElementById('sub-interest');
+      const budgetContainer = document.getElementById('budget-container');
+      
+      const subOptions = {
+        'open-source': ['Proxmox', 'Wazuh', 'pfSense', 'Zabbix', 'Full Stack'],
+        'office365': ['New Setup', 'Migration', 'SharePoint', 'Security Config'],
+        'network': ['New Design', 'Firewall', 'VPN', 'WiFi', 'Audit'],
+        'ecom': ['WordPress', 'Shopify', 'Custom CMS', 'Redesign'],
+        'security': ['pfSense', 'Fortinet', 'Sophos', 'Wazuh', 'Audit'],
+        'virtualization': ['Proxmox Migration', 'VMware to Proxmox', 'New Setup'],
+        'monitoring': ['Zabbix Setup', 'Custom Dashboards', 'Migration'],
+        'endpoint': ['Sophos', 'Microsoft Defender', 'EDR Solution'],
+        'hybrid': ['Cost Audit', 'Migration Plan', 'Architecture Design']
+      };
+      
+      if (subOptions[interest]) {
+        subSelect.innerHTML = '<option value="">-- Select specific need --</option>' +
+          subOptions[interest].map(opt => `<option value="${opt.toLowerCase()}">${opt}</option>`).join('');
+        subContainer.style.display = 'block';
+        budgetContainer.style.display = 'block';
+      } else {
+        subContainer.style.display = 'none';
+      }
     }
-  });
-});
 
-// Active navigation link on scroll
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-menu a');
+    function handleSubmit(event) {
+      event.preventDefault();
+      
+      const formData = {
+        firstName: document.getElementById('first-name').value,
+        lastName: document.getElementById('last-name').value,
+        email: document.getElementById('contact-email').value,
+        phone: document.getElementById('contact-phone').value,
+        company: document.getElementById('company-name').value,
+        companySize: document.getElementById('company-size-select').value,
+        interest: document.getElementById('interest').value,
+        subInterest: document.getElementById('sub-interest')?.value || 'Not specified',
+        budget: document.getElementById('budget')?.value || 'Not specified',
+        timeline: document.getElementById('timeline').value,
+        message: document.getElementById('message').value
+      };
+      
+      console.log('Form submitted:', formData);
+      
+      // Show success notification
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! We\'ll contact you within 24 hours.';
+      document.body.appendChild(notification);
+      
+      setTimeout(() => notification.remove(), 5000);
+      event.target.reset();
+    }
 
-window.addEventListener('scroll', () => {
-  let current = '';
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (scrollY >= (sectionTop - 200)) {
-      current = section.getAttribute('id');
-    }
-  });
-  
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
-  });
-});
-</script>
+    // Auto-calculate on input changes
+    document.querySelectorAll('#virt-cost, #mon-cost, #sec-cost, #fw-cost, #company-size').forEach(input => {
+      input.addEventListener('input', calculateROI);
+    });
+
+    // Initial calculation
+    calculateROI();
+  </script>
 </body>
 </html>
