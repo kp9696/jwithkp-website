@@ -6,13 +6,13 @@
   <title>JwithKP - Smart IT Implementation | Open Source & Commercial Solutions India</title>
   
   <!-- Meta Tags -->
-  <meta name="description" content=" JwithKP helps Indian businesses reduce IT costs by 70% with powerful open-source solutions (Proxmox, Nextcloud, Wazuh, pfSense, Zabbix) alongside commercial platforms. Save lakhs in licensing fees.">
+  <meta name="description" content="JwithKP helps Indian businesses reduce IT costs by 70% with powerful open-source solutions (Proxmox, Nextcloud, Wazuh, pfSense, Zabbix) alongside commercial platforms. Save lakhs in licensing fees.">
   <meta name="keywords" content="Proxmox implementation India, Nextcloud setup, Wazuh security, pfSense firewall, Zabbix monitoring, Office 365 setup, network design, CMS website, IT cost optimization India, open source alternatives, VMware alternative, Exchange alternative">
   <meta name="author" content="JwithKP">
   
   <!-- Open Graph -->
   <meta property="og:title" content="JwithKP - Smart IT Implementation India">
-  <meta property="og:description" content=" Reduce IT costs with hybrid open-source and commercial solutions. Save up to 70% on virtualization, security, and monitoring.">
+  <meta property="og:description" content="Reduce IT costs with hybrid open-source and commercial solutions. Save up to 70% on virtualization, security, and monitoring.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jwithkp.com">
   <meta property="og:image" content="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png">
@@ -55,34 +55,37 @@
 
     /* ========== RESET & BASE ========== */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+      <body>
+        <header>
+          <nav class="topnav">
+            <a class="active" href="#home">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+          </nav>
+        </header>
 
-    html {
-      scroll-behavior: smooth;
-    }
+        <main>
+          <section class="content">
+            <h1>Welcome to My Website</h1>
+            <p>This is a sample website.</p>
+            <section class="articles">
+              <article class="article">
+                <h2>Article 1</h2>
+                <p>Content for article 1.</p>
+              </article>
+              <article class="article">
+                <h2>Article 2</h2>
+                <p>Content for article 2.</p>
+              </article>
+            </section>
+          </section>
+        </main>
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .gradient-text {
-      background: var(--gradient-1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        <footer class="footer">
+          <p>Footer content here.</p>
+        </footer>
+      </body>
 
     .section-badge {
       display: inline-block;
@@ -1536,9 +1539,9 @@
               <textarea id="message" name="message" rows="4" placeholder="What are you currently using? What challenges are you facing?" aria-multiline="true"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary submit-btn" aria-label="Send Request">
-              <i class="fas fa-paper-plane" aria-hidden="true"></i> Send Request
-            </button>
+            <a href="https://wa.me/917982912207" target="_blank" rel="noopener" class="btn btn-primary submit-btn" aria-label="Send Request via WhatsApp">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Send Request
+            </a>
 
             <p class="form-footer">
               <i class="fas fa-lock"></i> Free consultation • No obligation • 24h response
