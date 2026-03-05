@@ -165,15 +165,16 @@
 
     /* ========== NAVIGATION ========== */
     .navbar {
-      position: fixed;
+      position: sticky;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
-      backdrop-filter: blur(10px);
-      background: rgba(var(--bg-primary-rgb), 0.8);
-      border-bottom: 1px solid var(--border);
-      transition: all 0.3s ease;
+      background: var(--bg-primary);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      border-bottom: 2px solid var(--accent-primary);
+      padding: 0.5rem 0;
+      transition: background 0.3s, box-shadow 0.3s;
     }
 
     .navbar.scrolled {
@@ -218,12 +219,19 @@
     .nav-menu a {
       text-decoration: none;
       color: var(--text-primary);
-      font-weight: 500;
-      transition: color 0.3s;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      transition: color 0.3s, background 0.3s;
+      display: inline-block;
     }
 
-    .nav-menu a:hover {
+    .nav-menu a:hover, .nav-menu a:focus {
       color: var(--accent-primary);
+      background: rgba(79,140,255,0.08);
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 2px;
     }
 
     .theme-toggle {
