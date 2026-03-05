@@ -1,39 +1,3 @@
-    /* === Accessibility & Contrast Improvements === */
-    :focus {
-      outline: 2px solid var(--accent-primary);
-      outline-offset: 2px;
-    }
-
-    a {
-      color: var(--accent-primary);
-      text-decoration: underline;
-      transition: color 0.2s;
-    }
-    a:focus, a:hover {
-      color: var(--accent-secondary);
-      outline: 2px solid var(--accent-primary);
-      outline-offset: 2px;
-      background: rgba(79,140,255,0.08);
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      line-height: 1.2;
-      margin-bottom: 1.2em;
-      letter-spacing: 0.01em;
-    }
-    h2 {
-      font-size: 2rem;
-      line-height: 1.3;
-      margin-bottom: 1em;
-      letter-spacing: 0.01em;
-    }
-    h3 {
-      font-size: 1.5rem;
-      line-height: 1.4;
-      margin-bottom: 0.8em;
-      letter-spacing: 0.01em;
-    }
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,16 +129,15 @@
 
     /* ========== NAVIGATION ========== */
     .navbar {
-      position: sticky;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
-      background: var(--bg-primary);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-      border-bottom: 2px solid var(--accent-primary);
-      padding: 0.5rem 0;
-      transition: background 0.3s, box-shadow 0.3s;
+      backdrop-filter: blur(10px);
+      background: rgba(var(--bg-primary-rgb), 0.8);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
     }
 
     .navbar.scrolled {
@@ -205,7 +168,6 @@
       font-size: 1.5rem;
       font-weight: 700;
       background: var(--gradient-1);
-      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -220,19 +182,12 @@
     .nav-menu a {
       text-decoration: none;
       color: var(--text-primary);
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 0.5rem 1.2rem;
-      border-radius: 30px;
-      transition: color 0.3s, background 0.3s;
-      display: inline-block;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    .nav-menu a:hover, .nav-menu a:focus {
+    .nav-menu a:hover {
       color: var(--accent-primary);
-      background: rgba(79,140,255,0.08);
-      outline: 2px solid var(--accent-primary);
-      outline-offset: 2px;
     }
 
     .theme-toggle {
@@ -458,7 +413,6 @@
       height: 5px;
       background: var(--border);
       border-radius: 5px;
-      appearance: none;
       -webkit-appearance: none;
     }
 
@@ -883,15 +837,15 @@
         <h3 class="category-title">
           <i class="fas fa-code-branch"></i>
           Open-Source Core (Zero Licensing Fees) <span class="currency-inr">Save ₹10L+</span>
-              <ul>
-                <li><a href="https://www.proxmox.com/" target="_blank" rel="noopener">Proxmox Virtualization</a></li>
-                <li><a href="https://nextcloud.com/" target="_blank" rel="noopener">Nextcloud</a></li>
-                <li><a href="https://wazuh.com/" target="_blank" rel="noopener">Wazuh SIEM</a></li>
-                <li><a href="https://www.pfsense.org/" target="_blank" rel="noopener">pfSense Firewall</a></li>
-                <li><a href="https://www.zabbix.com/" target="_blank" rel="noopener">Zabbix Monitoring</a></li>
-                <li><a href="https://www.zimbra.com/" target="_blank" rel="noopener">Zimbra Collaboration</a></li>
-                <li><a href="https://www.odoo.com/" target="_blank" rel="noopener">Odoo ERP</a></li>
-              </ul>
+        </h3>
+        <div class="tech-grid">
+          <!-- Virtualization & Infrastructure -->
+          <div class="tech-card">
+            <div class="tech-logo">
+              <img src="https://tse1.mm.bing.net/th/id/OIP.t-GjWhZqgEvfpiUo3hzGsQHaHD?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Proxmox" loading="lazy">
+            </div>
+            <h4>Proxmox VE</h4>
+            <p>Enterprise Virtualization (VMware Alternative)</p>
             <span class="savings-badge">Save 70% vs VMware</span>
             <div class="tech-badge">₹5L-15L savings</div>
           </div>
@@ -1593,6 +1547,18 @@
           </ul>
         </div>
 
+        <div class="footer-links">
+          <h4>Open Source Solutions</h4>
+          <ul>
+            <li><a href="#">Proxmox Virtualization</a></li>
+            <li><a href="#">Nextcloud</a></li>
+            <li><a href="#">Wazuh SIEM</a></li>
+            <li><a href="#">pfSense Firewall</a></li>
+            <li><a href="#">Zabbix Monitoring</a></li>
+            <li><a href="#">Zimbra Collaboration</a></li>
+            <li><a href="#">Odoo ERP</a></li>
+          </ul>
+        </div>
 
         <div class="footer-contact">
           <h4 id="footer-contact-heading">Contact</h4>
