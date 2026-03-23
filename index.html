@@ -23,6 +23,35 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
   <style>
+    /* Visually hidden skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      z-index: 10000;
+      background: #fff;
+      color: #111827;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: left 0.3s;
+    }
+    .skip-link:focus {
+      left: 10px;
+      top: 10px;
+      width: auto;
+      height: auto;
+      outline: 2px solid #3b82f6;
+      box-shadow: 0 0 0 2px #3b82f6;
+    }
+    /* Focus style for all focusable elements */
+    :focus {
+      outline: 2px solid #3b82f6 !important;
+      outline-offset: 2px;
+    }
     /* ========== GLOBAL VARIABLES ========== */
     :root {
       --bg-primary: #0a0f1e;
@@ -195,6 +224,7 @@
       background: var(--gradient-1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .nav-menu {
@@ -431,10 +461,12 @@
       background: var(--border);
       border-radius: 5px;
       -webkit-appearance: none;
+      appearance: none;
     }
 
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
+      appearance: none;
       width: 20px;
       height: 20px;
       background: var(--gradient-1);
@@ -764,9 +796,11 @@
   </style>
 </head>
 
-<body>
+  <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#home" class="skip-link" tabindex="0">Skip to main content</a>
   <!-- Navigation -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <div class="logo">
         <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png" alt="JwithKP">
@@ -782,10 +816,10 @@
       </ul>
       
       <div class="nav-right">
-        <button class="theme-toggle" id="themeToggle">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
           <i class="fas fa-moon"></i>
         </button>
-        <button class="menu-toggle" id="menuToggle">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
           <i class="fas fa-bars"></i>
         </button>
       </div>
@@ -793,7 +827,7 @@
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="hero">
+  <main id="home" class="hero" role="main">
     <div class="container">
       <div class="hero-content">
         <div data-aos="fade-right">
@@ -824,7 +858,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </main>
 
   <!-- Technology Stack Section (EXPANDED) -->
   <section id="tech-stack" class="tech-stack">
@@ -845,7 +879,7 @@
           <!-- Virtualization & Infrastructure -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Proxmox_logo_%282022%29.svg/1280px-Proxmox_logo_%282022%29.svg.png" alt="Proxmox">
+              <img src="https://24x7servermanagement.com/wp-content/uploads/2025/07/proxmox-server-solutions-gmbh-logo-vector.png" alt="Proxmox">
             </div>
             <h4>Proxmox VE</h4>
             <p>Enterprise Virtualization (VMware Alternative)</p>
@@ -856,7 +890,7 @@
           <!-- Cloud & File Sharing -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Nextcloud_logo.svg/1280px-Nextcloud_logo.svg.png" alt="Nextcloud">
+              <img src="https://images.nu.nl/m/371x00napofi_wd1280/0/0/2559/1439/nextcloud.jpg" alt="Nextcloud">
             </div>
             <h4>Nextcloud</h4>
             <p>Enterprise File Sync & Share (Dropbox/SharePoint Alternative)</p>
@@ -867,7 +901,7 @@
           <!-- Security -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://wazuh.com/uploads/logo-home_98b933726b.svg" alt="Wazuh">
+              <img src="https://wazuh.com/uploads/2016/04/wazuh-standard-featured-picture.png" alt="Wazuh">
             </div>
             <h4>Wazuh</h4>
             <p>Security Platform (SIEM) - Splunk Alternative</p>
@@ -878,7 +912,7 @@
           <!-- Firewall -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://www.pfsense.org/img/logo-pfsense.png" alt="pfSense">
+              <img src="https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2021/01/pfsense-logo.jpg" alt="pfSense">
             </div>
             <h4>pfSense</h4>
             <p>Enterprise Firewall - Fortinet Alternative</p>
@@ -889,7 +923,7 @@
           <!-- Monitoring -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Zabbix_logo.svg/1280px-Zabbix_logo.svg.png" alt="Zabbix">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Zabbix_logo.svg" alt="Zabbix">
             </div>
             <h4>Zabbix</h4>
             <p>Infrastructure Monitoring - SolarWinds/Dynatrace Alternative</p>
@@ -900,7 +934,7 @@
           <!-- Collaboration -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Zimbra_Logo_%282019%29.svg/1280px-Zimbra_Logo_%282019%29.svg.png" alt="Zimbra">
+              <img src="https://5.imimg.com/data5/SELLER/Default/2023/4/302914859/NY/DJ/SW/93347989/zimbra-mail-services-pan-india.webp" alt="Zimbra">
             </div>
             <h4>Zimbra</h4>
             <p>Email & Collaboration (Exchange Alternative)</p>
@@ -911,7 +945,7 @@
           <!-- ITSM -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/GLPI_logo.svg/1280px-GLPI_logo.svg.png" alt="GLPI">
+              <img src="https://pbs.twimg.com/profile_images/1057633264469336064/HtP-hea6_400x400.jpg" alt="GLPI">
             </div>
             <h4>GLPI / OTRS</h4>
             <p>ITSM & Helpdesk (ServiceNow Alternative)</p>
@@ -922,7 +956,7 @@
           <!-- Database -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/MySQL_logo.png/1280px-MySQL_logo.png" alt="MySQL">
+              <img src="https://www.fosslinux.com/wp-content/uploads/2021/06/PostgreSQL-vs-MySQL.png" alt="MySQL">
             </div>
             <h4>MySQL/PostgreSQL</h4>
             <p>Enterprise Databases (Oracle Alternative)</p>
@@ -944,7 +978,7 @@
           <!-- Backup -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Veeam_logo.svg/1280px-Veeam_logo.svg.png" alt="Veeam">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmyO_nu-Mk518YaqRFI6OCrvpJP1_Pj6Ziag&s" alt="Veeam">
             </div>
             <h4>Veeam & Bacula</h4>
             <p>Backup Solutions (CommVault Alternative)</p>
@@ -955,7 +989,7 @@
           <!-- CRM -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Odoo_logo.svg/1280px-Odoo_logo.svg.png" alt="Odoo">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXW7SX3YWhGtoRHRhDYvLTDm-edPMyI-zoZw&s" alt="Odoo">
             </div>
             <h4>Odoo / SuiteCRM</h4>
             <p>CRM & ERP (Salesforce/SAP Alternative)</p>
@@ -966,7 +1000,7 @@
           <!-- Analytics -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Grafana_logo.svg/1280px-Grafana_logo.svg.png" alt="Grafana">
+              <img src="https://cdn.prod.website-files.com/64f88987fdbd5383e9d91908/6509d22ceb1730524a817075_grafana-logo.png" alt="Grafana">
             </div>
             <h4>Grafana + Prometheus</h4>
             <p>Analytics & Visualization (Tableau Alternative)</p>
@@ -986,7 +1020,7 @@
           <!-- Firewalls -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Fortinet_logo.svg/1280px-Fortinet_logo.svg.png" alt="Fortinet">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfjX3G9jEw3mZl597DgvNLqt01oCMz3ujOXw&s" alt="Fortinet">
             </div>
             <h4>Fortinet</h4>
             <p>Next-Gen Firewalls & SD-WAN</p>
@@ -995,7 +1029,7 @@
 
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Sophos_logo.svg/1280px-Sophos_logo.svg.png" alt="Sophos">
+              <img src="https://images.contentstack.io/v3/assets/blt38f1f401b66100ad/blt358c7070aab66bc8/690ffbd466ece061e503d29f/blog_rebranding.png" alt="Sophos">
             </div>
             <h4>Sophos</h4>
             <p>Endpoint Security & Firewalls</p>
@@ -1004,7 +1038,7 @@
 
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cisco_logo.svg/1280px-Cisco_logo.svg.png" alt="Cisco">
+              <img src="https://media.designrush.com/inspiration_images/134803/conversions/_1511457462_313_cisco-preview.jpg" alt="Cisco">
             </div>
             <h4>Cisco</h4>
             <p>Networking & Security</p>
@@ -1014,7 +1048,7 @@
           <!-- Endpoint Security -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Safetica_logo.png/1280px-Safetica_logo.png" alt="Safetica">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKdGVp-CXt33LcCO1W4Fed8s9RyGJZKBWxYA&s" alt="Safetica">
             </div>
             <h4>Safetica</h4>
             <p>Data Loss Prevention (DLP)</p>
@@ -1023,7 +1057,7 @@
 
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ESET_logo.svg/1280px-ESET_logo.svg.png" alt="ESET">
+              <img src="https://www.b4b.co.uk/wp-content/uploads/es-et-logo.webp" alt="ESET">
             </div>
             <h4>ESET</h4>
             <p>Endpoint Protection</p>
@@ -1032,7 +1066,7 @@
 
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Trend_Micro_Logo.svg/1280px-Trend_Micro_Logo.svg.png" alt="Trend Micro">
+              <img src="https://ismg-cdn.nyc3.cdn.digitaloceanspaces.com/blogs/private-equity-now-kicking-tires-on-trend-micro-showcase_image-7-p-3814.jpg" alt="Trend Micro">
             </div>
             <h4>Trend Micro</h4>
             <p>Cloud & Endpoint Security</p>
@@ -1042,7 +1076,7 @@
           <!-- Cloud Security -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Zscaler_logo.svg/1280px-Zscaler_logo.svg.png" alt="Zscaler">
+              <img src="https://globalcybersecuritynetwork.com/wp-content/uploads/2024/12/Zsacler-company-logo.jpg" alt="Zscaler">
             </div>
             <h4>Zscaler</h4>
             <p>Cloud Security (SSE/SASE)</p>
@@ -1051,7 +1085,7 @@
 
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Palo_Alto_Networks_logo.svg/1280px-Palo_Alto_Networks_logo.svg.png" alt="Palo Alto">
+              <img src="https://www.paloaltonetworks.com/etc/clientlibs/pan-templates/seoimages/social-panw.png" alt="Palo Alto">
             </div>
             <h4>Palo Alto</h4>
             <p>Next-Gen Firewalls & Prisma</p>
@@ -1061,7 +1095,7 @@
           <!-- Microsoft & Cloud -->
           <div class="tech-card">
             <div class="tech-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft">
+              <img src="https://www.lifewire.com/thmb/r8g0i7BWh6hhbAqJ7n30bcMdpT0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/001-a-complete-guide-to-microsoft-office-fe6077e048334d9aa96cdf604995c9d8.jpg" alt="Microsoft">
             </div>
             <h4>Microsoft 365</h4>
             <p>Productivity Suite & Azure</p>
@@ -1412,40 +1446,40 @@
         <!-- Right Column: Smart Form -->
         <div class="contact-form-card" data-aos="fade-left">
           <h3 style="margin-bottom:2rem;">Tell Us About Your Project</h3>
-          <form id="smartContactForm" onsubmit="handleSubmit(event)">
+          <form id="smartContactForm" onsubmit="handleSubmit(event)" role="form" aria-label="Contact form">
             <!-- Name -->
             <div class="form-row">
               <div class="form-group">
-                <label>Full Name *</label>
-                <input type="text" id="full-name" required placeholder="Rahul Sharma">
+                <label for="full-name">Full Name *</label>
+                <input type="text" id="full-name" name="full-name" required placeholder="Rahul Sharma">
               </div>
               <div class="form-group">
-                <label>Company</label>
-                <input type="text" id="company-name" placeholder="Your Business Pvt Ltd">
+                <label for="company-name">Company</label>
+                <input type="text" id="company-name" name="company-name" placeholder="Your Business Pvt Ltd">
               </div>
             </div>
 
             <!-- Contact -->
             <div class="form-row">
               <div class="form-group">
-                <label>Email *</label>
-                <input type="email" id="contact-email" required placeholder="rahul@company.com">
+                <label for="contact-email">Email *</label>
+                <input type="email" id="contact-email" name="contact-email" required placeholder="rahul@company.com">
               </div>
               <div class="form-group">
-                <label>Phone *</label>
-                <input type="tel" id="contact-phone" required placeholder="+91 98765 43210">
+                <label for="contact-phone">Phone *</label>
+                <input type="tel" id="contact-phone" name="contact-phone" required placeholder="+91 98765 43210">
               </div>
             </div>
 
             <!-- Location -->
             <div class="form-row">
               <div class="form-group">
-                <label>City</label>
-                <input type="text" id="city" placeholder="Mumbai / Bangalore / Delhi">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Mumbai / Bangalore / Delhi">
               </div>
               <div class="form-group">
-                <label>Company Size</label>
-                <select id="company-size-select">
+                <label for="company-size-select">Company Size</label>
+                <select id="company-size-select" name="company-size-select">
                   <option value="">Select size</option>
                   <option value="1-10">1-10 employees</option>
                   <option value="11-50">11-50 employees</option>
@@ -1458,8 +1492,8 @@
 
             <!-- SMART DROPDOWN -->
             <div class="form-group">
-              <label>I'm interested in *</label>
-              <select id="interest" required onchange="updateSubOptions()">
+              <label for="interest">I'm interested in *</label>
+              <select id="interest" name="interest" required onchange="updateSubOptions()">
                 <option value="" disabled selected>-- Select your primary need --</option>
                 <option value="virtualization">🖥️ Virtualization (Proxmox/VMware)</option>
                 <option value="open-source">🔓 Open-Source Implementation (Nextcloud/Zimbra)</option>
@@ -1477,16 +1511,16 @@
 
             <!-- Dynamic Sub-options -->
             <div class="form-group" id="sub-options-container" style="display: none;">
-              <label>Tell us more specifically:</label>
-              <select id="sub-interest">
+              <label for="sub-interest">Tell us more specifically:</label>
+              <select id="sub-interest" name="sub-interest">
                 <!-- Populated by JavaScript -->
               </select>
             </div>
 
             <!-- Budget in INR -->
             <div class="form-group" id="budget-container" style="display: none;">
-              <label>Approximate Budget (₹)</label>
-              <select id="budget">
+              <label for="budget">Approximate Budget (₹)</label>
+              <select id="budget" name="budget">
                 <option value="<1lakh">Under ₹1 Lakh</option>
                 <option value="1-5lakh">₹1 - ₹5 Lakhs</option>
                 <option value="5-15lakh">₹5 - ₹15 Lakhs</option>
@@ -1498,8 +1532,8 @@
 
             <!-- Timeline -->
             <div class="form-group">
-              <label>Timeline</label>
-              <select id="timeline">
+              <label for="timeline">Timeline</label>
+              <select id="timeline" name="timeline">
                 <option value="asap">ASAP (within a week)</option>
                 <option value="month">Within a month</option>
                 <option value="quarter">Next quarter</option>
@@ -1509,8 +1543,8 @@
 
             <!-- Message -->
             <div class="form-group">
-              <label>Tell us about your current setup</label>
-              <textarea id="message" rows="4" placeholder="What are you currently using? What challenges are you facing?"></textarea>
+              <label for="message">Tell us about your current setup</label>
+              <textarea id="message" name="message" rows="4" placeholder="What are you currently using? What challenges are you facing?"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary submit-btn">
