@@ -458,6 +458,86 @@
       top: 0.65rem;
     }
 
+    .why-jwithkp {
+      padding: 6rem 0;
+      background: var(--bg-secondary);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .why-main,
+    .why-side {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2.25rem;
+    }
+
+    .why-main p,
+    .why-point p,
+    .why-side p,
+    .why-checklist li {
+      color: var(--text-secondary);
+    }
+
+    .why-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .why-point {
+      padding: 1.25rem;
+      border-radius: 18px;
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+    }
+
+    .why-point i {
+      color: var(--accent-primary);
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .why-point h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .why-checklist {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .why-checklist li {
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .why-checklist i {
+      color: var(--accent-success);
+      margin-top: 0.2rem;
+    }
+
+    .why-side h3 {
+      margin-bottom: 0.75rem;
+    }
+
+    .why-cta {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
     .stack-category {
       margin-bottom: 4rem;
     }
@@ -683,11 +763,17 @@
       border-radius: 20px;
       padding: 2rem;
       transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
     }
 
     .service-card:hover {
       transform: translateY(-10px);
       box-shadow: var(--shadow);
+    }
+
+    .service-card > p {
+      margin-bottom: 1.25rem;
     }
 
     .service-icon {
@@ -706,6 +792,7 @@
     .service-features {
       list-style: none;
       margin: 1.5rem 0;
+      margin-top: auto;
     }
 
     .service-features li {
@@ -860,6 +947,28 @@
       background: var(--glass-bg);
       border: 1px solid var(--border);
       border-radius: 16px;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .setup-help.is-collapsed {
+      max-height: 320px;
+      position: relative;
+    }
+
+    .setup-help.is-collapsed::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 72px;
+      background: linear-gradient(to bottom, rgba(17, 25, 40, 0), rgba(17, 25, 40, 0.95));
+      pointer-events: none;
+    }
+
+    [data-theme="light"] .setup-help.is-collapsed::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.96));
     }
 
     .setup-help h4 {
@@ -885,6 +994,25 @@
     .calc-btn {
       width: 100%;
       margin-top: 0.5rem;
+    }
+
+    .service-toggle {
+      align-self: flex-start;
+      margin-top: -0.25rem;
+      margin-bottom: 1.25rem;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      background: rgba(59, 130, 246, 0.08);
+      color: var(--text-primary);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .service-toggle:hover {
+      background: rgba(59, 130, 246, 0.16);
+      border-color: var(--accent-primary);
     }
 
     /* ========== FOOTER ========== */
@@ -989,6 +1117,7 @@
       }
 
       .hero-content,
+      .why-grid,
       .process-grid,
       .calculator-grid,
       .contact-grid {
@@ -1500,6 +1629,64 @@
             <li>Ongoing support options</li>
           </ul>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-jwithkp" id="why-jwithkp">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-badge">Why JwithKP</span>
+        <h2 class="section-title">A Partner Focused on <span class="gradient-text">Practical Outcomes</span></h2>
+        <p class="section-subtitle">Tools matter, but execution matters more. We help businesses choose the right platforms, avoid unnecessary licensing spend, and roll out solutions in a way that teams can realistically support after go-live.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-main" data-aos="fade-right">
+          <p>JwithKP is built around a simple principle: technology decisions should improve business operations, reduce avoidable cost, and stay manageable for the team that inherits them. That means we do not push one stack for every company. We compare options, explain tradeoffs clearly, and recommend what fits your size, budget, security expectations, and internal capability.</p>
+
+          <div class="why-points">
+            <div class="why-point">
+              <i class="fas fa-layer-group"></i>
+              <h3>Architecture Before Tools</h3>
+              <p>We start with business needs, dependencies, uptime expectations, and future scale before recommending products.</p>
+            </div>
+            <div class="why-point">
+              <i class="fas fa-scale-balanced"></i>
+              <h3>Balanced Open-Source Strategy</h3>
+              <p>We know where open-source creates major savings and where commercial tooling may still be the better operational choice.</p>
+            </div>
+            <div class="why-point">
+              <i class="fas fa-route"></i>
+              <h3>Migration Clarity</h3>
+              <p>We break projects into phases so leadership understands scope, downtime risk, budget range, and rollout sequence.</p>
+            </div>
+            <div class="why-point">
+              <i class="fas fa-user-shield"></i>
+              <h3>Handover and Support</h3>
+              <p>We do not stop at deployment. We help teams adopt, document, monitor, and run the solution confidently.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="why-side" data-aos="fade-left">
+          <h3>What clients typically value most</h3>
+          <p>Our work is designed for decision-makers who want both strategic guidance and hands-on implementation support without being locked into oversized enterprise spend.</p>
+
+          <ul class="why-checklist">
+            <li><i class="fas fa-check-circle"></i><span>Clear comparisons between open-source and commercial options, with business tradeoffs explained in plain language.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Implementation plans that consider downtime, user impact, training needs, and long-term maintainability.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Cost optimization that does not compromise security, resilience, or operational visibility.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>A practical delivery style suited to Indian SMB and mid-market environments where every investment must justify itself.</span></li>
+          </ul>
+
+          <p>If you are evaluating a migration, replacing expensive licenses, setting up a new office environment, or planning a broader modernization effort, we can help turn the idea into an implementation-ready roadmap.</p>
+
+          <div class="why-cta">
+            <a href="#contact" class="btn btn-primary">Talk About Your Project</a>
+            <a href="#roi-calculator" class="btn btn-secondary">Estimate Savings</a>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -2190,6 +2377,40 @@
       `;
     }
 
+    function initServiceToggles() {
+      const collapsedHeight = 320;
+
+      document.querySelectorAll('.service-card .setup-help').forEach((setupHelp, index) => {
+        setupHelp.classList.remove('is-collapsed');
+        setupHelp.style.maxHeight = 'none';
+
+        if (setupHelp.scrollHeight <= collapsedHeight) {
+          return;
+        }
+
+        setupHelp.classList.add('is-collapsed');
+        setupHelp.style.maxHeight = `${collapsedHeight}px`;
+
+        const toggleButton = document.createElement('button');
+        toggleButton.type = 'button';
+        toggleButton.className = 'service-toggle';
+        toggleButton.setAttribute('aria-expanded', 'false');
+        toggleButton.setAttribute('aria-controls', `service-details-${index}`);
+        toggleButton.textContent = 'Show more';
+        setupHelp.id = `service-details-${index}`;
+
+        toggleButton.addEventListener('click', () => {
+          const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+          toggleButton.setAttribute('aria-expanded', String(!isExpanded));
+          toggleButton.textContent = isExpanded ? 'Show more' : 'Show less';
+          setupHelp.classList.toggle('is-collapsed', isExpanded);
+          setupHelp.style.maxHeight = isExpanded ? `${collapsedHeight}px` : `${setupHelp.scrollHeight}px`;
+        });
+
+        setupHelp.insertAdjacentElement('afterend', toggleButton);
+      });
+    }
+
     function setInterest(interest) {
       const select = document.getElementById('interest');
       select.value = interest;
@@ -2277,7 +2498,7 @@
 
       const subject = encodeURIComponent(`New project inquiry from ${formData.name}`);
       const body = encodeURIComponent(emailBody);
-      window.location.href = `mailto:info@jwithkp.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:m.9vikas@gmail.com?subject=${subject}&body=${body}`;
 
       showNotification('Your email draft is ready. Send it to complete your request.');
       contactForm.reset();
@@ -2288,6 +2509,7 @@
       input.addEventListener('input', calculateROI);
     });
 
+    initServiceToggles();
     calculateROI();
     updateSubOptions();
   </script>
