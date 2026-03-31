@@ -1417,10 +1417,10 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#tech-stack">Technology</a></li>
         <li><a href="#process">Process</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><a href="services.html">Services</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#roi-calculator">ROI Calculator</a></li>
+        <li><a href="roi-calculator.html">ROI Calculator</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       
@@ -1444,7 +1444,7 @@
           <h1>Slash IT Costs <span class="gradient-text">70%</span> Without Slashing Quality</h1>
           <p>We help Indian businesses modernize infrastructure, security, collaboration, and business applications with a practical mix of open-source platforms and proven commercial tools. The result is lower recurring licensing cost, stronger control over your environment, and an implementation roadmap your team can actually operate with confidence.</p>
           <div class="hero-buttons">
-            <a href="#roi-calculator" class="btn btn-primary">Calculate Your Savings (INR)</a>
+            <a href="roi-calculator.html" class="btn btn-primary">Calculate Your Savings (INR)</a>
             <a href="#contact" class="btn btn-secondary">Free Consultation</a>
           </div>
           <p class="hero-support">From Proxmox clusters and Nextcloud collaboration to Wazuh SIEM, pfSense firewalls, Zimbra mail, Odoo ERP, and managed rollouts across branches, we design solutions that fit real Indian business budgets and growth plans.</p>
@@ -1906,7 +1906,7 @@
 
           <div class="why-cta">
             <a href="#contact" class="btn btn-primary">Talk About Your Project</a>
-            <a href="#roi-calculator" class="btn btn-secondary">Estimate Savings</a>
+            <a href="roi-calculator.html" class="btn btn-secondary">Estimate Savings</a>
           </div>
         </aside>
       </div>
@@ -1991,116 +1991,34 @@
     </div>
   </section>
 
-  <!-- ROI Calculator Section (INR Version) -->
-  <section id="roi-calculator" class="roi-calculator">
+  <section class="roi-calculator">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="section-badge">ROI Calculator (INR)</span>
-        <h2 class="section-title">See Your <span class="gradient-text">Potential Savings in INR</span></h2>
-        <p class="section-subtitle">Estimate the annual impact of replacing high recurring licensing costs with a more efficient hybrid stack. Use this as a planning baseline before we prepare a detailed architecture, migration scope, and rollout budget for your business.</p>
+        <h2 class="section-title">Estimate Savings On a <span class="gradient-text">Dedicated Calculator Page</span></h2>
+        <p class="section-subtitle">Run the full IT cost optimization calculator on its own page, share the link easily, and review your savings estimate without interrupting the homepage flow.</p>
       </div>
-
       <div class="calculator-grid" data-aos="fade-up">
-        <!-- Calculator Form -->
         <div class="calculator-card">
-          <h3>IT Cost Optimizer (INR Lakhs)</h3>
-          <p class="calculator-note">Enter your current annual spending in lakhs (1 lakh = INR 100,000)</p>
-
-          <div class="calc-group">
-            <label><i class="fas fa-server"></i> Virtualization (VMware) Annual Cost (INR)</label>
-            <div class="input-wrapper">
-              <span class="currency">INR</span>
-              <input type="number" id="virt-cost" value="2500000" step="100000" placeholder="e.g., 2500000">
-            </div>
+          <h3>Use the full calculator</h3>
+          <p class="calculator-note">Open the dedicated ROI calculator to compare your current annual spend across virtualization, monitoring, security, firewall, and collaboration tools.</p>
+          <div class="results-cta" style="text-align:left; margin-top:1.5rem;">
+            <a href="roi-calculator.html" class="btn btn-primary"><i class="fas fa-calculator"></i> Open ROI Calculator</a>
           </div>
-
-          <div class="calc-group">
-            <label><i class="fas fa-chart-line"></i> Monitoring (SolarWinds/PRTG) (INR)</label>
-            <div class="input-wrapper">
-              <span class="currency">INR</span>
-              <input type="number" id="mon-cost" value="1500000" step="100000" placeholder="e.g., 1500000">
-            </div>
-          </div>
-
-          <div class="calc-group">
-            <label><i class="fas fa-shield-alt"></i> Security (SIEM/EDR) (INR)</label>
-            <div class="input-wrapper">
-              <span class="currency">INR</span>
-              <input type="number" id="sec-cost" value="2000000" step="100000" placeholder="e.g., 2000000">
-            </div>
-          </div>
-
-          <div class="calc-group">
-            <label><i class="fas fa-firewall"></i> Firewall Subscriptions (INR)</label>
-            <div class="input-wrapper">
-              <span class="currency">INR</span>
-              <input type="number" id="fw-cost" value="800000" step="50000" placeholder="e.g., 800000">
-            </div>
-          </div>
-
-          <div class="calc-group">
-            <label><i class="fas fa-envelope"></i> Email/Collaboration (Exchange/G Suite) (INR)</label>
-            <div class="input-wrapper">
-              <span class="currency">INR</span>
-              <input type="number" id="email-cost" value="1200000" step="50000" placeholder="e.g., 1200000">
-            </div>
-          </div>
-
-          <div class="calc-group">
-            <label><i class="fas fa-users"></i> Company Size (Employees)</label>
-            <input type="range" id="company-size" min="10" max="1000" value="100" step="10">
-            <div style="display:flex; justify-content:space-between; margin-top:0.5rem;">
-              <span>10</span>
-              <span id="size-display">100</span>
-              <span>1000+</span>
-            </div>
-          </div>
-
-          <button class="btn btn-primary calc-btn" onclick="calculateROI()">
-            <i class="fas fa-calculator"></i> Calculate Savings
-          </button>
         </div>
-
-        <!-- Results Panel -->
-        <div class="results-card" id="roiResults">
-          <h3>Your Savings Estimate (INR)</h3>
-          
-          <div class="result-item">
-            <span>Current Annual IT Spend:</span>
-            <span id="current-spend">INR 80,00,000</span>
-          </div>
-
-          <div class="result-item highlight">
-            <span>With JwithKP Hybrid Stack:</span>
-            <span id="optimized-spend">INR 28,00,000</span>
-          </div>
-
-          <div class="savings-big">
-            <span class="savings-label">Annual Savings</span>
-            <span class="savings-number" id="annual-savings">INR 52,00,000</span>
-          </div>
-
-          <div class="progress-bar">
-            <div class="progress-fill" id="savings-progress" style="width: 65%"></div>
-          </div>
-          <div style="text-align:center; margin-bottom:1.5rem;" id="savings-percent">65% Cost Reduction</div>
-
+        <div class="results-card">
+          <h3>What you will get</h3>
           <div class="breakdown-details">
-            <h4>Savings Breakdown</h4>
             <ul id="savings-breakdown" style="list-style:none;">
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Virtualization: Save INR 17.5L (70%)</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Monitoring: Save INR 12L (80%)</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Security: Save INR 14L (70%)</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Firewall: Save INR 4L (50%)</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Email/Collab: Save INR 8.4L (70%)</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Current vs optimized annual spend in INR</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Percentage reduction across key IT cost areas</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> A simple planning baseline before detailed scoping</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> A clear next step to request an exact quote</li>
             </ul>
           </div>
-
           <div class="results-cta" style="text-align:center; margin-top:2rem;">
-            <a href="#contact" class="btn btn-primary">Get Exact Quote in INR</a>
+            <a href="roi-calculator.html" class="btn btn-secondary">Go To Calculator Page</a>
           </div>
-          <p style="text-align:center; margin-top:1rem; font-size:0.8rem;">*Based on actual Indian enterprise implementations</p>
-        </div>
         </div>
       </div>
     </div>
@@ -2453,7 +2371,7 @@
         <div class="contact-form-card" data-aos="fade-left">
           <h3 class="contact-form-title">Tell Us About Your Project</h3>
           <p class="contact-form-intro">Share a few details and we will help you move from idea to implementation plan faster. The more context you provide, the more useful our first response will be.</p>
-          <div class="contact-cta-strip">Get a practical recommendation, estimated budget range, and rollout direction in the first response.</div>
+          <div class="contact-cta-strip">Get a practical recommendation, estimated budget range, and rollout direction in the first response within 24 hours.</div>
           <form id="smartContactForm" onsubmit="handleSubmit(event)" role="form" aria-label="Contact form">
             <!-- Name -->
             <div class="form-row">
@@ -2559,7 +2477,7 @@
               <i class="fas fa-paper-plane"></i> Send Request
             </button>
             <p class="form-footer">
-              <i class="fas fa-lock"></i> Free consultation | No obligation | 24h response
+              <i class="fas fa-lock"></i> Free consultation | No obligation | First response within 24 hours
             </p>
           </form>
         </div>
@@ -2594,11 +2512,13 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#tech-stack">Technology Stack</a></li>
             <li><a href="#process">Process</a></li>
-            <li><a href="#services">Services</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#roi-calculator">ROI Calculator (INR)</a></li>
+            <li><a href="roi-calculator.html">ROI Calculator (INR)</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
           </ul>
         </div>
 
@@ -2622,11 +2542,12 @@
           <p><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
           <p><i class="fab fa-whatsapp"></i> +91 79829 12207 (WhatsApp)</p>
           <p><i class="far fa-clock"></i> Mon-Sat: 9AM - 7PM IST</p>
+          <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge & Practice | Made in India</p>
+        <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge & Practice | Made in India | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
       </div>
     </div>
   </footer>

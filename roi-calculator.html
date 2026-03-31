@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROI Calculator | JwithKP</title>
+  <meta name="description" content="Estimate annual IT savings in INR with the JwithKP ROI calculator for virtualization, monitoring, security, firewall, and collaboration costs.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0f1e">
+  <link rel="canonical" href="https://www.jwithkp.com/roi-calculator.html">
+  <meta property="og:title" content="JwithKP ROI Calculator">
+  <meta property="og:description" content="Estimate annual IT savings in INR with a dedicated hybrid IT cost optimization calculator.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.jwithkp.com/roi-calculator.html">
+  <meta property="og:image" content="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-primary: #0a0f1e;
+      --bg-primary-rgb: 10, 15, 30;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 25, 40, 0.82);
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-primary: #3b82f6;
+      --accent-secondary: #8b5cf6;
+      --accent-success: #10b981;
+      --border: rgba(255, 255, 255, 0.1);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(var(--bg-primary-rgb), 0.9);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo img { height: 42px; }
+
+    .logo span,
+    .gradient-text {
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo span {
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      color: var(--text-secondary);
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active { color: var(--text-primary); }
+
+    .hero {
+      padding: 5.5rem 0 2.5rem;
+      background:
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.16), transparent 30%),
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.14), transparent 28%);
+    }
+
+    .section-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: var(--gradient-1);
+      color: white;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+
+    .hero-points {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .hero-point {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1rem 1.1rem;
+      color: var(--text-secondary);
+    }
+
+    .hero-point strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--text-primary);
+    }
+
+    .calculator-page {
+      padding: 1rem 0 5rem;
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .calculator-card,
+    .results-card,
+    .support-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .calculator-card h3,
+    .results-card h3,
+    .support-card h3 {
+      margin-bottom: 0.75rem;
+    }
+
+    .calculator-note,
+    .support-card p,
+    .support-card li,
+    .disclaimer {
+      color: var(--text-secondary);
+    }
+
+    .calc-group { margin-top: 1.25rem; }
+    .calc-group label {
+      display: block;
+      margin-bottom: 0.55rem;
+      font-weight: 600;
+    }
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .currency {
+      padding: 0 1rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    input[type="number"],
+    input[type="range"] {
+      width: 100%;
+    }
+
+    input[type="number"] {
+      background: transparent;
+      color: var(--text-primary);
+      border: none;
+      padding: 1rem 1rem 1rem 0;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input[type="range"] {
+      accent-color: var(--accent-primary);
+    }
+
+    .range-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gradient-1);
+      color: white;
+      box-shadow: 0 6px 24px rgba(59, 130, 246, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .calc-btn {
+      width: 100%;
+      margin-top: 1.5rem;
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .result-item.highlight {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 18px;
+      padding: 1rem;
+      color: var(--text-primary);
+    }
+
+    .savings-big {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      margin: 1.5rem 0;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(59, 130, 246, 0.1));
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .savings-label {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.45rem;
+    }
+
+    .savings-number {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #34d399;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 0.8rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #3b82f6);
+      border-radius: 999px;
+    }
+
+    .breakdown-details h4 {
+      margin-bottom: 1rem;
+    }
+
+    .breakdown-details ul {
+      list-style: none;
+    }
+
+    .breakdown-details li {
+      margin-bottom: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .breakdown-details i {
+      color: var(--accent-success);
+      margin-right: 0.5rem;
+    }
+
+    .results-cta {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .support-wrap {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .support-card ul {
+      margin: 1rem 0 0 1.1rem;
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg-secondary);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.65rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-points,
+      .calculator-grid,
+      .support-wrap,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="logo" href="https://www.jwithkp.com/">
+        <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png" alt="JwithKP" decoding="async">
+        <span>JwithKP</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="roi-calculator.html">ROI Calculator</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <span class="section-badge">ROI Calculator (INR)</span>
+      <h1>Estimate Your <span class="gradient-text">Potential IT Savings</span></h1>
+      <p class="hero-copy">Use this dedicated calculator to compare current annual IT licensing spend against a more efficient hybrid stack. It is designed as a quick planning baseline before we build a deeper migration scope, architecture recommendation, and rollout budget.</p>
+      <div class="hero-points">
+        <div class="hero-point">
+          <strong>Focused page</strong>
+          Share a direct calculator link without sending visitors through the whole homepage.
+        </div>
+        <div class="hero-point">
+          <strong>INR-based planning</strong>
+          Review current spend and optimization potential in Indian pricing terms.
+        </div>
+        <div class="hero-point">
+          <strong>Next-step ready</strong>
+          Move straight from estimate to a consultation request if the numbers make sense.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="calculator-page">
+    <div class="container">
+      <div class="calculator-grid">
+        <section class="calculator-card">
+          <h3>IT Cost Optimizer</h3>
+          <p class="calculator-note">Enter your current annual spending in INR for the categories below.</p>
+
+          <div class="calc-group">
+            <label for="virt-cost"><i class="fas fa-server"></i> Virtualization (VMware) Annual Cost</label>
+            <div class="input-wrapper">
+              <span class="currency">INR</span>
+              <input type="number" id="virt-cost" value="2500000" step="100000" placeholder="e.g., 2500000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label for="mon-cost"><i class="fas fa-chart-line"></i> Monitoring (SolarWinds/PRTG)</label>
+            <div class="input-wrapper">
+              <span class="currency">INR</span>
+              <input type="number" id="mon-cost" value="1500000" step="100000" placeholder="e.g., 1500000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label for="sec-cost"><i class="fas fa-shield-alt"></i> Security (SIEM/EDR)</label>
+            <div class="input-wrapper">
+              <span class="currency">INR</span>
+              <input type="number" id="sec-cost" value="2000000" step="100000" placeholder="e.g., 2000000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label for="fw-cost"><i class="fas fa-fire-extinguisher"></i> Firewall Subscriptions</label>
+            <div class="input-wrapper">
+              <span class="currency">INR</span>
+              <input type="number" id="fw-cost" value="800000" step="50000" placeholder="e.g., 800000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label for="email-cost"><i class="fas fa-envelope"></i> Email / Collaboration</label>
+            <div class="input-wrapper">
+              <span class="currency">INR</span>
+              <input type="number" id="email-cost" value="1200000" step="50000" placeholder="e.g., 1200000">
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label for="company-size"><i class="fas fa-users"></i> Company Size (Employees)</label>
+            <input type="range" id="company-size" min="10" max="1000" value="100" step="10">
+            <div class="range-meta">
+              <span>10</span>
+              <span id="size-display">100</span>
+              <span>1000+</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary calc-btn" id="calculate-roi-btn" type="button">
+            <i class="fas fa-calculator"></i> Calculate Savings
+          </button>
+        </section>
+
+        <section class="results-card" id="roiResults">
+          <h3>Your Savings Estimate</h3>
+
+          <div class="result-item">
+            <span>Current Annual IT Spend:</span>
+            <span id="current-spend">INR 80,00,000</span>
+          </div>
+
+          <div class="result-item highlight">
+            <span>With JwithKP Hybrid Stack:</span>
+            <span id="optimized-spend">INR 28,00,000</span>
+          </div>
+
+          <div class="savings-big">
+            <span class="savings-label">Annual Savings</span>
+            <span class="savings-number" id="annual-savings">INR 52,00,000</span>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="savings-progress" style="width: 65%"></div>
+          </div>
+          <div style="text-align:center; margin-bottom:1.5rem;" id="savings-percent">65% Cost Reduction</div>
+
+          <div class="breakdown-details">
+            <h4>Savings Breakdown</h4>
+            <ul id="savings-breakdown">
+              <li><i class="fas fa-check-circle"></i> Virtualization: Save INR 17.5L (70%)</li>
+              <li><i class="fas fa-check-circle"></i> Monitoring: Save INR 12L (80%)</li>
+              <li><i class="fas fa-check-circle"></i> Security: Save INR 14L (70%)</li>
+              <li><i class="fas fa-check-circle"></i> Firewall: Save INR 4L (50%)</li>
+              <li><i class="fas fa-check-circle"></i> Email/Collab: Save INR 8.4L (70%)</li>
+            </ul>
+          </div>
+
+          <div class="results-cta">
+            <a href="index.html#contact" class="btn btn-primary">Get Exact Quote in INR</a>
+          </div>
+          <p class="disclaimer" style="text-align:center; margin-top:1rem; font-size:0.86rem;">Based on indicative optimization assumptions. Final savings depend on architecture, scale, support model, and migration scope.</p>
+        </section>
+      </div>
+
+      <div class="support-wrap">
+        <section class="support-card">
+          <h3>How to use this estimate</h3>
+          <p>This calculator is best used as an early-stage planning tool. It helps leadership and IT teams understand whether a deeper solution review is worth doing now.</p>
+          <ul>
+            <li>Use it to compare current recurring licensing pressure against a hybrid alternative.</li>
+            <li>Use it before budgeting, vendor review, or migration planning conversations.</li>
+            <li>Use it as a baseline before asking for an implementation roadmap.</li>
+          </ul>
+        </section>
+
+        <section class="support-card">
+          <h3>Need a more exact number?</h3>
+          <p>We can turn this rough estimate into a practical recommendation with migration phases, budget range, rollout risks, and operational support options.</p>
+          <div class="results-cta" style="text-align:left;">
+            <a href="index.html#contact" class="btn btn-secondary">Talk About Your Environment</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href="https://www.jwithkp.com/">
+            <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png" alt="JwithKP" loading="lazy" decoding="async">
+            <span>JwithKP</span>
+          </a>
+          <p style="color: var(--text-secondary); margin-top: 1rem;">Smart IT implementation combining open-source power with commercial reliability for Indian businesses.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@jwithkp.com">info@jwithkp.com</a></li>
+            <li><a href="tel:+917982912207">+91 79829 12207</a></li>
+            <li><a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 JwithKP. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const RUPEE = '\u20B9';
+      const fieldIds = ['virt-cost', 'mon-cost', 'sec-cost', 'fw-cost', 'email-cost', 'company-size'];
+      const sizeInput = document.getElementById('company-size');
+      const sizeDisplay = document.getElementById('size-display');
+      const calculateButton = document.getElementById('calculate-roi-btn');
+
+      function safePercent(value, total) {
+        return total > 0 ? Math.round((value / total) * 100) : 0;
+      }
+
+      function formatIndianCurrency(num) {
+        if (num >= 10000000) {
+          return (num / 10000000).toFixed(2) + ' Cr';
+        }
+        if (num >= 100000) {
+          return (num / 100000).toFixed(2) + ' L';
+        }
+        return Math.round(num).toLocaleString('en-IN');
+      }
+
+      function calculateROI() {
+        const virtCost = parseFloat(document.getElementById('virt-cost').value) || 0;
+        const monCost = parseFloat(document.getElementById('mon-cost').value) || 0;
+        const secCost = parseFloat(document.getElementById('sec-cost').value) || 0;
+        const fwCost = parseFloat(document.getElementById('fw-cost').value) || 0;
+        const emailCost = parseFloat(document.getElementById('email-cost').value) || 0;
+        const companySize = parseInt(sizeInput.value, 10) || 100;
+
+        sizeDisplay.textContent = companySize;
+
+        const virtOptimized = virtCost * 0.3;
+        const monOptimized = monCost * 0.2;
+        const secOptimized = secCost * 0.3;
+        const fwOptimized = fwCost * 0.5;
+        const emailOptimized = emailCost * 0.3;
+
+        const currentTotal = virtCost + monCost + secCost + fwCost + emailCost;
+        const optimizedTotal = virtOptimized + monOptimized + secOptimized + fwOptimized + emailOptimized;
+        const savingsTotal = Math.max(currentTotal - optimizedTotal, 0);
+        const savingsPercent = safePercent(savingsTotal, currentTotal);
+
+        document.getElementById('current-spend').textContent = `${RUPEE}${formatIndianCurrency(currentTotal)}`;
+        document.getElementById('optimized-spend').textContent = `${RUPEE}${formatIndianCurrency(optimizedTotal)}`;
+        document.getElementById('annual-savings').textContent = `${RUPEE}${formatIndianCurrency(savingsTotal)}`;
+        document.getElementById('savings-progress').style.width = `${Math.min(savingsPercent, 100)}%`;
+        document.getElementById('savings-percent').textContent = `${savingsPercent}% Cost Reduction`;
+
+        const virtSavings = Math.max(Math.round(virtCost - virtOptimized), 0);
+        const monSavings = Math.max(Math.round(monCost - monOptimized), 0);
+        const secSavings = Math.max(Math.round(secCost - secOptimized), 0);
+        const fwSavings = Math.max(Math.round(fwCost - fwOptimized), 0);
+        const emailSavings = Math.max(Math.round(emailCost - emailOptimized), 0);
+
+        document.getElementById('savings-breakdown').innerHTML = `
+          <li><i class="fas fa-check-circle"></i> Virtualization: Save ${RUPEE}${formatIndianCurrency(virtSavings)} (${safePercent(virtSavings, virtCost)}%)</li>
+          <li><i class="fas fa-check-circle"></i> Monitoring: Save ${RUPEE}${formatIndianCurrency(monSavings)} (${safePercent(monSavings, monCost)}%)</li>
+          <li><i class="fas fa-check-circle"></i> Security: Save ${RUPEE}${formatIndianCurrency(secSavings)} (${safePercent(secSavings, secCost)}%)</li>
+          <li><i class="fas fa-check-circle"></i> Firewall: Save ${RUPEE}${formatIndianCurrency(fwSavings)} (${safePercent(fwSavings, fwCost)}%)</li>
+          <li><i class="fas fa-check-circle"></i> Email/Collaboration: Save ${RUPEE}${formatIndianCurrency(emailSavings)} (${safePercent(emailSavings, emailCost)}%)</li>
+        `;
+      }
+
+      window.calculateROI = calculateROI;
+
+      if (calculateButton) {
+        calculateButton.addEventListener('click', calculateROI);
+      }
+
+      if (sizeInput) {
+        sizeInput.addEventListener('input', (event) => {
+          sizeDisplay.textContent = event.target.value;
+          calculateROI();
+        });
+      }
+
+      fieldIds.forEach((id) => {
+        const field = document.getElementById(id);
+        if (!field || id === 'company-size') {
+          return;
+        }
+        field.addEventListener('input', calculateROI);
+      });
+
+      calculateROI();
+    });
+  </script>
+</body>
+</html>
