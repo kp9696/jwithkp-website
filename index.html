@@ -857,62 +857,6 @@
       background: var(--bg-secondary);
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .service-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem;
-      transition: all 0.3s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow);
-    }
-
-    .service-card > p {
-      margin-bottom: 1.25rem;
-    }
-
-    .service-icon {
-      width: 60px;
-      height: 60px;
-      background: var(--gradient-1);
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: white;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-features {
-      list-style: none;
-      margin: 1.5rem 0;
-      margin-top: auto;
-    }
-
-    .service-features li {
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-secondary);
-    }
-
-    .service-features i {
-      color: #10b981;
-    }
-
     /* ========== CONTACT SECTION ========== */
     .contact-enhanced {
       padding: 6rem 0;
@@ -1045,80 +989,6 @@
 
     .form-footer i {
       margin-right: 0.5rem;
-    }
-
-    .setup-help {
-      margin: 1.5rem 0;
-      padding: 1.25rem;
-      background: var(--glass-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
-    }
-
-    .setup-help.is-collapsed {
-      max-height: 320px;
-      position: relative;
-    }
-
-    .setup-help.is-collapsed::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 72px;
-      background: linear-gradient(to bottom, rgba(17, 25, 40, 0), rgba(17, 25, 40, 0.95));
-      pointer-events: none;
-    }
-
-    [data-theme="light"] .setup-help.is-collapsed::after {
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.96));
-    }
-
-    .setup-help h4 {
-      margin-bottom: 1rem;
-    }
-
-    .setup-step {
-      display: flex;
-      gap: 0.9rem;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-    }
-
-    .setup-step:last-child {
-      margin-bottom: 0;
-    }
-
-    .setup-step i {
-      color: var(--accent-primary);
-      margin-top: 0.2rem;
-    }
-
-    .calc-btn {
-      width: 100%;
-      margin-top: 0.5rem;
-    }
-
-    .service-toggle {
-      align-self: flex-start;
-      margin-top: -0.25rem;
-      margin-bottom: 1.25rem;
-      padding: 0.75rem 1rem;
-      border-radius: 999px;
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      background: rgba(59, 130, 246, 0.08);
-      color: var(--text-primary);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .service-toggle:hover {
-      background: rgba(59, 130, 246, 0.16);
-      border-color: var(--accent-primary);
     }
 
     /* ========== FOOTER ========== */
@@ -2024,245 +1894,34 @@
     </div>
   </section>
 
-  <!-- Services Section (EXPANDED) -->
-  <section id="services" class="services">
+  <section class="services">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-badge">Our Services</span>
-        <h2 class="section-title">Comprehensive <span class="gradient-text">IT Solutions</span></h2>
-        <p class="section-subtitle">From infrastructure modernization and network security to collaboration, helpdesk, monitoring, websites, and ERP rollouts, we deliver implementation services that combine business clarity, technical depth, and long-term operational support.</p>
+        <span class="section-badge">Services</span>
+        <h2 class="section-title">Explore Our <span class="gradient-text">Dedicated Services Page</span></h2>
+        <p class="section-subtitle">The homepage does not need the full service catalog anymore. Use the dedicated Services page to review delivery areas, use cases, and engagement options in one focused place.</p>
       </div>
-
-      <div class="services-grid">
-        <!-- Open Source Implementation -->
-        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="service-icon"><i class="fas fa-server"></i></div>
-          <h3>Proxmox Virtualization</h3>
-          <p>Enterprise-grade virtualization without VMware licensing. Perfect for Indian SMBs.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Assessment & Planning</strong><p>We analyze your current infrastructure, workloads, and business needs to design the optimal Proxmox cluster architecture.</p></div></div>
-            <div class="setup-step"><i class="fas fa-network-wired"></i><div><strong>2. Deployment & Migration</strong><p>We install Proxmox VE, configure storage and networking, and migrate your VMs from VMware/Hyper-V with minimal downtime.</p></div></div>
-            <div class="setup-step"><i class="fas fa-shield-alt"></i><div><strong>3. High Availability & Backup</strong><p>Setup of HA clusters, backup schedules, and disaster recovery plans to ensure business continuity.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Hands-on training for your IT team on VM management, snapshots, and monitoring.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Continuous monitoring, updates, and troubleshooting to keep your virtual environment secure and efficient.</p></div></div>
+      <div class="calculator-grid" data-aos="fade-up">
+        <div class="calculator-card">
+          <h3>See everything in one place</h3>
+          <p class="calculator-note">Browse infrastructure, security, collaboration, monitoring, network, website, and ERP services on a dedicated page designed for easier reading and sharing.</p>
+          <div class="results-cta" style="text-align:left; margin-top:1.5rem;">
+            <a href="services.html" class="btn btn-primary"><i class="fas fa-briefcase"></i> Open Services Page</a>
           </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> High Availability Clusters</li>
-            <li><i class="fas fa-check"></i> Live Migration</li>
-            <li><i class="fas fa-check"></i> Backup & DR (Save INR 5-15L/year)</li>
-          </ul>
         </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="150">
-          <div class="service-icon"><i class="fas fa-cloud"></i></div>
-          <h3>Nextcloud Implementation</h3>
-          <p>Self-hosted file sync & share - Dropbox/SharePoint alternative for Indian businesses.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Requirement Analysis</strong><p>We discuss your storage, sharing, and security needs to design the right Nextcloud deployment.</p></div></div>
-            <div class="setup-step"><i class="fas fa-server"></i><div><strong>2. Installation & Configuration</strong><p>Deploy Nextcloud on-premises or in the cloud, configure storage, users, and access controls.</p></div></div>
-            <div class="setup-step"><i class="fas fa-mobile-alt"></i><div><strong>3. Device Integration</strong><p>Enable mobile, desktop, and web access for seamless file sync and collaboration.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Train your team on file management, sharing, and security best practices.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Regular updates, security patches, and user support to keep your data safe and accessible.</p></div></div>
+        <div class="results-card">
+          <h3>What you will find there</h3>
+          <div class="breakdown-details">
+            <ul id="services-overview" style="list-style:none;">
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Virtualization, security, monitoring, and collaboration services</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> IT cost optimization and implementation guidance</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Clear paths for migration, rollout, and support</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Direct next steps to request a consultation</li>
+            </ul>
           </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> 100% Data Ownership</li>
-            <li><i class="fas fa-check"></i> Mobile/Web Access</li>
-            <li><i class="fas fa-check"></i> Save on cloud storage costs</li>
-          </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-          <h3>Wazuh Security Platform</h3>
-          <p>Complete security monitoring (SIEM) - Splunk alternative for Indian enterprises.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Security Assessment</strong><p>Review your current security posture and compliance needs to plan the Wazuh deployment.</p></div></div>
-            <div class="setup-step"><i class="fas fa-server"></i><div><strong>2. SIEM Deployment</strong><p>Install and configure Wazuh agents, rules, and dashboards for real-time threat detection.</p></div></div>
-            <div class="setup-step"><i class="fas fa-bug"></i><div><strong>3. Alerting & Response</strong><p>Set up automated alerts, incident response workflows, and reporting.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Train your team on monitoring, alert management, and compliance reporting.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Continuous updates, threat intelligence, and support for evolving security needs.</p></div></div>
+          <div class="results-cta" style="text-align:center; margin-top:2rem;">
+            <a href="services.html" class="btn btn-secondary">Go To Services Page</a>
           </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> SIEM & XDR</li>
-            <li><i class="fas fa-check"></i> File Integrity Monitoring</li>
-            <li><i class="fas fa-check"></i> Save INR 8-20L/year on licensing</li>
-          </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="250">
-          <div class="service-icon"><i class="fas fa-firewall"></i></div>
-          <h3>pfSense/OPNsense Firewall</h3>
-          <p>Enterprise firewall with zero licensing. Fortinet/Sophos alternative.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Network Assessment</strong><p>Analyze your network topology, security requirements, and remote access needs.</p></div></div>
-            <div class="setup-step"><i class="fas fa-server"></i><div><strong>2. Firewall Deployment</strong><p>Install pfSense/OPNsense, configure interfaces, VLANs, and security policies.</p></div></div>
-            <div class="setup-step"><i class="fas fa-plug"></i><div><strong>3. VPN & Advanced Features</strong><p>Set up VPNs, traffic shaping, and intrusion prevention for secure connectivity.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Guide your team on firewall management, monitoring, and troubleshooting.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Proactive monitoring, firmware updates, and security audits.</p></div></div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> VPN & Site-to-Site</li>
-            <li><i class="fas fa-check"></i> Traffic Shaping</li>
-            <li><i class="fas fa-check"></i> Save INR 2-5L/year</li>
-          </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Zabbix/Prometheus Monitoring</h3>
-          <p>Infrastructure monitoring - SolarWinds/Dynatrace alternative.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Monitoring Needs Analysis</strong><p>Identify your critical systems, metrics, and alerting requirements.</p></div></div>
-            <div class="setup-step"><i class="fas fa-server"></i><div><strong>2. Platform Deployment</strong><p>Install and configure Zabbix/Prometheus, set up data sources and integrations.</p></div></div>
-            <div class="setup-step"><i class="fas fa-bell"></i><div><strong>3. Alerting & Dashboards</strong><p>Build custom dashboards and configure real-time alerts for proactive monitoring.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Train your team on dashboard usage, alert management, and reporting.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Continuous tuning, updates, and support for evolving monitoring needs.</p></div></div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Real-time Alerts</li>
-            <li><i class="fas fa-check"></i> Custom Dashboards</li>
-          </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="350">
-          <div class="service-icon"><i class="fas fa-envelope"></i></div>
-          <h3>Zimbra Email Server</h3>
-          <p>Exchange/Office 365 alternative - self-hosted email with mobile sync.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Email Needs Assessment</strong><p>Understand your user base, migration needs, and security requirements.</p></div></div>
-            <div class="setup-step"><i class="fas fa-server"></i><div><strong>2. Zimbra Deployment</strong><p>Install and configure Zimbra, set up domains, mailboxes, and security policies.</p></div></div>
-            <div class="setup-step"><i class="fas fa-mobile-alt"></i><div><strong>3. Mobile & Outlook Integration</strong><p>Enable ActiveSync, IMAP/POP, and Outlook compatibility for seamless access.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Train users and admins on email management, security, and troubleshooting.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Regular updates, anti-spam/anti-virus, and user support.</p></div></div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Webmail + Outlook support</li>
-            <li><i class="fas fa-check"></i> ActiveSync for mobile</li>
-            <li><i class="fas fa-check"></i> Save 60% vs Exchange</li>
-          </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-          <div class="service-icon"><i class="fas fa-ticket-alt"></i></div>
-          <h3>GLPI/OTRS Helpdesk</h3>
-          <p>ITSM & Service Desk - ServiceNow/Jira alternative.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Process Mapping</strong><p>Map your IT support processes and asset management needs.</p></div></div>
-            <div class="setup-step"><i class="fas fa-server"></i><div><strong>2. Platform Deployment</strong><p>Install and configure GLPI/OTRS, set up ticketing, asset, and knowledge base modules.</p></div></div>
-            <div class="setup-step"><i class="fas fa-plug"></i><div><strong>3. Integration & Automation</strong><p>Integrate with email, monitoring, and automate workflows for efficiency.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Train your support team on ticket management, reporting, and asset tracking.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Continuous updates, user support, and process optimization.</p></div></div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Asset Management</li>
-            <li><i class="fas fa-check"></i> Ticketing System</li>
-            <li><i class="fas fa-check"></i> Zero licensing cost</li>
-          </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="450">
-          <div class="service-icon"><i class="fas fa-database"></i></div>
-          <h3>MySQL/PostgreSQL</h3>
-          <p>Enterprise Databases - Oracle/MSSQL alternative.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Database Assessment</strong><p>Analyze your data structure, performance, and migration needs.</p></div></div>
-            <div class="setup-step"><i class="fas fa-server"></i><div><strong>2. Deployment & Migration</strong><p>Install MySQL/PostgreSQL, migrate data, and optimize schema for performance.</p></div></div>
-            <div class="setup-step"><i class="fas fa-shield-alt"></i><div><strong>3. Security & Backup</strong><p>Implement security best practices, backup schedules, and disaster recovery.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Train your team on database management, queries, and monitoring.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Performance tuning, updates, and troubleshooting.</p></div></div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> High Performance</li>
-            <li><i class="fas fa-check"></i> Replication & Clustering</li>
-            <li><i class="fas fa-check"></i> Save 100% licensing</li>
-          </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-          <div class="service-icon"><i class="fas fa-network-wired"></i></div>
-          <h3>Network Design & Security</h3>
-          <p>Complete network architecture with Fortinet/Sophos/Cisco.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Network Assessment</strong><p>Review your current network, security gaps, and business needs.</p></div></div>
-            <div class="setup-step"><i class="fas fa-project-diagram"></i><div><strong>2. Design & Planning</strong><p>Design a scalable, secure network architecture with SD-WAN, WiFi, and segmentation.</p></div></div>
-            <div class="setup-step"><i class="fas fa-server"></i><div><strong>3. Implementation</strong><p>Deploy firewalls, switches, and wireless solutions with best practices.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Train your IT team on network management and monitoring.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Proactive monitoring, firmware updates, and troubleshooting.</p></div></div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> SD-WAN Implementation</li>
-            <li><i class="fas fa-check"></i> WiFi Design</li>
-            <li><i class="fas fa-check"></i> Enterprise Security</li>
-          </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="550">
-          <div class="service-icon"><i class="fas fa-laptop"></i></div>
-          <h3>Endpoint Security</h3>
-          <p>Safetica, ESET, Sophos, Trend Micro implementation.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Endpoint Assessment</strong><p>Evaluate your endpoint landscape, risks, and compliance needs.</p></div></div>
-            <div class="setup-step"><i class="fas fa-server"></i><div><strong>2. Solution Deployment</strong><p>Install and configure endpoint protection, DLP, and management consoles.</p></div></div>
-            <div class="setup-step"><i class="fas fa-bug"></i><div><strong>3. Policy & Threat Management</strong><p>Set up security policies, threat detection, and automated response.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Train users and admins on endpoint security best practices.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Continuous updates, monitoring, and incident response.</p></div></div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> DLP Solutions</li>
-            <li><i class="fas fa-check"></i> Anti-malware</li>
-            <li><i class="fas fa-check"></i> Central Management</li>
-          </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-          <div class="service-icon"><i class="fas fa-globe"></i></div>
-          <h3>CMS & E-commerce</h3>
-          <p>Custom websites and e-commerce solutions.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> WordPress Development</li>
-            <li><i class="fas fa-check"></i> Shopify/Magento</li>
-            <li><i class="fas fa-check"></i> Payment Gateway Integration</li>
-          </ul>
-        </div>
-
-        <div class="service-card" data-aos="fade-up" data-aos-delay="650">
-          <div class="service-icon"><i class="fas fa-cubes"></i></div>
-          <h3>Odoo ERP Implementation</h3>
-          <p>Complete ERP solution - SAP/Oracle alternative.</p>
-          <!-- Elaborate Setup Section -->
-          <div class="setup-help">
-            <h4><i class="fas fa-cogs"></i> How We Help You Set This Up</h4>
-            <div class="setup-step"><i class="fas fa-comments"></i><div><strong>1. Business Process Analysis</strong><p>Understand your workflows, pain points, and ERP requirements.</p></div></div>
-            <div class="setup-step"><i class="fas fa-cubes"></i><div><strong>2. ERP Customization</strong><p>Configure Odoo modules for CRM, sales, inventory, accounting, and HR.</p></div></div>
-            <div class="setup-step"><i class="fas fa-database"></i><div><strong>3. Data Migration</strong><p>Migrate your legacy data and ensure data integrity.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chalkboard-user"></i><div><strong>4. Training & Handover</strong><p>Train your team on ERP usage, reporting, and process automation.</p></div></div>
-            <div class="setup-step"><i class="fas fa-chart-line"></i><div><strong>5. Ongoing Support</strong><p>Continuous updates, user support, and process optimization.</p></div></div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> CRM, Sales, Inventory</li>
-            <li><i class="fas fa-check"></i> Accounting, HR</li>
-            <li><i class="fas fa-check"></i> Save 90% vs SAP</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -2525,13 +2184,13 @@
         <div class="footer-links">
           <h4>Open Source Solutions</h4>
           <ul>
-            <li><a href="#">Proxmox Virtualization</a></li>
-            <li><a href="#">Nextcloud</a></li>
-            <li><a href="#">Wazuh SIEM</a></li>
-            <li><a href="#">pfSense Firewall</a></li>
-            <li><a href="#">Zabbix Monitoring</a></li>
-            <li><a href="#">Zimbra Collaboration</a></li>
-            <li><a href="#">Odoo ERP</a></li>
+            <li><a href="services.html">Proxmox Virtualization</a></li>
+            <li><a href="services.html">Nextcloud</a></li>
+            <li><a href="services.html">Wazuh SIEM</a></li>
+            <li><a href="services.html">pfSense Firewall</a></li>
+            <li><a href="services.html">Zabbix Monitoring</a></li>
+            <li><a href="services.html">Zimbra Collaboration</a></li>
+            <li><a href="services.html">Odoo ERP</a></li>
           </ul>
         </div>
 
@@ -2604,96 +2263,6 @@
         navbar.classList.remove('scrolled');
       }
     });
-
-    function safePercent(value, total) {
-      return total > 0 ? Math.round((value / total) * 100) : 0;
-    }
-
-    function formatIndianCurrency(num) {
-      if (num >= 10000000) {
-        return (num / 10000000).toFixed(2) + ' Cr';
-      }
-      if (num >= 100000) {
-        return (num / 100000).toFixed(2) + ' L';
-      }
-      return num.toLocaleString('en-IN');
-    }
-
-    function calculateROI() {
-      const virtCost = parseFloat(document.getElementById('virt-cost').value) || 0;
-      const monCost = parseFloat(document.getElementById('mon-cost').value) || 0;
-      const secCost = parseFloat(document.getElementById('sec-cost').value) || 0;
-      const fwCost = parseFloat(document.getElementById('fw-cost').value) || 0;
-      const emailCost = parseFloat(document.getElementById('email-cost').value) || 0;
-      const companySize = parseInt(document.getElementById('company-size').value, 10) || 100;
-
-      document.getElementById('size-display').textContent = companySize;
-
-      const virtOptimized = virtCost * 0.3;
-      const monOptimized = monCost * 0.2;
-      const secOptimized = secCost * 0.3;
-      const fwOptimized = fwCost * 0.5;
-      const emailOptimized = emailCost * 0.3;
-
-      const currentTotal = virtCost + monCost + secCost + fwCost + emailCost;
-      const optimizedTotal = virtOptimized + monOptimized + secOptimized + fwOptimized + emailOptimized;
-      const savingsTotal = Math.max(currentTotal - optimizedTotal, 0);
-      const savingsPercent = safePercent(savingsTotal, currentTotal);
-
-      document.getElementById('current-spend').textContent = `${RUPEE}${formatIndianCurrency(currentTotal)}`;
-      document.getElementById('optimized-spend').textContent = `${RUPEE}${formatIndianCurrency(optimizedTotal)}`;
-      document.getElementById('annual-savings').textContent = `${RUPEE}${formatIndianCurrency(savingsTotal)}`;
-      document.getElementById('savings-progress').style.width = `${Math.min(savingsPercent, 100)}%`;
-      document.getElementById('savings-percent').textContent = `${savingsPercent}% Cost Reduction`;
-
-      const virtSavings = Math.round(virtCost - virtOptimized);
-      const monSavings = Math.round(monCost - monOptimized);
-      const secSavings = Math.round(secCost - secOptimized);
-      const fwSavings = Math.round(fwCost - fwOptimized);
-      const emailSavings = Math.round(emailCost - emailOptimized);
-
-      document.getElementById('savings-breakdown').innerHTML = `
-        <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Virtualization: Save ${RUPEE}${formatIndianCurrency(virtSavings)} (${safePercent(virtSavings, virtCost)}%)</li>
-        <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Monitoring: Save ${RUPEE}${formatIndianCurrency(monSavings)} (${safePercent(monSavings, monCost)}%)</li>
-        <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Security: Save ${RUPEE}${formatIndianCurrency(secSavings)} (${safePercent(secSavings, secCost)}%)</li>
-        <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Firewall: Save ${RUPEE}${formatIndianCurrency(fwSavings)} (${safePercent(fwSavings, fwCost)}%)</li>
-        <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Email/Collab: Save ${RUPEE}${formatIndianCurrency(emailSavings)} (${safePercent(emailSavings, emailCost)}%)</li>
-      `;
-    }
-
-    function initServiceToggles() {
-      const collapsedHeight = 320;
-
-      document.querySelectorAll('.service-card .setup-help').forEach((setupHelp, index) => {
-        setupHelp.classList.remove('is-collapsed');
-        setupHelp.style.maxHeight = 'none';
-
-        if (setupHelp.scrollHeight <= collapsedHeight) {
-          return;
-        }
-
-        setupHelp.classList.add('is-collapsed');
-        setupHelp.style.maxHeight = `${collapsedHeight}px`;
-
-        const toggleButton = document.createElement('button');
-        toggleButton.type = 'button';
-        toggleButton.className = 'service-toggle';
-        toggleButton.setAttribute('aria-expanded', 'false');
-        toggleButton.setAttribute('aria-controls', `service-details-${index}`);
-        toggleButton.textContent = 'Show more';
-        setupHelp.id = `service-details-${index}`;
-
-        toggleButton.addEventListener('click', () => {
-          const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-          toggleButton.setAttribute('aria-expanded', String(!isExpanded));
-          toggleButton.textContent = isExpanded ? 'Show more' : 'Show less';
-          setupHelp.classList.toggle('is-collapsed', isExpanded);
-          setupHelp.style.maxHeight = isExpanded ? `${collapsedHeight}px` : `${setupHelp.scrollHeight}px`;
-        });
-
-        setupHelp.insertAdjacentElement('afterend', toggleButton);
-      });
-    }
 
     function setInterest(interest) {
       const select = document.getElementById('interest');
@@ -2782,19 +2351,13 @@
 
       const subject = encodeURIComponent(`New project inquiry from ${formData.name}`);
       const body = encodeURIComponent(emailBody);
-      window.location.href = `mailto:m.9vikas@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:info@jwithkp.com?subject=${subject}&body=${body}`;
 
       showNotification('Your email draft is ready. Send it to complete your request.');
       contactForm.reset();
       updateSubOptions();
     }
 
-    document.querySelectorAll('#virt-cost, #mon-cost, #sec-cost, #fw-cost, #email-cost, #company-size').forEach((input) => {
-      input.addEventListener('input', calculateROI);
-    });
-
-    initServiceToggles();
-    calculateROI();
     updateSubOptions();
   </script>
 </body>
