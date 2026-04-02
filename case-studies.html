@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startup IT Case Studies | Cost Reduction and Infrastructure Outcomes</title>
+  <meta name="description" content="Real-world startup and SMB case studies on open-source migration, security visibility, and infrastructure cost optimization.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.jwithkp.com/case-studies.html">
+  <meta property="og:title" content="Startup IT Case Studies | Cost Reduction and Infrastructure Outcomes">
+  <meta property="og:description" content="Real-world startup and SMB case studies on open-source migration, security visibility, and infrastructure cost optimization.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.jwithkp.com/case-studies.html">
+  <meta property="og:image" content="https://www.jwithkp.com/Logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="https://www.jwithkp.com/Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0a0f1e; --card:#111827; --text:#f3f4f6; --muted:#9ca3af; --border:rgba(255,255,255,0.1); --grad:linear-gradient(135deg,#3b82f6,#8b5cf6); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+    .container { max-width:1080px; margin:0 auto; padding:0 2rem; }
+    .topbar { padding:1rem 0; border-bottom:1px solid var(--border); background:rgba(10,15,30,0.92); position:sticky; top:0; backdrop-filter:blur(12px); }
+    .topbar-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .brand { display:flex; align-items:center; gap:0.75rem; color:var(--text); text-decoration:none; font-family:'Space Grotesk',sans-serif; font-weight:700; }
+    .brand img { height:40px; width:auto; }
+    .topbar-links { display:flex; gap:1rem; flex-wrap:wrap; }
+    .topbar a { color:var(--muted); text-decoration:none; }
+    .hero { padding:3.5rem 0 2rem; }
+    .badge { display:inline-block; padding:0.45rem 0.9rem; background:var(--grad); border-radius:999px; margin-bottom:1rem; font-weight:600; }
+    h1, h2 { font-family:'Space Grotesk',sans-serif; line-height:1.15; }
+    h1 { font-size:clamp(2rem,4vw,3.2rem); margin-bottom:1rem; }
+    .lead { color:var(--muted); max-width:760px; }
+    .studies-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.25rem; padding:1rem 0 3rem; }
+    .study-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:1.25rem; }
+    .study-card h3 { font-size:1.2rem; margin-bottom:0.6rem; }
+    .study-card p { color:var(--muted); margin-bottom:1rem; }
+    .kpi { display:inline-block; font-size:0.84rem; padding:0.3rem 0.6rem; border:1px solid rgba(16,185,129,0.4); border-radius:999px; color:#86efac; margin-right:0.4rem; }
+    .study-links { margin-top:0.8rem; }
+    .study-links a { color:#93c5fd; text-decoration:underline; margin-right:1rem; }
+    .cta { margin:0 0 3rem; padding:1.4rem; border:1px solid var(--border); border-radius:18px; background:var(--card); }
+    .btn { display:inline-block; margin-top:1rem; padding:0.9rem 1.2rem; border-radius:999px; background:var(--grad); color:#fff; text-decoration:none; font-weight:600; min-height:44px; }
+    .footer { padding:2rem 0 3rem; border-top:1px solid var(--border); }
+    .footer-links { display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem; }
+    @media (max-width: 800px) { .studies-grid { grid-template-columns:1fr; } .topbar-inner { flex-direction:column; align-items:flex-start; } }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html"><img src="https://www.jwithkp.com/Logo.png" alt="JwithKP"><span>JwithKP</span></a>
+      <div class="topbar-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="blog.html">Blog</a>
+        <a href="guides.html">Guides</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <span class="badge">Case Studies</span>
+      <h1>Real IT Outcomes for Cost-Conscious Teams</h1>
+      <p class="lead">Examples of how structured open-source and hybrid architecture decisions can reduce recurring IT spend while improving stability and security visibility.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="studies-grid">
+      <article class="study-card">
+        <h3>Virtualization Cost Reduction Program</h3>
+        <p>A mid-sized operations team migrated from high recurring virtualization licensing to a Proxmox-first architecture with phased validation.</p>
+        <span class="kpi">Up to 70% lower recurring virtualization cost</span>
+        <span class="kpi">No business-hour disruption</span>
+        <div class="study-links">
+          <a href="blog-proxmox-vmware-alternative.html">Related article</a>
+          <a href="contact.html">Discuss migration</a>
+        </div>
+      </article>
+
+      <article class="study-card">
+        <h3>Security Visibility Rollout for SMB</h3>
+        <p>An SMB deployed Wazuh-based monitoring with tuned alert ownership, reducing noise and improving incident response consistency.</p>
+        <span class="kpi">Better endpoint and log visibility</span>
+        <span class="kpi">Lower SIEM entry cost</span>
+        <div class="study-links">
+          <a href="blog-wazuh-security-smb.html">Related article</a>
+          <a href="services.html">Security services</a>
+        </div>
+      </article>
+
+      <article class="study-card">
+        <h3>Startup Infrastructure Baseline Build</h3>
+        <p>A growing startup implemented Linux, open-source monitoring, and lean deployment automation to preserve budget for product and hiring.</p>
+        <span class="kpi">License-heavy spend avoided</span>
+        <span class="kpi">Scalable foundation for growth</span>
+        <div class="study-links">
+          <a href="blog-open-source-startup-cost-savings.html">Related article</a>
+          <a href="guides.html">Implementation guides</a>
+        </div>
+      </article>
+
+      <article class="study-card">
+        <h3>Collaboration Cost Strategy Review</h3>
+        <p>A team compared self-hosted and commercial collaboration models to balance user expectations, governance, and recurring software spend.</p>
+        <span class="kpi">Budget clarity by department</span>
+        <span class="kpi">Phased adoption plan</span>
+        <div class="study-links">
+          <a href="blog-nextcloud-vs-microsoft365.html">Related article</a>
+          <a href="roi-calculator.html">Estimate savings</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="cta">
+      <h2>Want a case study mapped to your environment?</h2>
+      <p style="color:var(--muted);">We can evaluate your current stack, expected growth, and risk profile to recommend an implementation path with measurable outcomes.</p>
+      <a class="btn" href="contact.html">Request Assessment</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>JwithKP | Journey with Knowledge & Practice</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="blog.html">Blog</a>
+        <a href="guides.html">Guides</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
