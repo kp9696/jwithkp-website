@@ -1,0 +1,16 @@
+# Secrets and keys
+key
+key.pub
+*.pem
+*.ppk
+*.p12
+*.pfx
+
+# Environment files
+.env
+.env.*
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/

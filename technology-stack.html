@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology Stack | JwithKP</title>
+  <meta name="description" content="Explore the JwithKP technology stack across open-source and enterprise platforms for virtualization, security, collaboration, monitoring, networking, backup, analytics, and business systems.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0f1e">
+  <link rel="canonical" href="https://www.jwithkp.com/technology-stack.html">
+  <meta property="og:title" content="JwithKP Technology Stack">
+  <meta property="og:description" content="A practical mix of open-source and enterprise technologies selected for performance, security, maintainability, and cost control.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.jwithkp.com/technology-stack.html">
+  <meta property="og:image" content="https://www.jwithkp.com/Logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="https://www.jwithkp.com/Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-primary: #0a0f1e;
+      --bg-primary-rgb: 10, 15, 30;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 25, 40, 0.82);
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-primary: #3b82f6;
+      --accent-secondary: #8b5cf6;
+      --border: rgba(255, 255, 255, 0.1);
+      --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+    .navbar { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); background: rgba(var(--bg-primary-rgb), 0.9); border-bottom: 1px solid var(--border); }
+    .nav-container { max-width: 1240px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .logo { display: flex; align-items: center; gap: 1rem; }
+    .logo img { height: 42px; }
+    .logo span, .gradient-text { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .logo span { font-size: 1.45rem; font-weight: 700; }
+    .nav-menu { list-style: none; display: flex; gap: 1.5rem; align-items: center; color: var(--text-secondary); }
+    .nav-menu a:hover, .nav-menu a.active { color: var(--text-primary); }
+    .hero { position: relative; overflow: hidden; padding: 5.5rem 0 3rem; background: radial-gradient(circle at top right, rgba(59,130,246,0.16), transparent 32%), radial-gradient(circle at top left, rgba(139,92,246,0.12), transparent 28%); }
+    .hero .container { position: relative; z-index: 2; }
+    .hero-matrix-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; opacity: 0.28; }
+    .section-badge { display: inline-block; padding: 0.5rem 1rem; border-radius: 999px; background: var(--gradient-1); color: white; font-weight: 600; margin-bottom: 1rem; }
+    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; line-height: 1.1; }
+    h1 { font-size: clamp(2.6rem, 5vw, 4.1rem); margin-bottom: 1rem; }
+    .hero-copy { max-width: 780px; color: var(--text-secondary); font-size: 1.05rem; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; align-items: start; margin-top: 2rem; }
+    .hero-panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 1.75rem; box-shadow: var(--shadow); }
+    .hero-panel ul { margin: 1rem 0 0 1.1rem; color: var(--text-secondary); }
+    .hero-panel li { margin-bottom: 0.75rem; }
+    .hero-visual { position: relative; overflow: hidden; min-height: 100%; padding: 0; }
+    .hero-visual img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; display: block; }
+    .hero-visual-copy { position: absolute; inset: auto 0 0 0; padding: 1.4rem; background: linear-gradient(180deg, rgba(10,15,30,0), rgba(10,15,30,0.9)); }
+    .hero-visual-copy p { color: rgba(243,244,246,0.88); margin-top: 0.4rem; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 1rem 1.5rem; border-radius: 999px; font-weight: 600; border: none; cursor: pointer; }
+    .btn-primary { background: var(--gradient-1); color: white; box-shadow: 0 6px 24px rgba(59,130,246,0.35); }
+    .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
+    .stack-page { padding: 1rem 0 5rem; }
+    .section-head { margin-bottom: 2rem; }
+    .section-head p { color: var(--text-secondary); max-width: 780px; margin-top: 0.75rem; }
+    .visual-showcase { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.5rem; margin: 0 0 2.75rem; }
+    .visual-card { position: relative; overflow: hidden; min-height: 280px; border-radius: 28px; border: 1px solid var(--border); background: var(--bg-card); box-shadow: var(--shadow); }
+    .visual-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .visual-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,15,30,0.08), rgba(10,15,30,0.82)); }
+    .visual-copy { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 1.5rem; }
+    .visual-copy p { color: rgba(243,244,246,0.85); margin-top: 0.45rem; }
+    .solution-gallery { margin: 0 0 2.75rem; }
+    .solution-gallery-head { margin-bottom: 1.5rem; }
+    .solution-gallery-head p { color: var(--text-secondary); max-width: 760px; margin-top: 0.65rem; }
+    .solution-gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+    .solution-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
+    .solution-card img { width: 100%; height: 240px; object-fit: cover; display: block; }
+    .solution-card-copy { padding: 1.35rem 1.4rem 1.5rem; }
+    .solution-card-copy p { color: var(--text-secondary); margin-top: 0.55rem; }
+    .stack-category { margin-bottom: 2.5rem; }
+    .category-title { font-size: 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .category-title i { color: var(--accent-primary); }
+    .stack-note { display: inline-flex; align-items: center; padding: 0.35rem 0.75rem; border-radius: 999px; background: rgba(16,185,129,0.16); color: #6ee7b7; font-size: 0.95rem; }
+    .tech-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+    .tech-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 1.6rem; box-shadow: var(--shadow); transition: transform 0.25s ease, border-color 0.25s ease; }
+    .tech-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.4); }
+    .tech-logo { width: 68px; height: 68px; border-radius: 18px; background: rgba(255,255,255,0.06); display: inline-flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 1rem; }
+    .tech-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .tech-card h4 { font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .tech-card p { color: var(--text-secondary); margin-bottom: 1rem; min-height: 3.2rem; }
+    .savings-badge { display: inline-flex; margin-bottom: 0.75rem; padding: 0.35rem 0.8rem; border-radius: 999px; background: rgba(16,185,129,0.14); color: #6ee7b7; font-size: 0.9rem; font-weight: 600; }
+    .tech-badge { display: inline-flex; padding: 0.4rem 0.85rem; border-radius: 999px; background: rgba(59,130,246,0.14); color: #bfdbfe; font-size: 0.9rem; }
+    .stack-footer { margin-top: 2rem; }
+    .stack-footer-card { background: linear-gradient(135deg, rgba(59,130,246,0.14), rgba(139,92,246,0.14)); padding: 2rem; border: 1px solid var(--border); border-radius: 24px; color: white; }
+    .stack-footer-icon { font-size: 2rem; margin-bottom: 1rem; color: #93c5fd; }
+    .stack-footer-title { margin-bottom: 1rem; }
+    .stack-footer-copy { max-width: 820px; color: var(--text-secondary); }
+    .footer { padding: 2rem 0 3rem; border-top: 1px solid var(--border); background: var(--bg-secondary); }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; align-items: start; }
+    .footer-links h4 { margin-bottom: 1rem; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 0.65rem; color: var(--text-secondary); }
+    .footer-bottom { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; }
+    @media (max-width: 980px) {
+      .hero-grid, .visual-showcase, .solution-gallery-grid, .tech-grid, .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 780px) {
+      .nav-container { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="logo" href="https://www.jwithkp.com/">
+        <img src="https://www.jwithkp.com/Logo.png" alt="JwithKP" decoding="async">
+        <span>JwithKP</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="technology-stack.html">Technology</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="roi-calculator.html">ROI Calculator</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <canvas id="hero-matrix-canvas" class="hero-matrix-canvas" aria-hidden="true"></canvas>
+    <div class="container">
+      <span class="section-badge">Our Technology Stack</span>
+      <h1>Best-Fit Platforms for <span class="gradient-text">Practical Business IT</span></h1>
+      <p class="hero-copy">We combine proven open-source platforms with enterprise-grade commercial technologies to build environments that are secure, maintainable, and cost-aware. The goal is not to use more tools, but to use the right ones for your business, team, and growth stage.</p>
+      <div class="btn-row">
+        <a href="contact.html" class="btn btn-primary">Discuss Your Environment</a>
+        <a href="roi-calculator.html" class="btn btn-secondary">Estimate Savings</a>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-panel">
+          <h3>What guides our stack decisions</h3>
+          <ul>
+            <li>Operational fit for your team, not just feature lists</li>
+            <li>Security, visibility, backup, and long-term maintainability</li>
+            <li>Balanced use of open-source and commercial platforms</li>
+          </ul>
+        </div>
+        <div class="hero-panel hero-visual">
+          <img loading="lazy" decoding="async" src="images/tech-visual-1.jpg" alt="Modern IT operations and infrastructure">
+          <div class="hero-visual-copy">
+            <h3>Typical outcomes</h3>
+            <p>Lower recurring spend, clearer architecture, and stronger alignment between reliability, performance, and business risk.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="stack-page">
+    <div class="container">
+      <div class="section-head">
+        <h2>Open-Source Strength and <span class="gradient-text">Enterprise Reliability</span></h2>
+        <p>This page gives a practical view of the technologies we commonly recommend, implement, and support. Some environments benefit most from open-source platforms, while others call for a hybrid model with selected enterprise tooling. We help you make that choice intentionally.</p>
+      </div>
+
+      <section class="visual-showcase">
+        <article class="visual-card">
+          <img loading="lazy" decoding="async" src="images/tech-visual-2.jpg" alt="Team reviewing infrastructure dashboards">
+          <div class="visual-copy">
+            <h3>Visibility Across the Stack</h3>
+            <p>Monitoring, analytics, and security decisions work best when teams can actually see what is happening across systems.</p>
+          </div>
+        </article>
+        <article class="visual-card">
+          <img loading="lazy" decoding="async" src="images/hero-slide-3.jpg" alt="Cloud and collaboration technology infrastructure">
+          <div class="visual-copy">
+            <h3>Built for Scale and Control</h3>
+            <p>From collaboration platforms to hybrid security models, the stack should grow with the business without becoming harder to manage.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="solution-gallery">
+        <div class="solution-gallery-head">
+          <h2>Solution Visuals for <span class="gradient-text">Key Environments</span></h2>
+          <p>These examples reflect the kinds of technology environments clients often ask us to design, secure, and improve across branches, cloud productivity, and operational visibility.</p>
+        </div>
+
+        <div class="solution-gallery-grid">
+          <article class="solution-card">
+            <img loading="lazy" decoding="async" src="images/network-design.jpg" alt="Network design and infrastructure planning">
+            <div class="solution-card-copy">
+              <h3>Network Design</h3>
+              <p>Structured branch connectivity, segmentation, VPN planning, and firewall-aware network design for growing environments.</p>
+            </div>
+          </article>
+
+          <article class="solution-card">
+            <img loading="lazy" decoding="async" src="images/pfsense-dashboard.jpg" alt="Security monitoring and pfSense style dashboard">
+            <div class="solution-card-copy">
+              <h3>pfSense and Security Dashboards</h3>
+              <p>Firewall policy visibility, security posture reviews, and operational dashboards that help teams respond with confidence.</p>
+            </div>
+          </article>
+
+          <article class="solution-card">
+            <img loading="lazy" decoding="async" src="images/office365-collab.jpg" alt="Office 365 collaboration and team productivity">
+            <div class="solution-card-copy">
+              <h3>Office 365 and Collaboration</h3>
+              <p>Cloud productivity, email, identity, and collaboration environments that align with user expectations and support models.</p>
+            </div>
+          </article>
+
+          <article class="solution-card">
+            <img loading="lazy" decoding="async" src="images/security-ops.jpg" alt="Security operations and monitoring team">
+            <div class="solution-card-copy">
+              <h3>Security Operations</h3>
+              <p>Monitoring, alerting, and response workflows designed to improve visibility without adding unnecessary complexity.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="stack-category">
+        <h3 class="category-title"><span><i class="fas fa-code-branch"></i> Open-Source Core</span> <span class="stack-note">High value, lower licensing overhead</span></h3>
+        <div class="tech-grid">
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://24x7servermanagement.com/wp-content/uploads/2025/07/proxmox-server-solutions-gmbh-logo-vector.png" alt="Proxmox"></div><h4>Proxmox VE</h4><p>Enterprise virtualization for businesses replacing VMware-heavy cost with a more efficient private infrastructure stack.</p><span class="savings-badge">Save 70% vs VMware</span><div class="tech-badge">INR 5L-15L savings</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://images.nu.nl/m/371x00napofi_wd1280/0/0/2559/1439/nextcloud.jpg" alt="Nextcloud"></div><h4>Nextcloud</h4><p>Self-hosted file sync, sharing, and collaboration for organizations that want stronger control over data and access.</p><span class="savings-badge">Save 100% licensing</span><div class="tech-badge">Self-hosted + Mobile Access</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://wazuh.com/uploads/2016/04/wazuh-standard-featured-picture.png" alt="Wazuh"></div><h4>Wazuh</h4><p>Security monitoring and SIEM visibility without the cost profile of large commercial analytics platforms.</p><span class="savings-badge">Free SIEM Alternative</span><div class="tech-badge">Save INR 8L-20L</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2021/01/pfsense-logo.jpg" alt="pfSense"></div><h4>pfSense</h4><p>Firewall and connectivity security for branches, remote access, segmentation, and dependable perimeter protection.</p><span class="savings-badge">No License Fees</span><div class="tech-badge">Save INR 2L-5L</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Zabbix_logo.svg" alt="Zabbix"></div><h4>Zabbix</h4><p>Infrastructure monitoring and alerting for uptime-sensitive systems that need better operational visibility.</p><span class="savings-badge">Save 80%</span><div class="tech-badge">INR 3L-8L savings</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://5.imimg.com/data5/SELLER/Default/2023/4/302914859/NY/DJ/SW/93347989/zimbra-mail-services-pan-india.webp" alt="Zimbra"></div><h4>Zimbra</h4><p>Email and collaboration for teams seeking a more cost-controlled alternative to Exchange-heavy deployments.</p><span class="savings-badge">Save 60% vs Exchange</span><div class="tech-badge">Webmail + Mobile Sync</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://pbs.twimg.com/profile_images/1057633264469336064/HtP-hea6_400x400.jpg" alt="GLPI"></div><h4>GLPI / OTRS</h4><p>Helpdesk and ITSM tooling that improves ticket flow, asset visibility, and service process control.</p><span class="savings-badge">Free ITSM Solution</span><div class="tech-badge">Asset Management</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://www.fosslinux.com/wp-content/uploads/2021/06/PostgreSQL-vs-MySQL.png" alt="MySQL and PostgreSQL"></div><h4>MySQL / PostgreSQL</h4><p>Production-ready databases for applications, reporting, and business systems that need performance and flexibility.</p><span class="savings-badge">Save 100% licensing</span><div class="tech-badge">High Performance</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/1280px-Docker_%28container_engine%29_logo.svg.png" alt="Docker"></div><h4>Docker / Kubernetes</h4><p>Container platforms for modern applications, internal tools, and environments that benefit from portability and scale.</p><span class="savings-badge">Free Container Runtime</span><div class="tech-badge">Microservices Ready</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmyO_nu-Mk518YaqRFI6OCrvpJP1_Pj6Ziag&s" alt="Veeam and Bacula"></div><h4>Veeam & Bacula</h4><p>Backup and recovery tooling aligned to resilience goals, retention needs, and the 3-2-1 backup rule.</p><span class="savings-badge">Community Edition Available</span><div class="tech-badge">3-2-1 Backup Rule</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXW7SX3YWhGtoRHRhDYvLTDm-edPMyI-zoZw&s" alt="Odoo"></div><h4>Odoo / SuiteCRM</h4><p>Business applications for CRM, ERP, operations, and workflow centralization without enterprise licensing bloat.</p><span class="savings-badge">Save 90% on licensing</span><div class="tech-badge">All-in-One Business Suite</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/64f88987fdbd5383e9d91908/6509d22ceb1730524a817075_grafana-logo.png" alt="Grafana"></div><h4>Grafana + Prometheus</h4><p>Metrics, analytics, and dashboards for teams that need a clearer view of health, performance, and trends.</p><span class="savings-badge">Open Source Analytics</span><div class="tech-badge">Beautiful Dashboards</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/6471485?s=200&v=4" alt="ONLYOFFICE"></div><h4>ONLYOFFICE</h4><p>Document collaboration for teams that want office-suite capability integrated into a self-hosted ecosystem.</p><span class="savings-badge">No Per-User Fees</span><div class="tech-badge">Docs, Sheets, Presentations</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/45120?s=200&v=4" alt="Jitsi Meet"></div><h4>Jitsi Meet</h4><p>Video conferencing for organizations that prefer privacy, control, and lower ongoing communication costs.</p><span class="savings-badge">Unlimited Meetings</span><div class="tech-badge">Self-hosted Video Calls</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/18133?s=200&v=4" alt="Mattermost"></div><h4>Mattermost</h4><p>Team chat and collaboration for internal messaging environments that need control and integration flexibility.</p><span class="savings-badge">No Subscription</span><div class="tech-badge">Channels & Integrations</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/69631?s=200&v=4" alt="Rocket.Chat"></div><h4>Rocket.Chat</h4><p>Messaging, file sharing, and collaboration in a self-managed environment where data ownership matters.</p><span class="savings-badge">Full Data Control</span><div class="tech-badge">Chat, Video, File Sharing</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/1507452?s=200&v=4" alt="ERPNext"></div><h4>ERPNext</h4><p>ERP and business workflow tooling that supports manufacturing, HR, CRM, and finance without high licensing overhead.</p><span class="savings-badge">Zero Licensing</span><div class="tech-badge">Manufacturing, HR, CRM</div></article>
+        </div>
+      </section>
+
+      <section class="stack-category">
+        <h3 class="category-title"><span><i class="fas fa-briefcase"></i> Commercial & Enterprise Platforms</span></h3>
+        <div class="tech-grid">
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfjX3G9jEw3mZl597DgvNLqt01oCMz3ujOXw&s" alt="Fortinet"></div><h4>Fortinet</h4><p>Next-generation firewalls and SD-WAN for businesses that need dependable perimeter and branch security.</p><div class="tech-badge">Enterprise Grade</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://images.contentstack.io/v3/assets/blt38f1f401b66100ad/blt358c7070aab66bc8/690ffbd466ece061e503d29f/blog_rebranding.png" alt="Sophos"></div><h4>Sophos</h4><p>Endpoint security and firewall solutions for teams balancing protection, usability, and administrative simplicity.</p><div class="tech-badge">Intercept X Advanced</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://media.designrush.com/inspiration_images/134803/conversions/_1511457462_313_cisco-preview.jpg" alt="Cisco"></div><h4>Cisco</h4><p>Networking and security platforms across switching, wireless, branch connectivity, and cloud-managed operations.</p><div class="tech-badge">Meraki, Umbrella</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKdGVp-CXt33LcCO1W4Fed8s9RyGJZKBWxYA&s" alt="Safetica"></div><h4>Safetica</h4><p>Data loss prevention for organizations that need stronger control over sensitive information and user activity.</p><div class="tech-badge">DLP & Compliance</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://www.b4b.co.uk/wp-content/uploads/es-et-logo.webp" alt="ESET"></div><h4>ESET</h4><p>Lightweight endpoint protection for businesses that want effective security without heavy operational drag.</p><div class="tech-badge">Endpoint Protection</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://ismg-cdn.nyc3.cdn.digitaloceanspaces.com/blogs/private-equity-now-kicking-tires-on-trend-micro-showcase_image-7-p-3814.jpg" alt="Trend Micro"></div><h4>Trend Micro</h4><p>Cloud and endpoint security tooling suited to environments with stronger enterprise control requirements.</p><div class="tech-badge">Deep Security</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://globalcybersecuritynetwork.com/wp-content/uploads/2024/12/Zsacler-company-logo.jpg" alt="Zscaler"></div><h4>Zscaler</h4><p>Cloud security and secure access service edge tooling for modern distributed work environments.</p><div class="tech-badge">Zero Trust</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://www.paloaltonetworks.com/etc/clientlibs/pan-templates/seoimages/social-panw.png" alt="Palo Alto"></div><h4>Palo Alto</h4><p>Firewall and cloud security platforms for businesses with advanced policy, inspection, and segmentation needs.</p><div class="tech-badge">Industry Leader</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://www.lifewire.com/thmb/r8g0i7BWh6hhbAqJ7n30bcMdpT0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/001-a-complete-guide-to-microsoft-office-fe6077e048334d9aa96cdf604995c9d8.jpg" alt="Microsoft"></div><h4>Microsoft 365</h4><p>Productivity, identity, and collaboration services when commercial cloud alignment is the right fit for the business.</p><div class="tech-badge">Productivity Suite</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1280px-IBM_logo.svg.png" alt="IBM"></div><h4>IBM Security</h4><p>Enterprise security tooling including QRadar and Guardium for larger monitoring and governance needs.</p><div class="tech-badge">Enterprise Security</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://s.w.org/style/images/about/WordPress-logotype-standard.png" alt="WordPress"></div><h4>CMS Solutions</h4><p>WordPress, Shopify, and Webflow-based environments for websites that need a practical balance of speed and control.</p><div class="tech-badge">Custom Development</div></article>
+          <article class="tech-card"><div class="tech-logo"><img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Shopify_logo.svg/1280px-Shopify_logo.svg.png" alt="Shopify"></div><h4>E-commerce Platforms</h4><p>Shopify, Magento, and WooCommerce for digital commerce operations that need integration, reliability, and scale.</p><div class="tech-badge">Payment Integration</div></article>
+        </div>
+      </section>
+
+      <div class="stack-footer">
+        <div class="stack-footer-card">
+          <i class="fas fa-link stack-footer-icon"></i>
+          <h3 class="stack-footer-title">Hybrid Architecture, Chosen Intentionally</h3>
+          <p class="stack-footer-copy">The best environments are rarely built from one vendor or one ideology. We help combine open-source flexibility with enterprise reliability so your stack is easier to support, more aligned to budget, and better suited to real business operations.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href="https://www.jwithkp.com/">
+            <img src="https://www.jwithkp.com/Logo.png" alt="JwithKP" decoding="async">
+            <span>JwithKP</span>
+          </a>
+          <p style="margin-top: 1rem; color: var(--text-secondary);">A practical technology partner for infrastructure, security, collaboration, monitoring, and modernization decisions.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="technology-stack.html">Technology</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="roi-calculator.html">ROI Calculator</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Trust</h4>
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 JwithKP � Journey with Knowledge & Practice</div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const hero = document.querySelector('.hero');
+      const matrixCanvas = document.getElementById('hero-matrix-canvas');
+      if (!hero || !matrixCanvas) return;
+
+      const matrixCtx = matrixCanvas.getContext('2d');
+      if (!matrixCtx) return;
+
+      const matrixChars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const fontSize = 16;
+      const minDropSpeed = 0.7;
+      const maxDropSpeed = 1.35;
+      let columns = 0;
+      let drops = [];
+      let animationFrameId = null;
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      const resizeMatrix = () => {
+        const rect = hero.getBoundingClientRect();
+        matrixCanvas.width = Math.max(1, Math.floor(rect.width));
+        matrixCanvas.height = Math.max(1, Math.floor(rect.height));
+        columns = Math.max(1, Math.floor(matrixCanvas.width / fontSize));
+        drops = Array.from({ length: columns }, () => ({
+          y: Math.random() * matrixCanvas.height,
+          speed: minDropSpeed + Math.random() * (maxDropSpeed - minDropSpeed)
+        }));
+      };
+
+      const drawFrame = () => {
+        matrixCtx.fillStyle = 'rgba(10, 15, 30, 0.15)';
+        matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+        matrixCtx.font = `${fontSize}px monospace`;
+        matrixCtx.fillStyle = 'rgba(66, 245, 155, 0.65)';
+
+        drops.forEach((drop, index) => {
+          const character = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+          const x = index * fontSize;
+          matrixCtx.fillText(character, x, drop.y);
+
+          drop.y += fontSize * drop.speed;
+          if (drop.y > matrixCanvas.height + fontSize && Math.random() > 0.975) {
+            drop.y = -fontSize;
+          }
+        });
+      };
+
+      const animate = () => {
+        drawFrame();
+        animationFrameId = requestAnimationFrame(animate);
+      };
+
+      const startOrStop = () => {
+        if (prefersReducedMotion.matches) {
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          }
+          matrixCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+          return;
+        }
+
+        if (!animationFrameId) {
+          animate();
+        }
+      };
+
+      resizeMatrix();
+      startOrStop();
+
+      window.addEventListener('resize', () => {
+        resizeMatrix();
+        if (!prefersReducedMotion.matches) {
+          drawFrame();
+        }
+      });
+
+      prefersReducedMotion.addEventListener('change', startOrStop);
+    })();
+  </script>
+</body>
+</html>
+

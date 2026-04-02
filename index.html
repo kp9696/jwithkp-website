@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,20 +11,20 @@
   <meta name="author" content="JwithKP">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0a0f1e">
-  <link rel="canonical" href="https://jwithkp.com/">
+  <link rel="canonical" href="https://www.jwithkp.com/">
   
   <!-- Open Graph -->
   <meta property="og:title" content="JwithKP - Smart IT Implementation India">
   <meta property="og:description" content="Reduce IT costs with hybrid open-source and commercial solutions. Save up to 70% on virtualization, security, and monitoring.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://jwithkp.com">
-  <meta property="og:image" content="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png">
+  <meta property="og:url" content="https://www.jwithkp.com/">
+  <meta property="og:image" content="https://www.jwithkp.com/Logo.png">
   <meta property="og:site_name" content="JwithKP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="JwithKP - Smart IT Implementation India">
   <meta name="twitter:description" content="Reduce IT costs with hybrid open-source and commercial solutions for Indian businesses.">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png">
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png">
+  <meta name="twitter:image" content="https://www.jwithkp.com/Logo.png">
+  <link rel="icon" type="image/png" href="https://www.jwithkp.com/Logo.png">
   
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,8 +37,8 @@
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "JwithKP",
-      "url": "https://jwithkp.com/",
-      "image": "https://raw.githubusercontent.com/kp9696/jwithkp-website/main/logo1.png",
+      "url": "https://www.jwithkp.com/",
+      "image": "https://www.jwithkp.com/Logo.png",
       "telephone": "+91 79829 12207",
       "email": "info@jwithkp.com",
       "address": {
@@ -355,6 +355,25 @@
       overflow: hidden;
     }
 
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .matrix-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.32;
+    }
+
+    [data-theme="light"] .matrix-canvas {
+      opacity: 0.18;
+    }
+
     .hero-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -386,16 +405,162 @@
       margin-top: 3rem;
     }
 
+    .trusted-strip {
+      padding: 1.5rem 0 0.5rem;
+    }
+
+    .trusted-strip-inner {
+      display: grid;
+      grid-template-columns: 0.9fr 2.1fr;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.35rem 1.5rem;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: var(--glass-bg);
+      box-shadow: var(--shadow);
+    }
+
+    .trusted-strip-copy p {
+      color: var(--text-secondary);
+      margin: 0.35rem 0 0;
+      font-size: 0.95rem;
+    }
+
+    .trusted-platforms {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      justify-content: flex-start;
+    }
+
+    .trusted-platforms span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
     .hero-support {
       margin-top: 1.25rem;
       color: var(--text-secondary);
       max-width: 42rem;
     }
 
-    .hero-image {
+    .hero-slider {
+      position: relative;
+      min-height: 520px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--bg-card);
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .hero-slide img {
       width: 100%;
-      border-radius: 20px;
+      height: 100%;
+      object-fit: cover;
       display: block;
+    }
+
+    .hero-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 15, 30, 0.05), rgba(10, 15, 30, 0.82));
+    }
+
+    .hero-slide-copy {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      padding: 2rem;
+    }
+
+    .hero-slide-copy h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .hero-slide-copy p {
+      color: rgba(243, 244, 246, 0.86);
+      margin: 0;
+      max-width: 28rem;
+    }
+
+    .hero-slider-nav {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 2;
+      display: flex;
+      gap: 0.65rem;
+    }
+
+    .hero-slider-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(10, 15, 30, 0.55);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .hero-slider-btn:hover {
+      background: rgba(59, 130, 246, 0.75);
+      transform: translateY(-1px);
+    }
+
+    .hero-slider-dots {
+      position: absolute;
+      left: 2rem;
+      bottom: 1rem;
+      z-index: 2;
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .hero-slider-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .hero-slider-dot.active {
+      background: white;
+      transform: scale(1.15);
     }
 
     .stat-item h3 {
@@ -412,6 +577,51 @@
     .stack-footer {
       text-align: center;
       margin-top: 3rem;
+    }
+
+    .stack-visual-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stack-visual-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--bg-card);
+    }
+
+    .stack-visual-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .stack-visual-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,15,30,0.08), rgba(10,15,30,0.82));
+    }
+
+    .stack-visual-copy {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      padding: 1.5rem;
+    }
+
+    .stack-visual-copy p {
+      color: rgba(243,244,246,0.86);
+      margin-top: 0.45rem;
     }
 
     .stack-footer-card {
@@ -525,6 +735,17 @@
     .why-side p,
     .why-checklist li {
       color: var(--text-secondary);
+    }
+
+    .why-copy-block + .why-copy-block {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .why-copy-block h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.85rem;
     }
 
     .why-points {
@@ -1057,6 +1278,68 @@
         linear-gradient(180deg, rgba(17, 24, 39, 0.78), rgba(10, 15, 30, 0.98));
     }
 
+    .case-studies {
+      padding: 6rem 0;
+      background: var(--bg-secondary);
+    }
+
+    .case-studies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .case-study-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+    }
+
+    .case-study-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .case-study-meta span:first-child {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    .case-study-card p {
+      color: var(--text-secondary);
+      margin: 0.8rem 0 1rem;
+    }
+
+    .case-study-list {
+      list-style: none;
+      color: var(--text-secondary);
+    }
+
+    .case-study-list li {
+      margin-bottom: 0.55rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .case-study-list li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-success);
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+    }
+
     .insights-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1201,9 +1484,12 @@
       }
 
       .hero-content,
+      .trusted-strip-inner,
+      .stack-visual-grid,
       .why-grid,
       .industries-grid,
       .process-grid,
+      .case-studies-grid,
       .insights-grid,
       .faq-grid,
       .calculator-grid,
@@ -1217,6 +1503,22 @@
 
       .sticky-mobile-cta {
         display: flex;
+      }
+
+      .hero-slider {
+        min-height: 380px;
+      }
+
+      .hero-slide-copy {
+        padding: 1.5rem;
+      }
+
+      .hero-slide-copy h3 {
+        font-size: 1.3rem;
+      }
+
+      .hero-slider-dots {
+        left: 1.5rem;
       }
     }
 
@@ -1276,7 +1578,7 @@
   <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a class="logo" href="https://www.jwithkp.com/">
-        <img src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png" alt="JwithKP" decoding="async">
+        <img src="https://www.jwithkp.com/Logo.png" alt="JwithKP" decoding="async">
         <span class="logo-copy">
           <span>JwithKP</span>
           <small class="logo-tagline">Journey with Knowledge & Practice</small>
@@ -1285,13 +1587,13 @@
       
       <ul class="nav-menu" id="navMenu">
         <li><a href="#home">Home</a></li>
-        <li><a href="#tech-stack">Technology</a></li>
+        <li><a href="technology-stack.html">Technology</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="roi-calculator.html">ROI Calculator</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       
       <div class="nav-right">
@@ -1307,6 +1609,7 @@
 
   <!-- Hero Section -->
   <main id="home" class="hero" role="main">
+    <canvas id="matrix-canvas" class="matrix-canvas" aria-hidden="true"></canvas>
     <div class="container">
       <div class="hero-content">
         <div data-aos="fade-right">
@@ -1315,7 +1618,7 @@
           <p>We help Indian businesses modernize infrastructure, security, collaboration, and business applications with a practical mix of open-source platforms and proven commercial tools. The result is lower recurring licensing cost, stronger control over your environment, and an implementation roadmap your team can actually operate with confidence.</p>
           <div class="hero-buttons">
             <a href="roi-calculator.html" class="btn btn-primary">Calculate Your Savings (INR)</a>
-            <a href="#contact" class="btn btn-secondary">Free Consultation</a>
+            <a href="contact.html" class="btn btn-secondary">Free Consultation</a>
           </div>
           <p class="hero-support">From Proxmox clusters and Nextcloud collaboration to Wazuh SIEM, pfSense firewalls, Zimbra mail, Odoo ERP, and managed rollouts across branches, we design solutions that fit real Indian business budgets and growth plans.</p>
           <div class="hero-stats">
@@ -1334,336 +1637,138 @@
           </div>
         </div>
         <div data-aos="fade-left">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="IT Infrastructure" class="hero-image" fetchpriority="high" decoding="async">
+          <div class="hero-slider" id="heroSlider" role="region" aria-roledescription="carousel" aria-label="Featured technology visuals">
+            <div class="hero-slider-nav">
+              <button class="hero-slider-btn" id="heroPrev" type="button" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="hero-slider-btn" id="heroNext" type="button" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+
+            <article class="hero-slide active" id="hero-slide-1" role="tabpanel" aria-roledescription="slide" aria-label="1 of 3" aria-labelledby="hero-dot-1">
+              <img src="images/hero-slide-1.jpg" alt="Modern data center infrastructure" fetchpriority="high" decoding="async">
+              <div class="hero-slide-copy">
+                <h3>Infrastructure That Scales Cleanly</h3>
+                <p>Modernize servers, virtualization, backup, and monitoring with a stack that feels production-ready from day one.</p>
+              </div>
+            </article>
+
+            <article class="hero-slide" id="hero-slide-2" role="tabpanel" aria-roledescription="slide" aria-label="2 of 3" aria-labelledby="hero-dot-2" aria-hidden="true">
+              <img src="images/hero-slide-2.jpg" alt="Technology team reviewing analytics dashboards" loading="lazy" decoding="async">
+              <div class="hero-slide-copy">
+                <h3>Visibility Before Complexity</h3>
+                <p>Build stronger operations with dashboards, alerts, reporting, and security visibility your team can actually use.</p>
+              </div>
+            </article>
+
+            <article class="hero-slide" id="hero-slide-3" role="tabpanel" aria-roledescription="slide" aria-label="3 of 3" aria-labelledby="hero-dot-3" aria-hidden="true">
+              <img src="images/hero-slide-3.jpg" alt="Cloud collaboration and connected business systems" loading="lazy" decoding="async">
+              <div class="hero-slide-copy">
+                <h3>Secure Collaboration and Control</h3>
+                <p>Connect collaboration, security, and business systems without being locked into oversized recurring spend.</p>
+              </div>
+            </article>
+
+            <div class="hero-slider-dots" id="heroDots" role="tablist" aria-label="Slide navigation">
+              <button class="hero-slider-dot active" type="button" role="tab" aria-label="Go to slide 1" aria-selected="true" aria-controls="hero-slide-1" id="hero-dot-1"></button>
+              <button class="hero-slider-dot" type="button" role="tab" aria-label="Go to slide 2" aria-selected="false" aria-controls="hero-slide-2" id="hero-dot-2" tabindex="-1"></button>
+              <button class="hero-slider-dot" type="button" role="tab" aria-label="Go to slide 3" aria-selected="false" aria-controls="hero-slide-3" id="hero-dot-3" tabindex="-1"></button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Technology Stack Section (EXPANDED) -->
+  <section class="trusted-strip" aria-label="Trusted platforms">
+    <div class="container">
+      <div class="trusted-strip-inner" data-aos="fade-up">
+        <div class="trusted-strip-copy">
+          <h3>Platforms We Work With</h3>
+          <p>Trusted across infrastructure, security, collaboration, and modernization projects.</p>
+        </div>
+        <div class="trusted-platforms">
+          <span>Proxmox</span>
+          <span>Nextcloud</span>
+          <span>Wazuh</span>
+          <span>pfSense</span>
+          <span>Microsoft 365</span>
+          <span>Fortinet</span>
+          <span>Zabbix</span>
+          <span>Odoo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Stack Preview -->
   <section id="tech-stack" class="tech-stack">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="section-badge">Our Technology Stack</span>
-        <h2 class="section-title">Best Tools, <span class="gradient-text">Zero Waste</span></h2>
-        <p class="section-subtitle">We strategically combine powerful open-source solutions with enterprise-grade commercial platforms. Save INR 5L to INR 50L annually with a better-fit stack.</p>
+        <h2 class="section-title">Best-Fit Platforms for <span class="gradient-text">Real Business IT</span></h2>
+        <p class="section-subtitle">We use a balanced mix of open-source and enterprise technologies to improve security, performance, and cost control. Explore the full stack on a dedicated page.</p>
       </div>
 
-      <!-- Open Source Stack (EXPANDED) -->
-      <div class="stack-category" data-aos="fade-up">
-        <h3 class="category-title">
-          <i class="fas fa-code-branch"></i>
-          Open-Source Core (Zero Licensing Fees) <span class="currency-inr">Save INR 10L+</span>
-        </h3>
-        <div class="tech-grid">
-          <!-- Virtualization & Infrastructure -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://24x7servermanagement.com/wp-content/uploads/2025/07/proxmox-server-solutions-gmbh-logo-vector.png" alt="Proxmox">
-            </div>
-            <h4>Proxmox VE</h4>
-            <p>Enterprise Virtualization (VMware Alternative)</p>
-            <span class="savings-badge">Save 70% vs VMware</span>
-            <div class="tech-badge">INR 5L-15L savings</div>
+      <div class="tech-grid" data-aos="fade-up">
+        <article class="tech-card">
+          <div class="tech-logo">
+            <img loading="lazy" decoding="async" src="https://24x7servermanagement.com/wp-content/uploads/2025/07/proxmox-server-solutions-gmbh-logo-vector.png" alt="Proxmox">
           </div>
+          <h4>Open-Source Infrastructure</h4>
+          <p>Platforms like Proxmox, Nextcloud, Wazuh, pfSense, and Zabbix help reduce recurring cost while keeping control in your hands.</p>
+          <span class="savings-badge">Lower licensing overhead</span>
+          <div class="tech-badge">Virtualization, Security, Monitoring</div>
+        </article>
 
-          <!-- Cloud & File Sharing -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://images.nu.nl/m/371x00napofi_wd1280/0/0/2559/1439/nextcloud.jpg" alt="Nextcloud">
-            </div>
-            <h4>Nextcloud</h4>
-            <p>Enterprise File Sync & Share (Dropbox/SharePoint Alternative)</p>
-            <span class="savings-badge">Save 100% licensing</span>
-            <div class="tech-badge">Self-hosted + Mobile Access</div>
+        <article class="tech-card">
+          <div class="tech-logo">
+            <img loading="lazy" decoding="async" src="https://images.contentstack.io/v3/assets/blt38f1f401b66100ad/blt358c7070aab66bc8/690ffbd466ece061e503d29f/blog_rebranding.png" alt="Enterprise technologies">
           </div>
+          <h4>Enterprise Platforms</h4>
+          <p>Where commercial tooling fits better, we work with products like Fortinet, Sophos, Cisco, Microsoft 365, and IBM security solutions.</p>
+          <div class="tech-badge">Security, Networking, Collaboration</div>
+        </article>
 
-          <!-- Security -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://wazuh.com/uploads/2016/04/wazuh-standard-featured-picture.png" alt="Wazuh">
-            </div>
-            <h4>Wazuh</h4>
-            <p>Security Platform (SIEM) - Splunk Alternative</p>
-            <span class="savings-badge">Free SIEM Alternative</span>
-            <div class="tech-badge">Save INR 8L-20L</div>
+        <article class="tech-card">
+          <div class="tech-logo">
+            <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/64f88987fdbd5383e9d91908/6509d22ceb1730524a817075_grafana-logo.png" alt="Analytics and applications">
           </div>
-
-          <!-- Firewall -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2021/01/pfsense-logo.jpg" alt="pfSense">
-            </div>
-            <h4>pfSense</h4>
-            <p>Enterprise Firewall - Fortinet Alternative</p>
-            <span class="savings-badge">No License Fees</span>
-            <div class="tech-badge">Save INR 2L-5L</div>
-          </div>
-
-          <!-- Monitoring -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Zabbix_logo.svg" alt="Zabbix">
-            </div>
-            <h4>Zabbix</h4>
-            <p>Infrastructure Monitoring - SolarWinds/Dynatrace Alternative</p>
-            <span class="savings-badge">Save 80%</span>
-            <div class="tech-badge">INR 3L-8L savings</div>
-          </div>
-
-          <!-- Collaboration -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://5.imimg.com/data5/SELLER/Default/2023/4/302914859/NY/DJ/SW/93347989/zimbra-mail-services-pan-india.webp" alt="Zimbra">
-            </div>
-            <h4>Zimbra</h4>
-            <p>Email & Collaboration (Exchange Alternative)</p>
-            <span class="savings-badge">Save 60% vs Exchange</span>
-            <div class="tech-badge">Webmail + Mobile Sync</div>
-          </div>
-
-          <!-- ITSM -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://pbs.twimg.com/profile_images/1057633264469336064/HtP-hea6_400x400.jpg" alt="GLPI">
-            </div>
-            <h4>GLPI / OTRS</h4>
-            <p>ITSM & Helpdesk (ServiceNow Alternative)</p>
-            <span class="savings-badge">Free ITSM Solution</span>
-            <div class="tech-badge">Asset Management</div>
-          </div>
-
-          <!-- Database -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://www.fosslinux.com/wp-content/uploads/2021/06/PostgreSQL-vs-MySQL.png" alt="MySQL">
-            </div>
-            <h4>MySQL/PostgreSQL</h4>
-            <p>Enterprise Databases (Oracle Alternative)</p>
-            <span class="savings-badge">Save 100% licensing</span>
-            <div class="tech-badge">High Performance</div>
-          </div>
-
-          <!-- Container -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/1280px-Docker_%28container_engine%29_logo.svg.png" alt="Docker">
-            </div>
-            <h4>Docker/Kubernetes</h4>
-            <p>Container Platform (OpenShift Alternative)</p>
-            <span class="savings-badge">Free Container Runtime</span>
-            <div class="tech-badge">Microservices Ready</div>
-          </div>
-
-          <!-- Backup -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmyO_nu-Mk518YaqRFI6OCrvpJP1_Pj6Ziag&s" alt="Veeam">
-            </div>
-            <h4>Veeam & Bacula</h4>
-            <p>Backup Solutions (CommVault Alternative)</p>
-            <span class="savings-badge">Community Edition Available</span>
-            <div class="tech-badge">3-2-1 Backup Rule</div>
-          </div>
-
-          <!-- CRM -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXW7SX3YWhGtoRHRhDYvLTDm-edPMyI-zoZw&s" alt="Odoo">
-            </div>
-            <h4>Odoo / SuiteCRM</h4>
-            <p>CRM & ERP (Salesforce/SAP Alternative)</p>
-            <span class="savings-badge">Save 90% on licensing</span>
-            <div class="tech-badge">All-in-One Business Suite</div>
-          </div>
-
-          <!-- Analytics -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://cdn.prod.website-files.com/64f88987fdbd5383e9d91908/6509d22ceb1730524a817075_grafana-logo.png" alt="Grafana">
-            </div>
-            <h4>Grafana + Prometheus</h4>
-            <p>Analytics & Visualization (Tableau Alternative)</p>
-            <span class="savings-badge">Open Source Analytics</span>
-            <div class="tech-badge">Beautiful Dashboards</div>
-          </div>
-          <!-- Additional Open Source Tools -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/6471485?s=200&v=4" alt="ONLYOFFICE">
-            </div>
-            <h4>ONLYOFFICE</h4>
-            <p>Collaborative Office Suite (Google Docs/Office 365 Alternative)</p>
-            <span class="savings-badge">No Per-User Fees</span>
-            <div class="tech-badge">Docs, Sheets, Presentations</div>
-          </div>
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/45120?s=200&v=4" alt="Jitsi Meet">
-            </div>
-            <h4>Jitsi Meet</h4>
-            <p>Secure Video Conferencing (Zoom/Teams Alternative)</p>
-            <span class="savings-badge">Unlimited Meetings</span>
-            <div class="tech-badge">Self-hosted Video Calls</div>
-          </div>
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/18133?s=200&v=4" alt="Mattermost">
-            </div>
-            <h4>Mattermost</h4>
-            <p>Team Chat & Collaboration (Slack Alternative)</p>
-            <span class="savings-badge">No Subscription</span>
-            <div class="tech-badge">Channels & Integrations</div>
-          </div>
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/69631?s=200&v=4" alt="Rocket.Chat">
-            </div>
-            <h4>Rocket.Chat</h4>
-            <p>Open Source Messaging (MS Teams/Slack Alternative)</p>
-            <span class="savings-badge">Full Data Control</span>
-            <div class="tech-badge">Chat, Video, File Sharing</div>
-          </div>
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/1507452?s=200&v=4" alt="ERPNext">
-            </div>
-            <h4>ERPNext</h4>
-            <p>Full-featured ERP (SAP/Oracle Alternative)</p>
-            <span class="savings-badge">Zero Licensing</span>
-            <div class="tech-badge">Manufacturing, HR, CRM</div>
-          </div>
-        </div>
+          <h4>Business and Application Stack</h4>
+          <p>We also support backup, analytics, CRM, ERP, helpdesk, content, and e-commerce tools that keep operations moving.</p>
+          <div class="tech-badge">ERP, Backup, CMS, Analytics</div>
+        </article>
       </div>
 
-      <!-- Commercial & Enterprise Solutions (EXPANDED) -->
-      <div class="stack-category" data-aos="fade-up" data-aos-delay="200">
-        <h3 class="category-title">
-          <i class="fas fa-briefcase"></i>
-          Commercial & Enterprise Solutions
-        </h3>
-        <div class="tech-grid">
-          <!-- Firewalls -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfjX3G9jEw3mZl597DgvNLqt01oCMz3ujOXw&s" alt="Fortinet">
-            </div>
-            <h4>Fortinet</h4>
-            <p>Next-Gen Firewalls & SD-WAN</p>
-            <div class="tech-badge">Enterprise Grade</div>
+      <div class="stack-visual-grid" data-aos="fade-up">
+        <article class="stack-visual-card">
+          <img loading="lazy" decoding="async" src="images/tech-visual-1.jpg" alt="Data center infrastructure and servers">
+          <div class="stack-visual-copy">
+            <h3>Infrastructure That Feels Production-Ready</h3>
+            <p>Better-fit technology choices make virtualization, backup, monitoring, and security easier to run in the real world.</p>
           </div>
+        </article>
 
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://images.contentstack.io/v3/assets/blt38f1f401b66100ad/blt358c7070aab66bc8/690ffbd466ece061e503d29f/blog_rebranding.png" alt="Sophos">
-            </div>
-            <h4>Sophos</h4>
-            <p>Endpoint Security & Firewalls</p>
-            <div class="tech-badge">Intercept X Advanced</div>
+        <article class="stack-visual-card">
+          <img loading="lazy" decoding="async" src="images/tech-visual-2.jpg" alt="Team reviewing dashboards and technology insights">
+          <div class="stack-visual-copy">
+            <h3>Visibility Before Complexity</h3>
+            <p>We focus on stacks that improve control, collaboration, and decision-making instead of adding unnecessary operational weight.</p>
           </div>
-
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://media.designrush.com/inspiration_images/134803/conversions/_1511457462_313_cisco-preview.jpg" alt="Cisco">
-            </div>
-            <h4>Cisco</h4>
-            <p>Networking & Security</p>
-            <div class="tech-badge">Meraki, Umbrella</div>
-          </div>
-
-          <!-- Endpoint Security -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKdGVp-CXt33LcCO1W4Fed8s9RyGJZKBWxYA&s" alt="Safetica">
-            </div>
-            <h4>Safetica</h4>
-            <p>Data Loss Prevention (DLP)</p>
-            <div class="tech-badge">GDPR Compliance</div>
-          </div>
-
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://www.b4b.co.uk/wp-content/uploads/es-et-logo.webp" alt="ESET">
-            </div>
-            <h4>ESET</h4>
-            <p>Endpoint Protection</p>
-            <div class="tech-badge">Lightweight & Effective</div>
-          </div>
-
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://ismg-cdn.nyc3.cdn.digitaloceanspaces.com/blogs/private-equity-now-kicking-tires-on-trend-micro-showcase_image-7-p-3814.jpg" alt="Trend Micro">
-            </div>
-            <h4>Trend Micro</h4>
-            <p>Cloud & Endpoint Security</p>
-            <div class="tech-badge">Deep Security</div>
-          </div>
-
-          <!-- Cloud Security -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://globalcybersecuritynetwork.com/wp-content/uploads/2024/12/Zsacler-company-logo.jpg" alt="Zscaler">
-            </div>
-            <h4>Zscaler</h4>
-            <p>Cloud Security (SSE/SASE)</p>
-            <div class="tech-badge">Zero Trust</div>
-          </div>
-
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://www.paloaltonetworks.com/etc/clientlibs/pan-templates/seoimages/social-panw.png" alt="Palo Alto">
-            </div>
-            <h4>Palo Alto</h4>
-            <p>Next-Gen Firewalls & Prisma</p>
-            <div class="tech-badge">Industry Leader</div>
-          </div>
-
-          <!-- Microsoft & Cloud -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://www.lifewire.com/thmb/r8g0i7BWh6hhbAqJ7n30bcMdpT0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/001-a-complete-guide-to-microsoft-office-fe6077e048334d9aa96cdf604995c9d8.jpg" alt="Microsoft">
-            </div>
-            <h4>Microsoft 365</h4>
-            <p>Productivity Suite & Azure</p>
-            <div class="tech-badge">Certified Partner</div>
-          </div>
-
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1280px-IBM_logo.svg.png" alt="IBM">
-            </div>
-            <h4>IBM</h4>
-            <p>QRadar, Guardium, Security</p>
-            <div class="tech-badge">Enterprise Security</div>
-          </div>
-
-          <!-- CMS -->
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://s.w.org/style/images/about/WordPress-logotype-standard.png" alt="WordPress">
-            </div>
-            <h4>CMS Solutions</h4>
-            <p>WordPress, Shopify, Webflow</p>
-            <div class="tech-badge">Custom Development</div>
-          </div>
-
-          <div class="tech-card">
-            <div class="tech-logo">
-              <img loading="lazy" decoding="async" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Shopify_logo.svg/1280px-Shopify_logo.svg.png" alt="Shopify">
-            </div>
-            <h4>E-commerce</h4>
-            <p>Shopify, Magento, WooCommerce</p>
-            <div class="tech-badge">Payment Integration</div>
-          </div>
-        </div>
+        </article>
       </div>
 
-      <!-- Integration Statement -->
       <div class="stack-footer" data-aos="fade-up">
         <div class="stack-footer-card">
-          <i class="fas fa-link stack-footer-icon"></i>
-          <h3 class="stack-footer-title">Hybrid Architecture Experts</h3>
-          <p class="stack-footer-copy">We seamlessly integrate open-source power with commercial reliability. You get the best of both worlds: enterprise-grade capability, predictable support, and budgets aligned to Indian business realities.</p>
+          <i class="fas fa-layer-group stack-footer-icon"></i>
+          <h3 class="stack-footer-title">Explore the Full Technology Stack</h3>
+          <p class="stack-footer-copy">See the complete set of platforms we use across infrastructure, security, collaboration, monitoring, backup, analytics, and business systems.</p>
+          <div class="why-cta" style="justify-content:center; margin-top:1.5rem;">
+            <a href="technology-stack.html" class="btn btn-primary">View Technology Page</a>
+            <a href="services.html" class="btn btn-secondary">See Related Services</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1728,55 +1833,66 @@
   <section class="why-jwithkp" id="why-jwithkp">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-badge">Why JwithKP</span>
-        <h2 class="section-title">A Partner Focused on <span class="gradient-text">Practical Outcomes</span></h2>
-        <p class="section-subtitle">Tools matter, but execution matters more. We help businesses choose the right platforms, avoid unnecessary licensing spend, and roll out solutions in a way that teams can realistically support after go-live.</p>
+        <span class="section-badge">About JwithKP</span>
+        <h2 class="section-title">Technology Guidance Built for <span class="gradient-text">Real-World Execution</span></h2>
+        <p class="section-subtitle">JwithKP is an IT-focused platform built to simplify technology for businesses. We work on real infrastructure, not just theory, helping organizations manage, secure, and scale their environments with confidence.</p>
       </div>
 
       <div class="why-grid">
         <div class="why-main" data-aos="fade-right">
-          <p>JwithKP is built around a simple principle: technology decisions should improve business operations, reduce avoidable cost, and stay manageable for the team that inherits them. That means we do not push one stack for every company. We compare options, explain tradeoffs clearly, and recommend what fits your size, budget, security expectations, and internal capability.</p>
+          <div class="why-copy-block">
+            <h3>Who We Are</h3>
+            <p>JwithKP is an IT-focused platform built to simplify technology for businesses. We work on real-world infrastructure, not just theory, helping organizations manage, secure, and scale their IT environments with confidence.</p>
+            <p>With hands-on experience across enterprise networks, cloud platforms, and cybersecurity tools, the focus is always on delivering solutions that actually work in production.</p>
+          </div>
+
+          <div class="why-copy-block">
+            <h3>How We Work</h3>
+            <p>We follow a practical, no-nonsense approach. First we understand your current setup and challenges, then identify risks, gaps, and improvement areas. From there, we design simple, scalable solutions, implement with minimal disruption, and continuously monitor and optimize.</p>
+            <p>No overcomplication. No unnecessary tools. Just solutions that fit your environment.</p>
+          </div>
 
           <div class="why-points">
             <div class="why-point">
-              <i class="fas fa-layer-group"></i>
-              <h3>Architecture Before Tools</h3>
-              <p>We start with business needs, dependencies, uptime expectations, and future scale before recommending products.</p>
+              <i class="fas fa-magnifying-glass-chart"></i>
+              <h3>Understand the Environment</h3>
+              <p>We start by learning your current setup, pain points, business priorities, and operational constraints.</p>
             </div>
             <div class="why-point">
-              <i class="fas fa-scale-balanced"></i>
-              <h3>Balanced Open-Source Strategy</h3>
-              <p>We know where open-source creates major savings and where commercial tooling may still be the better operational choice.</p>
+              <i class="fas fa-triangle-exclamation"></i>
+              <h3>Identify Risks and Gaps</h3>
+              <p>We highlight exposure, inefficiencies, and areas where reliability, security, or scalability can be improved.</p>
             </div>
             <div class="why-point">
-              <i class="fas fa-route"></i>
-              <h3>Migration Clarity</h3>
-              <p>We break projects into phases so leadership understands scope, downtime risk, budget range, and rollout sequence.</p>
+              <i class="fas fa-sitemap"></i>
+              <h3>Design for Simplicity</h3>
+              <p>We recommend solutions that are scalable, maintainable, and realistic for your team to support after go-live.</p>
             </div>
             <div class="why-point">
-              <i class="fas fa-user-shield"></i>
-              <h3>Handover and Support</h3>
-              <p>We do not stop at deployment. We help teams adopt, document, monitor, and run the solution confidently.</p>
+              <i class="fas fa-chart-line"></i>
+              <h3>Optimize Over Time</h3>
+              <p>We stay focused on performance, adoption, and steady improvement rather than one-time deployment only.</p>
             </div>
           </div>
         </div>
 
         <aside class="why-side" data-aos="fade-left">
-          <h3>What clients typically value most</h3>
-          <p>Our work is designed for decision-makers who want both strategic guidance and hands-on implementation support without being locked into oversized enterprise spend.</p>
+          <h3>What Clients Can Expect</h3>
+          <p>When working with JwithKP, clients can expect clear communication, practical decision-making, and solutions designed around real business impact.</p>
 
           <ul class="why-checklist">
-            <li><i class="fas fa-check-circle"></i><span>Clear comparisons between open-source and commercial options, with business tradeoffs explained in plain language.</span></li>
-            <li><i class="fas fa-check-circle"></i><span>Implementation plans that consider downtime, user impact, training needs, and long-term maintainability.</span></li>
-            <li><i class="fas fa-check-circle"></i><span>Cost optimization that does not compromise security, resilience, or operational visibility.</span></li>
-            <li><i class="fas fa-check-circle"></i><span>A practical delivery style suited to Indian SMB and mid-market environments where every investment must justify itself.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Clear communication and transparency at every stage of planning and delivery.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Reliable, secure implementations that are designed to work well in production.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Performance-focused infrastructure that supports business continuity and growth.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Cost-effective recommendations, including open-source options where they genuinely fit.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Support that understands operational reality and the business impact of IT decisions.</span></li>
           </ul>
 
-          <p>If you are evaluating a migration, replacing expensive licenses, setting up a new office environment, or planning a broader modernization effort, we can help turn the idea into an implementation-ready roadmap.</p>
+          <p>The goal is not just to deploy systems, but to make them stable, dependable, and easier for your team to manage over time.</p>
 
           <div class="why-cta">
-            <a href="#contact" class="btn btn-primary">Talk About Your Project</a>
-            <a href="roi-calculator.html" class="btn btn-secondary">Estimate Savings</a>
+            <a href="contact.html" class="btn btn-primary">Talk About Your Environment</a>
+            <a href="services.html" class="btn btn-secondary">Explore Services</a>
           </div>
         </aside>
       </div>
@@ -1927,6 +2043,60 @@
     </div>
   </section>
 
+  <section class="case-studies" id="case-studies">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-badge">Recent Engagements</span>
+        <h2 class="section-title">What This Looks Like In <span class="gradient-text">Real Environments</span></h2>
+        <p class="section-subtitle">These are representative examples of the kinds of outcomes businesses usually want when they contact us: lower recurring cost, stronger visibility, safer migrations, and infrastructure that is easier to operate.</p>
+      </div>
+
+      <div class="case-studies-grid">
+        <article class="case-study-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="case-study-meta">
+            <span>Virtualization</span>
+            <span>Manufacturing SMB</span>
+          </div>
+          <h3>VMware Cost Pressure to Proxmox Stability</h3>
+          <p>A growing operations team needed to reduce virtualization spend without losing backup discipline, resilience, and day-to-day control.</p>
+          <ul class="case-study-list">
+            <li>Phased migration roadmap with rollback planning</li>
+            <li>Backup and HA design aligned to uptime expectations</li>
+            <li>Lower recurring licensing pressure after rollout</li>
+          </ul>
+        </article>
+
+        <article class="case-study-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="case-study-meta">
+            <span>Security Visibility</span>
+            <span>Multi-branch Business</span>
+          </div>
+          <h3>Wazuh Rollout for Better Monitoring and Response</h3>
+          <p>The client wanted stronger visibility across endpoints and infrastructure without stepping into oversized SIEM licensing costs.</p>
+          <ul class="case-study-list">
+            <li>Agent rollout and dashboard setup across environments</li>
+            <li>Alert prioritization and reporting structure</li>
+            <li>More actionable visibility for a lean IT team</li>
+          </ul>
+        </article>
+
+        <article class="case-study-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="case-study-meta">
+            <span>Collaboration</span>
+            <span>Professional Services</span>
+          </div>
+          <h3>Cloud Collaboration With Better Control</h3>
+          <p>A distributed team needed a practical collaboration model covering email, files, identity, and user onboarding across locations.</p>
+          <ul class="case-study-list">
+            <li>Platform comparison between open-source and Microsoft options</li>
+            <li>Access, adoption, and support-model planning</li>
+            <li>Clearer long-term fit between user needs and budget</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="insights" id="featured-blog">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
@@ -1985,160 +2155,34 @@
     </div>
   </section>
 
-  <!-- Enhanced Contact Section -->
-  <section id="contact" class="contact-enhanced">
+  <section class="services" id="contact-cta">
     <div class="container">
-      <div class="contact-grid">
-        <!-- Left Column -->
-        <div data-aos="fade-right">
-          <span class="section-badge">Start Your Journey</span>
-          <h2 class="section-title">Ready to Optimize <span class="gradient-text">Your IT?</span></h2>
-          <p class="info-text">Tell us about your current environment, pain points, and business goals, and we will recommend a practical roadmap covering architecture, migration effort, budget range, deployment phases, and ongoing support options. Whether you are replacing expensive licenses, opening a new branch, improving security posture, or standardizing operations, we can shape the plan around your team and timeline.</p>
-
-          <!-- Quick Interest Tags -->
-          <div class="interest-tags">
-            <span class="tag" onclick="setInterest('virtualization')">Proxmox/VMware</span>
-            <span class="tag" onclick="setInterest('open-source')">Nextcloud Setup</span>
-            <span class="tag" onclick="setInterest('security')">Wazuh/SIEM</span>
-            <span class="tag" onclick="setInterest('office365')">Zimbra/Office 365</span>
-            <span class="tag" onclick="setInterest('network')">pfSense/Fortinet</span>
-            <span class="tag" onclick="setInterest('monitoring')">Zabbix Monitoring</span>
-            <span class="tag" onclick="setInterest('ecom')">CMS/E-commerce</span>
-            <span class="tag" onclick="setInterest('endpoint')">ESET/Safetica</span>
-            <span class="tag" onclick="setInterest('erp')">Odoo ERP</span>
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-badge">Contact</span>
+        <h2 class="section-title">Take The Next Step On A <span class="gradient-text">Dedicated Contact Page</span></h2>
+        <p class="section-subtitle">The homepage stays cleaner now, while the full inquiry form lives on a separate page designed for easier sharing, faster completion, and a more focused consultation flow.</p>
+      </div>
+      <div class="calculator-grid" data-aos="fade-up">
+        <div class="calculator-card">
+          <h3>What happens when you reach out</h3>
+          <p class="calculator-note">Share your environment, goals, and challenges on the contact page. We will help turn that into a practical recommendation, budget direction, and rollout path.</p>
+          <div class="results-cta" style="text-align:left; margin-top:1.5rem;">
+            <a href="contact.html" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Open Contact Page</a>
           </div>
-
-          <!-- Quick Stats -->
-          <div class="quick-stats">
-            <div>
-              <div class="quick-stat-value">24h</div>
-              <div>Response Time</div>
-            </div>
-            <div>
-              <div class="quick-stat-value">100%</div>
-              <div>Free Consultation</div>
-            </div>
-            <div>
-              <div class="quick-stat-value">50+</div>
-              <div>Projects</div>
-            </div>
-          </div>
-          <p class="support-copy">Typical engagement outputs include discovery notes, solution comparison, phased rollout plan, estimated savings, licensing strategy, implementation milestones, and handover guidance for your internal team.</p>
         </div>
-
-        <!-- Right Column: Smart Form -->
-        <div class="contact-form-card" data-aos="fade-left">
-          <h3 class="contact-form-title">Tell Us About Your Project</h3>
-          <p class="contact-form-intro">Share a few details and we will help you move from idea to implementation plan faster. The more context you provide, the more useful our first response will be.</p>
-          <div class="contact-cta-strip">Get a practical recommendation, estimated budget range, and rollout direction in the first response within 24 hours.</div>
-          <form id="smartContactForm" onsubmit="handleSubmit(event)" role="form" aria-label="Contact form">
-            <!-- Name -->
-            <div class="form-row">
-              <div class="form-group">
-                <label for="full-name">Full Name *</label>
-                <input type="text" id="full-name" name="full-name" required placeholder="Rahul Sharma">
-              </div>
-              <div class="form-group">
-                <label for="company-name">Company</label>
-                <input type="text" id="company-name" name="company-name" placeholder="Your Business Pvt Ltd">
-              </div>
-            </div>
-
-            <!-- Contact -->
-            <div class="form-row">
-              <div class="form-group">
-                <label for="contact-email">Email *</label>
-                <input type="email" id="contact-email" name="contact-email" required placeholder="rahul@company.com">
-              </div>
-              <div class="form-group">
-                <label for="contact-phone">Phone *</label>
-                <input type="tel" id="contact-phone" name="contact-phone" required placeholder="+91 98765 43210">
-              </div>
-            </div>
-
-            <!-- Location -->
-            <div class="form-row">
-              <div class="form-group">
-                <label for="city">City</label>
-                <input type="text" id="city" name="city" placeholder="Mumbai / Bangalore / Delhi">
-              </div>
-              <div class="form-group">
-                <label for="company-size-select">Company Size</label>
-                <select id="company-size-select" name="company-size-select">
-                  <option value="">Select size</option>
-                  <option value="1-10">1-10 employees</option>
-                  <option value="11-50">11-50 employees</option>
-                  <option value="51-200">51-200 employees</option>
-                  <option value="201-500">201-500 employees</option>
-                  <option value="500+">500+ employees</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- SMART DROPDOWN -->
-            <div class="form-group">
-              <label for="interest">I'm interested in *</label>
-              <select id="interest" name="interest" required onchange="updateSubOptions()">
-                <option value="" disabled selected>-- Select your primary need --</option>
-                <option value="virtualization">Virtualization (Proxmox/VMware)</option>
-                <option value="open-source">Open-Source Implementation (Nextcloud/Zimbra)</option>
-                <option value="security">Security (Wazuh/pfSense/Fortinet)</option>
-                <option value="monitoring">Monitoring (Zabbix/Prometheus)</option>
-                <option value="office365">Email/Collaboration (Zimbra/Office 365)</option>
-                <option value="network">Network Design (pfSense/Cisco/Fortinet)</option>
-                <option value="endpoint">Endpoint Security (ESET/Safetica/Sophos)</option>
-                <option value="ecom">CMS/E-commerce Website</option>
-                <option value="erp">ERP/CRM (Odoo/SuiteCRM)</option>
-                <option value="backup">Backup Solutions (Veeam/Bacula)</option>
-                <option value="hybrid">Complete IT Cost Optimization</option>
-              </select>
-            </div>
-
-            <!-- Dynamic Sub-options -->
-            <div class="form-group" id="sub-options-container" style="display: none;">
-              <label for="sub-interest">Tell us more specifically:</label>
-              <select id="sub-interest" name="sub-interest">
-                <!-- Populated by JavaScript -->
-              </select>
-            </div>
-
-            <!-- Budget in INR -->
-            <div class="form-group" id="budget-container" style="display: none;">
-              <label for="budget">Approximate Budget (INR)</label>
-              <select id="budget" name="budget">
-                <option value="<1lakh">Under INR 1 Lakh</option>
-                <option value="1-5lakh">INR 1 - INR 5 Lakhs</option>
-                <option value="5-15lakh">INR 5 - INR 15 Lakhs</option>
-                <option value="15-50lakh">INR 15 - INR 50 Lakhs</option>
-                <option value="50lakh+">INR 50 Lakhs+</option>
-                <option value="unknown">Need guidance</option>
-              </select>
-            </div>
-
-            <!-- Timeline -->
-            <div class="form-group">
-              <label for="timeline">Timeline</label>
-              <select id="timeline" name="timeline">
-                <option value="asap">ASAP (within a week)</option>
-                <option value="month">Within a month</option>
-                <option value="quarter">Next quarter</option>
-                <option value="exploring">Just exploring</option>
-              </select>
-            </div>
-
-            <!-- Message -->
-            <div class="form-group">
-              <label for="message">Tell us about your current setup</label>
-              <textarea id="message" name="message" rows="4" placeholder="What are you currently using? What challenges are you facing?"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary submit-btn">
-              <i class="fas fa-paper-plane"></i> Send Request
-            </button>
-            <p class="form-footer">
-              <i class="fas fa-lock"></i> Free consultation | No obligation | First response within 24 hours
-            </p>
-          </form>
+        <div class="results-card">
+          <h3>Why use the dedicated page</h3>
+          <div class="breakdown-details">
+            <ul style="list-style:none;">
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> A more focused project inquiry experience</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Better structure for budget, timeline, and scope details</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Easier to share directly with your team</li>
+              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> First response within 24 hours</li>
+            </ul>
+          </div>
+          <div class="results-cta" style="text-align:center; margin-top:2rem;">
+            <a href="contact.html" class="btn btn-secondary">Go To Contact Page</a>
+          </div>
         </div>
       </div>
     </div>
@@ -2146,7 +2190,7 @@
 
   <div class="sticky-mobile-cta">
     <a href="tel:+917982912207" class="btn btn-secondary">Call Now</a>
-    <a href="#contact" class="btn btn-primary">Get Consultation</a>
+    <a href="contact.html" class="btn btn-primary">Get Consultation</a>
   </div>
 
   <!-- Footer -->
@@ -2155,7 +2199,7 @@
       <div class="footer-grid">
         <div class="footer-about">
           <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/">
-            <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/kp9696/jwithkp-website/main/Logo.png" alt="JwithKP" height="40">
+            <img loading="lazy" decoding="async" src="https://www.jwithkp.com/Logo.png" alt="JwithKP" height="40">
             <span class="logo-copy">
               <span>JwithKP</span>
               <small class="logo-tagline">Journey with Knowledge & Practice</small>
@@ -2169,13 +2213,13 @@
           <h4>Quick Links</h4>
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#tech-stack">Technology Stack</a></li>
+            <li><a href="technology-stack.html">Technology Stack</a></li>
             <li><a href="#process">Process</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="roi-calculator.html">ROI Calculator (INR)</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="privacy-policy.html">Privacy Policy</a></li>
             <li><a href="terms.html">Terms & Conditions</a></li>
           </ul>
@@ -2224,7 +2268,8 @@
     const savedTheme = localStorage.getItem('theme') || 'dark';
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
-    const contactForm = document.getElementById('smartContactForm');
+    const heroSlider = document.getElementById('heroSlider');
+    const matrixCanvas = document.getElementById('matrix-canvas');
     const RUPEE = '\u20B9';
 
     function applyTheme(theme) {
@@ -2264,101 +2309,160 @@
       }
     });
 
-    function setInterest(interest) {
-      const select = document.getElementById('interest');
-      select.value = interest;
-      updateSubOptions();
-      document.querySelector('.contact-form-card').scrollIntoView({ behavior: 'smooth' });
-    }
+    if (matrixCanvas) {
+      const matrixContext = matrixCanvas.getContext('2d');
+      const matrixChars = '01<>/+=-:*';
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let matrixColumns = [];
+      let matrixFontSize = 14;
+      let matrixAnimationFrame;
+      let matrixLastFrame = 0;
+      const targetFps = 22;
 
-    function updateSubOptions() {
-      const interest = document.getElementById('interest').value;
-      const subContainer = document.getElementById('sub-options-container');
-      const subSelect = document.getElementById('sub-interest');
-      const budgetContainer = document.getElementById('budget-container');
-      const budgetSelect = document.getElementById('budget');
+      function resizeMatrixCanvas() {
+        const dpr = window.devicePixelRatio || 1;
+        matrixCanvas.width = Math.floor(matrixCanvas.clientWidth * dpr);
+        matrixCanvas.height = Math.floor(matrixCanvas.clientHeight * dpr);
+        matrixContext.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const subOptions = {
-        virtualization: ['Proxmox New Setup', 'VMware to Proxmox Migration', 'Hyper-V to Proxmox', 'High Availability Cluster'],
-        'open-source': ['Nextcloud Setup', 'Zimbra Email Server', 'Odoo ERP', 'SuiteCRM', 'GLPI Helpdesk', 'Full Stack Implementation'],
-        security: ['Wazuh SIEM', 'pfSense Firewall', 'Fortinet Implementation', 'Sophos XG', 'Security Audit'],
-        monitoring: ['Zabbix Setup', 'Prometheus + Grafana', 'ELK Stack', 'Custom Dashboards'],
-        office365: ['Zimbra Migration', 'Office 365 Setup', 'Exchange to Zimbra', 'SharePoint Alternative'],
-        network: ['New Office Network', 'SD-WAN Implementation', 'WiFi Design', 'VPN Setup', 'Network Audit'],
-        endpoint: ['ESET Protect', 'Safetica DLP', 'Sophos Intercept X', 'Trend Micro', 'Kaspersky'],
-        ecom: ['WordPress', 'Shopify', 'Magento', 'Custom CMS', 'Payment Gateway'],
-        erp: ['Odoo Implementation', 'SuiteCRM', 'ERPNext', 'Custom ERP'],
-        backup: ['Veeam Backup', 'Bacula', 'Proxmox Backup Server', 'Disaster Recovery'],
-        hybrid: ['Complete IT Audit', 'Cost Optimization Strategy', 'Migration Planning']
-      };
-
-      if (subOptions[interest]) {
-        subSelect.innerHTML = '<option value="">-- Select specific need --</option>' +
-          subOptions[interest].map(opt => `<option value="${opt.toLowerCase().replace(/\s+/g, '-')}">${opt}</option>`).join('');
-        subContainer.style.display = 'block';
-        budgetContainer.style.display = 'block';
-      } else {
-        subSelect.innerHTML = '';
-        subSelect.value = '';
-        if (budgetSelect) {
-          budgetSelect.selectedIndex = 0;
-        }
-        subContainer.style.display = 'none';
-        budgetContainer.style.display = 'none';
+        matrixFontSize = Math.max(12, Math.floor(matrixCanvas.clientWidth / 90));
+        const totalColumns = Math.ceil(matrixCanvas.clientWidth / matrixFontSize);
+        matrixColumns = Array.from({ length: totalColumns }, () => Math.random() * (matrixCanvas.clientHeight / matrixFontSize));
       }
+
+      function drawMatrixFrame() {
+        const isLightTheme = root.getAttribute('data-theme') === 'light';
+        matrixContext.fillStyle = isLightTheme ? 'rgba(249, 250, 251, 0.18)' : 'rgba(10, 15, 30, 0.14)';
+        matrixContext.fillRect(0, 0, matrixCanvas.clientWidth, matrixCanvas.clientHeight);
+
+        matrixContext.font = `${matrixFontSize}px Space Grotesk, monospace`;
+        matrixContext.fillStyle = isLightTheme ? 'rgba(30, 64, 175, 0.34)' : 'rgba(103, 232, 249, 0.54)';
+
+        matrixColumns.forEach((columnY, index) => {
+          const char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+          const x = index * matrixFontSize;
+          const y = columnY * matrixFontSize;
+          matrixContext.fillText(char, x, y);
+
+          if (y > matrixCanvas.clientHeight && Math.random() > 0.975) {
+            matrixColumns[index] = 0;
+          } else {
+            matrixColumns[index] = columnY + 1;
+          }
+        });
+      }
+
+      function animateMatrix(timestamp) {
+        if (prefersReducedMotion.matches) {
+          drawMatrixFrame();
+          return;
+        }
+
+        if (timestamp - matrixLastFrame > (1000 / targetFps)) {
+          matrixLastFrame = timestamp;
+          drawMatrixFrame();
+        }
+
+        matrixAnimationFrame = window.requestAnimationFrame(animateMatrix);
+      }
+
+      function startMatrix() {
+        if (matrixAnimationFrame) {
+          window.cancelAnimationFrame(matrixAnimationFrame);
+        }
+        resizeMatrixCanvas();
+        matrixContext.clearRect(0, 0, matrixCanvas.clientWidth, matrixCanvas.clientHeight);
+
+        if (prefersReducedMotion.matches) {
+          drawMatrixFrame();
+          return;
+        }
+
+        matrixAnimationFrame = window.requestAnimationFrame(animateMatrix);
+      }
+
+      window.addEventListener('resize', startMatrix);
+      prefersReducedMotion.addEventListener('change', startMatrix);
+      themeToggle.addEventListener('click', () => {
+        matrixContext.clearRect(0, 0, matrixCanvas.clientWidth, matrixCanvas.clientHeight);
+      });
+      startMatrix();
     }
 
-    function showNotification(message, isSuccess = true) {
-      const notification = document.createElement('div');
-      notification.className = 'notification';
-      notification.innerHTML = `<i class="fas ${isSuccess ? 'fa-check-circle' : 'fa-circle-info'}"></i> ${message}`;
-      document.body.appendChild(notification);
-      setTimeout(() => notification.remove(), 5000);
+    if (heroSlider) {
+      const slides = Array.from(heroSlider.querySelectorAll('.hero-slide'));
+      const dots = Array.from(heroSlider.querySelectorAll('.hero-slider-dot'));
+      const prevButton = document.getElementById('heroPrev');
+      const nextButton = document.getElementById('heroNext');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let currentSlide = 0;
+      let autoPlayId;
+
+      function renderSlide(index) {
+        currentSlide = (index + slides.length) % slides.length;
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.toggle('active', slideIndex === currentSlide);
+          slide.setAttribute('aria-hidden', slideIndex === currentSlide ? 'false' : 'true');
+        });
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle('active', dotIndex === currentSlide);
+          dot.setAttribute('aria-selected', dotIndex === currentSlide ? 'true' : 'false');
+          dot.setAttribute('tabindex', dotIndex === currentSlide ? '0' : '-1');
+        });
+      }
+
+      function startAutoPlay() {
+        clearInterval(autoPlayId);
+        if (prefersReducedMotion.matches) {
+          return;
+        }
+        autoPlayId = window.setInterval(() => {
+          renderSlide(currentSlide + 1);
+        }, 4500);
+      }
+
+      prevButton?.addEventListener('click', () => {
+        renderSlide(currentSlide - 1);
+        startAutoPlay();
+      });
+
+      nextButton?.addEventListener('click', () => {
+        renderSlide(currentSlide + 1);
+        startAutoPlay();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          renderSlide(index);
+          startAutoPlay();
+        });
+
+        dot.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            const nextIndex = (index + 1) % dots.length;
+            dots[nextIndex].focus();
+            renderSlide(nextIndex);
+            startAutoPlay();
+          }
+
+          if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            const prevIndex = (index - 1 + dots.length) % dots.length;
+            dots[prevIndex].focus();
+            renderSlide(prevIndex);
+            startAutoPlay();
+          }
+        });
+      });
+
+      heroSlider.addEventListener('mouseenter', () => clearInterval(autoPlayId));
+      heroSlider.addEventListener('mouseleave', startAutoPlay);
+      prefersReducedMotion.addEventListener('change', startAutoPlay);
+
+      renderSlide(0);
+      startAutoPlay();
     }
-
-    function handleSubmit(event) {
-      event.preventDefault();
-
-      const formData = {
-        name: document.getElementById('full-name').value.trim(),
-        company: document.getElementById('company-name').value.trim(),
-        email: document.getElementById('contact-email').value.trim(),
-        phone: document.getElementById('contact-phone').value.trim(),
-        city: document.getElementById('city').value.trim(),
-        companySize: document.getElementById('company-size-select').value,
-        interest: document.getElementById('interest').value,
-        subInterest: document.getElementById('sub-interest')?.value || 'Not specified',
-        budget: document.getElementById('budget')?.value || 'Not specified',
-        timeline: document.getElementById('timeline').value,
-        message: document.getElementById('message').value.trim()
-      };
-
-      const emailBody = [
-        `Name: ${formData.name}`,
-        `Company: ${formData.company || 'Not provided'}`,
-        `Email: ${formData.email}`,
-        `Phone: ${formData.phone}`,
-        `City: ${formData.city || 'Not provided'}`,
-        `Company size: ${formData.companySize || 'Not provided'}`,
-        `Primary need: ${formData.interest}`,
-        `Specific need: ${formData.subInterest}`,
-        `Budget: ${formData.budget}`,
-        `Timeline: ${formData.timeline}`,
-        '',
-        'Current setup / requirements:',
-        formData.message || 'Not provided'
-      ].join('\n');
-
-      const subject = encodeURIComponent(`New project inquiry from ${formData.name}`);
-      const body = encodeURIComponent(emailBody);
-      window.location.href = `mailto:info@jwithkp.com?subject=${subject}&body=${body}`;
-
-      showNotification('Your email draft is ready. Send it to complete your request.');
-      contactForm.reset();
-      updateSubOptions();
-    }
-
-    updateSubOptions();
   </script>
 </body>
 </html>
