@@ -625,10 +625,112 @@
       color: var(--accent-primary);
     }
 
+    .hero-audience {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      background: rgba(59, 130, 246, 0.08);
+      color: #bfdbfe;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-audience i {
+      color: #93c5fd;
+    }
+
+    .hero-discovery-cta {
+      position: fixed;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      z-index: 1150;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.95rem 1.2rem;
+      border-radius: 999px;
+      background: var(--gradient-1);
+      color: white;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .hero-discovery-cta span {
+      max-width: 230px;
+      line-height: 1.2;
+      font-size: 0.92rem;
+    }
+
     /* ========== TECH STACK SECTION ========== */
     .tech-stack {
       padding: 6rem 0;
       background: var(--bg-secondary);
+    }
+
+    .tech-logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .tech-logo-tile {
+      position: relative;
+      min-height: 150px;
+      padding: 1.15rem 1rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      text-align: center;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    }
+
+    .tech-logo-tile:hover,
+    .tech-logo-tile:focus-within {
+      transform: translateY(-6px);
+      border-color: rgba(59, 130, 246, 0.45);
+      box-shadow: var(--shadow);
+    }
+
+    .tech-logo-tile img {
+      max-width: 78px;
+      max-height: 56px;
+      object-fit: contain;
+    }
+
+    .tech-logo-tile strong {
+      font-size: 0.98rem;
+    }
+
+    .tech-hover-copy {
+      position: absolute;
+      inset: 0;
+      padding: 1rem;
+      background: linear-gradient(180deg, rgba(10,15,30,0.08), rgba(10,15,30,0.96));
+      color: rgba(243,244,246,0.92);
+      display: flex;
+      align-items: end;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .tech-logo-tile:hover .tech-hover-copy,
+    .tech-logo-tile:focus-within .tech-hover-copy {
+      opacity: 1;
     }
 
     .stack-footer {
@@ -920,90 +1022,6 @@
       position: absolute;
       left: 0;
       top: 0.65rem;
-    }
-
-    .stack-category {
-      margin-bottom: 4rem;
-    }
-
-    .category-title {
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .category-title i {
-      color: var(--accent-primary);
-    }
-
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .tech-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .tech-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow);
-      border-color: var(--accent-primary);
-    }
-
-    .tech-logo {
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .tech-logo img {
-      max-height: 60px;
-      max-width: 100%;
-      object-fit: contain;
-    }
-
-    .tech-card h4 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .tech-card p {
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-
-    .savings-badge {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 50px;
-      font-size: 0.8rem;
-      color: #10b981;
-    }
-
-    .tech-badge {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      border-radius: 50px;
-      font-size: 0.8rem;
-      color: var(--accent-primary);
-      margin-top: 0.5rem;
     }
 
     /* ========== ROI CALCULATOR ========== */
@@ -1562,6 +1580,17 @@
         display: flex;
       }
 
+      .hero-discovery-cta {
+        right: 1rem;
+        left: 1rem;
+        bottom: 5.6rem;
+        justify-content: center;
+      }
+
+      .hero-discovery-cta span {
+        max-width: none;
+      }
+
       .hero-slider {
         min-height: 380px;
       }
@@ -1672,10 +1701,11 @@
         <div data-aos="fade-right">
           <span class="section-badge">India-Focused Smart IT Implementation</span>
           <h1>Slash IT Costs <span class="gradient-text">70%</span> Without Slashing Quality</h1>
+          <p class="hero-audience"><i class="fas fa-building"></i> For Indian SMBs, MSMEs, and growing enterprises tired of high licensing costs and complex IT.</p>
           <p>We help Indian businesses modernize infrastructure, security, collaboration, and business applications with a practical mix of open-source platforms and proven commercial tools. The result is lower recurring licensing cost, stronger control over your environment, and an implementation roadmap your team can actually operate with confidence.</p>
           <div class="hero-buttons">
             <a href="roi-calculator.html" class="btn btn-primary">Calculate Your Savings (INR)</a>
-            <a href="contact.html" class="btn btn-secondary">Free Consultation</a>
+            <a href="contact.html" class="btn btn-secondary">Request a Consultation</a>
           </div>
           <p class="hero-support">From Proxmox clusters and Nextcloud collaboration to Wazuh SIEM, pfSense firewalls, Zimbra mail, Odoo ERP, and managed rollouts across branches, we design solutions that fit real Indian business budgets and growth plans.</p>
           <div class="hero-stats">
@@ -1769,33 +1799,56 @@
         <p class="section-subtitle">We use a balanced mix of open-source and enterprise technologies to improve security, performance, and cost control. Explore the full stack on a dedicated page.</p>
       </div>
 
-      <div class="tech-grid" data-aos="fade-up">
-        <article class="tech-card">
-          <div class="tech-logo">
-            <img loading="lazy" decoding="async" src="images/proxmox.png" alt="Proxmox">
-          </div>
-          <h4>Open-Source Infrastructure</h4>
-          <p>Platforms like Proxmox, Nextcloud, Wazuh, pfSense, and Zabbix help reduce recurring cost while keeping control in your hands.</p>
-          <span class="savings-badge">Lower licensing overhead</span>
-          <div class="tech-badge">Virtualization, Security, Monitoring</div>
+      <div class="tech-logo-grid" data-aos="fade-up">
+        <article class="tech-logo-tile" tabindex="0">
+          <img loading="lazy" decoding="async" src="images/proxmox.png" alt="Proxmox">
+          <strong>Proxmox</strong>
+          <div class="tech-hover-copy">Lowers VMware-style licensing overhead while keeping virtualization, clustering, and backup control in-house.</div>
         </article>
-
-        <article class="tech-card">
-          <div class="tech-logo">
-            <img loading="lazy" decoding="async" src="images/fortinet.jpg" alt="Enterprise technologies">
-          </div>
-          <h4>Enterprise Platforms</h4>
-          <p>Where commercial tooling fits better, we work with products like Fortinet, Sophos, Cisco, Microsoft 365, and IBM security solutions.</p>
-          <div class="tech-badge">Security, Networking, Collaboration</div>
+        <article class="tech-logo-tile" tabindex="0">
+          <img loading="lazy" decoding="async" src="images/nextcloud.jpg" alt="Nextcloud">
+          <strong>Nextcloud</strong>
+          <div class="tech-hover-copy">Gives teams file sharing and collaboration with stronger ownership of data, users, and storage cost.</div>
         </article>
-
-        <article class="tech-card">
-          <div class="tech-logo">
-            <img loading="lazy" decoding="async" src="images/grafana.png" alt="Analytics and applications">
-          </div>
-          <h4>Business and Application Stack</h4>
-          <p>We also support backup, analytics, CRM, ERP, helpdesk, content, and e-commerce tools that keep operations moving.</p>
-          <div class="tech-badge">ERP, Backup, CMS, Analytics</div>
+        <article class="tech-logo-tile" tabindex="0">
+          <img loading="lazy" decoding="async" src="images/wazuh.png" alt="Wazuh">
+          <strong>Wazuh</strong>
+          <div class="tech-hover-copy">Improves security visibility and alerting without the spend profile of oversized SIEM platforms.</div>
+        </article>
+        <article class="tech-logo-tile" tabindex="0">
+          <img loading="lazy" decoding="async" src="images/pfsense-logo.jpg" alt="pfSense">
+          <strong>pfSense</strong>
+          <div class="tech-hover-copy">Helps secure branches, VPN users, and perimeter traffic with practical firewall control and no unnecessary license burden.</div>
+        </article>
+        <article class="tech-logo-tile" tabindex="0">
+          <img loading="lazy" decoding="async" src="images/zabbix.svg" alt="Zabbix">
+          <strong>Zabbix</strong>
+          <div class="tech-hover-copy">Adds monitoring, alerting, and operational visibility so teams spot performance issues before users do.</div>
+        </article>
+        <article class="tech-logo-tile" tabindex="0">
+          <img loading="lazy" decoding="async" src="images/fortinet.jpg" alt="Fortinet">
+          <strong>Fortinet</strong>
+          <div class="tech-hover-copy">Fits environments that need stronger branch security, SD-WAN, and enterprise-grade policy management.</div>
+        </article>
+        <article class="tech-logo-tile" tabindex="0">
+          <img loading="lazy" decoding="async" src="images/microsoft-365.jpg" alt="Microsoft 365">
+          <strong>Microsoft 365</strong>
+          <div class="tech-hover-copy">Works well when standardized productivity, identity, and vendor-managed collaboration are the right business fit.</div>
+        </article>
+        <article class="tech-logo-tile" tabindex="0">
+          <img loading="lazy" decoding="async" src="images/grafana.png" alt="Grafana">
+          <strong>Grafana</strong>
+          <div class="tech-hover-copy">Turns raw metrics into dashboards teams can use for uptime, trends, reporting, and decision-making.</div>
+        </article>
+        <article class="tech-logo-tile" tabindex="0">
+          <img loading="lazy" decoding="async" src="images/odoo.jpg" alt="Odoo">
+          <strong>Odoo</strong>
+          <div class="tech-hover-copy">Brings CRM, operations, and ERP workflows into one cost-aware business platform with room to scale.</div>
+        </article>
+        <article class="tech-logo-tile" tabindex="0">
+          <img loading="lazy" decoding="async" src="images/wordpress.png" alt="WordPress">
+          <strong>WordPress</strong>
+          <div class="tech-hover-copy">Supports practical business websites where speed, control, and easy content updates matter more than platform bloat.</div>
         </article>
       </div>
 
@@ -2264,6 +2317,11 @@
     <a href="tel:+917982912207" class="btn btn-secondary">Call Now</a>
     <a href="contact.html" class="btn btn-primary">Get Consultation</a>
   </div>
+
+  <a href="roi-calculator.html" class="hero-discovery-cta" aria-label="Open ROI Calculator to estimate your saving potential">
+    <i class="fas fa-calculator"></i>
+    <span>Estimate your 70% saving potential</span>
+  </a>
 
   <!-- Footer -->
   <footer class="footer">
