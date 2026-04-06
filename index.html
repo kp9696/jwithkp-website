@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open Source IT Solutions for Startups | Cost-Effective Infrastructure</title>
+  <title>IT Infrastructure, Security, and Cost Optimization for Indian Businesses | JwithKP</title>
   
   <!-- Meta Tags -->
-  <meta name="description" content="We help startups reduce IT costs using open-source solutions like Proxmox, Wazuh, and Linux. Build scalable, secure infrastructure today.">
+  <meta name="description" content="JwithKP helps Indian SMBs, MSMEs, and growing enterprises reduce IT costs, improve security, and modernize infrastructure with practical open-source and commercial solutions.">
   <meta name="author" content="JwithKP">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0a0f1e">
@@ -17,12 +17,12 @@
   <meta property="og:description" content="Reduce IT costs with hybrid open-source and commercial solutions. Save up to 70% on virtualization, security, and monitoring.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.jwithkp.com/">
-  <meta property="og:image" content="https://www.jwithkp.com/Logo.png">
+  <meta property="og:image" content="https://www.jwithkp.com/images/hero-slide-1.jpg">
   <meta property="og:site_name" content="JwithKP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="JwithKP - Smart IT Implementation India">
   <meta name="twitter:description" content="Reduce IT costs with hybrid open-source and commercial solutions for Indian businesses.">
-  <meta name="twitter:image" content="https://www.jwithkp.com/Logo.png">
+  <meta name="twitter:image" content="https://www.jwithkp.com/images/hero-slide-1.jpg">
   <link rel="icon" type="image/png" href="https://www.jwithkp.com/Logo.png">
   
   <!-- Fonts & Icons -->
@@ -920,6 +920,34 @@
       background: var(--bg-secondary);
     }
 
+    .teaser-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .teaser-card p {
+      color: var(--text-secondary);
+      max-width: 780px;
+    }
+
+    .teaser-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .teaser-pill {
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-secondary);
+    }
+
     .why-grid {
       display: grid;
       grid-template-columns: 1.15fr 1fr;
@@ -1342,36 +1370,52 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
+      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
     }
 
-    .footer-links h4 {
-      margin-bottom: 1.5rem;
+    .footer-about {
+      max-width: 360px;
     }
 
-    .footer-links ul {
+    .footer-links h4,
+    .footer-contact h4 {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links ul,
+    .footer-contact ul {
       list-style: none;
     }
 
-    .footer-links li {
-      margin-bottom: 0.75rem;
+    .footer-links li,
+    .footer-contact li {
+      margin-bottom: 0.8rem;
     }
 
-    .footer-links a {
+    .footer-links a,
+    .footer-contact a {
       color: var(--text-secondary);
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .footer-links a:hover {
+    .footer-links a:hover,
+    .footer-contact a:hover {
       color: var(--accent-primary);
+    }
+
+    .footer-section-intro {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
     }
 
     .footer-bottom {
       text-align: center;
-      padding-top: 2rem;
+      padding-top: 1.5rem;
       border-top: 1px solid var(--border);
       color: var(--text-muted);
     }
@@ -1390,6 +1434,31 @@
 
     .footer-location {
       margin-top: 1rem;
+    }
+
+    .footer-about p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .footer-contact li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-contact i {
+      color: #93c5fd;
+      margin-top: 0.2rem;
+      min-width: 16px;
+    }
+
+    .footer-contact strong {
+      color: var(--text-primary);
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.12rem;
     }
 
     .insights {
@@ -1609,6 +1678,7 @@
       .page-hub-grid,
       .stack-visual-grid,
       .why-grid,
+      .teaser-points,
       .industries-grid,
       .process-grid,
       .case-studies-grid,
@@ -1897,67 +1967,20 @@
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="section-badge">About JwithKP</span>
-        <h2 class="section-title">Technology Guidance Built for <span class="gradient-text">Real-World Execution</span></h2>
-        <p class="section-subtitle">JwithKP is an IT-focused platform built to simplify technology for businesses. We work on real infrastructure, not just theory, helping organizations manage, secure, and scale their environments with confidence.</p>
+        <h2 class="section-title">Meet The Team Behind The <span class="gradient-text">Delivery Approach</span></h2>
+        <p class="section-subtitle">The homepage now stays shorter, while the full company story, working style, and client expectations live on a dedicated About page.</p>
       </div>
-
-      <div class="why-grid">
-        <div class="why-main" data-aos="fade-right">
-          <div class="why-copy-block">
-            <h3>Who We Are</h3>
-            <p>JwithKP is an IT-focused platform built to simplify technology for businesses. We work on real-world infrastructure, not just theory, helping organizations manage, secure, and scale their IT environments with confidence.</p>
-            <p>With hands-on experience across enterprise networks, cloud platforms, and cybersecurity tools, the focus is always on delivering solutions that actually work in production.</p>
-          </div>
-
-          <div class="why-copy-block">
-            <h3>How We Work</h3>
-            <p>We follow a practical, no-nonsense approach. First we understand your current setup and challenges, then identify risks, gaps, and improvement areas. From there, we design simple, scalable solutions, implement with minimal disruption, and continuously monitor and optimize.</p>
-            <p>No overcomplication. No unnecessary tools. Just solutions that fit your environment.</p>
-          </div>
-
-          <div class="why-points">
-            <div class="why-point">
-              <i class="fas fa-magnifying-glass-chart"></i>
-              <h3>Understand the Environment</h3>
-              <p>We start by learning your current setup, pain points, business priorities, and operational constraints.</p>
-            </div>
-            <div class="why-point">
-              <i class="fas fa-triangle-exclamation"></i>
-              <h3>Identify Risks and Gaps</h3>
-              <p>We highlight exposure, inefficiencies, and areas where reliability, security, or scalability can be improved.</p>
-            </div>
-            <div class="why-point">
-              <i class="fas fa-sitemap"></i>
-              <h3>Design for Simplicity</h3>
-              <p>We recommend solutions that are scalable, maintainable, and realistic for your team to support after go-live.</p>
-            </div>
-            <div class="why-point">
-              <i class="fas fa-chart-line"></i>
-              <h3>Optimize Over Time</h3>
-              <p>We stay focused on performance, adoption, and steady improvement rather than one-time deployment only.</p>
-            </div>
-          </div>
+      <div class="teaser-card" data-aos="fade-up">
+        <p>Learn who JwithKP is, how the delivery process works, and what clients can expect from architecture, rollout, handover, and support. This keeps the homepage focused while still giving visitors a clear path to trust-building details.</p>
+        <div class="teaser-points">
+          <div class="teaser-pill">Who we are and what shapes our approach</div>
+          <div class="teaser-pill">How we move from assessment to implementation</div>
+          <div class="teaser-pill">What clients can expect after go-live</div>
         </div>
-
-        <aside class="why-side" data-aos="fade-left">
-          <h3>What Clients Can Expect</h3>
-          <p>When working with JwithKP, clients can expect clear communication, practical decision-making, and solutions designed around real business impact.</p>
-
-          <ul class="why-checklist">
-            <li><i class="fas fa-check-circle"></i><span>Clear communication and transparency at every stage of planning and delivery.</span></li>
-            <li><i class="fas fa-check-circle"></i><span>Reliable, secure implementations that are designed to work well in production.</span></li>
-            <li><i class="fas fa-check-circle"></i><span>Performance-focused infrastructure that supports business continuity and growth.</span></li>
-            <li><i class="fas fa-check-circle"></i><span>Cost-effective recommendations, including open-source options where they genuinely fit.</span></li>
-            <li><i class="fas fa-check-circle"></i><span>Support that understands operational reality and the business impact of IT decisions.</span></li>
-          </ul>
-
-          <p>The goal is not just to deploy systems, but to make them stable, dependable, and easier for your team to manage over time.</p>
-
-          <div class="why-cta">
-            <a href="contact.html" class="btn btn-primary">Talk About Your Environment</a>
-            <a href="services.html" class="btn btn-secondary">Explore Services</a>
-          </div>
-        </aside>
+        <div class="btn-row">
+          <a href="about.html" class="btn btn-primary">Open About Page</a>
+          <a href="contact.html" class="btn btn-secondary">Talk About Your Environment</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1966,76 +1989,20 @@
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="section-badge">Industries Served</span>
-        <h2 class="section-title">Solutions Adapted for <span class="gradient-text">Different Business Environments</span></h2>
-        <p class="section-subtitle">We do not treat every business the same. Different industries bring different uptime expectations, compliance pressure, collaboration models, branch needs, reporting demands, and cost priorities. Our recommendations are shaped around that reality.</p>
+        <h2 class="section-title">See Which Environments We <span class="gradient-text">Commonly Support</span></h2>
+        <p class="section-subtitle">Industry context matters, but the full breakdown now lives on its own page so the homepage can stay tighter and faster to scan.</p>
       </div>
-
-      <div class="industries-grid">
-        <article class="industry-card" data-aos="fade-up" data-aos-delay="50">
-          <div class="industry-icon"><i class="fas fa-industry"></i></div>
-          <h3>Manufacturing</h3>
-          <p>For production-led businesses that need stable infrastructure, plant-to-office connectivity, backup discipline, and better visibility across critical systems.</p>
-          <ul>
-            <li>Server and virtualization modernization</li>
-            <li>Plant and branch network security</li>
-            <li>Monitoring for uptime-sensitive operations</li>
-          </ul>
-        </article>
-
-        <article class="industry-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="industry-icon"><i class="fas fa-truck-fast"></i></div>
-          <h3>Logistics</h3>
-          <p>For multi-location operations that rely on secure connectivity, centralized communication, and dependable systems for movement, tracking, and reporting.</p>
-          <ul>
-            <li>Branch connectivity and VPN design</li>
-            <li>Centralized collaboration platforms</li>
-            <li>Visibility across distributed operations</li>
-          </ul>
-        </article>
-
-        <article class="industry-card" data-aos="fade-up" data-aos-delay="150">
-          <div class="industry-icon"><i class="fas fa-store"></i></div>
-          <h3>Retail</h3>
-          <p>For businesses managing stores, warehouses, sales teams, and customer-facing systems where reliability and speed directly affect daily revenue.</p>
-          <ul>
-            <li>Store and HQ network planning</li>
-            <li>Collaboration and access control</li>
-            <li>Website and commerce infrastructure support</li>
-          </ul>
-        </article>
-
-        <article class="industry-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="industry-icon"><i class="fas fa-heart-pulse"></i></div>
-          <h3>Healthcare</h3>
-          <p>For clinics, diagnostics centers, and healthcare operations that need stronger data control, access management, uptime, and secure internal workflows.</p>
-          <ul>
-            <li>Secure storage and collaboration design</li>
-            <li>Endpoint and network security improvements</li>
-            <li>Operational continuity and backup planning</li>
-          </ul>
-        </article>
-
-        <article class="industry-card" data-aos="fade-up" data-aos-delay="250">
-          <div class="industry-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>Education</h3>
-          <p>For institutions that need affordable collaboration, identity-aware access, content sharing, and infrastructure that supports staff, students, and administration.</p>
-          <ul>
-            <li>Campus and department collaboration tools</li>
-            <li>Cost-aware infrastructure planning</li>
-            <li>Centralized monitoring and support workflows</li>
-          </ul>
-        </article>
-
-        <article class="industry-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="industry-icon"><i class="fas fa-briefcase"></i></div>
-          <h3>Professional Services</h3>
-          <p>For firms that depend on secure client data, communication quality, productivity systems, and consistent access for office and remote teams.</p>
-          <ul>
-            <li>Email and document collaboration optimization</li>
-            <li>Security and policy enforcement</li>
-            <li>Scalable infrastructure for growing teams</li>
-          </ul>
-        </article>
+      <div class="teaser-card" data-aos="fade-up">
+        <p>Explore how recommendations change for manufacturing, logistics, retail, healthcare, education, and professional services. The dedicated Industries page explains why the same platform can mean different priorities depending on uptime, access, branch design, reporting, and compliance pressure.</p>
+        <div class="teaser-points">
+          <div class="teaser-pill">Manufacturing, logistics, and branch-heavy operations</div>
+          <div class="teaser-pill">Healthcare, education, and privacy-sensitive environments</div>
+          <div class="teaser-pill">Retail and professional services teams with growth pressure</div>
+        </div>
+        <div class="btn-row">
+          <a href="industries.html" class="btn btn-primary">Open Industries Page</a>
+          <a href="services.html" class="btn btn-secondary">Explore Services</a>
+        </div>
       </div>
     </div>
   </section>
@@ -2171,49 +2138,67 @@
         </div>
 
         <div class="footer-links">
-          <h4>Quick Links</h4>
+          <h4>Navigate</h4>
+          <p class="footer-section-intro">Start with the pages most visitors need first.</p>
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="technology-stack.html">Technology Stack</a></li>
-            <li><a href="#process">Process</a></li>
             <li><a href="services.html">Services</a></li>
+            <li><a href="technology-stack.html">Technology Stack</a></li>
+            <li><a href="roi-calculator.html">ROI Calculator</a></li>
             <li><a href="blog.html">Blog</a></li>
-            <li><a href="guides.html">Guides</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="roi-calculator.html">ROI Calculator (INR)</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms & Conditions</a></li>
           </ul>
         </div>
 
         <div class="footer-links">
-          <h4>Open Source Solutions</h4>
+          <h4>Solutions</h4>
+          <p class="footer-section-intro">Typical focus areas for modernization and cost control.</p>
           <ul>
             <li><a href="services.html">Proxmox Virtualization</a></li>
             <li><a href="services.html">Nextcloud</a></li>
             <li><a href="services.html">Wazuh SIEM</a></li>
             <li><a href="services.html">pfSense Firewall</a></li>
-            <li><a href="services.html">Zabbix Monitoring</a></li>
-            <li><a href="services.html">Zimbra Collaboration</a></li>
+            <li><a href="services.html">Monitoring & Visibility</a></li>
+            <li><a href="services.html">Email & Collaboration</a></li>
             <li><a href="services.html">Odoo ERP</a></li>
           </ul>
         </div>
 
         <div class="footer-contact">
           <h4>Contact</h4>
-          <p><i class="fas fa-phone"></i> +91 79829 12207</p>
-          <p><i class="fas fa-envelope"></i> info@jwithkp.com</p>
-          <p><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
-          <p><i class="fab fa-whatsapp"></i> +91 79829 12207 (WhatsApp)</p>
-          <p><i class="far fa-clock"></i> Mon-Sat: 9AM - 7PM IST</p>
-          <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></p>
+          <p class="footer-section-intro">Reach out for consultations, pilot rollouts, or platform planning.</p>
+          <ul>
+            <li>
+              <i class="fas fa-phone"></i>
+              <span><strong>Call</strong><a href="tel:+917982912207">+91 79829 12207</a></span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span><strong>Email</strong><a href="mailto:info@jwithkp.com">info@jwithkp.com</a></span>
+            </li>
+            <li>
+              <i class="fab fa-whatsapp"></i>
+              <span><strong>WhatsApp</strong><a href="https://wa.me/917982912207" target="_blank" rel="noopener noreferrer">+91 79829 12207</a></span>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span><strong>Location</strong>Bangalore, India</span>
+            </li>
+            <li>
+              <i class="far fa-clock"></i>
+              <span><strong>Hours</strong>Mon-Sat: 9AM - 7PM IST</span>
+            </li>
+            <li>
+              <i class="fab fa-linkedin"></i>
+              <span><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer">View profile</a></span>
+            </li>
+          </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge & Practice | Made in India | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
+        <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge & Practice | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
       </div>
     </div>
   </footer>
