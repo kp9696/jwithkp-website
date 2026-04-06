@@ -672,6 +672,52 @@
       background: var(--bg-secondary);
     }
 
+    .page-hub {
+      padding: 5.5rem 0;
+      background: var(--bg-secondary);
+    }
+
+    .page-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .page-hub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .page-hub-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(59, 130, 246, 0.14);
+      color: #93c5fd;
+      font-size: 1.2rem;
+    }
+
+    .page-hub-card p {
+      color: var(--text-secondary);
+      flex: 1;
+    }
+
+    .page-hub-card a {
+      color: #bfdbfe;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
     .tech-logo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1560,6 +1606,7 @@
 
       .hero-content,
       .trusted-strip-inner,
+      .page-hub-grid,
       .stack-visual-grid,
       .why-grid,
       .industries-grid,
@@ -1790,100 +1837,6 @@
     </div>
   </section>
 
-  <!-- Technology Stack Preview -->
-  <section id="tech-stack" class="tech-stack">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-badge">Our Technology Stack</span>
-        <h2 class="section-title">Best-Fit Platforms for <span class="gradient-text">Real Business IT</span></h2>
-        <p class="section-subtitle">We use a balanced mix of open-source and enterprise technologies to improve security, performance, and cost control. Explore the full stack on a dedicated page.</p>
-      </div>
-
-      <div class="tech-logo-grid" data-aos="fade-up">
-        <article class="tech-logo-tile" tabindex="0">
-          <img loading="lazy" decoding="async" src="images/proxmox.png" alt="Proxmox">
-          <strong>Proxmox</strong>
-          <div class="tech-hover-copy">Lowers VMware-style licensing overhead while keeping virtualization, clustering, and backup control in-house.</div>
-        </article>
-        <article class="tech-logo-tile" tabindex="0">
-          <img loading="lazy" decoding="async" src="images/nextcloud.jpg" alt="Nextcloud">
-          <strong>Nextcloud</strong>
-          <div class="tech-hover-copy">Gives teams file sharing and collaboration with stronger ownership of data, users, and storage cost.</div>
-        </article>
-        <article class="tech-logo-tile" tabindex="0">
-          <img loading="lazy" decoding="async" src="images/wazuh.png" alt="Wazuh">
-          <strong>Wazuh</strong>
-          <div class="tech-hover-copy">Improves security visibility and alerting without the spend profile of oversized SIEM platforms.</div>
-        </article>
-        <article class="tech-logo-tile" tabindex="0">
-          <img loading="lazy" decoding="async" src="images/pfsense-logo.jpg" alt="pfSense">
-          <strong>pfSense</strong>
-          <div class="tech-hover-copy">Helps secure branches, VPN users, and perimeter traffic with practical firewall control and no unnecessary license burden.</div>
-        </article>
-        <article class="tech-logo-tile" tabindex="0">
-          <img loading="lazy" decoding="async" src="images/zabbix.svg" alt="Zabbix">
-          <strong>Zabbix</strong>
-          <div class="tech-hover-copy">Adds monitoring, alerting, and operational visibility so teams spot performance issues before users do.</div>
-        </article>
-        <article class="tech-logo-tile" tabindex="0">
-          <img loading="lazy" decoding="async" src="images/fortinet.jpg" alt="Fortinet">
-          <strong>Fortinet</strong>
-          <div class="tech-hover-copy">Fits environments that need stronger branch security, SD-WAN, and enterprise-grade policy management.</div>
-        </article>
-        <article class="tech-logo-tile" tabindex="0">
-          <img loading="lazy" decoding="async" src="images/microsoft-365.jpg" alt="Microsoft 365">
-          <strong>Microsoft 365</strong>
-          <div class="tech-hover-copy">Works well when standardized productivity, identity, and vendor-managed collaboration are the right business fit.</div>
-        </article>
-        <article class="tech-logo-tile" tabindex="0">
-          <img loading="lazy" decoding="async" src="images/grafana.png" alt="Grafana">
-          <strong>Grafana</strong>
-          <div class="tech-hover-copy">Turns raw metrics into dashboards teams can use for uptime, trends, reporting, and decision-making.</div>
-        </article>
-        <article class="tech-logo-tile" tabindex="0">
-          <img loading="lazy" decoding="async" src="images/odoo.jpg" alt="Odoo">
-          <strong>Odoo</strong>
-          <div class="tech-hover-copy">Brings CRM, operations, and ERP workflows into one cost-aware business platform with room to scale.</div>
-        </article>
-        <article class="tech-logo-tile" tabindex="0">
-          <img loading="lazy" decoding="async" src="images/wordpress.png" alt="WordPress">
-          <strong>WordPress</strong>
-          <div class="tech-hover-copy">Supports practical business websites where speed, control, and easy content updates matter more than platform bloat.</div>
-        </article>
-      </div>
-
-      <div class="stack-visual-grid" data-aos="fade-up">
-        <article class="stack-visual-card">
-          <img loading="lazy" decoding="async" src="images/tech-visual-1.jpg" alt="Data center infrastructure and servers">
-          <div class="stack-visual-copy">
-            <h3>Infrastructure That Feels Production-Ready</h3>
-            <p>Better-fit technology choices make virtualization, backup, monitoring, and security easier to run in the real world.</p>
-          </div>
-        </article>
-
-        <article class="stack-visual-card">
-          <img loading="lazy" decoding="async" src="images/tech-visual-2.jpg" alt="Team reviewing dashboards and technology insights">
-          <div class="stack-visual-copy">
-            <h3>Visibility Before Complexity</h3>
-            <p>We focus on stacks that improve control, collaboration, and decision-making instead of adding unnecessary operational weight.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="stack-footer" data-aos="fade-up">
-        <div class="stack-footer-card">
-          <i class="fas fa-layer-group stack-footer-icon"></i>
-          <h3 class="stack-footer-title">Explore the Full Technology Stack</h3>
-          <p class="stack-footer-copy">See the complete set of platforms we use across infrastructure, security, collaboration, monitoring, backup, analytics, and business systems.</p>
-          <div class="why-cta" style="justify-content:center; margin-top:1.5rem;">
-            <a href="technology-stack.html" class="btn btn-primary">View Technology Page</a>
-            <a href="services.html" class="btn btn-secondary">See Related Services</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="process" id="process">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
@@ -2087,158 +2040,49 @@
     </div>
   </section>
 
-  <section class="roi-calculator">
+  <section class="page-hub" id="explore-pages">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-badge">ROI Calculator (INR)</span>
-        <h2 class="section-title">Estimate Savings On a <span class="gradient-text">Dedicated Calculator Page</span></h2>
-        <p class="section-subtitle">Run the full IT cost optimization calculator on its own page, share the link easily, and review your savings estimate without interrupting the homepage flow.</p>
+        <span class="section-badge">Explore In Detail</span>
+        <h2 class="section-title">Use The Right Page For The <span class="gradient-text">Next Decision</span></h2>
+        <p class="section-subtitle">Instead of repeating full sections on the homepage, each major topic now has its own focused page. That keeps this page shorter and makes it easier for visitors to jump directly to what they need.</p>
       </div>
-      <div class="calculator-grid" data-aos="fade-up">
-        <div class="calculator-card">
-          <h3>Use the full calculator</h3>
-          <p class="calculator-note">Open the dedicated ROI calculator to compare your current annual spend across virtualization, monitoring, security, firewall, and collaboration tools.</p>
-          <div class="results-cta" style="text-align:left; margin-top:1.5rem;">
-            <a href="roi-calculator.html" class="btn btn-primary"><i class="fas fa-calculator"></i> Open ROI Calculator</a>
-          </div>
-        </div>
-        <div class="results-card">
-          <h3>What you will get</h3>
-          <div class="breakdown-details">
-            <ul id="savings-breakdown" style="list-style:none;">
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Current vs optimized annual spend in INR</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Percentage reduction across key IT cost areas</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> A simple planning baseline before detailed scoping</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> A clear next step to request an exact quote</li>
-            </ul>
-          </div>
-          <div class="results-cta" style="text-align:center; margin-top:2rem;">
-            <a href="roi-calculator.html" class="btn btn-secondary">Go To Calculator Page</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="services">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-badge">Services</span>
-        <h2 class="section-title">Explore Our <span class="gradient-text">Dedicated Services Page</span></h2>
-        <p class="section-subtitle">The homepage does not need the full service catalog anymore. Use the dedicated Services page to review delivery areas, use cases, and engagement options in one focused place.</p>
-      </div>
-      <div class="calculator-grid" data-aos="fade-up">
-        <div class="calculator-card">
-          <h3>See everything in one place</h3>
-          <p class="calculator-note">Browse infrastructure, security, collaboration, monitoring, network, website, and ERP services on a dedicated page designed for easier reading and sharing.</p>
-          <div class="results-cta" style="text-align:left; margin-top:1.5rem;">
-            <a href="services.html" class="btn btn-primary"><i class="fas fa-briefcase"></i> Open Services Page</a>
-          </div>
-        </div>
-        <div class="results-card">
-          <h3>What you will find there</h3>
-          <div class="breakdown-details">
-            <ul id="services-overview" style="list-style:none;">
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Virtualization, security, monitoring, and collaboration services</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> IT cost optimization and implementation guidance</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Clear paths for migration, rollout, and support</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Direct next steps to request a consultation</li>
-            </ul>
-          </div>
-          <div class="results-cta" style="text-align:center; margin-top:2rem;">
-            <a href="services.html" class="btn btn-secondary">Go To Services Page</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="case-studies" id="case-studies">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-badge">Recent Engagements</span>
-        <h2 class="section-title">What This Looks Like In <span class="gradient-text">Real Environments</span></h2>
-        <p class="section-subtitle">These are representative examples of the kinds of outcomes businesses usually want when they contact us: lower recurring cost, stronger visibility, safer migrations, and infrastructure that is easier to operate.</p>
-      </div>
-
-      <div class="case-studies-grid">
-        <article class="case-study-card" data-aos="fade-up" data-aos-delay="50">
-          <div class="case-study-meta">
-            <span>Virtualization</span>
-            <span>Manufacturing SMB</span>
-          </div>
-          <h3>VMware Cost Pressure to Proxmox Stability</h3>
-          <p>A growing operations team needed to reduce virtualization spend without losing backup discipline, resilience, and day-to-day control.</p>
-          <ul class="case-study-list">
-            <li>Phased migration roadmap with rollback planning</li>
-            <li>Backup and HA design aligned to uptime expectations</li>
-            <li>Lower recurring licensing pressure after rollout</li>
-          </ul>
+      <div class="page-hub-grid" data-aos="fade-up">
+        <article class="page-hub-card">
+          <div class="page-hub-icon"><i class="fas fa-layer-group"></i></div>
+          <h3>Technology Stack</h3>
+          <p>See the full set of platforms used across infrastructure, security, collaboration, analytics, backup, and operations.</p>
+          <a href="technology-stack.html">Open Technology Page</a>
         </article>
-
-        <article class="case-study-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="case-study-meta">
-            <span>Security Visibility</span>
-            <span>Multi-branch Business</span>
-          </div>
-          <h3>Wazuh Rollout for Better Monitoring and Response</h3>
-          <p>The client wanted stronger visibility across endpoints and infrastructure without stepping into oversized SIEM licensing costs.</p>
-          <ul class="case-study-list">
-            <li>Agent rollout and dashboard setup across environments</li>
-            <li>Alert prioritization and reporting structure</li>
-            <li>More actionable visibility for a lean IT team</li>
-          </ul>
+        <article class="page-hub-card">
+          <div class="page-hub-icon"><i class="fas fa-briefcase"></i></div>
+          <h3>Services</h3>
+          <p>Review service areas, the fixed-price startup plan, and the custom quote form on one dedicated page.</p>
+          <a href="services.html">Open Services Page</a>
         </article>
-
-        <article class="case-study-card" data-aos="fade-up" data-aos-delay="150">
-          <div class="case-study-meta">
-            <span>Collaboration</span>
-            <span>Professional Services</span>
-          </div>
-          <h3>Cloud Collaboration With Better Control</h3>
-          <p>A distributed team needed a practical collaboration model covering email, files, identity, and user onboarding across locations.</p>
-          <ul class="case-study-list">
-            <li>Platform comparison between open-source and Microsoft options</li>
-            <li>Access, adoption, and support-model planning</li>
-            <li>Clearer long-term fit between user needs and budget</li>
-          </ul>
+        <article class="page-hub-card">
+          <div class="page-hub-icon"><i class="fas fa-calculator"></i></div>
+          <h3>ROI Calculator</h3>
+          <p>Estimate savings in INR without interrupting the homepage experience or scrolling through extra explanation.</p>
+          <a href="roi-calculator.html">Open ROI Calculator</a>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="insights" id="featured-blog">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-badge">From The Blog</span>
-        <h2 class="section-title">Practical <span class="gradient-text">Insights</span> For Modern IT Teams</h2>
-        <p class="section-subtitle">Explore focused articles that help business owners and IT teams compare platforms, reduce recurring cost, and plan migrations with fewer surprises.</p>
-      </div>
-      <div class="insights-grid">
-        <article class="insight-card" data-aos="fade-up" data-aos-delay="75">
-          <span class="insight-meta"><i class="fas fa-network-wired"></i> Network Monitoring</span>
-          <h3>ntopng: A Powerful Network Traffic Monitoring and Analysis Tool</h3>
-          <p>Learn how ntopng helps businesses improve bandwidth visibility, identify top talkers, and understand network behavior more clearly.</p>
-          <a class="insight-link" href="blog-ntopng-network-monitoring.html">Read the ntopng guide <i class="fas fa-arrow-right"></i></a>
+        <article class="page-hub-card">
+          <div class="page-hub-icon"><i class="fas fa-book-open"></i></div>
+          <h3>Blog</h3>
+          <p>Read platform comparisons, migration guidance, and monitoring or security articles when you want deeper research.</p>
+          <a href="blog.html">Open Blog</a>
         </article>
-
-        <article class="insight-card" data-aos="fade-up" data-aos-delay="100">
-          <span class="insight-meta"><i class="fas fa-server"></i> Virtualization</span>
-          <h3>Why Proxmox Is A Strong VMware Alternative In India</h3>
-          <p>A practical look at licensing pressure, infrastructure flexibility, and where Proxmox makes sense for growing businesses that want more control.</p>
-          <a class="insight-link" href="blog-proxmox-vmware-alternative.html">Read the Proxmox guide <i class="fas fa-arrow-right"></i></a>
+        <article class="page-hub-card">
+          <div class="page-hub-icon"><i class="fas fa-clipboard-list"></i></div>
+          <h3>Case Studies</h3>
+          <p>Review representative outcomes and engagement patterns without stretching the landing page further.</p>
+          <a href="case-studies.html">Open Case Studies</a>
         </article>
-        <article class="insight-card" data-aos="fade-up" data-aos-delay="150">
-          <span class="insight-meta"><i class="fas fa-shield-alt"></i> Security</span>
-          <h3>How Wazuh Helps SMBs Strengthen Security Without Splunk Costs</h3>
-          <p>See how endpoint telemetry, threat detection, and compliance visibility can be delivered with an open platform and a tighter operating budget.</p>
-          <a class="insight-link" href="blog-wazuh-security-smb.html">Read the Wazuh guide <i class="fas fa-arrow-right"></i></a>
-        </article>
-        <article class="insight-card" data-aos="fade-up" data-aos-delay="200">
-          <span class="insight-meta"><i class="fas fa-cloud"></i> Collaboration</span>
-          <h3>Nextcloud vs Microsoft 365 For Teams That Want More Control</h3>
-          <p>Compare collaboration workflows, security ownership, and long-term cost tradeoffs before choosing the platform your team will live in every day.</p>
-          <a class="insight-link" href="blog-nextcloud-vs-microsoft365.html">Read the collaboration guide <i class="fas fa-arrow-right"></i></a>
+        <article class="page-hub-card">
+          <div class="page-hub-icon"><i class="fas fa-paper-plane"></i></div>
+          <h3>Contact</h3>
+          <p>Share your environment, goals, and budget direction on the dedicated contact page built for inquiries.</p>
+          <a href="contact.html">Open Contact Page</a>
         </article>
       </div>
     </div>
@@ -2284,30 +2128,17 @@
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <span class="section-badge">Contact</span>
-        <h2 class="section-title">Take The Next Step On A <span class="gradient-text">Dedicated Contact Page</span></h2>
-        <p class="section-subtitle">The homepage stays cleaner now, while the full inquiry form lives on a separate page designed for easier sharing, faster completion, and a more focused consultation flow.</p>
+        <h2 class="section-title">Ready To Talk Through The <span class="gradient-text">Right Next Step?</span></h2>
+        <p class="section-subtitle">Use the dedicated contact page for a cleaner inquiry flow, better project details, and a faster first response.</p>
       </div>
-      <div class="calculator-grid" data-aos="fade-up">
-        <div class="calculator-card">
-          <h3>What happens when you reach out</h3>
-          <p class="calculator-note">Share your environment, goals, and challenges on the contact page. We will help turn that into a practical recommendation, budget direction, and rollout path.</p>
-          <div class="results-cta" style="text-align:left; margin-top:1.5rem;">
-            <a href="contact.html" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Open Contact Page</a>
-          </div>
+      <div class="cta-panel" data-aos="fade-up">
+        <div>
+          <h3>Share your environment and goals</h3>
+          <p>Tell us what you are trying to improve, what is costing time or money today, and whether you want a pilot, migration, or a full roadmap. We will reply with practical direction rather than generic sales follow-up.</p>
         </div>
-        <div class="results-card">
-          <h3>Why use the dedicated page</h3>
-          <div class="breakdown-details">
-            <ul style="list-style:none;">
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> A more focused project inquiry experience</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Better structure for budget, timeline, and scope details</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> Easier to share directly with your team</li>
-              <li><i class="fas fa-check-circle" style="color:#10b981;"></i> First response within 24 hours</li>
-            </ul>
-          </div>
-          <div class="results-cta" style="text-align:center; margin-top:2rem;">
-            <a href="contact.html" class="btn btn-secondary">Go To Contact Page</a>
-          </div>
+        <div class="btn-row">
+          <a href="contact.html" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Open Contact Page</a>
+          <a href="services.html" class="btn btn-secondary">Review Services First</a>
         </div>
       </div>
     </div>
