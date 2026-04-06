@@ -78,6 +78,31 @@
     .resource-link-card { border: 1px solid var(--border); border-radius: 16px; padding: 1rem 1.1rem; background: rgba(255,255,255,0.02); }
     .resource-link-card h4 { margin-bottom: 0.45rem; }
     .resource-link-card a { color: #93c5fd; text-decoration: underline; }
+    .trust-strip { margin-top: 2rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .trust-badge { background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px; padding: 1rem 1.1rem; box-shadow: var(--shadow); }
+    .trust-badge strong { display: block; margin-bottom: 0.35rem; }
+    .trust-badge span { color: var(--text-secondary); font-size: 0.95rem; }
+    .offer-panel { margin-top: 2rem; background: linear-gradient(135deg, rgba(16,185,129,0.14), rgba(59,130,246,0.14)); border: 1px solid var(--border); border-radius: 24px; padding: 1.75rem; box-shadow: var(--shadow); }
+    .offer-price { display: inline-flex; margin: 0.8rem 0 1rem; padding: 0.55rem 1rem; border-radius: 999px; background: rgba(16,185,129,0.18); color: #86efac; font-weight: 700; }
+    .offer-panel p, .offer-panel li { color: var(--text-secondary); }
+    .offer-panel ul { margin: 1rem 0 0 1.1rem; }
+    .quote-panel { margin-top: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 1.75rem; box-shadow: var(--shadow); }
+    .quote-panel p { color: var(--text-secondary); margin-top: 0.65rem; }
+    .quote-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+    .quote-form .full-width { grid-column: 1 / -1; }
+    .field-group { display: grid; gap: 0.45rem; }
+    .field-group label { font-weight: 600; }
+    .field-group input, .field-group select, .field-group textarea {
+      width: 100%;
+      padding: 0.95rem 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-primary);
+      font: inherit;
+    }
+    .field-group textarea { min-height: 130px; resize: vertical; }
+    .quote-help { color: var(--text-muted); font-size: 0.92rem; }
     .cta-panel { margin-top: 2rem; background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(139,92,246,0.12)); border: 1px solid var(--border); border-radius: 24px; padding: 1.75rem; display: flex; justify-content: space-between; gap: 1.5rem; align-items: center; }
     .cta-panel p { color: var(--text-secondary); max-width: 680px; }
     .footer { padding: 2rem 0 3rem; border-top: 1px solid var(--border); background: var(--bg-secondary); }
@@ -87,7 +112,7 @@
     .footer-links li { margin-bottom: 0.65rem; color: var(--text-secondary); }
     .footer-bottom { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; }
     @media (max-width: 980px) {
-      .hero-grid, .service-grid, .footer-grid, .cta-panel, .resource-links { grid-template-columns: 1fr; }
+      .hero-grid, .service-grid, .footer-grid, .cta-panel, .resource-links, .trust-strip, .quote-form { grid-template-columns: 1fr; }
       .cta-panel { display: grid; }
     }
     @media (max-width: 780px) {
@@ -132,7 +157,7 @@
           </ul>
         </div>
         <div class="hero-panel hero-image-panel">
-          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80" alt="Technology planning and infrastructure design">
+          <img loading="lazy" decoding="async" src="images/tech-visual-1.jpg" alt="Technology planning and infrastructure design">
           <div class="hero-image-copy">
             <h3>Best fit for</h3>
             <p>Businesses replacing expensive recurring licenses, building new infrastructure, or improving security, visibility, and collaboration.</p>
@@ -283,6 +308,98 @@
         </article>
       </div>
 
+      <section class="offer-panel" aria-label="Startup and MSME fixed plan">
+        <span class="section-badge">Startup / MSME Plan</span>
+        <h3>A low-friction starting point for smaller teams</h3>
+        <span class="offer-price">INR 49,999 fixed-price starter rollout</span>
+        <p>Designed for businesses that want a practical first step instead of a large transformation project. This offer is positioned as a structured pilot for one location or branch with up to 3 servers.</p>
+        <ul>
+          <li>Proxmox, Wazuh, and pfSense setup for up to 3 servers</li>
+          <li>1 day remote handover with admin walkthrough</li>
+          <li>Basic documentation, health check, and next-step recommendations</li>
+          <li>Good fit for branch pilots, startup IT foundations, and VMware cost review projects</li>
+        </ul>
+      </section>
+
+      <section class="quote-panel" aria-label="Get a custom quote">
+        <span class="section-badge">Get a Custom Quote</span>
+        <h3>Share your environment before the first call</h3>
+        <p>This quick request helps us give you a more useful first response. Most businesses use it when they want a timeline, rough budget range, or a low-risk pilot recommendation.</p>
+        <form class="quote-form" id="servicesQuoteForm">
+          <div class="field-group">
+            <label for="quote-name">Name</label>
+            <input id="quote-name" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="field-group">
+            <label for="quote-company">Company</label>
+            <input id="quote-company" name="company" type="text" placeholder="Company name" required>
+          </div>
+          <div class="field-group">
+            <label for="quote-email">Work email</label>
+            <input id="quote-email" name="email" type="email" placeholder="name@company.com" required>
+          </div>
+          <div class="field-group">
+            <label for="quote-size">Company size</label>
+            <select id="quote-size" name="companySize" required>
+              <option value="">Select team size</option>
+              <option>1-20 users</option>
+              <option>21-50 users</option>
+              <option>51-100 users</option>
+              <option>101-250 users</option>
+              <option>250+ users</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="quote-stack">Current stack</label>
+            <input id="quote-stack" name="currentStack" type="text" placeholder="VMware, Microsoft 365, Sophos, etc.">
+          </div>
+          <div class="field-group">
+            <label for="quote-scope">Primary service area</label>
+            <select id="quote-scope" name="scope" required>
+              <option value="">Select primary focus</option>
+              <option>Virtualization / Proxmox</option>
+              <option>Security / Wazuh / Firewall</option>
+              <option>Collaboration / Nextcloud / M365</option>
+              <option>Monitoring / ntopng / Zabbix</option>
+              <option>ERP / Odoo</option>
+              <option>Website / CMS / E-commerce</option>
+              <option>Fixed-price branch pilot</option>
+            </select>
+          </div>
+          <div class="field-group full-width">
+            <label for="quote-pain">Main pain points</label>
+            <textarea id="quote-pain" name="painPoints" placeholder="Tell us what is costing time or money right now: recurring licenses, weak visibility, branch setup, downtime risk, migration planning, etc." required></textarea>
+          </div>
+          <div class="field-group full-width">
+            <label for="quote-timeline">Preferred timeline</label>
+            <input id="quote-timeline" name="timeline" type="text" placeholder="Example: Need a pilot in 3-4 weeks">
+          </div>
+          <div class="full-width">
+            <button class="btn btn-primary" type="submit">Send Quote Request</button>
+            <p class="quote-help">This opens an email draft to info@jwithkp.com with your project details.</p>
+          </div>
+        </form>
+      </section>
+
+      <section class="trust-strip" aria-label="Delivery trust signals">
+        <article class="trust-badge">
+          <strong>Architecture-first delivery</strong>
+          <span>We scope design and risk before rollout, not after issues appear.</span>
+        </article>
+        <article class="trust-badge">
+          <strong>Documentation and handover</strong>
+          <span>Every project is designed to leave your team more capable, not more dependent.</span>
+        </article>
+        <article class="trust-badge">
+          <strong>Security-aligned approach</strong>
+          <span>Least-privilege, backup readiness, and visibility are built into the implementation conversation.</span>
+        </article>
+        <article class="trust-badge">
+          <strong>24-hour first response</strong>
+          <span>Useful first reply with scope direction, not just a callback promise.</span>
+        </article>
+      </section>
+
       <section class="resource-hub" aria-label="Guides and case studies">
         <h3>Learn Before You Implement</h3>
         <p>Use these resources to compare options, review outcomes, and plan your rollout with better clarity before starting a project.</p>
@@ -361,5 +478,34 @@
       </div>
     </div>
   </footer>
+  <script>
+    (() => {
+      const form = document.getElementById('servicesQuoteForm');
+      if (!form) return;
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = new FormData(form);
+        const subject = encodeURIComponent('Custom Quote Request - JwithKP Services');
+        const body = encodeURIComponent(
+          [
+            'New quote request from Services page',
+            '',
+            `Name: ${data.get('name') || ''}`,
+            `Company: ${data.get('company') || ''}`,
+            `Email: ${data.get('email') || ''}`,
+            `Company size: ${data.get('companySize') || ''}`,
+            `Current stack: ${data.get('currentStack') || ''}`,
+            `Primary service area: ${data.get('scope') || ''}`,
+            `Preferred timeline: ${data.get('timeline') || ''}`,
+            '',
+            'Pain points:',
+            `${data.get('painPoints') || ''}`
+          ].join('\n')
+        );
+        window.location.href = `mailto:info@jwithkp.com?subject=${subject}&body=${body}`;
+      });
+    })();
+  </script>
 </body>
 </html>
