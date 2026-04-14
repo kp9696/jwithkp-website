@@ -348,7 +348,7 @@
           <div id="success-banner" class="success-banner"><span><i class="fas fa-check-circle"></i> Thank you. Your request was submitted successfully.</span><button type="button" id="dismiss-success-banner" aria-label="Dismiss success message">Dismiss</button></div>
           <div class="contact-cta-strip">Get a practical recommendation, estimated budget range, and rollout direction in the first response within 24 hours.</div>
 
-          <form id="smartContactForm" onsubmit="handleSubmit(event)" role="form" aria-label="Contact form" data-endpoint="https://formsubmit.co/ajax/info@jwithkp.com" data-fallback-endpoint="https://formsubmit.co/info@jwithkp.com">
+          <form id="smartContactForm" onsubmit="handleSubmit(event)" role="form" aria-label="Contact form" data-endpoint="https://formsubmit.co/ajax/info@jwithkp.com" data-fallback-endpoint="https://formsubmit.co/info@jwithkp.com" data-backup-endpoint="https://api.web3forms.com/submit" data-web3forms-key="5fce8888-8c65-4fdf-9ec9-d3fdb713e0c6">
             <div class="form-row">
               <div class="form-group">
                 <label for="full-name">Full Name *</label>
@@ -571,6 +571,50 @@
       fallbackForm.submit();
     }
 
+    async function submitViaBackupProvider(formData) {
+      const backupEndpoint = contactForm.dataset.backupEndpoint;
+      const web3formsKey = (contactForm.dataset.web3formsKey || '').trim();
+
+      if (!backupEndpoint || !web3formsKey) {
+        return false;
+      }
+
+      const backupPayload = {
+        access_key: web3formsKey,
+        subject: `New project inquiry from ${formData.name}`,
+        from_name: formData.name,
+        replyto: formData.email,
+        name: formData.name,
+        company: formData.company || 'Not provided',
+        email: formData.email,
+        phone: formData.phone,
+        city: formData.city || 'Not provided',
+        companySize: formData.companySize || 'Not provided',
+        interest: formData.interest,
+        subInterest: formData.subInterest,
+        budget: formData.budget,
+        timeline: formData.timeline,
+        message: formData.message || 'Not provided',
+        submittedAt: new Date().toISOString()
+      };
+
+      const response = await fetch(backupEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(backupPayload)
+      });
+
+      if (!response.ok) {
+        return false;
+      }
+
+      const result = await response.json();
+      return Boolean(result && result.success);
+    }
+
     async function handleSubmit(event) {
       event.preventDefault();
 
@@ -641,6 +685,19 @@
         formStartedAtInput.value = String(Date.now());
         updateSubOptions();
       } catch (error) {
+        try {
+          const backupSuccess = await submitViaBackupProvider(formData);
+          if (backupSuccess) {
+            showNotification('Request submitted through backup mail route. We will respond within 24 hours.');
+            contactForm.reset();
+            formStartedAtInput.value = String(Date.now());
+            updateSubOptions();
+            return;
+          }
+        } catch (backupError) {
+          // Ignore and continue to final provider fallback.
+        }
+
         showNotification('Network issue detected. Retrying with secure fallback submission...', false);
         submitViaFallbackEndpoint(payload);
         return;
