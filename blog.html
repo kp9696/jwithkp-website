@@ -22,129 +22,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    :root {
-      --bg-primary: #0a0f1e;
-      --bg-primary-rgb: 10, 15, 30;
-      --bg-secondary: #111827;
-      --bg-card: rgba(17, 25, 40, 0.82);
-      --text-primary: #f3f4f6;
-      --text-secondary: #9ca3af;
-      --text-muted: #6b7280;
-      --accent-primary: #3b82f6;
-      --accent-secondary: #8b5cf6;
-      --border: rgba(255, 255, 255, 0.1);
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-primary, var(--bg, #0a0f1e));
-      color: var(--text-primary);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(var(--bg-primary-rgb), 0.9);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-container {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .logo img {
-      height: 40px;
-    }
-
-    .logo span,
-    .gradient-text {
-      background: var(--gradient-1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .logo span {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      color: var(--text-secondary);
-    }
-
-    .nav-menu a:hover,
-    .nav-menu a.active {
-      color: var(--text-primary);
-    }
-
-    .hero {
-      padding: 6rem 0 4rem;
-    }
-
-    .hero-grid {
+.hero-grid {
       display: grid;
       grid-template-columns: 1.15fr 1fr;
       gap: 2rem;
       align-items: center;
     }
 
-    .section-badge {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      background: var(--gradient-1);
-      color: white;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
+    
 
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.6rem, 5vw, 4.4rem);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
+    
 
     .hero p {
       color: var(--text-secondary);
@@ -260,233 +150,67 @@
       flex: 1;
     }
 
-    .btn-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    
 
-    .btn {
-      display: inline-block;
-      padding: 0.95rem 1.4rem;
-      border-radius: 999px;
-      font-weight: 600;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+    
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+    
 
-    .btn-primary {
-      background: var(--gradient-1);
-      color: white;
-      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
-    }
+    
 
-    .btn-secondary {
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      background: rgba(59, 130, 246, 0.08);
-      color: var(--text-primary);
-    }
+    
 
-    .footer {
-      border-top: 1px solid var(--border);
-      background: var(--bg-secondary);
-      padding: 3rem 0 2rem;
-    }
+    
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
+    
 
     .footer p,
     .footer a {
       color: var(--text-secondary);
     }
 
-    .footer-links ul {
-      list-style: none;
-    }
+    
 
-    .footer-links li {
-      margin-bottom: 0.75rem;
-    }
+    
 
-    .footer-bottom {
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      text-align: center;
-    }
+    
 
     @media (max-width: 980px) {
       .hero-grid,
       .blog-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
+      
     }
-      /* ========== MODERN SITE REFRESH ========== */
-    body {
-      background:
-        radial-gradient(circle at 12% 8%, rgba(14, 165, 233, 0.2), transparent 42%),
-        radial-gradient(circle at 84% 14%, rgba(249, 115, 22, 0.16), transparent 38%),
-        radial-gradient(circle at 52% 92%, rgba(59, 130, 246, 0.14), transparent 44%),
-        var(--bg-primary, var(--bg, #0a0f1e));
-      letter-spacing: 0.01em;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: radial-gradient(circle at center, black 18%, transparent 82%);
-      z-index: -1;
-    }
-
-    .navbar {
-      backdrop-filter: blur(18px);
-      background: linear-gradient(120deg, rgba(var(--bg-primary-rgb), 0.88), rgba(15, 23, 42, 0.75));
-      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-      box-shadow: 0 10px 38px rgba(2, 6, 23, 0.32);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -130px;
-      right: -80px;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.26) 0%, rgba(56, 189, 248, 0) 72%);
-      filter: blur(6px);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    h1, .section-title {
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-
-    .btn {
-      border-radius: 14px;
-      font-weight: 700;
-      box-shadow: 0 10px 24px rgba(2, 6, 23, 0.28);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 28px rgba(2, 6, 23, 0.35);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 52%, #f97316 100%);
-    }
-
-    .btn-secondary {
-      border-color: rgba(56, 189, 248, 0.62);
-      background: rgba(14, 165, 233, 0.08);
-    }
-
-    .hero-card,
-    .hero-panel,
-    .content-card,
-    .value-card,
-    .service-card,
-    .resource-hub,
-    .resource-link-card,
-    .trust-badge,
-    .offer-panel,
-    .quote-panel,
-    .cta-panel,
-    .post-card,
-    .industry-card,
-    .stack-card,
-    .faq-item,
-    .calculator-card,
-    .results-card,
-    .case-study-card,
-    .insight-card,
-    .page-hub-card,
-    .tech-logo-tile,
-    .stack-visual-card,
-    .why-main,
-    .why-side,
-    .process-step {
-      border-color: rgba(148, 163, 184, 0.22);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 14px 34px rgba(2, 6, 23, 0.26);
-    }
-
-    .post-card:hover,
-    .service-card:hover,
-    .value-card:hover,
-    .content-card:hover,
-    .industry-card:hover,
-    .case-study-card:hover,
-    .insight-card:hover,
-    .tech-logo-tile:hover,
-    .page-hub-card:hover,
-    .process-step:hover {
-      transform: translateY(-8px);
-      border-color: rgba(14, 165, 233, 0.45);
-      box-shadow: 0 20px 44px rgba(2, 6, 23, 0.32);
-    }
-
-    @media (max-width: 768px) {
-      body::before {
-        background-size: 26px 26px;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-
-      .hero::before {
-        width: 280px;
-        height: 280px;
-        top: -60px;
-        right: -100px;
-      }
-    }
-  </style>
+</style>
 </head>
 <body>
-  <nav class="navbar">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <a class="logo" href="https://www.jwithkp.com/">
-        <img src="https://www.jwithkp.com/Logo.png" alt="JwithKP" decoding="async">
-        <span>JwithKP</span>
+      <a class="logo" href="https://www.jwithkp.com/" aria-label="JwithKP home">
+        <img src="https://www.jwithkp.com/Logo.png" alt="JwithKP" height="42" loading="lazy" decoding="async">
+        <span class="logo-copy">
+          <span>JwithKP</span>
+          <small class="logo-tagline">Journey with Knowledge &amp; Practice</small>
+        </span>
       </a>
-      <ul class="nav-menu">
+      <ul class="nav-menu" id="navMenu" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="industries.html">Industries</a></li>
         <li><a href="technology-stack.html">Technology</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="index.html#process">Process</a></li>
         <li><a href="roi-calculator.html">ROI Calculator</a></li>
         <li><a href="blog.html" class="active">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-controls="navMenu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -516,7 +240,7 @@
     </div>
   </header>
 
-  <main class="blog-section">
+  <main id="main-content" class="blog-section">
     <div class="container">
       <div class="section-head">
         <div>
@@ -527,7 +251,7 @@
       </div>
 
       <div class="blog-grid">
-        <article class="post-card">
+        <article class="post-card" data-aos="fade-up" data-aos-delay="0">
           <img src="images/ntopng-dashboard-screenshot.png" alt="ntopng network traffic monitoring dashboard" loading="lazy" decoding="async">
           <div class="post-body">
             <div class="meta">
@@ -540,7 +264,7 @@
           </div>
         </article>
 
-        <article class="post-card">
+        <article class="post-card" data-aos="fade-up" data-aos-delay="100">
           <img src="images/tech-visual-1.jpg" alt="Startup team working with open-source infrastructure" loading="lazy" decoding="async">
           <div class="post-body">
             <div class="meta">
@@ -553,7 +277,7 @@
           </div>
         </article>
 
-        <article class="post-card">
+        <article class="post-card" data-aos="fade-up" data-aos-delay="200">
           <img src="images/proxmox.png" alt="Virtualization infrastructure" loading="lazy" decoding="async">
           <div class="post-body">
             <div class="meta">
@@ -566,7 +290,7 @@
           </div>
         </article>
 
-        <article class="post-card">
+        <article class="post-card" data-aos="fade-up" data-aos-delay="300">
           <img src="images/wazuh.png" alt="Security monitoring dashboards" loading="lazy" decoding="async">
           <div class="post-body">
             <div class="meta">
@@ -579,7 +303,7 @@
           </div>
         </article>
 
-        <article class="post-card">
+        <article class="post-card" data-aos="fade-up" data-aos-delay="400">
           <img src="images/office365-collab.jpg" alt="Cloud collaboration systems" loading="lazy" decoding="async">
           <div class="post-body">
             <div class="meta">
@@ -595,46 +319,69 @@
     </div>
   </main>
 
-  <footer class="footer">
+    <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div>
-          <a class="logo" href="https://www.jwithkp.com/" style="margin-bottom:1rem;">
-          <img src="https://www.jwithkp.com/Logo.png" alt="JwithKP" loading="lazy" decoding="async">
-            <span>JwithKP</span>
+        <div class="footer-about">
+          <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/" aria-label="JwithKP home">
+            <img src="https://www.jwithkp.com/Logo.png" alt="JwithKP" height="40" loading="lazy" decoding="async">
+            <span class="logo-copy">
+              <span>JwithKP</span>
+              <small class="logo-tagline">Journey with Knowledge &amp; Practice</small>
+            </span>
           </a>
           <p>Smart IT implementation combining open-source power with commercial reliability for Indian businesses.</p>
+          <p class="footer-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Serving clients across India</p>
         </div>
-
         <div class="footer-links">
-          <h4>Quick Links</h4>
+          <h4>Navigate</h4>
           <ul>
             <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="industries.html">Industries</a></li>
             <li><a href="technology-stack.html">Technology</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="index.html#process">Process</a></li>
             <li><a href="roi-calculator.html">ROI Calculator</a></li>
             <li><a href="blog.html">Blog</a></li>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-
-        <div class="footer-links">
+        <div class="footer-links footer-contact">
           <h4>Contact</h4>
           <ul>
-            <li><a href="mailto:info@jwithkp.com">info@jwithkp.com</a></li>
-            <li><a href="tel:+917982912207">+91 79829 12207</a></li>
-            <li><a href="contact.html">Request Consultation</a></li>
-            <li><a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li>
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              <span><strong>Call</strong><a href="tel:+917982912207">+91 79829 12207</a></span>
+            </li>
+            <li>
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <span><strong>Email</strong><a href="mailto:info@jwithkp.com">info@jwithkp.com</a></span>
+            </li>
+            <li>
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              <span><strong>WhatsApp</strong><a href="https://wa.me/917982912207" target="_blank" rel="noopener noreferrer">+91 79829 12207</a></span>
+            </li>
+            <li>
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
+              <span><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer">View profile</a></span>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <span><strong>Location</strong>Bangalore, India</span>
+            </li>
+            <li>
+              <i class="far fa-clock" aria-hidden="true"></i>
+              <span><strong>Hours</strong>Mon–Sat: 9AM – 7PM IST</span>
+            </li>
           </ul>
         </div>
       </div>
-
       <div class="footer-bottom">
-        <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge & Practice | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
+        <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge &amp; Practice | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms &amp; Conditions</a></p>
       </div>
     </div>
   </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
