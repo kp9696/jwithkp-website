@@ -1947,9 +1947,131 @@
       100% { transform: translate3d(-8px, -42px, 0); opacity: 0; }
     }
 
-    
+    .hero-float-gallery {
+      min-height: 470px;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    #hero-badge {
+      transition: opacity 0.24s ease, transform 0.24s ease;
+      will-change: opacity, transform;
+    }
+
+    #hero-badge.badge-fade-out {
+      opacity: 0.2;
+      transform: translateY(-4px);
+    }
+
+    .hero-copy-panel,
+    .hero-visual-panel,
+    .hero-particles {
+      transition: transform 0.2s ease-out;
+      will-change: transform;
+    }
+
+    .hero-outcome-strip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 1rem 0 1.3rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(8, 47, 73, 0.34);
+      color: #bae6fd;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: opacity 0.26s ease, transform 0.26s ease;
+    }
+
+    .hero-outcome-strip i {
+      color: #38bdf8;
+    }
+
+    .hero-outcome-strip.outcome-fade-out {
+      opacity: 0.15;
+      transform: translateY(-4px);
+    }
+
+    .hero-cta-animated {
+      background-size: 220% 220%;
+      animation: heroCtaGradientShift 4.8s ease-in-out infinite;
+    }
+
+    @keyframes heroCtaGradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .float-tile {
+      position: absolute;
+      margin: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(45, 212, 191, 0.42);
+      background: rgba(15, 23, 42, 0.72);
+      box-shadow: 0 14px 34px rgba(2, 6, 23, 0.4);
+      opacity: 0.35;
+      animation: floatTileY 7.2s ease-in-out infinite, floatTileOpacity 12s ease-in-out infinite;
+    }
+
+    .float-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .tile-1 { width: 52%; aspect-ratio: 4 / 3; left: 5%;  top: 6%;  animation-delay: 0s; }
+    .tile-2 { width: 42%; aspect-ratio: 4 / 3; right: 6%; top: 14%; animation-delay: 1.1s, 2s; }
+    .tile-3 { width: 46%; aspect-ratio: 4 / 3; left: 10%; bottom: 12%; animation-delay: 2.2s, 4s; }
+    .tile-4 { width: 34%; aspect-ratio: 1 / 1; right: 12%; bottom: 20%; animation-delay: 3.3s, 6s; }
+    .tile-5 { width: 30%; aspect-ratio: 1 / 1; left: 36%; top: 40%; animation-delay: 4.4s, 8s; }
+
+    @keyframes floatTileY {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-14px) scale(1.02); }
+    }
+
+    @keyframes floatTileOpacity {
+      0%, 100% { opacity: 0.28; }
+      20% { opacity: 0.95; }
+      45% { opacity: 0.4; }
+      70% { opacity: 0.82; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-copy-panel,
+      .hero-visual-panel,
+      .hero-particles {
+        transition: none;
+      }
+
+      .hero-cta-animated {
+        animation: none;
+      }
+
+      .hero-outcome-strip {
+        transition: none;
+      }
+
+      .float-tile {
+        animation: none;
+      }
+    }
 
 @media (max-width: 768px) {
+      .hero-float-gallery {
+        min-height: 340px;
+      }
+
+      .tile-1 { width: 58%; left: 2%; top: 8%; }
+      .tile-2 { width: 48%; right: 2%; top: 18%; }
+      .tile-3 { width: 52%; left: 4%; bottom: 10%; }
+      .tile-4 { width: 42%; right: 4%; bottom: 16%; }
+      .tile-5 { width: 34%; left: 34%; top: 40%; }
       
 .btn {
         width: 100%;
@@ -2006,13 +2128,17 @@
     </div>
     <div class="container">
       <div class="hero-content">
-        <div data-aos="fade-right">
-          <span class="section-badge">Cyberpunk Portfolio Experience</span>
+        <div data-aos="fade-right" class="hero-copy-panel">
+          <span class="section-badge" id="hero-badge">Future-Ready IT for Indian Businesses</span>
           <h1 class="cyber-title">We Deliver <span class="gradient-text" id="typed-headline"></span></h1>
           <p class="hero-audience"><i class="fas fa-code"></i> Building practical IT systems with futuristic clarity, performance, and business-first outcomes.</p>
           <p>Welcome to a modern digital workspace where infrastructure strategy meets cinematic design language. I help businesses modernize stacks, reduce cost, and deploy secure platforms with execution that feels sharp, fast, and dependable.</p>
+          <div class="hero-outcome-strip" id="hero-outcome-strip">
+            <i class="fas fa-bolt" aria-hidden="true"></i>
+            <span id="hero-outcome-text">Delivered 50+ IT modernization projects across India.</span>
+          </div>
           <div class="hero-buttons">
-            <a href="contact.html" class="btn btn-primary">Start a Project</a>
+            <a href="contact.html" class="btn btn-primary hero-cta-animated">Start a Project</a>
             <a href="services.html" class="btn btn-secondary">Explore Capabilities</a>
           </div>
           <div class="hero-stats">
@@ -2030,12 +2156,25 @@
             </div>
           </div>
         </div>
-        <div data-aos="fade-left">
-          <div class="cyber-avatar-wrap" role="img" aria-label="JwithKP developer avatar in futuristic glass panel">
+        <div data-aos="fade-left" class="hero-visual-panel">
+          <div class="cyber-avatar-wrap" aria-label="Floating showcase of infrastructure and security visuals">
             <div class="cyber-avatar-glow"></div>
-            <div class="cyber-avatar-card">
-          <img src="Logo.png" alt="JwithKP profile" class="cyber-avatar-img" decoding="async" loading="lazy">
-              <span class="cyber-status-dot" aria-label="Online status"></span>
+            <div class="cyber-avatar-card hero-float-gallery" aria-hidden="true">
+              <figure class="float-tile tile-1">
+                <img src="images/hero-slide-1.jpg" alt="Infrastructure deployment visual" decoding="async" loading="lazy">
+              </figure>
+              <figure class="float-tile tile-2">
+                <img src="images/hero-slide-2.jpg" alt="Team operations dashboard visual" decoding="async" loading="lazy">
+              </figure>
+              <figure class="float-tile tile-3">
+                <img src="images/hero-slide-3.jpg" alt="Connected systems and collaboration visual" decoding="async" loading="lazy">
+              </figure>
+              <figure class="float-tile tile-4">
+                <img src="images/security-ops.jpg" alt="Security monitoring visual" decoding="async" loading="lazy">
+              </figure>
+              <figure class="float-tile tile-5">
+                <img src="images/network-design.jpg" alt="Network planning visual" decoding="async" loading="lazy">
+              </figure>
             </div>
             <div class="cyber-depth-card">
               <h3>Systems Architect</h3>
@@ -2474,6 +2613,101 @@
         loop:         true,
         smartBackspace: true,
         cursorChar:   '|'
+      });
+    })();
+
+    (function () {
+      var badge = document.getElementById('hero-badge');
+      if (!badge) return;
+
+      var lines = [
+        'Future-Ready IT for Indian Businesses',
+        'Secure. Scalable. Budget-Smart.',
+        'Modern Infrastructure Without Vendor Lock-In',
+        'Cut IT Cost, Improve Reliability'
+      ];
+
+      var index = 0;
+      window.setInterval(function () {
+        badge.classList.add('badge-fade-out');
+        window.setTimeout(function () {
+          index = (index + 1) % lines.length;
+          badge.textContent = lines[index];
+          badge.classList.remove('badge-fade-out');
+        }, 220);
+      }, 3200);
+    })();
+
+    (function () {
+      var strip = document.getElementById('hero-outcome-strip');
+      var text = document.getElementById('hero-outcome-text');
+      if (!strip || !text) return;
+
+      var outcomes = [
+        'Delivered 50+ IT modernization projects across India.',
+        'Reduced recurring IT cost by up to 70% for selected clients.',
+        'Helped teams improve uptime with stronger monitoring and alerts.',
+        'Migrated critical workloads with low-disruption rollout plans.'
+      ];
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) return;
+
+      var index = 0;
+      window.setInterval(function () {
+        strip.classList.add('outcome-fade-out');
+        window.setTimeout(function () {
+          index = (index + 1) % outcomes.length;
+          text.textContent = outcomes[index];
+          strip.classList.remove('outcome-fade-out');
+        }, 220);
+      }, 3600);
+    })();
+
+    (function () {
+      var hero = document.querySelector('.hero-cyber');
+      var left = document.querySelector('.hero-copy-panel');
+      var right = document.querySelector('.hero-visual-panel');
+      var particles = document.querySelector('.hero-particles');
+      if (!hero || !left || !right || !particles) return;
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (reduceMotion || !finePointer) return;
+
+      var targetX = 0;
+      var targetY = 0;
+      var currentX = 0;
+      var currentY = 0;
+      var rafId = null;
+
+      function renderParallax() {
+        currentX += (targetX - currentX) * 0.12;
+        currentY += (targetY - currentY) * 0.12;
+
+        left.style.transform = 'translate3d(' + (currentX * -10) + 'px,' + (currentY * -8) + 'px,0)';
+        right.style.transform = 'translate3d(' + (currentX * 14) + 'px,' + (currentY * 10) + 'px,0)';
+        particles.style.transform = 'translate3d(' + (currentX * 18) + 'px,' + (currentY * 12) + 'px,0)';
+
+        rafId = window.requestAnimationFrame(renderParallax);
+      }
+
+      hero.addEventListener('mousemove', function (event) {
+        var rect = hero.getBoundingClientRect();
+        var x = (event.clientX - rect.left) / rect.width;
+        var y = (event.clientY - rect.top) / rect.height;
+        targetX = (x - 0.5) * 2;
+        targetY = (y - 0.5) * 2;
+      });
+
+      hero.addEventListener('mouseleave', function () {
+        targetX = 0;
+        targetY = 0;
+      });
+
+      rafId = window.requestAnimationFrame(renderParallax);
+      window.addEventListener('beforeunload', function () {
+        if (rafId) window.cancelAnimationFrame(rafId);
       });
     })();
   </script>
