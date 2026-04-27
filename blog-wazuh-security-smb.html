@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -63,10 +63,38 @@
     
     @media (max-width:700px) { 
 }
+
+    .seo-link-hub { padding: 0.5rem 0 2.5rem; }
+    .seo-link-hub .container { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 1.2rem 1.3rem; box-shadow: var(--shadow); }
+    .seo-link-hub h2 { margin-bottom: 0.45rem; font-size: 1.3rem; }
+    .seo-link-hub p { color: var(--text-secondary); margin-bottom: 0.75rem; }
+    .seo-link-hub ul { margin: 0 0 0 1.1rem; color: var(--text-secondary); }
+    .seo-link-hub li { margin-bottom: 0.45rem; }
+    .seo-link-hub a { color: #93c5fd; text-decoration: underline; }
 </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.jwithkp.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "How Wazuh Helps SMBs Improve Security Without Splunk-Level Spend",
+          "item": "https://www.jwithkp.com/blog-wazuh-security-smb.html"
+        }
+      ]
+    }
+  </script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -139,7 +167,21 @@
       </div>
     </div>
   </article>
-    <footer class="footer">
+    
+  <section id="seo-link-hub" class="seo-link-hub" aria-label="Explore related pages">
+    <div class="container">
+      <h2>Explore Next</h2>
+      <p>Use these pages to continue planning your stack, budget, and rollout path.</p>
+      <ul>
+        <li><a href="services.html">IT Services and Implementation Tracks</a></li>
+        <li><a href="technology-stack.html">Technology Stack Overview</a></li>
+        <li><a href="roi-calculator.html">ROI and Cost-Saving Calculator</a></li>
+        <li><a href="case-studies.html">Case Studies and Outcomes</a></li>
+        <li><a href="contact.html">Book a Consultation</a></li>
+      </ul>
+    </div>
+  </section>
+  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
@@ -191,7 +233,7 @@
             </li>
             <li>
               <i class="far fa-clock" aria-hidden="true"></i>
-              <span><strong>Hours</strong>Mon–Sat: 9AM – 7PM IST</span>
+              <span><strong>Hours</strong>Monâ€“Sat: 9AM â€“ 7PM IST</span>
             </li>
           </ul>
         </div>
@@ -205,3 +247,4 @@
   <script src="js/script.js" defer></script>
 </body>
 </html>
+

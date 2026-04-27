@@ -1,4 +1,5 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
+Host: https://www.jwithkp.com
 Sitemap: https://www.jwithkp.com/sitemap.xml
