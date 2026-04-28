@@ -1,5 +1,5 @@
 /* =============================================================
-   JwithKP — Shared JavaScript
+   JwithKP  Shared JavaScript
    Features:
      1. Theme toggle (localStorage persistence)
      2. Hamburger menu
@@ -14,7 +14,7 @@
 (function () {
   'use strict';
 
-  /* ── 1. THEME TOGGLE ──────────────────────────────────────── */
+  /*  1. THEME TOGGLE  */
   const themeToggle = document.getElementById('themeToggle');
   const root = document.documentElement;
 
@@ -37,7 +37,7 @@
     });
   }
 
-  /* ── 2. HAMBURGER MENU ────────────────────────────────────── */
+  /*  2. HAMBURGER MENU  */
   const menuToggle = document.getElementById('menuToggle');
   const navMenu    = document.getElementById('navMenu');
 
@@ -69,7 +69,7 @@
     });
   }
 
-  /* ── 3. NAVBAR SCROLL CLASS ───────────────────────────────── */
+  /*  3. NAVBAR SCROLL CLASS  */
   const navbar = document.getElementById('navbar');
   if (navbar) {
     window.addEventListener('scroll', function () {
@@ -77,7 +77,7 @@
     }, { passive: true });
   }
 
-  /* ── 4. SMOOTH SCROLL ─────────────────────────────────────── */
+  /*  4. SMOOTH SCROLL  */
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       const target = document.querySelector(link.getAttribute('href'));
@@ -88,7 +88,7 @@
     });
   });
 
-  /* ── 5. SCROLL REVEAL ─────────────────────────────────────── */
+  /*  5. SCROLL REVEAL  */
   function revealOnScroll() {
     const trigger = window.innerHeight * 0.88;
     document.querySelectorAll('.reveal').forEach(function (el) {
@@ -98,10 +98,10 @@
   window.addEventListener('scroll', revealOnScroll, { passive: true });
   revealOnScroll();
 
-  /* ── 6. ANIMATED COUNTERS ─────────────────────────────────── */
+  /*  6. ANIMATED COUNTERS  */
   /**
    * Usage: <span class="count-up" data-target="50" data-suffix="+">0</span>
-   * Animates from 0 → data-target when element enters viewport.
+   * Animates from 0  data-target when element enters viewport.
    * data-suffix: optional string appended after number (e.g. "+", "%", "h")
    * data-prefix: optional string prepended before number (e.g. "INR ")
    * data-duration: animation duration in ms (default 1800)
@@ -143,7 +143,7 @@
     counterObserver.observe(el);
   });
 
-  /* ── 7. AOS INITIALISATION ────────────────────────────────── */
+  /*  7. AOS INITIALISATION  */
   if (typeof AOS !== 'undefined') {
     AOS.init({
       duration: 700,
@@ -153,7 +153,7 @@
     });
   }
 
-  /* ── 8. FILTERABLE CARDS ──────────────────────────────────── */
+  /*  8. FILTERABLE CARDS  */
   /**
    * Usage:
    *   Filter buttons: <button class="filter-btn" data-filter="Security">Security</button>
