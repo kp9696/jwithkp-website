@@ -308,6 +308,27 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+/* HRMS nav button */
+.nav-hrms-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.9rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: #fff !important;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.nav-hrms-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
 /* Hamburger */
 .menu-toggle {
   display: none;
