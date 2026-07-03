@@ -28,228 +28,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-.hero-points {
-      margin-top: 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .hero-point {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1rem 1.1rem;
-      color: var(--text-secondary);
-    }
-
-    .hero-point strong {
-      display: block;
-      margin-bottom: 0.35rem;
-      color: var(--text-primary);
-    }
-
-    .calculator-page {
-      padding: 1rem 0 5rem;
-    }
-
-    .calculator-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    .calculator-card,
-    .results-card,
-    .support-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: var(--shadow);
-    }
-
-    .calculator-card h3,
-    .results-card h3,
-    .support-card h3 {
-      margin-bottom: 0.75rem;
-    }
-
-    .calculator-note,
-    .support-card p,
-    .support-card li,
-    .disclaimer {
-      color: var(--text-secondary);
-    }
-
-    .calc-group { margin-top: 1.25rem; }
-    .calc-group label {
-      display: block;
-      margin-bottom: 0.55rem;
-      font-weight: 600;
-    }
-
-    .input-wrapper {
-      display: flex;
-      align-items: center;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.03);
-    }
-
-    .currency {
-      padding: 0 1rem;
-      color: var(--text-secondary);
-      font-weight: 600;
-    }
-
-    input[type="number"],
-    input[type="range"] {
-      width: 100%;
-    }
-
-    input[type="number"] {
-      background: transparent;
-      color: var(--text-primary);
-      border: none;
-      padding: 1rem 1rem 1rem 0;
-      font-size: 1rem;
-      outline: none;
-    }
-
-    input[type="range"] {
-      accent-color: var(--accent-primary);
-    }
-
-    .range-meta {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0.5rem;
-      color: var(--text-secondary);
-      font-size: 0.92rem;
-    }
-
-    
-
-    
-
-    
-
-    .calc-btn {
-      width: 100%;
-      margin-top: 1.5rem;
-    }
-
-    .result-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      color: var(--text-secondary);
-    }
-
-    .result-item.highlight {
-      background: rgba(59, 130, 246, 0.08);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      border-radius: 18px;
-      padding: 1rem;
-      color: var(--text-primary);
-    }
-
-    .savings-big {
-      text-align: center;
-      padding: 1.5rem 1rem;
-      margin: 1.5rem 0;
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(59, 130, 246, 0.1));
-      border: 1px solid rgba(16, 185, 129, 0.2);
-    }
-
-    .savings-label {
-      display: block;
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      margin-bottom: 0.45rem;
-    }
-
-    .savings-number {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
-      color: #34d399;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 12px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 999px;
-      overflow: hidden;
-      margin-bottom: 0.8rem;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #10b981, #3b82f6);
-      border-radius: 999px;
-    }
-
-    .breakdown-details h4 {
-      margin-bottom: 1rem;
-    }
-
-    .breakdown-details ul {
-      list-style: none;
-    }
-
-    .breakdown-details li {
-      margin-bottom: 0.8rem;
-      color: var(--text-secondary);
-    }
-
-    .breakdown-details i {
-      color: var(--accent-success);
-      margin-right: 0.5rem;
-    }
-
-    .results-cta {
-      text-align: center;
-      margin-top: 1.5rem;
-    }
-
-    .support-wrap {
-      margin-top: 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5rem;
-    }
-
-    .support-card ul {
-      margin: 1rem 0 0 1.1rem;
-    }
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    @media (max-width: 900px) {
-      .hero-points,
-      .calculator-grid,
-      .support-wrap {
-        grid-template-columns: 1fr;
-      }
-    }
-</style>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -293,7 +71,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="nav-right">
-        <a href="https://hrms.jwithkp.com/login" target="_blank" rel="noopener noreferrer" class="nav-hrms-btn" aria-label="JWithKP HRMS login">HRMS <i class="fas fa-arrow-right" style="font-size:0.75em"></i></a>
+        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-btn" aria-label="JWithKP HRMS login">HRMS <i class="fas fa-arrow-right"></i></a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
           <i class="fas fa-moon"></i>
         </button>
@@ -407,9 +185,9 @@
           </div>
 
           <div class="progress-bar">
-            <div class="progress-fill" id="savings-progress" style="width: 65%"></div>
+            <div class="progress-fill" id="savings-progress"></div>
           </div>
-          <div style="text-align:center; margin-bottom:1.5rem;" id="savings-percent">65% Cost Reduction</div>
+          <div class="text-center" id="savings-percent">65% Cost Reduction</div>
 
           <!-- Animated Bar Chart -->
           <div class="roi-chart">
@@ -455,7 +233,7 @@
           <div class="results-cta">
             <a href="contact.html" class="btn btn-primary">Get Exact Quote in INR</a>
           </div>
-          <p class="disclaimer" style="text-align:center; margin-top:1rem; font-size:0.86rem;">Based on indicative optimization assumptions. Final savings depend on architecture, scale, support model, and migration scope.</p>
+          <p class="disclaimer">Based on indicative optimization assumptions. Final savings depend on architecture, scale, support model, and migration scope.</p>
         </section>
       </div>
 
@@ -473,7 +251,7 @@
         <section class="support-card">
           <h3>Need a more exact number?</h3>
           <p>We can turn this rough estimate into a practical recommendation with migration phases, budget range, rollout risks, and operational support options.</p>
-          <div class="results-cta" style="text-align:left;">
+          <div class="results-cta text-left">
             <a href="contact.html" class="btn btn-secondary">Talk About Your Environment</a>
           </div>
         </section>

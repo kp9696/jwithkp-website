@@ -1,0 +1,6 @@
+Batch replacements planned:
+- Remove `style="font-size:0.75em"` from nav HRMS icons across multiple HTML files.
+- Replace isolated `style="color:var(--text-secondary);"` with class `text-secondary`.
+- Convert `style="display: none;"` on form containers to `class="hidden"`.
+- Remove inline progress `style` and replace small alignment styles with `text-center` / `text-left` classes.
+- Insert utility classes into `css/style.css` (.text-secondary, .hidden, .text-center, .text-left) and extend `.disclaimer` rule.
