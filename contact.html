@@ -37,7 +37,7 @@
     .info-panel, .contact-form-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 28px; padding: 2rem; box-shadow: var(--shadow); }
     .info-panel p, .support-copy, .contact-form-intro, .form-footer { color: var(--text-secondary); }
     .interest-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0; }
-    .tag { display: inline-flex; align-items: center; justify-content: center; padding: 0.65rem 1rem; border-radius: 999px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); cursor: pointer; transition: border-color 0.25s ease, transform 0.25s ease; }
+    .tag { display: inline-flex; align-items: center; justify-content: center; padding: 0.65rem 1rem; border-radius: 999px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text-primary); font: inherit; cursor: pointer; transition: border-color 0.25s ease, transform 0.25s ease; }
     .tag:hover { border-color: rgba(59,130,246,0.45); transform: translateY(-1px); }
     .quick-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.5rem 0; }
     .quick-stats > div { background: var(--glass-bg); border: 1px solid var(--border); border-radius: 20px; padding: 1rem; text-align: center; }
@@ -50,7 +50,7 @@
     .form-group { margin-bottom: 1rem; }
     .form-group label { display: block; margin-bottom: 0.55rem; font-weight: 600; }
     .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.95rem 1rem; border-radius: 16px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text-primary); font: inherit; }
-    .sr-only-spam-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+    
     .form-group select option { color: #111827; }
     .form-group textarea { resize: vertical; min-height: 120px; }
     
@@ -155,15 +155,15 @@
           <p>Whether you are replacing expensive licenses, opening a new branch, improving security posture, standardizing collaboration, or planning a broader modernization effort, we can help shape the approach around your team and timeline.</p>
 
           <div class="interest-tags">
-            <span class="tag" onclick="setInterest('virtualization')">Proxmox/VMware</span>
-            <span class="tag" onclick="setInterest('open-source')">Nextcloud Setup</span>
-            <span class="tag" onclick="setInterest('security')">Wazuh/SIEM</span>
-            <span class="tag" onclick="setInterest('office365')">Zimbra/Office 365</span>
-            <span class="tag" onclick="setInterest('network')">pfSense/Fortinet</span>
-            <span class="tag" onclick="setInterest('monitoring')">Zabbix Monitoring</span>
-            <span class="tag" onclick="setInterest('ecom')">CMS/E-commerce</span>
-            <span class="tag" onclick="setInterest('endpoint')">ESET/Safetica</span>
-            <span class="tag" onclick="setInterest('erp')">Odoo ERP</span>
+            <button type="button" class="tag" data-interest="virtualization">Proxmox/VMware</button>
+            <button type="button" class="tag" data-interest="open-source">Nextcloud Setup</button>
+            <button type="button" class="tag" data-interest="security">Wazuh/SIEM</button>
+            <button type="button" class="tag" data-interest="office365">Zimbra/Office 365</button>
+            <button type="button" class="tag" data-interest="network">pfSense/Fortinet</button>
+            <button type="button" class="tag" data-interest="monitoring">Zabbix Monitoring</button>
+            <button type="button" class="tag" data-interest="ecom">CMS/E-commerce</button>
+            <button type="button" class="tag" data-interest="endpoint">ESET/Safetica</button>
+            <button type="button" class="tag" data-interest="erp">Odoo ERP</button>
           </div>
 
           <div class="quick-stats">
@@ -220,7 +220,7 @@
           <div id="success-banner" class="success-banner"><span><i class="fas fa-check-circle"></i> Thank you. Your request was submitted successfully.</span><button type="button" id="dismiss-success-banner" aria-label="Dismiss success message">Dismiss</button></div>
           <div class="contact-cta-strip">Get a practical recommendation, estimated budget range, and rollout direction in the first response within 24 hours.</div>
 
-          <form id="smartContactForm" onsubmit="handleSubmit(event)" role="form" aria-label="Contact form" data-endpoint="https://formsubmit.co/ajax/info@jwithkp.com" data-fallback-endpoint="https://formsubmit.co/info@jwithkp.com">
+          <form id="smartContactForm" role="form" aria-label="Contact form" data-endpoint="https://formsubmit.co/ajax/info@jwithkp.com" data-fallback-endpoint="https://formsubmit.co/info@jwithkp.com">
             <div class="form-row">
               <div class="form-group">
                 <label for="full-name">Full Name *</label>
@@ -263,7 +263,7 @@
 
             <div class="form-group">
               <label for="interest">I'm interested in *</label>
-              <select id="interest" name="interest" required onchange="updateSubOptions()">
+              <select id="interest" name="interest" required>
                 <option value="" disabled selected>-- Select your primary need --</option>
                 <option value="virtualization">Virtualization (Proxmox/VMware)</option>
                 <option value="open-source">Open-Source Implementation (Nextcloud/Zimbra)</option>
@@ -325,6 +325,7 @@
             <button type="submit" class="btn btn-primary submit-btn">
               <i class="fas fa-paper-plane"></i> Send Request
             </button>
+            <p class="form-footer"><i class="fas fa-shield-alt"></i> We only use your details to respond to this inquiry and shape the right next step.</p>
             <p class="form-footer"><i class="fas fa-lock"></i> Free consultation | No obligation | First response within 24 hours</p>
           </form>
         </section>
@@ -395,181 +396,15 @@
     </div>
   </footer>
 
-  <script>
-    const contactForm = document.getElementById('smartContactForm');
-    const successBanner = document.getElementById('success-banner');
-    const dismissSuccessBanner = document.getElementById('dismiss-success-banner');
-    const formStartedAtInput = document.getElementById('form-started-at');
-    const MIN_HUMAN_FILL_TIME_MS = 2500;
-
-    function setInterest(interest) {
-      const select = document.getElementById('interest');
-      select.value = interest;
-      updateSubOptions();
-      document.querySelector('.contact-form-card').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function updateSubOptions() {
-      const interest = document.getElementById('interest').value;
-      const subContainer = document.getElementById('sub-options-container');
-      const subSelect = document.getElementById('sub-interest');
-      const budgetContainer = document.getElementById('budget-container');
-      const budgetSelect = document.getElementById('budget');
-
-      const subOptions = {
-        virtualization: ['Proxmox New Setup', 'VMware to Proxmox Migration', 'Hyper-V to Proxmox', 'High Availability Cluster'],
-        'open-source': ['Nextcloud Setup', 'Zimbra Email Server', 'Odoo ERP', 'SuiteCRM', 'GLPI Helpdesk', 'Full Stack Implementation'],
-        security: ['Wazuh SIEM', 'pfSense Firewall', 'Fortinet Implementation', 'Sophos XG', 'Security Audit'],
-        monitoring: ['Zabbix Setup', 'Prometheus + Grafana', 'ELK Stack', 'Custom Dashboards'],
-        office365: ['Zimbra Migration', 'Office 365 Setup', 'Exchange to Zimbra', 'SharePoint Alternative'],
-        network: ['New Office Network', 'SD-WAN Implementation', 'WiFi Design', 'VPN Setup', 'Network Audit'],
-        endpoint: ['ESET Protect', 'Safetica DLP', 'Sophos Intercept X', 'Trend Micro', 'Kaspersky'],
-        ecom: ['WordPress', 'Shopify', 'Magento', 'Custom CMS', 'Payment Gateway'],
-        erp: ['Odoo Implementation', 'SuiteCRM', 'ERPNext', 'Custom ERP'],
-        backup: ['Veeam Backup', 'Bacula', 'Proxmox Backup Server', 'Disaster Recovery'],
-        hybrid: ['Complete IT Audit', 'Cost Optimization Strategy', 'Migration Planning']
-      };
-
-      if (subOptions[interest]) {
-        subSelect.innerHTML = '<option value="">-- Select specific need --</option>' +
-          subOptions[interest].map(opt => `<option value="${opt.toLowerCase().replace(/\s+/g, '-')}">${opt}</option>`).join('');
-        subContainer.style.display = 'block';
-        budgetContainer.style.display = 'block';
-      } else {
-        subSelect.innerHTML = '';
-        subSelect.value = '';
-        if (budgetSelect) {
-          budgetSelect.selectedIndex = 0;
-        }
-        subContainer.style.display = 'none';
-        budgetContainer.style.display = 'none';
-      }
-    }
-
-    function showNotification(message, isSuccess = true) {
-      const notification = document.createElement('div');
-      notification.className = 'notification';
-      notification.innerHTML = `<i class="fas ${isSuccess ? 'fa-check-circle' : 'fa-circle-info'}"></i> ${message}`;
-      document.body.appendChild(notification);
-      setTimeout(() => notification.remove(), 5000);
-    }
-
-    function submitViaFallbackEndpoint(payload) {
-      const fallbackEndpoint = contactForm.dataset.fallbackEndpoint;
-      const fallbackForm = document.createElement('form');
-      fallbackForm.method = 'POST';
-      fallbackForm.action = fallbackEndpoint;
-      fallbackForm.style.display = 'none';
-
-      for (const [key, value] of payload.entries()) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = String(value);
-        fallbackForm.appendChild(input);
-      }
-
-      document.body.appendChild(fallbackForm);
-      fallbackForm.submit();
-    }
-
-    async function handleSubmit(event) {
-      event.preventDefault();
-
-      // Basic bot gate: block unrealistically fast submissions.
-      const startedAt = Number(formStartedAtInput.value || Date.now());
-      if ((Date.now() - startedAt) < MIN_HUMAN_FILL_TIME_MS) {
-        showNotification('Please review your details for a moment, then submit again.', false);
-        return;
-      }
-
-      const submitButton = contactForm.querySelector('button[type="submit"]');
-      submitButton.disabled = true;
-      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-      const formData = {
-        name: document.getElementById('full-name').value.trim(),
-        company: document.getElementById('company-name').value.trim(),
-        email: document.getElementById('contact-email').value.trim(),
-        phone: document.getElementById('contact-phone').value.trim(),
-        city: document.getElementById('city').value.trim(),
-        companySize: document.getElementById('company-size-select').value,
-        interest: document.getElementById('interest').value,
-        subInterest: document.getElementById('sub-interest')?.value || 'Not specified',
-        budget: document.getElementById('budget')?.value || 'Not specified',
-        timeline: document.getElementById('timeline').value,
-        message: document.getElementById('message').value.trim()
-      };
-
-      const endpoint = contactForm.dataset.endpoint;
-      const payload = new FormData();
-
-      payload.append('_subject', `New project inquiry from ${formData.name}`);
-      payload.append('name', formData.name);
-      payload.append('company', formData.company || 'Not provided');
-      payload.append('email', formData.email);
-      payload.append('phone', formData.phone);
-      payload.append('city', formData.city || 'Not provided');
-      payload.append('companySize', formData.companySize || 'Not provided');
-      payload.append('interest', formData.interest);
-      payload.append('subInterest', formData.subInterest);
-      payload.append('budget', formData.budget);
-      payload.append('timeline', formData.timeline);
-      payload.append('message', formData.message || 'Not provided');
-      payload.append('submittedAt', new Date().toISOString());
-
-      // Forward hidden anti-spam values so provider enforces honeypot/captcha.
-      payload.append('_honey', document.getElementById('website').value || '');
-      payload.append('_captcha', 'true');
-      payload.append('_template', 'table');
-      payload.append('_replyto', formData.email);
-      payload.append('_next', 'https://www.jwithkp.com/contact.html?submitted=1');
-
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json'
-          },
-          body: payload
-        });
-
-        if (!response.ok) {
-          throw new Error('Submission failed');
-        }
-
-        showNotification('Request submitted successfully. We will respond within 24 hours.');
-        contactForm.reset();
-        formStartedAtInput.value = String(Date.now());
-        updateSubOptions();
-      } catch (error) {
-        showNotification('Network issue detected. Retrying with secure fallback submission...', false);
-        submitViaFallbackEndpoint(payload);
-        return;
-      } finally {
-        submitButton.disabled = false;
-        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request';
-      }
-    }
-
-    dismissSuccessBanner?.addEventListener('click', () => {
-      successBanner.style.display = 'none';
-    });
-
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('submitted') === '1') {
-      successBanner.style.display = 'block';
-      urlParams.delete('submitted');
-      const cleanUrl = `${window.location.pathname}${urlParams.toString() ? `?${urlParams.toString()}` : ''}${window.location.hash}`;
-      window.history.replaceState({}, document.title, cleanUrl);
-    }
-
-    formStartedAtInput.value = String(Date.now());
-    updateSubOptions();
-  </script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <script src="js/contact.js" defer></script>
   <script src="js/script.js" defer></script>
 </body>
 </html>
+
+
+
+
+
 
 

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Technology Stack | JwithKP</title>
+  <title>Business IT Technology Stack for Infrastructure, Security, and Collaboration | JwithKP</title>
   <meta name="description" content="Explore the JwithKP technology stack across open-source and enterprise platforms for virtualization, security, collaboration, monitoring, networking, backup, analytics, and business systems.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0a0f1e">
   <link rel="canonical" href="https://www.jwithkp.com/technology-stack.html">
-  <meta property="og:title" content="JwithKP Technology Stack">
+  <meta property="og:title" content="Business IT Technology Stack for Infrastructure, Security, and Collaboration | JwithKP">
   <meta property="og:description" content="A practical mix of open-source and enterprise technologies selected for performance, security, maintainability, and cost control.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_IN">
@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="JwithKP technology stack across open-source and enterprise platforms">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@jwithkp">
-  <meta name="twitter:title" content="JwithKP Technology Stack">
+  <meta name="twitter:title" content="Business IT Technology Stack for Infrastructure, Security, and Collaboration | JwithKP">
   <meta name="twitter:description" content="A practical mix of open-source and enterprise technologies selected for performance, security, maintainability, and cost control.">
   <meta name="twitter:image" content="https://www.jwithkp.com/images/tech-visual-2.jpg">
   <link rel="icon" type="image/png" href="https://www.jwithkp.com/Logo.png">
@@ -367,91 +367,13 @@
     </div>
   </footer>
 
-  <script>
-    (() => {
-      const hero = document.querySelector('.hero');
-      const matrixCanvas = document.getElementById('hero-matrix-canvas');
-      if (!hero || !matrixCanvas) return;
-
-      const matrixCtx = matrixCanvas.getContext('2d');
-      if (!matrixCtx) return;
-
-      const matrixChars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      const fontSize = 16;
-      const minDropSpeed = 0.7;
-      const maxDropSpeed = 1.35;
-      let columns = 0;
-      let drops = [];
-      let animationFrameId = null;
-
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-      const resizeMatrix = () => {
-        const rect = hero.getBoundingClientRect();
-        matrixCanvas.width = Math.max(1, Math.floor(rect.width));
-        matrixCanvas.height = Math.max(1, Math.floor(rect.height));
-        columns = Math.max(1, Math.floor(matrixCanvas.width / fontSize));
-        drops = Array.from({ length: columns }, () => ({
-          y: Math.random() * matrixCanvas.height,
-          speed: minDropSpeed + Math.random() * (maxDropSpeed - minDropSpeed)
-        }));
-      };
-
-      const drawFrame = () => {
-        matrixCtx.fillStyle = 'rgba(10, 15, 30, 0.15)';
-        matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-
-        matrixCtx.font = `${fontSize}px monospace`;
-        matrixCtx.fillStyle = 'rgba(66, 245, 155, 0.65)';
-
-        drops.forEach((drop, index) => {
-          const character = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-          const x = index * fontSize;
-          matrixCtx.fillText(character, x, drop.y);
-
-          drop.y += fontSize * drop.speed;
-          if (drop.y > matrixCanvas.height + fontSize && Math.random() > 0.975) {
-            drop.y = -fontSize;
-          }
-        });
-      };
-
-      const animate = () => {
-        drawFrame();
-        animationFrameId = requestAnimationFrame(animate);
-      };
-
-      const startOrStop = () => {
-        if (prefersReducedMotion.matches) {
-          if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-            animationFrameId = null;
-          }
-          matrixCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-          return;
-        }
-
-        if (!animationFrameId) {
-          animate();
-        }
-      };
-
-      resizeMatrix();
-      startOrStop();
-
-      window.addEventListener('resize', () => {
-        resizeMatrix();
-        if (!prefersReducedMotion.matches) {
-          drawFrame();
-        }
-      });
-
-      prefersReducedMotion.addEventListener('change', startOrStop);
-    })();
-  </script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <script src="js/technology-stack.js" defer></script>
   <script src="js/script.js" defer></script>
 </body>
 </html>
+
+
+
 
 
