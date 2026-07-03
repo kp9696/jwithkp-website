@@ -3388,3 +3388,17 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   [data-aos="fade-up"] > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
 }
 
+/* Accessibility Keyboard Focus Indicators */
+a:focus-visible, 
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid var(--accent-teal) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 14px rgba(14, 165, 233, 0.7) !important;
+  border-color: var(--accent-teal) !important;
+}
+
+

@@ -14,13 +14,13 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:site_name" content="JwithKP">
   <meta property="og:url" content="https://www.jwithkp.com/blog.html">
-  <meta property="og:image" content="https://www.jwithkp.com/images/ntopng-dashboard-screenshot.png">
+  <meta property="og:image" content="https://www.jwithkp.com/images/ntopng-dashboard-screenshot.webp">
   <meta property="og:image:alt" content="JwithKP blog with IT infrastructure and security insights">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@jwithkp">
   <meta name="twitter:title" content="JwithKP Blog | IT Cost Optimization, Security, and Infrastructure Insights">
   <meta name="twitter:description" content="Read JwithKP insights on Proxmox, Wazuh, Nextcloud, IT cost optimization, infrastructure modernization, and practical technology decisions for Indian businesses.">
-  <meta name="twitter:image" content="https://www.jwithkp.com/images/ntopng-dashboard-screenshot.png">
+  <meta name="twitter:image" content="https://www.jwithkp.com/images/ntopng-dashboard-screenshot.webp">
   <link rel="icon" type="image/png" href="https://www.jwithkp.com/Logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,16 +98,18 @@
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <!-- NAV_START -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <a class="logo" href="https://www.jwithkp.com/" aria-label="JwithKP home">
-        <img src="https://www.jwithkp.com/Logo.png" alt="JwithKP" height="42" loading="lazy" decoding="async">
+      <a class="logo" href="https://www.jwithkp.com/">
+        <img src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" decoding="async" loading="eager" fetchpriority="high">
         <span class="logo-copy">
           <span>JwithKP</span>
-          <small class="logo-tagline">Journey with Knowledge &amp; Practice</small>
+          <small class="logo-tagline">Journey with Knowledge & Practice</small>
         </span>
       </a>
-      <ul class="nav-menu" id="navMenu" role="list">
+      
+      <ul class="nav-menu" id="navMenu">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="industries.html">Industries</a></li>
@@ -117,6 +119,7 @@
         <li><a href="blog.html" class="active">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      
       <div class="nav-right">
         <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-btn" aria-label="JWithKP HRMS login">HRMS <i class="fas fa-arrow-right"></i></a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
@@ -128,6 +131,7 @@
       </div>
     </div>
   </nav>
+<!-- NAV_END -->
 
   <header class="hero">
     <div class="container">
@@ -167,7 +171,7 @@
 
       <div class="blog-grid">
         <article class="post-card" data-aos="fade-up" data-aos-delay="0">
-          <img src="images/tech-visual-2.jpg" alt="HRMS pricing and workforce management overview" loading="lazy" decoding="async">
+          <img src="images/tech-visual-2.webp" alt="HRMS pricing and workforce management overview" loading="lazy" decoding="async">
           <div class="post-body">
             <div class="meta">
               <span class="tag">HRMS</span>
@@ -180,7 +184,7 @@
         </article>
 
         <article class="post-card" data-aos="fade-up" data-aos-delay="0">
-          <img src="images/ntopng-dashboard-screenshot.png" alt="ntopng network traffic monitoring dashboard" loading="lazy" decoding="async">
+          <img src="images/ntopng-dashboard-screenshot.webp" alt="ntopng network traffic monitoring dashboard" loading="lazy" decoding="async">
           <div class="post-body">
             <div class="meta">
               <span class="tag">Network Monitoring</span>
@@ -193,7 +197,7 @@
         </article>
 
         <article class="post-card" data-aos="fade-up" data-aos-delay="100">
-          <img src="images/tech-visual-1.jpg" alt="Startup team working with open-source infrastructure" loading="lazy" decoding="async">
+          <img src="images/tech-visual-1.webp" alt="Startup team working with open-source infrastructure" loading="lazy" decoding="async">
           <div class="post-body">
             <div class="meta">
               <span class="tag">Cost Optimization</span>
@@ -219,7 +223,7 @@
         </article>
 
         <article class="post-card" data-aos="fade-up" data-aos-delay="300">
-          <img src="images/wazuh.png" alt="Security monitoring dashboards" loading="lazy" decoding="async">
+          <img src="images/wazuh.webp" alt="Security monitoring dashboards" loading="lazy" decoding="async">
           <div class="post-body">
             <div class="meta">
               <span class="tag">Security</span>
@@ -232,7 +236,7 @@
         </article>
 
         <article class="post-card" data-aos="fade-up" data-aos-delay="400">
-          <img src="images/office365-collab.jpg" alt="Cloud collaboration systems" loading="lazy" decoding="async">
+          <img src="images/office365-collab.webp" alt="Cloud collaboration systems" loading="lazy" decoding="async">
           <div class="post-body">
             <div class="meta">
               <span class="tag">Collaboration</span>
@@ -261,70 +265,90 @@
       </ul>
     </div>
   </section>
-  <footer class="footer">
+  <!-- FOOTER_START -->
+<footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
-          <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/" aria-label="JwithKP home">
-            <img src="https://www.jwithkp.com/Logo.png" alt="JwithKP" height="40" loading="lazy" decoding="async">
+          <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/">
+            <img loading="lazy" decoding="async" src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" height="40">
             <span class="logo-copy">
               <span>JwithKP</span>
-              <small class="logo-tagline">Journey with Knowledge &amp; Practice</small>
+              <small class="logo-tagline">Journey with Knowledge & Practice</small>
             </span>
           </a>
-          <p>Smart IT implementation combining open-source power with commercial reliability for Indian businesses.</p>
-          <p class="footer-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Serving clients across India</p>
+          <p>Smart IT implementation combining open-source power with commercial reliability. Save up to 70% on IT infrastructure for Indian businesses.</p>
+          <p class="footer-location"><i class="fas fa-map-marker-alt"></i> Serving clients across India</p>
         </div>
+
         <div class="footer-links">
           <h4>Navigate</h4>
+          <p class="footer-section-intro">Start with the pages most visitors need first.</p>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="industries.html">Industries</a></li>
-            <li><a href="technology-stack.html">Technology</a></li>
+            <li><a href="#home">Home</a></li>
             <li><a href="services.html">Services</a></li>
+            <li><a href="technology-stack.html">Technology Stack</a></li>
             <li><a href="roi-calculator.html">ROI Calculator</a></li>
             <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-        <div class="footer-links footer-contact">
+
+        <div class="footer-links">
+          <h4>Solutions</h4>
+          <p class="footer-section-intro">Typical focus areas for modernization and cost control.</p>
+          <ul>
+            <li><a href="services.html">Proxmox Virtualization</a></li>
+            <li><a href="services.html">Nextcloud</a></li>
+            <li><a href="services.html">Wazuh SIEM</a></li>
+            <li><a href="services.html">pfSense Firewall</a></li>
+            <li><a href="services.html">Monitoring & Visibility</a></li>
+            <li><a href="services.html">Email & Collaboration</a></li>
+            <li><a href="services.html">Odoo ERP</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
           <h4>Contact</h4>
+          <p class="footer-section-intro">Reach out for consultations, pilot rollouts, or platform planning.</p>
           <ul>
             <li>
-              <i class="fas fa-phone" aria-hidden="true"></i>
+              <i class="fas fa-phone"></i>
               <span><strong>Call</strong><a href="tel:+917982912207">+91 79829 12207</a></span>
             </li>
             <li>
-              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <i class="fas fa-envelope"></i>
               <span><strong>Email</strong><a href="mailto:info@jwithkp.com">info@jwithkp.com</a></span>
             </li>
             <li>
-              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              <i class="fab fa-whatsapp"></i>
               <span><strong>WhatsApp</strong><a href="https://wa.me/917982912207" target="_blank" rel="noopener noreferrer">+91 79829 12207</a></span>
             </li>
             <li>
-              <i class="fab fa-linkedin" aria-hidden="true"></i>
-              <span><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer">View profile</a></span>
-            </li>
-            <li>
-              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <i class="fas fa-map-marker-alt"></i>
               <span><strong>Location</strong>Bangalore, India</span>
             </li>
             <li>
-              <i class="far fa-clock" aria-hidden="true"></i>
+              <i class="far fa-clock"></i>
               <span><strong>Hours</strong>Mon-Sat: 9AM - 7PM IST</span>
+            </li>
+            <li>
+              <i class="fab fa-linkedin"></i>
+              <span><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer">View profile</a></span>
             </li>
           </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge &amp; Practice | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms &amp; Conditions</a></p>
+        <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge & Practice | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
       </div>
     </div>
   </footer>
+<!-- FOOTER_END -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="js/script.js" defer></script>
+  <script src="js/script.min.js" defer></script>
 </body>
 </html>
 
