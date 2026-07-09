@@ -1,0 +1,13 @@
+{
+  "name": "jwithkp-website",
+  "version": "1.0.0",
+  "description": "IT consulting website builder & assets compiler",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "clean-css": "^5.3.2",
+    "terser": "^5.19.2"
+  }
+}

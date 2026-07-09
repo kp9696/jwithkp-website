@@ -7,6 +7,15 @@ key.pub
 *.pfx
 
 # Environment files
+# Secrets and keys
+key
+key.pub
+*.pem
+*.ppk
+*.p12
+*.pfx
+
+# Environment files
 .env
 .env.*
 
@@ -15,3 +24,6 @@ key.pub
 Thumbs.db
 .vscode/
 .blackboxcli/
+
+# Node dependencies
+node_modules/

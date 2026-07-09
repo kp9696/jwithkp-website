@@ -65,6 +65,32 @@
         if (icon) icon.className = 'fas fa-bars';
       }
     });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Tab' && navMenu.classList.contains('open')) {
+        const navbar = document.getElementById('navbar');
+        if (!navbar) return;
+        const focusables = navbar.querySelectorAll('a, button, [tabindex="0"]');
+        const visibleFocusables = Array.from(focusables).filter(function (el) {
+          return el.offsetWidth > 0 || el.offsetHeight > 0 || el.getClientRects().length > 0;
+        });
+        if (visibleFocusables.length === 0) return;
+        const firstVisible = visibleFocusables[0];
+        const lastVisible = visibleFocusables[visibleFocusables.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstVisible) {
+            e.preventDefault();
+            lastVisible.focus();
+          }
+        } else {
+          if (document.activeElement === lastVisible) {
+            e.preventDefault();
+            firstVisible.focus();
+          }
+        }
+      }
+    });
   }
 
   const navbar = document.getElementById('navbar');
@@ -171,4 +197,94 @@
       card.classList.add('filter-visible');
     });
   }
+
+  function initMatrix(canvasId, chars, colorDark, colorLight) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const fontSize = 14;
+    const targetFps = 22;
+    let columns = [];
+    let animationFrame;
+    let lastFrame = 0;
+
+    function resizeCanvas() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(canvas.clientWidth * dpr);
+      canvas.height = Math.floor(canvas.clientHeight * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const totalColumns = Math.ceil(canvas.clientWidth / fontSize);
+      columns = Array.from({ length: totalColumns }, function () {
+        return Math.random() * (canvas.clientHeight / fontSize);
+      });
+    }
+
+    function drawFrame() {
+      const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
+      ctx.fillStyle = isLightTheme ? 'rgba(249, 250, 251, 0.18)' : 'rgba(10, 15, 30, 0.14)';
+      ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+
+      ctx.font = fontSize + 'px Space Grotesk, monospace';
+      ctx.fillStyle = isLightTheme ? (colorLight || 'rgba(30, 64, 175, 0.34)') : (colorDark || 'rgba(103, 232, 249, 0.54)');
+
+      columns.forEach(function (columnY, index) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const x = index * fontSize;
+        const y = columnY * fontSize;
+        ctx.fillText(char, x, y);
+
+        if (y > canvas.clientHeight && Math.random() > 0.975) {
+          columns[index] = 0;
+        } else {
+          columns[index] = columnY + 1;
+        }
+      });
+    }
+
+    function animate(timestamp) {
+      if (prefersReducedMotion.matches) {
+        drawFrame();
+        return;
+      }
+      if (timestamp - lastFrame > (1000 / targetFps)) {
+        lastFrame = timestamp;
+        drawFrame();
+      }
+      animationFrame = window.requestAnimationFrame(animate);
+    }
+
+    function start() {
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+      resizeCanvas();
+      ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+      if (prefersReducedMotion.matches) {
+        drawFrame();
+        return;
+      }
+      animationFrame = window.requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', start);
+    if (prefersReducedMotion.addEventListener) {
+      prefersReducedMotion.addEventListener('change', start);
+    } else if (prefersReducedMotion.addListener) {
+      prefersReducedMotion.addListener(start);
+    }
+
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function () {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+      });
+    }
+
+    start();
+  }
+
+  window.initMatrix = initMatrix;
 })();
