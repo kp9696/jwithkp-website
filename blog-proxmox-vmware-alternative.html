@@ -47,9 +47,9 @@
   <link rel="icon" type="image/png" href="https://www.jwithkp.com/Logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  
   <link rel="stylesheet" href="css/style.min.css">
   <script type="application/ld+json">
     {
@@ -78,7 +78,7 @@
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a class="logo" href="https://www.jwithkp.com/">
-        <img src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" decoding="async" loading="eager" fetchpriority="high">
+        <img src="Logo.webp" alt="JwithKP" decoding="async" loading="eager" fetchpriority="high">
         <span class="logo-copy">
           <span>JwithKP</span>
           <small class="logo-tagline">Journey with Knowledge & Practice</small>
@@ -133,6 +133,11 @@
       <p>The strongest outcomes usually come when the target architecture is designed before the first VM is moved. That means deciding how availability, storage, network segmentation, backup retention, and monitoring will work in the future state, not just replicating the old design on a cheaper platform.</p>
       <h2>What the savings story really looks like</h2>
       <p>Licensing is the most visible part of the ROI, but it is not the only one. Proxmox can also help reduce vendor lock-in, improve transparency in infrastructure planning, and align virtualization spending more closely with business needs. The savings become more meaningful when paired with sensible backup, monitoring, and administration processes.</p>
+      <h2>When Proxmox may not be the right fit</h2>
+      <p>Not every environment should move immediately. If the business depends on vendor-specific integrations, has limited in-house operational ownership, or is midstream in another infrastructure transition, the better decision may be a phased evaluation instead of a full platform change. The goal is to reduce long-term cost and complexity, not introduce new migration risk too early.</p>
+
+      <h2>A practical migration checklist</h2>
+      <p>Before any VMware replacement project begins, confirm workload criticality, backup recovery testing, storage design, hardware compatibility, monitoring coverage, rollback options, and the skills required to operate the target environment after cutover. Those checks usually separate a successful savings project from a risky one.</p>
       <div class="cta">
         <p>If you are evaluating VMware to Proxmox migration, JwithKP can help you review the architecture, estimate the savings, and create a phased rollout plan through our <a href="services.html">open-source infrastructure services</a>.</p>
         <p>Want to test Proxmox in your environment first? Book a free 30-minute architecture review and we can assess pilot scope, migration risk, and likely savings.</p>
@@ -140,8 +145,8 @@
         <div class="related-links">
           <h3>Related resources</h3>
           <ul>
-            <li><a href="blog-open-source-startup-cost-savings.html">How Open-Source Solutions Help Startups Save Costs</a></li>
-            <li><a href="blog-wazuh-security-smb.html">How Wazuh Helps SMBs Improve Security</a></li>
+            <li><a href="roi-calculator.html">Estimate VMware replacement savings</a></li>
+            <li><a href="case-studies.html">Review infrastructure migration outcomes</a></li>
             <li><a href="blog.html">Read more infrastructure articles</a></li>
           </ul>
         </div>
@@ -168,7 +173,7 @@
       <div class="footer-grid">
         <div class="footer-about">
           <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/">
-            <img loading="lazy" decoding="async" src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" height="40">
+            <img loading="lazy" decoding="async" src="Logo.webp" alt="JwithKP" height="40">
             <span class="logo-copy">
               <span>JwithKP</span>
               <small class="logo-tagline">Journey with Knowledge & Practice</small>
@@ -244,7 +249,6 @@
     </div>
   </footer>
 <!-- FOOTER_END -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="js/script.min.js" defer></script>
 </body>
 </html>

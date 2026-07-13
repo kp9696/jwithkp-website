@@ -24,9 +24,9 @@
   <link rel="icon" type="image/png" href="https://www.jwithkp.com/Logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  
   <link rel="stylesheet" href="css/style.min.css">
   <script type="application/ld+json">
     {
@@ -48,6 +48,16 @@
       ]
     }
   </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Business IT Technology Stack for Infrastructure, Security, and Collaboration",
+      "url": "https://www.jwithkp.com/technology-stack.html",
+      "description": "Explore the JwithKP technology stack across virtualization, security, collaboration, monitoring, networking, backup, analytics, and business systems.",
+      "about": ["Proxmox", "Nextcloud", "Wazuh", "pfSense", "Zabbix", "Odoo"]
+    }
+  </script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -55,7 +65,7 @@
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a class="logo" href="https://www.jwithkp.com/">
-        <img src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" decoding="async" loading="eager" fetchpriority="high">
+        <img src="Logo.webp" alt="JwithKP" decoding="async" loading="eager" fetchpriority="high">
         <span class="logo-copy">
           <span>JwithKP</span>
           <small class="logo-tagline">Journey with Knowledge & Practice</small>
@@ -90,7 +100,7 @@
     <canvas id="hero-matrix-canvas" class="hero-matrix-canvas" aria-hidden="true"></canvas>
     <div class="container">
       <span class="section-badge">Our Technology Stack</span>
-      <h1>Best-Fit Platforms for <span class="gradient-text">Practical Business IT</span></h1>
+      <h1>Business IT Technology Stack for <span class="gradient-text">Infrastructure, Security, and Collaboration</span></h1>
       <p class="hero-copy">We combine proven open-source platforms with enterprise-grade commercial technologies to build environments that are secure, maintainable, and cost-aware. The goal is not to use more tools, but to use the right ones for your business, team, and growth stage.</p>
       <div class="btn-row">
         <a href="contact.html" class="btn btn-primary">Discuss Your Environment</a>
@@ -106,7 +116,7 @@
           </ul>
         </div>
         <div class="hero-panel hero-visual">
-          <img loading="lazy" decoding="async" src="images/tech-visual-1.webp" alt="Modern IT operations and infrastructure">
+          <img loading="lazy" decoding="async" src="images/hero-slide-2.webp" alt="Modern IT operations and infrastructure">
           <div class="hero-visual-copy">
             <h3>Typical outcomes</h3>
             <p>Lower recurring spend, clearer architecture, and stronger alignment between reliability, performance, and business risk.</p>
@@ -148,7 +158,7 @@
 
         <div class="solution-gallery-grid">
           <article class="solution-card">
-            <img loading="lazy" decoding="async" src="images/network-design.webp" alt="Network design and infrastructure planning">
+            <img loading="lazy" decoding="async" src="images/hero-slide-2.webp" alt="Network design and infrastructure planning">
             <div class="solution-card-copy">
               <h3>Network Design</h3>
               <p>Structured branch connectivity, segmentation, VPN planning, and firewall-aware network design for growing environments.</p>
@@ -156,7 +166,7 @@
           </article>
 
           <article class="solution-card">
-            <img loading="lazy" decoding="async" src="images/pfsense-dashboard.webp" alt="Security monitoring and pfSense style dashboard">
+            <img loading="lazy" decoding="async" src="images/wazuh.webp" alt="Security monitoring and firewall visibility">
             <div class="solution-card-copy">
               <h3>pfSense and Security Dashboards</h3>
               <p>Firewall policy visibility, security posture reviews, and operational dashboards that help teams respond with confidence.</p>
@@ -164,7 +174,7 @@
           </article>
 
           <article class="solution-card">
-            <img loading="lazy" decoding="async" src="images/office365-collab.webp" alt="Office 365 collaboration and team productivity">
+            <img loading="lazy" decoding="async" src="images/nextcloud.jpg" alt="Collaboration and team productivity platforms">
             <div class="solution-card-copy">
               <h3>Office 365 and Collaboration</h3>
               <p>Cloud productivity, email, identity, and collaboration environments that align with user expectations and support models.</p>
@@ -177,16 +187,7 @@
               <h3>Security Operations</h3>
               <p>Monitoring, alerting, and response workflows designed to improve visibility without adding unnecessary complexity.</p>
             </div>
-          </article>
-
-          <article class="solution-card">
-            <img loading="lazy" decoding="async" src="images/ntopng-dashboard-screenshot.webp" alt="ntopng dashboard for network traffic visibility">
-            <div class="solution-card-copy">
-              <h3>Traffic Analytics with ntopng</h3>
-              <p>Live visibility into top talkers, protocols, flows, and bandwidth trends so teams can troubleshoot branch and internet performance faster.</p>
-              <a href="blog-ntopng-network-monitoring.html">Read the ntopng guide</a>
-            </div>
-          </article>
+          </article>`r`n          <article class="solution-card">`r`n            <div class="solution-card-copy">`r`n              <h3>Traffic Analytics with ntopng</h3>`r`n              <p>Live visibility into top talkers, protocols, flows, and bandwidth trends so teams can troubleshoot branch and internet performance faster.</p>`r`n              <a href="blog-ntopng-network-monitoring.html">Read the ntopng guide</a>`r`n            </div>`r`n          </article>
         </div>
       </section>
 
@@ -239,6 +240,17 @@
         </div>
       </div>
     </div>
+
+      <section class="cta">
+        <h2>How to evaluate the right technology stack</h2>
+        <p class="text-secondary">The right stack is rarely the one with the most features. It is the one that matches the business operating model, the internal support capacity, the required uptime, the security expectations, and the budget available for ongoing ownership. That is why we compare tools by fit, not by trend.</p>
+      </section>
+
+      <section class="cta">
+        <h2>Common questions before stack selection</h2>
+        <p class="text-secondary"><strong>Should the stack be fully open source?</strong> Not always. Many businesses get the best result from a hybrid model that uses open-source where it adds value and commercial tooling where support, compliance, or user expectations matter more.</p>
+        <p class="text-secondary"><strong>Can the stack change over time?</strong> Yes. Good architecture makes it easier to start with one model and evolve toward a broader platform strategy as the business grows.</p>
+      </section>
   </main>
 
     <!-- FOOTER_START -->
@@ -247,7 +259,7 @@
       <div class="footer-grid">
         <div class="footer-about">
           <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/">
-            <img loading="lazy" decoding="async" src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" height="40">
+            <img loading="lazy" decoding="async" src="Logo.webp" alt="JwithKP" height="40">
             <span class="logo-copy">
               <span>JwithKP</span>
               <small class="logo-tagline">Journey with Knowledge & Practice</small>

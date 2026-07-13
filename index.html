@@ -32,9 +32,9 @@
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  <link rel="preload" as="style" href="https://unpkg.com/aos@2.3.1/dist/aos.css" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/style.min.css">
   <script type="application/ld+json">
     {
@@ -131,7 +131,7 @@
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a class="logo" href="https://www.jwithkp.com/">
-        <img src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" decoding="async" loading="eager" fetchpriority="high">
+        <img src="Logo.webp" alt="JwithKP" decoding="async" loading="eager" fetchpriority="high">
         <span class="logo-copy">
           <span>JwithKP</span>
           <small class="logo-tagline">Journey with Knowledge & Practice</small>
@@ -172,7 +172,8 @@
       <div class="hero-content">
         <div data-aos="fade-right" class="hero-copy-panel">
           <span class="section-badge" id="hero-badge">Future-Ready IT for Indian Businesses</span>
-          <h1 class="cyber-title">We Deliver <span class="gradient-text" id="typed-headline"></span></h1>
+          <h1 class="cyber-title">IT Infrastructure, Security, and Cost Optimization for <span class="gradient-text">Indian Businesses</span></h1>
+          <p class="hero-audience"><i class="fas fa-bolt"></i> We deliver <span class="gradient-text" id="typed-headline"></span></p>
           <p class="hero-audience"><i class="fas fa-code"></i> Building practical IT systems with futuristic clarity, performance, and business-first outcomes.</p>
           <p>Welcome to a modern digital workspace where infrastructure strategy meets cinematic design language. I help businesses modernize stacks, reduce cost, and deploy secure platforms with execution that feels sharp, fast, and dependable.</p>
           <div class="hero-outcome-strip" id="hero-outcome-strip">
@@ -203,19 +204,13 @@
             <div class="cyber-avatar-glow"></div>
             <div class="cyber-avatar-card hero-float-gallery" aria-hidden="true">
               <figure class="float-tile tile-1">
-                <img src="images/hero-slide-1.webp" alt="Infrastructure deployment visual" decoding="async" loading="lazy">
+                <img src="images/tech-visual-2.webp" alt="Infrastructure deployment visual" decoding="async" loading="lazy">
               </figure>
               <figure class="float-tile tile-2">
                 <img src="images/hero-slide-2.webp" alt="Team operations dashboard visual" decoding="async" loading="lazy">
               </figure>
               <figure class="float-tile tile-3">
                 <img src="images/hero-slide-3.webp" alt="Connected systems and collaboration visual" decoding="async" loading="lazy">
-              </figure>
-              <figure class="float-tile tile-4">
-                <img src="images/security-ops.webp" alt="Security monitoring visual" decoding="async" loading="lazy">
-              </figure>
-              <figure class="float-tile tile-5">
-                <img src="images/network-design.webp" alt="Network planning visual" decoding="async" loading="lazy">
               </figure>
             </div>
             <div class="cyber-depth-card">
@@ -560,7 +555,7 @@
       <div class="footer-grid">
         <div class="footer-about">
           <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/">
-            <img loading="lazy" decoding="async" src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" height="40">
+            <img loading="lazy" decoding="async" src="Logo.webp" alt="JwithKP" height="40">
             <span class="logo-copy">
               <span>JwithKP</span>
               <small class="logo-tagline">Journey with Knowledge & Practice</small>

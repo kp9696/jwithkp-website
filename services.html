@@ -24,9 +24,9 @@
   <link rel="icon" type="image/png" href="https://www.jwithkp.com/Logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  <link rel="preload" as="style" href="https://unpkg.com/aos@2.3.1/dist/aos.css" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/style.min.css">
   <script type="application/ld+json">
     {
@@ -48,6 +48,21 @@
       ]
     }
   </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "IT Services for Infrastructure, Security, Collaboration, and Modernization",
+      "url": "https://www.jwithkp.com/services.html",
+      "description": "JwithKP services across virtualization, security, collaboration, monitoring, networking, websites, and ERP implementation for Indian businesses.",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "JwithKP",
+        "url": "https://www.jwithkp.com/"
+      },
+      "areaServed": "India"
+    }
+  </script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -55,7 +70,7 @@
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a class="logo" href="https://www.jwithkp.com/">
-        <img src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" decoding="async" loading="eager" fetchpriority="high">
+        <img src="Logo.webp" alt="JwithKP" decoding="async" loading="eager" fetchpriority="high">
         <span class="logo-copy">
           <span>JwithKP</span>
           <small class="logo-tagline">Journey with Knowledge & Practice</small>
@@ -89,7 +104,7 @@
   <header class="hero">
     <div class="container">
       <span class="section-badge">Our Services</span>
-      <h1>Practical IT Services For <span class="gradient-text">Modern Business Growth</span></h1>
+      <h1>IT Services for <span class="gradient-text">Infrastructure, Security, Collaboration, and Modernization</span></h1>
       <p class="hero-copy">JwithKP helps businesses plan, implement, migrate, secure, and support the platforms that matter most. We combine open-source strength with commercial reliability so the final environment fits your budget, operations, and growth plans.</p>
       <div class="btn-row">
         <a href="contact.html" class="btn btn-primary">Discuss Your Requirement</a>
@@ -105,7 +120,7 @@
           </ul>
         </div>
         <div class="hero-panel hero-image-panel">
-          <img loading="lazy" decoding="async" src="images/tech-visual-1.webp" alt="Technology planning and infrastructure design">
+          <img loading="lazy" decoding="async" src="images/tech-visual-2.webp" alt="Technology planning and infrastructure design">
           <div class="hero-image-copy">
             <h3>Best fit for</h3>
             <p>Businesses replacing expensive recurring licenses, building new infrastructure, or improving security, visibility, and collaboration.</p>
@@ -395,6 +410,17 @@
         </div>
       </div>
     </div>
+
+      <section class="cta">
+        <h2>How to choose the right IT service scope</h2>
+        <p class="text-secondary">Most businesses do not need every service at once. The better starting point is to identify whether the current pressure is recurring licensing cost, migration risk, weak security visibility, collaboration friction, or infrastructure instability. From there, the service scope can stay focused, measurable, and easier to deliver in phases.</p>
+      </section>
+
+      <section class="cta">
+        <h2>Frequently asked questions about service engagement</h2>
+        <p class="text-secondary"><strong>Can you start with a pilot?</strong> Yes. Many environments benefit from a branch rollout, one-platform migration, or a limited validation scope before a wider implementation.</p>
+        <p class="text-secondary"><strong>Do you work with internal IT teams?</strong> Yes. Projects can be delivered end-to-end or alongside the existing team for architecture, execution, handover, and support planning.</p>
+      </section>
   </main>
 
     
@@ -417,7 +443,7 @@
       <div class="footer-grid">
         <div class="footer-about">
           <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/">
-            <img loading="lazy" decoding="async" src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" height="40">
+            <img loading="lazy" decoding="async" src="Logo.webp" alt="JwithKP" height="40">
             <span class="logo-copy">
               <span>JwithKP</span>
               <small class="logo-tagline">Journey with Knowledge & Practice</small>
