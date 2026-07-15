@@ -16,6 +16,14 @@ const GTM_BODY_SNIPPET = `<!-- Google Tag Manager (noscript) -->
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->`;
 
+function ensureCoreSeoMeta(content) {
+  if (!/meta name="author"/i.test(content)) {
+    content = content.replace(/(<meta name="description"[^>]*>)/i, '$1\n  <meta name="author" content="JWithKP">');
+  }
+
+  return content;
+}
+
 function ensureGtmSnippets(content) {
   if (!content.includes('GTM-M98KB4X7')) {
     content = content.replace(/<head>/i, '<head>\n' + GTM_HEAD_SNIPPET);
@@ -92,6 +100,7 @@ async function build() {
         );
       }
 
+      content = ensureCoreSeoMeta(content);
       content = ensureGtmSnippets(content);
 
       // Performance Optimization: Defer third-party scripts (AOS, Typed.js)

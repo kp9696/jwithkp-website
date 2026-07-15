@@ -13,7 +13,7 @@
           'Private Cloud Architecture',
           'Cyber Security',
           'Operational Automation',
-          'Business Applications',
+          'Business Automation Solutions',
           'Digital Transformation Roadmaps'
         ],
         typeSpeed: 52,
@@ -35,7 +35,7 @@
       'Enterprise Infrastructure, Cloud & Automation',
       'Secure Foundations. Smarter Operations.',
       'Infrastructure That Powers Applications',
-      'Applications That Support People'
+      'Automation That Supports Growth'
     ];
 
     var index = 0;
@@ -58,7 +58,7 @@
       'Infrastructure powers applications. Applications power people.',
       'Build private cloud, collaboration, and security with less lock-in.',
       'Connect architecture decisions with day-to-day operations.',
-      'Move from technology modernization to application modernization.'
+      'Move from technology modernization to business process automation.'
     ];
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
