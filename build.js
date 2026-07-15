@@ -3,6 +3,29 @@ const path = require('path');
 const CleanCSS = require('clean-css');
 const { minify } = require('terser');
 
+const GTM_HEAD_SNIPPET = `<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M98KB4X7');</script>
+<!-- End Google Tag Manager -->`;
+
+const GTM_BODY_SNIPPET = `<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M98KB4X7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->`;
+
+function ensureGtmSnippets(content) {
+  if (!content.includes('GTM-M98KB4X7')) {
+    content = content.replace(/<head>/i, '<head>\n' + GTM_HEAD_SNIPPET);
+    content = content.replace(/<body([^>]*)>/i, '<body$1>\n    ' + GTM_BODY_SNIPPET);
+  }
+
+  return content;
+}
+
+
 async function build() {
   console.log('Starting build compilation...');
 
@@ -68,6 +91,8 @@ async function build() {
           `<!-- FOOTER_START -->\n${footerTemplate}\n<!-- FOOTER_END -->`
         );
       }
+
+      content = ensureGtmSnippets(content);
 
       // Performance Optimization: Defer third-party scripts (AOS, Typed.js)
       content = content.replace(/<script\s+src="([^"]+)"(?![\s>]*defer)/gi, '<script src="$1" defer');

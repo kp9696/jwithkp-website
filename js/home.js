@@ -10,11 +10,11 @@
     if (typedEl) {
       new Typed('#typed-headline', {
         strings: [
-          'Payroll Automation',
-          'Attendance Tracking',
-          'Leave Management',
-          'PF, ESI & TDS Compliance',
-          'WPS SIF Payroll Export'
+          'Private Cloud Architecture',
+          'Cyber Security',
+          'Operational Automation',
+          'Business Applications',
+          'Digital Transformation Roadmaps'
         ],
         typeSpeed: 52,
         backSpeed: 28,
@@ -32,10 +32,10 @@
     if (!badge) return;
 
     var lines = [
-      'HR, Payroll & Compliance for Growing Teams',
-      'Simple Payroll. Cleaner Compliance.',
-      'Attendance, Leave, Payroll, Payslips',
-      'Free For Up To 5 Employees'
+      'Enterprise Infrastructure, Cloud & Automation',
+      'Secure Foundations. Smarter Operations.',
+      'Infrastructure That Powers Applications',
+      'Applications That Support People'
     ];
 
     var index = 0;
@@ -55,10 +55,10 @@
     if (!strip || !text) return;
 
     var outcomes = [
-      'Free HRMS for up to 5 employees.',
-      'Automate PF, ESI, TDS, and payslip workflows.',
-      'Track attendance, leave, and payroll from one place.',
-      'Generate WPS SIF files for GCC payroll workflows.'
+      'Infrastructure powers applications. Applications power people.',
+      'Build private cloud, collaboration, and security with less lock-in.',
+      'Connect architecture decisions with day-to-day operations.',
+      'Move from technology modernization to application modernization.'
     ];
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
