@@ -1,29 +1,25 @@
-# Secrets and keys
-key
-key.pub
-*.pem
-*.ppk
-*.p12
-*.pfx
+# Node dependencies
+node_modules/
 
-# Environment files
-# Secrets and keys
-key
-key.pub
+# Build secrets and keys
 *.pem
 *.ppk
 *.p12
 *.pfx
+key
+key.pub
 
 # Environment files
 .env
 .env.*
 
-# OS/editor noise
+# OS / editor noise
 .DS_Store
 Thumbs.db
 .vscode/
 .blackboxcli/
+.blackboxrules
 
-# Node dependencies
-node_modules/
+# Dev scratch files
+TODO.md
+.batch_replacements_note.txt

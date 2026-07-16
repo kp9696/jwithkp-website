@@ -16,6 +16,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0a0f1e">
   <link rel="canonical" href="https://www.jwithkp.com/contact">
+  <link rel="alternate" hreflang="en-IN" href="https://www.jwithkp.com/contact">
+  <link rel="alternate" hreflang="x-default" href="https://www.jwithkp.com/contact">
   <meta property="og:title" content="Contact JwithKP for IT Modernization, Security, and Infrastructure Planning | JwithKP">
   <meta property="og:description" content="Contact JwithKP for IT modernization, infrastructure, security, collaboration, monitoring, and cost optimization discussions.">
   <meta property="og:type" content="website">
@@ -408,11 +410,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </footer>
+<a href="https://wa.me/917982912207" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
 <!-- FOOTER_END -->
 
   
   <script src="js/contact.js" defer></script>
   <script src="js/script.min.js" defer></script>
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      var savings = p.get('savings');
+      if (savings) {
+        var current = p.get('current') || '0';
+        var headcount = p.get('headcount') || '';
+        var fmt = function (n) { return Number(n).toLocaleString('en-IN'); };
+        var msg = document.getElementById('message');
+        if (msg) {
+          msg.value = 'ROI estimate from your calculator: ₹' + fmt(savings) +
+            ' annual savings on ₹' + fmt(current) + ' current spend' +
+            (headcount ? ' (' + headcount + ' employees)' : '') +
+            '. Please provide a detailed proposal.';
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
 

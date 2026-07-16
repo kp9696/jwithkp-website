@@ -16,6 +16,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0a0f1e">
   <link rel="canonical" href="https://www.jwithkp.com/roi-calculator">
+  <link rel="alternate" hreflang="en-IN" href="https://www.jwithkp.com/roi-calculator">
+  <link rel="alternate" hreflang="x-default" href="https://www.jwithkp.com/roi-calculator">
   <meta property="og:title" content="IT ROI Calculator for Infrastructure and Licensing Cost Savings | JwithKP">
   <meta property="og:description" content="Estimate annual IT savings in INR across virtualization, monitoring, security, firewall, and collaboration spend.">
   <meta property="og:type" content="website">
@@ -389,6 +391,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </footer>
+<a href="https://wa.me/917982912207" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
 <!-- FOOTER_END -->
 
   <script>
@@ -439,6 +444,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.getElementById('annual-savings').textContent = `${RUPEE}${formatIndianCurrency(savingsTotal)}`;
         document.getElementById('savings-progress').style.width = `${Math.min(savingsPercent, 100)}%`;
         document.getElementById('savings-percent').textContent = `${savingsPercent}% Cost Reduction`;
+
+        // Update CTA link so contact form is pre-filled with ROI context
+        const ctaLinks = document.querySelectorAll('.results-cta a[href^="contact"]');
+        ctaLinks.forEach(link => {
+          if (savingsTotal > 0) {
+            link.href = `contact?savings=${Math.round(savingsTotal)}&current=${Math.round(currentTotal)}&headcount=${companySize}`;
+          }
+        });
 
         const virtSavings = Math.max(Math.round(virtCost - virtOptimized), 0);
         const monSavings = Math.max(Math.round(monCost - monOptimized), 0);

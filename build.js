@@ -27,6 +27,15 @@ const routeMap = {
   'contact.html': 'contact'
 };
 
+function ensureHreflang(content) {
+  if (content.includes('hreflang')) return content;
+  const canonicalMatch = content.match(/<link rel="canonical" href="([^"]+)"/i);
+  if (!canonicalMatch) return content;
+  const url = canonicalMatch[1];
+  const tags = `<link rel="alternate" hreflang="en-IN" href="${url}">\n  <link rel="alternate" hreflang="x-default" href="${url}">`;
+  return content.replace(/(<link rel="canonical"[^>]+>)/i, `$1\n  ${tags}`);
+}
+
 function ensureCoreSeoMeta(content) {
   if (!/meta name="author"/i.test(content)) {
     content = content.replace(/(<meta name="description"[^>]*>)/i, '$1\n  <meta name="author" content="JWithKP">');
@@ -104,6 +113,7 @@ async function build() {
       }
 
       content = ensureCoreSeoMeta(content);
+      content = ensureHreflang(content);
       content = ensureGtmSnippets(content);
       content = content.replace(/<script\s+src="([^"]+)"(?![\s>]*defer)/gi, '<script src="$1" defer');
       content = content.replace('href="css/style.css"', 'href="css/style.min.css"');
