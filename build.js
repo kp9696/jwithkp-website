@@ -16,6 +16,17 @@ const GTM_BODY_SNIPPET = `<!-- Google Tag Manager (noscript) -->
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->`;
 
+const routeMap = {
+  'index.html': 'https://www.jwithkp.com/',
+  'about.html': 'about',
+  'industries.html': 'industries',
+  'technology-stack.html': 'technology-stack',
+  'services.html': 'services',
+  'roi-calculator.html': 'roi-calculator',
+  'blog.html': 'blog',
+  'contact.html': 'contact'
+};
+
 function ensureCoreSeoMeta(content) {
   if (!/meta name="author"/i.test(content)) {
     content = content.replace(/(<meta name="description"[^>]*>)/i, '$1\n  <meta name="author" content="JWithKP">');
@@ -33,11 +44,9 @@ function ensureGtmSnippets(content) {
   return content;
 }
 
-
 async function build() {
   console.log('Starting build compilation...');
 
-  // 1. Minify CSS
   try {
     const cssPath = path.join(__dirname, 'css', 'style.css');
     const minCssPath = path.join(__dirname, 'css', 'style.min.css');
@@ -49,7 +58,6 @@ async function build() {
     console.error('Error minifying CSS:', err);
   }
 
-  // 2. Minify JS (script.js -> script.min.js)
   try {
     const jsPath = path.join(__dirname, 'js', 'script.js');
     const minJsPath = path.join(__dirname, 'js', 'script.min.js');
@@ -61,38 +69,33 @@ async function build() {
     console.error('Error minifying JS:', err);
   }
 
-  // 3. Load Templates
   const navbarTemplatePath = path.join(__dirname, 'templates', 'navbar.html');
   const footerTemplatePath = path.join(__dirname, 'templates', 'footer.html');
   const navbarTemplate = fs.readFileSync(navbarTemplatePath, 'utf8');
   const footerTemplate = fs.readFileSync(footerTemplatePath, 'utf8');
 
-  // 4. Process all HTML files in root directory
   const files = fs.readdirSync(__dirname);
   for (const file of files) {
     if (file.endsWith('.html') && file !== 'google662243390838af12.html') {
       const filePath = path.join(__dirname, file);
       let content = fs.readFileSync(filePath, 'utf8');
 
-      // Template Compilation: Navbar
       if (content.includes('<!-- NAV_START -->') && content.includes('<!-- NAV_END -->')) {
-        // Set dynamic active state on navbar
         let dynamicNavbar = navbarTemplate;
-        const navMatch = dynamicNavbar.match(new RegExp('href="' + file + '"'));
-        if (navMatch) {
-          dynamicNavbar = dynamicNavbar.replace(new RegExp('href="' + file + '"'), 'href="' + file + '" class="active"');
+        const currentHref = routeMap[file];
+
+        if (currentHref) {
+          dynamicNavbar = dynamicNavbar.replace(`<li><a href="${currentHref}">`, `<li><a href="${currentHref}" class="active">`);
         } else if (file.startsWith('blog-') || file === 'case-studies.html' || file === 'guides.html') {
-          // Highlight Blog link for sub-resources
-          dynamicNavbar = dynamicNavbar.replace('href="blog.html"', 'href="blog.html" class="active"');
+          dynamicNavbar = dynamicNavbar.replace('<li><a href="blog">', '<li><a href="blog" class="active">');
         }
-        
+
         content = content.replace(
           /<!-- NAV_START -->[\s\S]*?<!-- NAV_END -->/,
           `<!-- NAV_START -->\n${dynamicNavbar}\n<!-- NAV_END -->`
         );
       }
 
-      // Template Compilation: Footer
       if (content.includes('<!-- FOOTER_START -->') && content.includes('<!-- FOOTER_END -->')) {
         content = content.replace(
           /<!-- FOOTER_START -->[\s\S]*?<!-- FOOTER_END -->/,
@@ -102,11 +105,7 @@ async function build() {
 
       content = ensureCoreSeoMeta(content);
       content = ensureGtmSnippets(content);
-
-      // Performance Optimization: Defer third-party scripts (AOS, Typed.js)
       content = content.replace(/<script\s+src="([^"]+)"(?![\s>]*defer)/gi, '<script src="$1" defer');
-
-      // Reference Minified CSS in production build
       content = content.replace('href="css/style.css"', 'href="css/style.min.css"');
 
       fs.writeFileSync(filePath, content, 'utf8');

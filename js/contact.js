@@ -126,7 +126,7 @@ const contactForm = document.getElementById('smartContactForm');
       payload.append('_captcha', 'true');
       payload.append('_template', 'table');
       payload.append('_replyto', formData.email);
-      payload.append('_next', 'https://www.jwithkp.com/contact.html?submitted=1');
+      payload.append('_next', 'https://www.jwithkp.com/contact?submitted=1');
 
       try {
         const response = await fetch(endpoint, {

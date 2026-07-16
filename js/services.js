@@ -59,7 +59,7 @@
         payload.append('_captcha', 'true');
         payload.append('_template', 'table');
         payload.append('_replyto', document.getElementById('quote-email').value.trim());
-        payload.append('_next', 'https://www.jwithkp.com/services.html?submitted=1');
+        payload.append('_next', 'https://www.jwithkp.com/services?submitted=1');
 
         try {
           const response = await fetch(form.dataset.endpoint, {
