@@ -426,6 +426,13 @@
   display: block;
 }
 
+.solution-card img[src*="logo"],
+.solution-card img.is-logo {
+  object-fit: contain;
+  padding: 1.75rem;
+  background: rgba(15, 23, 42, 0.4);
+}
+
 .visual-copy,
 .solution-card-copy {
   padding: 1.4rem 1.5rem 1.6rem;
