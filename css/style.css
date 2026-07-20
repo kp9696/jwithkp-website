@@ -9,29 +9,37 @@
 /*  1. DESIGN TOKENS  */
 :root {
   /* =============================================================
-     JWithKP HRMS Enterprise Brand Palette (Blue + Indigo + Emerald)
+     JWithKP HRMS Enterprise Design System (Refined 10/10 SaaS)
      ============================================================= */
 
   /* Primary Brand Colors */
   --hrms-primary:       #2563EB; /* Royal Blue */
-  --hrms-primary-hover: #1D4ED8; /* Deep Blue */
+  --hrms-primary-hover: #1D4ED8; /* Deep Blue Hover */
   --hrms-secondary:     #4F46E5; /* Indigo */
-  --hrms-accent:        #06B6D4; /* Cyan */
-  --hrms-success:       #10B981; /* Emerald */
-  --hrms-success-hover: #059669; /* Dark Emerald */
-  --hrms-warning:       #F59E0B; /* Amber */
-  --hrms-error:         #EF4444; /* Red */
+  --hrms-accent:        #06B6D4; /* Cyan Accent */
+  --hrms-success:       #10B981; /* Emerald Success */
+  --hrms-success-hover: #059669; /* Dark Emerald Hover */
 
-  /* Neutral Light Palette (Slate) */
+  /* Additional Premium Colors */
+  --hrms-info:          #0EA5E9; /* Sky Blue */
+  --hrms-warning:       #F59E0B; /* Amber Warning */
+  --hrms-danger:        #EF4444; /* Red Danger */
+  --hrms-purple:        #8B5CF6; /* Purple */
+  --hrms-pink:          #EC4899; /* Pink */
+
+  /* Neutral Light Palette */
   --hrms-bg-main:       #F8FAFC; /* Main Background */
+  --hrms-bg-section:    #F1F5F9; /* Section Background */
   --hrms-bg-card:       #FFFFFF; /* Card Background */
-  --hrms-bg-alt:        #F1F5F9; /* Alternate Section */
-  --hrms-border:        #E2E8F0; /* Border */
+  --hrms-border:        #E2E8F0; /* Border Color */
+  --hrms-divider:       #CBD5E1; /* Divider Color */
 
-  --hrms-text-primary:   #0F172A; /* Primary Text */
-  --hrms-text-secondary: #475569; /* Secondary Text */
-  --hrms-text-muted:     #94A3B8; /* Muted Text */
-  --hrms-text-white:     #FFFFFF; /* White Text */
+  /* Typography Colors */
+  --hrms-text-heading:   #0F172A; /* Heading Text (Slate 900) */
+  --hrms-text-body:      #334155; /* Body Text (Slate 700) */
+  --hrms-text-secondary: #64748B; /* Secondary Text (Slate 500) */
+  --hrms-text-muted:     #94A3B8; /* Muted Text (Slate 400) */
+  --hrms-text-white:     #FFFFFF; /* Pure White */
 
   /* Neutral Dark Mode Palette */
   --hrms-dark-bg:        #020617; /* Dark Background */
@@ -40,26 +48,42 @@
   --hrms-dark-text-prim: #F8FAFC; /* Dark Primary Text */
   --hrms-dark-text-sec:  #CBD5E1; /* Dark Secondary Text */
 
+  /* Shadow Design Scale */
+  --shadow-sm:  0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md:  0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow-lg:  0 20px 60px rgba(15, 23, 42, 0.12);
+  --shadow-btn: 0 10px 30px rgba(37, 99, 235, 0.25);
+
+  /* Border Radius Scale */
+  --radius-btn:    14px;
+  --radius-card:   20px;
+  --radius-input:  14px;
+  --radius-modal:  24px;
+  --radius-avatar: 999px;
+
   /* Gradients */
   --hrms-gradient-primary: linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #06B6D4 100%);
-  --hrms-gradient-hero:    linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #2563EB 100%);
+  --hrms-gradient-hero:    linear-gradient(135deg, #0F172A 0%, #1E3A8A 40%, #2563EB 75%, #06B6D4 100%);
   --hrms-gradient-cta:     linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
 
-  /* Status Colors */
+  /* HRMS Dashboard Status Colors */
   --status-present:  #10B981; /* 🟢 Present */
+  --status-wfh:      #2563EB; /* 🔵 Working From Home */
   --status-leave:    #F59E0B; /* 🟡 Leave */
   --status-absent:   #EF4444; /* 🔴 Absent */
-  --status-pending:  #FB923C; /* 🟠 Pending */
+  --status-holiday:  #8B5CF6; /* 🟣 Holiday */
+  --status-halfday:  #FB923C; /* 🟠 Half Day */
   --status-approved: #22C55E; /* 🟢 Approved */
   --status-rejected: #DC2626; /* 🔴 Rejected */
 
-  /* Chart Colors */
+  /* HRMS Enterprise Chart Palette */
   --chart-blue:   #2563EB;
   --chart-indigo: #4F46E5;
   --chart-cyan:   #06B6D4;
   --chart-emerald:#10B981;
   --chart-amber:  #F59E0B;
   --chart-purple: #8B5CF6;
+  --chart-pink:   #EC4899;
 
   /* Legacy & Site Core Tokens Mapping */
   --bg-primary:     #0a0f1e;
@@ -80,45 +104,45 @@
   --gradient-btn: var(--hrms-gradient-cta);
 
   --border:  rgba(255, 255, 255, 0.1);
-  --shadow:  0 8px 32px rgba(0, 0, 0, 0.35);
+  --shadow:  var(--shadow-md);
 }
 
 /* =============================================================
-   JWithKP HRMS Button Components & Status Badges
+   JWithKP HRMS Enterprise Buttons, Cards & Status Badges
    ============================================================= */
 .btn-hrms-primary {
-  background: var(--hrms-primary);
-  background-image: var(--hrms-gradient-cta);
+  background: var(--hrms-gradient-cta);
   color: var(--hrms-text-white) !important;
   border: 1px solid transparent;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-btn);
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  box-shadow: var(--shadow-btn);
   text-decoration: none;
 }
 
 .btn-hrms-primary:hover {
-  background-color: var(--hrms-primary-hover);
-  background-image: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(29, 78, 216, 0.45);
+  background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(37, 99, 235, 0.38);
 }
 
 .btn-hrms-secondary {
   background-color: #FFFFFF;
-  border: 1px solid #CBD5E1;
-  color: #0F172A !important;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border: 1px solid var(--hrms-border);
+  color: var(--hrms-text-heading) !important;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-btn);
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -126,31 +150,79 @@
 }
 
 .btn-hrms-secondary:hover {
-  background-color: #F8FAFC;
-  border-color: #94A3B8;
-  color: #0F172A !important;
+  background-color: var(--hrms-bg-main);
+  border-color: var(--hrms-divider);
+  color: var(--hrms-text-heading) !important;
+  transform: translateY(-1px);
+}
+
+.btn-hrms-ghost {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--hrms-primary) !important;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-btn);
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.btn-hrms-ghost:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--hrms-primary-hover) !important;
 }
 
 .btn-hrms-success {
   background-color: var(--hrms-success);
   color: var(--hrms-text-white) !important;
   border: 1px solid transparent;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-btn);
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.28);
   text-decoration: none;
 }
 
 .btn-hrms-success:hover {
   background-color: var(--hrms-success-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(5, 150, 105, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(5, 150, 105, 0.38);
+}
+
+/* Card Components */
+.hrms-card {
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-md);
+  padding: 1.75rem;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hrms-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hrms-glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-card);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
 }
 
 /* Status Badges */
@@ -158,8 +230,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-avatar);
   font-size: 0.85rem;
   font-weight: 600;
 }
@@ -168,6 +240,12 @@
   background: rgba(16, 185, 129, 0.12);
   color: var(--status-present);
   border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.hrms-badge.status-wfh {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--status-wfh);
+  border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .hrms-badge.status-leave {
@@ -182,9 +260,15 @@
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-.hrms-badge.status-pending {
+.hrms-badge.status-holiday {
+  background: rgba(139, 92, 246, 0.12);
+  color: var(--status-holiday);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.hrms-badge.status-halfday {
   background: rgba(251, 146, 60, 0.12);
-  color: var(--status-pending);
+  color: var(--status-halfday);
   border: 1px solid rgba(251, 146, 60, 0.3);
 }
 
@@ -205,8 +289,8 @@
   --hrms-bg-main:       var(--hrms-dark-bg);
   --hrms-bg-card:       var(--hrms-dark-card);
   --hrms-border:        var(--hrms-dark-border);
-  --hrms-text-primary:   var(--hrms-dark-text-prim);
-  --hrms-text-secondary: var(--hrms-dark-text-sec);
+  --hrms-text-heading:  var(--hrms-dark-text-prim);
+  --hrms-text-body:     var(--hrms-dark-text-sec);
 }
 
 /* --------------------------------------------------
