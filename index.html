@@ -74,9 +74,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <ul class="nav-menu" id="navMenu">
         <li><a href="https://www.jwithkp.com/" class="active">Home</a></li>
         <li><a href="about">About</a></li>
-        <li><a href="industries">Industries</a></li>
+        <li class="has-mega-menu">
+          <a href="services">Services <i class="fas fa-chevron-down nav-arrow"></i></a>
+          <div class="mega-menu">
+            <a href="services" class="mega-menu-item">
+              <i class="fas fa-cloud"></i>
+              <div>
+                <h4>Cloud Infrastructure</h4>
+                <p>Azure, M365 & Cloudflare hybrid cloud migration</p>
+              </div>
+            </a>
+            <a href="services" class="mega-menu-item">
+              <i class="fas fa-shield-alt"></i>
+              <div>
+                <h4>Cyber Security & SIEM</h4>
+                <p>Wazuh monitoring, EDR, Zero Trust & SOC</p>
+              </div>
+            </a>
+            <a href="services" class="mega-menu-item">
+              <i class="fas fa-network-wired"></i>
+              <div>
+                <h4>Network Security</h4>
+                <p>pfSense & Fortinet firewall branch networks</p>
+              </div>
+            </a>
+            <a href="services" class="mega-menu-item">
+              <i class="fas fa-server"></i>
+              <div>
+                <h4>Virtualization Stack</h4>
+                <p>Proxmox VE & VMware alternative migration</p>
+              </div>
+            </a>
+            <a href="services" class="mega-menu-item">
+              <i class="fas fa-database"></i>
+              <div>
+                <h4>Backup & Recovery</h4>
+                <p>3-2-1 immutable Veeam & Bacula backup</p>
+              </div>
+            </a>
+            <a href="services" class="mega-menu-item">
+              <i class="fas fa-chart-line"></i>
+              <div>
+                <h4>Traffic Analytics</h4>
+                <p>ntopng & Zabbix real-time observability</p>
+              </div>
+            </a>
+          </div>
+        </li>
         <li><a href="technology-stack">Technology</a></li>
-        <li><a href="services">Services</a></li>
+        <li><a href="industries">Industries</a></li>
         <li><a href="roi-calculator">ROI Calculator</a></li>
         <li><a href="blog">Blog</a></li>
         <li><a href="contact">Contact</a></li>
@@ -95,309 +141,525 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </nav>
 <!-- NAV_END -->
 
-  <!-- Hero Section -->
-<main id="home" class="hero hero-cyber" role="main">
-  <canvas id="matrix-canvas" class="matrix-canvas" aria-hidden="true"></canvas>
+  <!-- SECTION 1 — HERO -->
+  <main id="home" class="hero hero-cyber" role="main">
+    <canvas id="matrix-canvas" class="matrix-canvas" aria-hidden="true"></canvas>
+    <div class="hero-particles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
 
-  <div class="hero-particles" aria-hidden="true">
-    <span></span><span></span><span></span><span></span><span></span><span></span>
-  </div>
-
-  <div class="container">
-    <div class="hero-content">
-
-      <!-- Left Content -->
-      <div data-aos="fade-right" class="hero-copy-panel">
-
-        <span class="section-badge" id="hero-badge">
-          Enterprise IT Consulting • Cloud • Cyber Security • Business Solutions
-        </span>
-
-        <h1 class="cyber-title">
-          Build Smarter IT. <span class="gradient-text">Transform Your Business.</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          JWithKP helps startups, SMEs, and growing businesses modernize IT infrastructure, strengthen cybersecurity, eliminate vendor lock-in, and automate business operations through enterprise consulting and business solutions.
-        </p>
-
-        <p class="hero-audience">
-          <i class="fas fa-bolt"></i>
-          We deliver
-          <span class="gradient-text" id="typed-headline"></span>
-        </p>
-
-        <div class="hero-outcome-strip" id="hero-outcome-strip">
-          <i class="fas fa-layer-group" aria-hidden="true"></i>
-          <span id="hero-outcome-text">
-            Secure Infrastructure • Cloud • Business Automation
+    <div class="container">
+      <div class="hero-content">
+        <!-- Left Content -->
+        <div data-aos="fade-right" class="hero-copy-panel">
+          <span class="section-badge" id="hero-badge">
+            <i class="fas fa-shield-alt"></i> Enterprise IT Consulting • Cloud • Cybersecurity • SaaS
           </span>
-        </div>
 
-        <div class="hero-buttons">
-          <a href="contact" class="btn btn-primary hero-cta-animated">
-            Book a Free Consultation
-          </a>
+          <h1 class="cyber-title">
+            Transforming Businesses Through <span class="gradient-text">Modern IT Solutions</span>
+          </h1>
 
-          <a href="#transformation-story" class="btn btn-secondary">
-            Explore Our Solutions
-          </a>
-        </div>
+          <p class="hero-subtitle">
+            Cloud Infrastructure, Cyber Security, Microsoft 365, Network Solutions, DevOps, Custom Software Development and Enterprise SaaS — delivered by experts.
+          </p>
 
-        <div class="hero-stats">
-
-          <div class="stat-item">
-            <h3>Infrastructure &amp; Cloud</h3>
-            <p>
-              Private cloud, virtualization, Microsoft 365, Google Workspace,
-              networking, and enterprise IT modernization.
-            </p>
+          <div class="hero-buttons">
+            <a href="contact" class="btn btn-hrms-primary hero-cta-animated">
+              <i class="fas fa-calendar-check"></i> Book Free Consultation
+            </a>
+            <a href="#services" class="btn btn-hrms-secondary">
+              <i class="fas fa-th-large"></i> Explore Services
+            </a>
           </div>
 
-          <div class="stat-item">
-            <h3>Cyber Security</h3>
-            <p>
-              Endpoint protection, monitoring, backup, disaster recovery,
-              identity management, and compliance.
-            </p>
-          </div>
-
-          <div class="stat-item">
-            <h3>Business Solutions</h3>
-            <p>
-              HRMS, workflow automation, collaboration, and digital solutions
-              that simplify everyday business operations.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- Right Content -->
-      <div data-aos="fade-left" class="hero-visual-panel">
-
-        <div class="cyber-avatar-wrap"
-             aria-label="Enterprise IT Infrastructure, Cyber Security and Business Solutions">
-
-          <div class="cyber-avatar-glow"></div>
-
-          <div class="cyber-avatar-card hero-float-gallery" aria-hidden="true">
-
-            <figure class="float-tile tile-1">
-              <img
-                src="images/tech-visual-2.webp"
-                alt="Enterprise IT Infrastructure"
-                loading="lazy"
-                decoding="async">
-            </figure>
-
-            <figure class="float-tile tile-2">
-              <img
-                src="images/hero-slide-2.webp"
-                alt="Cyber Security Operations Center"
-                loading="lazy"
-                decoding="async">
-            </figure>
-
-            <figure class="float-tile tile-3">
-              <img
-                src="images/hero-slide-3.webp"
-                alt="Business Automation Platform"
-                loading="lazy"
-                decoding="async">
-            </figure>
-
-          </div>
-
-          <div class="cyber-depth-card">
-
-            <h3>Technology That Grows With Your Business</h3>
-
-            <p>
-              We help organizations build secure, scalable, and future-ready
-              technology ecosystems—from modern IT infrastructure and cloud
-              platforms to business automation and enterprise applications.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</main>
-  <section class="trusted-strip" aria-label="Why JWithKP">
-    <div class="container">
-      <div class="trusted-strip-inner" data-aos="fade-up">
-        <div class="trusted-strip-copy">
-          <h3>Why JWithKP</h3>
-          <p>We combine infrastructure expertise, open-source depth, and enterprise implementation discipline so businesses can modernize with more control and less complexity.</p>
-        </div>
-        <div class="trusted-platforms">
-          <span>Open-Source Expertise</span>
-          <span>Enterprise Implementations</span>
-          <span>Lower Vendor Lock-In</span>
-          <span>Business-First Architecture</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="process" id="process">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-badge">Our Approach</span>
-        <h2 class="section-title">Plan, Build, and <span class="gradient-text">Transform</span></h2>
-        <p class="section-subtitle">A focused delivery model that keeps architecture decisions, implementation, and business outcomes aligned.</p>
-      </div>
-
-      <div class="process-grid">
-        <article class="process-card" data-aos="fade-up" data-aos-delay="50">
-          <div class="process-step">1</div>
-          <h3>Plan</h3>
-          <p>We assess the current environment, priorities, constraints, and operational gaps before recommending the next move.</p>
-          <ul>
-            <li>Current-state review</li>
-            <li>Risk and cost alignment</li>
-            <li>Practical roadmap</li>
-          </ul>
-        </article>
-
-        <article class="process-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="process-step">2</div>
-          <h3>Build</h3>
-          <p>We deploy the right infrastructure, security layers, and operational systems with clear rollout planning.</p>
-          <ul>
-            <li>Architecture and deployment</li>
-            <li>Migration and validation</li>
-            <li>Documentation and handover</li>
-          </ul>
-        </article>
-
-        <article class="process-card" data-aos="fade-up" data-aos-delay="150">
-          <div class="process-step">3</div>
-          <h3>Transform</h3>
-          <p>We extend strong foundations into business automation so teams work faster, with better visibility and control.</p>
-          <ul>
-            <li>Workflow modernization</li>
-            <li>Operational enablement</li>
-            <li>Ongoing optimization</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="transformation-story" id="transformation-story">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-badge">Two Business Pillars</span>
-        <h2 class="section-title">Technology Foundation and <span class="gradient-text">Business Automation</span></h2>
-        <p class="section-subtitle">JWithKP connects infrastructure modernization with the business systems that depend on it.</p>
-      </div>
-      <div class="transformation-shell" data-aos="fade-up">
-        <div class="pillar-grid">
-          <article class="pillar-card pillar-card-infra">
-            <span class="pillar-eyebrow">Pillar One</span>
-            <h3>Enterprise Infrastructure &amp; Cloud</h3>
-            <p>Secure, scalable systems designed for control, resilience, and long-term cost efficiency.</p>
-            <ul class="pillar-list">
-              <li>Private Cloud</li>
-              <li>Virtualization</li>
-              <li>Cyber Security</li>
-              <li>Backup</li>
-              <li>Monitoring</li>
-              <li>Networking</li>
-              <li>Microsoft 365</li>
-              <li>Google Workspace</li>
-            </ul>
-          </article>
-          <div class="pillar-divider" aria-hidden="true">
-            <div class="pillar-divider-line"></div>
-            <div class="pillar-divider-core">+</div>
-            <div class="pillar-divider-line"></div>
-          </div>
-          <article class="pillar-card pillar-card-apps">
-            <span class="pillar-eyebrow">Pillar Two</span>
-            <h3>Business Automation Solutions</h3>
-            <p>Focused applications introduced where they remove manual work and improve day-to-day execution.</p>
-            <ul class="pillar-list">
-              <li>HRMS</li>
-              <li>Payroll</li>
-              <li>Attendance</li>
-              <li>Leave</li>
-              <li>Recruitment</li>
-              <li>Performance</li>
-              <li>Learning</li>
-              <li>Analytics</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HRMS Product Section -->
-  <section class="hrms-section">
-    <div class="container">
-      <div class="hrms-grid" data-aos="fade-up">
-        <div>
-          <span class="section-badge hrms-badge">Featured Business Application</span>
-          <h2 class="section-title hrms-heading">JWithKP Multi-Tenant <span class="gradient-text">HRMS</span></h2>
-          <p class="hrms-description">Built during real transformation projects, JWithKP HRMS helps organizations replace fragmented HR, payroll, and workforce workflows with one more connected system.</p>
-          <ul class="hrms-bullet-list">
-            <li class="hrms-bullet"><i class="fas fa-check-circle icon-sm"></i> Workforce operations in one platform</li>
-            <li class="hrms-bullet"><i class="fas fa-check-circle icon-sm"></i> Developed from practical implementation experience</li>
-            <li class="hrms-bullet"><i class="fas fa-check-circle icon-sm"></i> Designed to reduce tool sprawl and manual work</li>
-          </ul>
-          <div class="hrms-button-row">
-            <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Explore JWithKP HRMS <i class="fas fa-arrow-right icon-sm"></i></a>
-            <a href="contact" class="btn btn-outline">Request A Consultation</a>
+          <!-- Trust Badges -->
+          <div class="trust-badges-strip">
+            <div class="trust-badge-pill"><i class="fas fa-check-circle"></i> Enterprise Ready</div>
+            <div class="trust-badge-pill"><i class="fas fa-check-circle"></i> Cloud Native</div>
+            <div class="trust-badge-pill"><i class="fas fa-check-circle"></i> 24×7 Support</div>
+            <div class="trust-badge-pill"><i class="fas fa-check-circle"></i> Security First</div>
           </div>
         </div>
-        <div class="hrms-card">
-          <div class="hrms-story-block">
-            <div class="hrms-story-eyebrow">Why It Exists</div>
-            <div class="hrms-story-list">
-              <div class="hrms-story-item">
-                <strong>Built from repeated client needs</strong>
-                <p>We kept seeing disconnected HR processes, manual payroll, and fragmented workforce operations across modernization projects.</p>
+
+        <!-- Right Content: Dual-Tab Interactive Illustration -->
+        <div data-aos="fade-left" class="hero-visual-panel">
+          <div class="hrms-card hero-illustration-card">
+            <div class="hero-tab-bar" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+              <button class="hero-tab-btn active btn-hrms-secondary btn-sm" onclick="switchHeroTab('network')"><i class="fas fa-network-wired"></i> Network Topology</button>
+              <button class="hero-tab-btn btn-hrms-secondary btn-sm" onclick="switchHeroTab('hrms')"><i class="fas fa-users-cog"></i> HRMS SaaS</button>
+            </div>
+
+            <!-- Tab 1: Topology -->
+            <div id="hero-tab-network" class="hero-tab-content active">
+              <div class="hero-graphic-box">
+                <img src="images/network-design.webp" alt="Interactive Network Topology & Cloud Visual" loading="eager" decoding="async" class="border-radius-16 w-100">
               </div>
-              <div class="hrms-story-item">
-                <strong>Designed to reduce vendor dependency</strong>
-                <p>When existing tools created more complexity than clarity, we built a platform that fits a broader transformation strategy.</p>
+            </div>
+
+            <!-- Tab 2: HRMS Dashboard Mockup -->
+            <div id="hero-tab-hrms" class="hero-tab-content" style="display: none;">
+              <div class="hero-graphic-box">
+                <img src="images/tech-visual-2.webp" alt="JWithKP HRMS Live SaaS Dashboard Mockup" loading="lazy" decoding="async" class="border-radius-16 w-100">
               </div>
             </div>
           </div>
-          <div class="hrms-cta-strip">
-            <div class="hrms-cta-copy">Detailed features, walkthroughs, and pricing live on the HRMS page.</div>
-            <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="btn btn-cta">Open HRMS</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SECTION 2 — CLIENT PAIN POINTS -->
+  <section class="page-section bg-alt" id="pain-points">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <span class="section-badge">Challenges &amp; Solutions</span>
+        <h2>Are Your IT Systems <span class="gradient-text">Holding Your Business Back?</span></h2>
+        <p class="mx-auto">See how JWithKP transforms operational friction and security risks into predictable enterprise performance.</p>
+      </div>
+
+      <div class="pain-points-grid">
+        <!-- Pain 1 -->
+        <article class="pain-card" data-aos="fade-up">
+          <div class="pain-step">
+            <div class="pain-icon"><i class="fas fa-tachometer-alt"></i></div>
+            <div>
+              <h3>1. Slow IT Infrastructure</h3>
+              <p class="text-secondary">Legacy servers and unoptimized disk I/O slow down daily business operations.</p>
+            </div>
           </div>
+          <div class="impact-badge"><i class="fas fa-exclamation-triangle"></i> Impact: 35% productivity loss for employees</div>
+          <div class="solution-box"><i class="fas fa-check-circle"></i> <strong>JWithKP Solution:</strong> High-performance NVMe flash storage &amp; Proxmox/Azure hybrid optimization.</div>
+        </article>
+
+        <!-- Pain 2 -->
+        <article class="pain-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="pain-step">
+            <div class="pain-icon"><i class="fas fa-power-off"></i></div>
+            <div>
+              <h3>2. Frequent Downtime</h3>
+              <p class="text-secondary">Unplanned server crashes during peak working hours disrupt revenue.</p>
+            </div>
+          </div>
+          <div class="impact-badge"><i class="fas fa-exclamation-triangle"></i> Impact: Significant revenue loss &amp; client dissatisfaction</div>
+          <div class="solution-box"><i class="fas fa-check-circle"></i> <strong>JWithKP Solution:</strong> 99.99% Uptime HA Clustering with live VM failover &amp; automatic recovery.</div>
+        </article>
+
+        <!-- Pain 3 -->
+        <article class="pain-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="pain-step">
+            <div class="pain-icon"><i class="fas fa-user-shield"></i></div>
+            <div>
+              <h3>3. Cyber Security Risks</h3>
+              <p class="text-secondary">Ransomware attacks, phishing threats, and unmonitored security blindspots.</p>
+            </div>
+          </div>
+          <div class="impact-badge"><i class="fas fa-exclamation-triangle"></i> Impact: High risk of data breach &amp; severe financial penalties</div>
+          <div class="solution-box"><i class="fas fa-check-circle"></i> <strong>JWithKP Solution:</strong> Wazuh SIEM 24/7 security event correlation &amp; EDR/XDR protection.</div>
+        </article>
+
+        <!-- Pain 4 -->
+        <article class="pain-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="pain-step">
+            <div class="pain-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div>
+              <h3>4. Manual HR &amp; Payroll Processes</h3>
+              <p class="text-secondary">Spreadsheets for attendance, leave approvals, and tax calculations create errors.</p>
+            </div>
+          </div>
+          <div class="impact-badge"><i class="fas fa-exclamation-triangle"></i> Impact: Payroll miscalculations &amp; statutory non-compliance</div>
+          <div class="solution-box"><i class="fas fa-check-circle"></i> <strong>JWithKP Solution:</strong> JWithKP HRMS SaaS — automated PF, ESI, TDS &amp; biometric sync.</div>
+        </article>
+
+        <!-- Pain 5 -->
+        <article class="pain-card" data-aos="fade-up">
+          <div class="pain-step">
+            <div class="pain-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div>
+              <h3>5. High Operational &amp; Licensing Costs</h3>
+              <p class="text-secondary">Oversized commercial software licensing fees drain IT capital budgets.</p>
+            </div>
+          </div>
+          <div class="impact-badge"><i class="fas fa-exclamation-triangle"></i> Impact: Inflated annual software renewal bills</div>
+          <div class="solution-box"><i class="fas fa-check-circle"></i> <strong>JWithKP Solution:</strong> Open-Source enterprise optimization saving up to 70% without sacrificing quality.</div>
+        </article>
+
+        <!-- Pain 6 -->
+        <article class="pain-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="pain-step">
+            <div class="pain-icon"><i class="fas fa-laptop-house"></i></div>
+            <div>
+              <h3>6. Poor Remote Access</h3>
+              <p class="text-secondary">Unsecured home connections and slow VPNs create friction for distributed teams.</p>
+            </div>
+          </div>
+          <div class="impact-badge"><i class="fas fa-exclamation-triangle"></i> Impact: Data leak vulnerability &amp; delayed project execution</div>
+          <div class="solution-box"><i class="fas fa-check-circle"></i> <strong>JWithKP Solution:</strong> Zero-Trust Network Access (ZTNA) with pfSense &amp; Fortinet hardware firewalls.</div>
+        </article>
+
+        <!-- Pain 7 -->
+        <article class="pain-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="pain-step">
+            <div class="pain-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <div>
+              <h3>7. Complex Cloud Migration</h3>
+              <p class="text-secondary">Fear of data loss, downtime, and unexpected cloud cost spikes during migration.</p>
+            </div>
+          </div>
+          <div class="impact-badge"><i class="fas fa-exclamation-triangle"></i> Impact: Stalled digital transformation initiatives</div>
+          <div class="solution-box"><i class="fas fa-check-circle"></i> <strong>JWithKP Solution:</strong> Risk-free, phased Azure &amp; Microsoft 365 cloud migration architecture.</div>
+        </article>
+
+        <!-- Pain 8 -->
+        <article class="pain-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="pain-step">
+            <div class="pain-icon"><i class="fas fa-file-contract"></i></div>
+            <div>
+              <h3>8. Compliance &amp; Audit Challenges</h3>
+              <p class="text-secondary">Unprepared for IT audits, statutory labor laws, and security standards.</p>
+            </div>
+          </div>
+          <div class="impact-badge"><i class="fas fa-exclamation-triangle"></i> Impact: Regulatory fines &amp; reputational risk</div>
+          <div class="solution-box"><i class="fas fa-check-circle"></i> <strong>JWithKP Solution:</strong> ISO 27001, GDPR, and Indian statutory labor compliance readiness.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — SERVICES -->
+  <section class="page-section" id="services">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <span class="section-badge">Enterprise Capability</span>
+        <h2>World-Class <span class="gradient-text">Technology Services</span></h2>
+        <p class="mx-auto">End-to-end IT architecture, cloud enablement, cybersecurity, and managed operations tailored for enterprise growth.</p>
+      </div>
+
+      <div class="service-grid">
+        <!-- Service 1 -->
+        <article class="hrms-card service-card" data-aos="fade-up">
+          <div class="industry-icon"><i class="fas fa-cloud"></i></div>
+          <h3>Cloud Solutions</h3>
+          <p class="text-secondary">Hybrid cloud architecture, Azure migration, Microsoft 365, Cloudflare, and Google Workspace implementation.</p>
+          <ul class="pillar-list">
+            <li><i class="fas fa-check text-success"></i> Seamless zero-downtime migration</li>
+            <li><i class="fas fa-check text-success"></i> Identity &amp; Access Management (Entra ID)</li>
+            <li><i class="fas fa-check text-success"></i> Cost-optimized cloud resource allocation</li>
+          </ul>
+          <a href="services" class="btn btn-hrms-ghost">Learn More <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <!-- Service 2 -->
+        <article class="hrms-card service-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="industry-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Cyber Security &amp; SIEM</h3>
+          <p class="text-secondary">Wazuh SIEM monitoring, EDR/XDR endpoint protection, ransomware defense, and security audits.</p>
+          <ul class="pillar-list">
+            <li><i class="fas fa-check text-success"></i> 24/7 security log correlation</li>
+            <li><i class="fas fa-check text-success"></i> Automated incident response rules</li>
+            <li><i class="fas fa-check text-success"></i> Vulnerability scanning &amp; hardening</li>
+          </ul>
+          <a href="services" class="btn btn-hrms-ghost">Learn More <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <!-- Service 3 -->
+        <article class="hrms-card service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="industry-icon"><i class="fas fa-network-wired"></i></div>
+          <h3>Network Infrastructure</h3>
+          <p class="text-secondary">Enterprise pfSense, Fortinet, Omada, and Cisco firewall deployment, SD-WAN, and branch VPNs.</p>
+          <ul class="pillar-list">
+            <li><i class="fas fa-check text-success"></i> Multi-WAN failover &amp; load balancing</li>
+            <li><i class="fas fa-check text-success"></i> Encrypted site-to-site VPN tunnels</li>
+            <li><i class="fas fa-check text-success"></i> Network segmentation &amp; VLAN policy</li>
+          </ul>
+          <a href="services" class="btn btn-hrms-ghost">Learn More <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <!-- Service 4 -->
+        <article class="hrms-card service-card" data-aos="fade-up">
+          <div class="industry-icon"><i class="fas fa-server"></i></div>
+          <h3>Virtualization Stack</h3>
+          <p class="text-secondary">Proxmox VE, VMware, and Hyper-V server consolidation to reduce hardware footprint and licensing cost.</p>
+          <ul class="pillar-list">
+            <li><i class="fas fa-check text-success"></i> 70% licensing savings vs VMware</li>
+            <li><i class="fas fa-check text-success"></i> High-availability compute clusters</li>
+            <li><i class="fas fa-check text-success"></i> Live VM migration &amp; snapshot engine</li>
+          </ul>
+          <a href="services" class="btn btn-hrms-ghost">Learn More <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <!-- Service 5 -->
+        <article class="hrms-card service-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="industry-icon"><i class="fas fa-database"></i></div>
+          <h3>Backup &amp; Disaster Recovery</h3>
+          <p class="text-secondary">Immutable 3-2-1 backup strategy using Veeam and Bacula for guaranteed ransomware recovery.</p>
+          <ul class="pillar-list">
+            <li><i class="fas fa-check text-success"></i> Immutable air-gapped backups</li>
+            <li><i class="fas fa-check text-success"></i> Rapid RTO/RPO disaster recovery</li>
+            <li><i class="fas fa-check text-success"></i> Automated backup verification tests</li>
+          </ul>
+          <a href="services" class="btn btn-hrms-ghost">Learn More <i class="fas fa-arrow-right"></i></a>
+        </article>
+
+        <!-- Service 6 -->
+        <article class="hrms-card service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="industry-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Monitoring &amp; Observability</h3>
+          <p class="text-secondary">ntopng, Zabbix, and Grafana performance dashboards for complete operational visibility.</p>
+          <ul class="pillar-list">
+            <li><i class="fas fa-check text-success"></i> Real-time bandwidth &amp; top-talker metrics</li>
+            <li><i class="fas fa-check text-success"></i> Server health &amp; uptime alerts</li>
+            <li><i class="fas fa-check text-success"></i> Executive performance dashboards</li>
+          </ul>
+          <a href="services" class="btn btn-hrms-ghost">Learn More <i class="fas fa-arrow-right"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 — PRODUCTS -->
+  <section class="page-section bg-alt" id="products">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <span class="section-badge">Flagship SaaS Application</span>
+        <h2>JWithKP <span class="gradient-text">HRMS SaaS</span></h2>
+        <p class="mx-auto">Enterprise Multi-Tenant HRMS &amp; Indian Payroll Software designed for seamless workforce automation.</p>
+      </div>
+
+      <div class="hrms-card" data-aos="fade-up">
+        <div class="row align-items-center" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 2rem;">
+          <div>
+            <span class="hrms-badge status-present mb-3">Enterprise SaaS Platform</span>
+            <h3>Complete Employee Lifecycle Management</h3>
+            <p class="text-secondary">Streamline recruitment, onboarding, daily attendance, leave approvals, performance evaluations, asset management, helpdesk, and automated statutory payroll in one secure platform.</p>
+
+            <div class="trust-badges-strip mb-4">
+              <span class="hrms-badge status-wfh">Attendance</span>
+              <span class="hrms-badge status-leave">Leave</span>
+              <span class="hrms-badge status-approved">Payroll</span>
+              <span class="hrms-badge status-holiday">Performance</span>
+              <span class="hrms-badge status-halfday">Assets</span>
+              <span class="hrms-badge status-wfh">Helpdesk</span>
+              <span class="hrms-badge status-approved">Analytics</span>
+              <span class="hrms-badge status-present">ESS Self-Service</span>
+            </div>
+
+            <div class="btn-row" style="display: flex; gap: 1rem;">
+              <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="btn btn-hrms-primary">
+                Launch Live HRMS Demo <i class="fas fa-external-link-alt"></i>
+              </a>
+              <a href="contact" class="btn btn-hrms-secondary">Request HRMS Consultation</a>
+            </div>
+          </div>
+
+          <!-- Live SaaS Dashboard Preview -->
+          <div class="hero-visual">
+            <img src="images/hero-slide-3.webp" alt="JWithKP HRMS SaaS Live Dashboard Preview" class="border-radius-20 shadow-lg" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+
+      <!-- Future Product Roadmap Placeholders -->
+      <div class="quick-stats mt-4" data-aos="fade-up">
+        <div class="hrms-card text-center">
+          <i class="fas fa-shield-alt text-primary fa-2x mb-2"></i>
+          <h4>JWithKP SIEM Cloud</h4>
+          <p class="text-secondary fs-sm">Upcoming managed cloud security &amp; incident detection SaaS.</p>
+          <span class="impact-badge">In Development</span>
+        </div>
+
+        <div class="hrms-card text-center">
+          <i class="fas fa-cloud-download-alt text-info fa-2x mb-2"></i>
+          <h4>JWithKP Vault Backup</h4>
+          <p class="text-secondary fs-sm">Upcoming automated immutable cloud backup &amp; recovery service.</p>
+          <span class="impact-badge">In Development</span>
         </div>
       </div>
     </div>
   </section>
 
-  
-
-  <section class="services" id="contact-cta">
+  <!-- SECTION 5 — HOW WE WORK (6-STEP WORKFLOW) -->
+  <section class="page-section" id="workflow">
     <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <span class="section-badge">Contact</span>
-        <h2 class="section-title">Ready To Modernize Your <span class="gradient-text">Technology Stack?</span></h2>
-        <p class="section-subtitle">Tell us where you need clarity, whether that is infrastructure, security, cloud, or business automation.</p>
+      <div class="section-head text-center" data-aos="fade-up">
+        <span class="section-badge">Proven Methodology</span>
+        <h2>Our 6-Step <span class="gradient-text">Transformation Workflow</span></h2>
+        <p class="mx-auto">A predictable, risk-free implementation methodology that guarantees seamless architecture rollout and ongoing support.</p>
       </div>
-      <div class="cta-panel" data-aos="fade-up">
-        <div>
-          <h3>Share the challenge you want to solve</h3>
-          <p>We will help you identify the right next step, from architecture planning to application strategy.</p>
+
+      <div class="workflow-timeline" data-aos="fade-up">
+        <div class="workflow-step">
+          <div class="step-number">1</div>
+          <h4>Discovery Call</h4>
+          <p>30-min architecture review &amp; goals alignment.</p>
         </div>
-        <div class="btn-row">
-          <a href="contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Start The Conversation</a>
-          <a href="services" class="btn btn-secondary">Review Services</a>
+
+        <div class="workflow-step">
+          <div class="step-number">2</div>
+          <h4>Requirement Analysis</h4>
+          <p>Auditing current stack, costs, &amp; risks.</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">3</div>
+          <h4>Solution Architecture</h4>
+          <p>Designing blueprinted target environment.</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">4</div>
+          <h4>Implementation</h4>
+          <p>Phased rollout with zero business downtime.</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">5</div>
+          <h4>Testing &amp; Audit</h4>
+          <p>Rigorous vulnerability &amp; security testing.</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-number">6</div>
+          <h4>Ongoing Support</h4>
+          <p>24x7 monitoring, maintenance, &amp; SLAs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 — CASE STUDIES -->
+  <section class="page-section bg-alt" id="case-studies">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <span class="section-badge">Client Success Stories</span>
+        <h2>Proven <span class="gradient-text">Enterprise Outcomes</span></h2>
+        <p class="mx-auto">Real-world results delivered across diverse industry verticals.</p>
+      </div>
+
+      <div class="case-filter-bar" data-aos="fade-up">
+        <button class="case-filter-btn active">All Industries</button>
+        <button class="case-filter-btn">Manufacturing</button>
+        <button class="case-filter-btn">Healthcare</button>
+        <button class="case-filter-btn">Education</button>
+        <button class="case-filter-btn">Retail</button>
+        <button class="case-filter-btn">Construction</button>
+        <button class="case-filter-btn">IT &amp; Tech</button>
+      </div>
+
+      <div class="visual-showcase">
+        <!-- Case 1 -->
+        <article class="case-study-card" data-aos="fade-up">
+          <div>
+            <span class="hrms-badge status-approved">Manufacturing</span>
+            <h3 class="mt-2">70% Licensing Reduction via Proxmox Migration</h3>
+            <p class="text-secondary mt-1">Replaced costly VMware clusters with Proxmox VE high-availability compute for a multi-plant manufacturer.</p>
+          </div>
+          <div>
+            <div class="case-metric">INR 12L/Yr Savings</div>
+            <p class="fs-sm text-secondary">Zero downtime migration over 48-hour weekend window.</p>
+          </div>
+        </article>
+
+        <!-- Case 2 -->
+        <article class="case-study-card" data-aos="fade-up" data-aos-delay="50">
+          <div>
+            <span class="hrms-badge status-present">Healthcare</span>
+            <h3 class="mt-2">Wazuh 24x7 SIEM &amp; HIPAA Security Hardening</h3>
+            <p class="text-secondary mt-1">Implemented Wazuh log correlation &amp; EDR across 250+ hospital endpoints &amp; medical servers.</p>
+          </div>
+          <div>
+            <div class="case-metric">100% Audit Readiness</div>
+            <p class="fs-sm text-secondary">Eliminated security blindspots &amp; automated incident alerting.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7 — TECHNOLOGIES -->
+  <section class="page-section" id="technologies">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <span class="section-badge">Technology Ecosystem</span>
+        <h2>Engineered With <span class="gradient-text">Leading Technologies</span></h2>
+        <p class="mx-auto">We deploy robust open-source, hybrid cloud, and commercial platforms trusted globally.</p>
+      </div>
+
+      <div class="quick-stats" data-aos="fade-up">
+        <div class="cert-card"><i class="fab fa-microsoft text-primary"></i> <h4>Microsoft 365 &amp; Azure</h4></div>
+        <div class="cert-card"><i class="fas fa-server text-info"></i> <h4>Proxmox VE</h4></div>
+        <div class="cert-card"><i class="fas fa-shield-alt text-success"></i> <h4>Wazuh SIEM</h4></div>
+        <div class="cert-card"><i class="fas fa-network-wired text-warning"></i> <h4>pfSense &amp; Fortinet</h4></div>
+        <div class="cert-card"><i class="fas fa-cloud text-primary"></i> <h4>Cloudflare Zero Trust</h4></div>
+        <div class="cert-card"><i class="fab fa-docker text-info"></i> <h4>Docker &amp; Kubernetes</h4></div>
+        <div class="cert-card"><i class="fas fa-chart-line text-success"></i> <h4>ntopng &amp; Zabbix</h4></div>
+        <div class="cert-card"><i class="fas fa-folder-open text-warning"></i> <h4>Nextcloud Collaboration</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8 — TESTIMONIALS -->
+  <section class="page-section bg-alt" id="testimonials">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <span class="section-badge">Executive Feedback</span>
+        <h2>Trusted By <span class="gradient-text">Industry Leaders</span></h2>
+        <p class="mx-auto">What CEOs, CTOs, and HR Directors say about partnering with JWithKP.</p>
+      </div>
+
+      <div class="visual-showcase">
+        <article class="hrms-card" data-aos="fade-up">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
+          </div>
+          <p class="text-secondary italic">"JWithKP migrated our server infrastructure to Proxmox seamlessly. We saved over INR 10 Lakhs in licensing without losing performance."</p>
+          <div class="mt-3">
+            <strong>Rajesh Kumar</strong>
+            <small class="d-block text-secondary">Chief Technology Officer, Industrial Solutions</small>
+          </div>
+        </article>
+
+        <article class="hrms-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
+          </div>
+          <p class="text-secondary italic">"JWithKP HRMS automated our entire payroll and attendance across 3 branch offices. Their support team is responsive and highly competent."</p>
+          <div class="mt-3">
+            <strong>Priya Sharma</strong>
+            <small class="d-block text-secondary">Head of HR, TechFlow Enterprises</small>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9 — CERTIFICATIONS & SECURITY -->
+  <section class="page-section" id="security-trust">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <span class="section-badge">Security &amp; Compliance</span>
+        <h2>Enterprise <span class="gradient-text">Trust &amp; Compliance</span></h2>
+        <p class="mx-auto">Built around strict zero-trust principles, ISO 27001 readiness, and 24x7 operational safeguards.</p>
+      </div>
+
+      <div class="certs-grid" data-aos="fade-up">
+        <div class="cert-card"><i class="fas fa-lock"></i> <h4>ISO 27001 Ready</h4><p class="text-secondary fs-sm">Audit-ready security controls</p></div>
+        <div class="cert-card"><i class="fas fa-user-shield"></i> <h4>Zero Trust Architecture</h4><p class="text-secondary fs-sm">Least-privilege access policy</p></div>
+        <div class="cert-card"><i class="fas fa-key"></i> <h4>GDPR &amp; Data Privacy</h4><p class="text-secondary fs-sm">Encrypted storage &amp; retention</p></div>
+        <div class="cert-card"><i class="fas fa-clock"></i> <h4>24×7 SOC Monitoring</h4><p class="text-secondary fs-sm">Real-time threat detection</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10 — CALL TO ACTION -->
+  <section class="page-section bg-alt" id="cta-final">
+    <div class="container">
+      <div class="cta-panel text-center p-5" data-aos="fade-up" style="background: var(--hrms-gradient-hero); color: white; border-radius: 28px;">
+        <h2 class="text-white mb-2">Ready to Modernize Your Business?</h2>
+        <p class="text-light mx-auto mb-4" style="max-width: 680px;">Schedule a 30-minute architecture review with our principal consultants. We will help you identify quick wins, cost savings, and a clear modernization roadmap.</p>
+        <div class="btn-row justify-content-center" style="display: flex; gap: 1rem; justify-content: center;">
+          <a href="contact" class="btn btn-hrms-primary"><i class="fas fa-calendar-check"></i> Book Free Consultation</a>
+          <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="btn btn-hrms-secondary"><i class="fas fa-desktop"></i> Schedule Live Demo</a>
         </div>
       </div>
     </div>

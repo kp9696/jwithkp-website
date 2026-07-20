@@ -287,4 +287,19 @@
   }
 
   window.initMatrix = initMatrix;
+
+  window.switchHeroTab = function (tabName) {
+    const tabs = ['network', 'hrms'];
+    tabs.forEach(function (t) {
+      const content = document.getElementById('hero-tab-' + t);
+      if (content) content.style.display = (t === tabName) ? 'block' : 'none';
+    });
+
+    const btns = document.querySelectorAll('.hero-tab-btn');
+    btns.forEach(function (btn) {
+      const isMatch = btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabName);
+      if (isMatch) btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+  };
 })();
