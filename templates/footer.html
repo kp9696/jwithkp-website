@@ -1,83 +1,83 @@
-<footer class="footer">
+<footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-about">
+        <!-- Company Column -->
+        <div class="footer-company">
           <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/">
-            <img loading="lazy" decoding="async" src="https://www.jwithkp.com/Logo.webp" alt="JwithKP" height="40">
+            <img loading="lazy" decoding="async" src="https://www.jwithkp.com/Logo.webp" alt="JwithKP Logo" height="40">
             <span class="logo-copy">
               <span>JwithKP</span>
-              <small class="logo-tagline">Journey with Knowledge & Practice</small>
+              <small class="logo-tagline">Journey with Knowledge &amp; Practice</small>
             </span>
           </a>
           <p>Smart IT implementation combining open-source power with commercial reliability. Save up to 70% on IT infrastructure for Indian businesses.</p>
-          <p class="footer-location"><i class="fas fa-map-marker-alt"></i> Serving clients across India</p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/917982912207" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://twitter.com/jwithkp" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
 
+        <!-- Services Column -->
         <div class="footer-links">
-          <h4>Navigate</h4>
-          <p class="footer-section-intro">Start with the pages most visitors need first.</p>
+          <h4>Services</h4>
           <ul>
-            <li><a href="https://www.jwithkp.com/">Home</a></li>
-            <li><a href="services">Services</a></li>
-            <li><a href="technology-stack">Technology Stack</a></li>
-            <li><a href="roi-calculator">ROI Calculator</a></li>
-            <li><a href="blog">Blog</a></li>
-            <li><a href="about">About</a></li>
-            <li><a href="contact">Contact</a></li>
+            <li><a href="services">Cloud Solutions</a></li>
+            <li><a href="services">Microsoft 365</a></li>
+            <li><a href="services">Google Workspace</a></li>
+            <li><a href="services">Cybersecurity</a></li>
+            <li><a href="services">Website Development</a></li>
+            <li><a href="services">IT Consulting</a></li>
           </ul>
         </div>
 
+        <!-- Solutions Column -->
         <div class="footer-links">
           <h4>Solutions</h4>
-          <p class="footer-section-intro">Typical focus areas for modernization and cost control.</p>
           <ul>
             <li><a href="services">Proxmox Virtualization</a></li>
-            <li><a href="services">Nextcloud</a></li>
-            <li><a href="services">Wazuh SIEM</a></li>
+            <li><a href="services">Wazuh SIEM Cloud</a></li>
             <li><a href="services">pfSense Firewall</a></li>
-            <li><a href="services">Monitoring & Visibility</a></li>
-            <li><a href="services">Email & Collaboration</a></li>
-            <li><a href="services">Odoo ERP</a></li>
+            <li><a href="services">Immutable Backup</a></li>
+            <li><a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer">HRMS SaaS</a></li>
           </ul>
         </div>
 
-        <div class="footer-contact">
-          <h4>Contact</h4>
-          <p class="footer-section-intro">Reach out for consultations, pilot rollouts, or platform planning.</p>
+        <!-- Resources Column -->
+        <div class="footer-links">
+          <h4>Resources</h4>
           <ul>
-            <li>
-              <i class="fas fa-phone"></i>
-              <span><strong>Call</strong><a href="tel:+917982912207">+91 79829 12207</a></span>
-            </li>
-            <li>
-              <i class="fas fa-envelope"></i>
-              <span><strong>Email</strong><a href="mailto:info@jwithkp.com">info@jwithkp.com</a></span>
-            </li>
-            <li>
-              <i class="fab fa-whatsapp"></i>
-              <span><strong>WhatsApp</strong><a href="https://wa.me/917982912207" target="_blank" rel="noopener noreferrer">+91 79829 12207</a></span>
-            </li>
-            <li>
-              <i class="fas fa-map-marker-alt"></i>
-              <span><strong>Location</strong>Bangalore, India</span>
-            </li>
-            <li>
-              <i class="far fa-clock"></i>
-              <span><strong>Hours</strong>Mon-Sat: 9AM - 7PM IST</span>
-            </li>
-            <li>
-              <i class="fab fa-linkedin"></i>
-              <span><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer">View profile</a></span>
-            </li>
+            <li><a href="blog">Blog / Articles</a></li>
+            <li><a href="case-studies">Case Studies</a></li>
+            <li><a href="guides">Guides &amp; Docs</a></li>
+            <li><a href="roi-calculator">ROI Calculator</a></li>
           </ul>
+        </div>
+
+        <!-- Newsletter Column -->
+        <div class="footer-newsletter">
+          <h4>Newsletter</h4>
+          <p>Get monthly insights on cybersecurity, virtualization, and IT cost optimization.</p>
+          <form class="newsletter-form" id="newsletterForm" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();">
+            <div class="form-group-inline">
+              <input type="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
+              <button type="submit" class="btn btn-hrms-primary btn-sm footer-subscribe-btn">Subscribe</button>
+            </div>
+          </form>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge & Practice | <a href="privacy-policy">Privacy Policy</a> | <a href="terms">Terms & Conditions</a></p>
+        <div class="footer-bottom-flex">
+          <p class="copyright">&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge &amp; Practice</p>
+          <div class="footer-legal-links">
+            <a href="privacy-policy">Privacy Policy</a>
+            <a href="terms">Terms &amp; Conditions</a>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+</footer>
 <a href="https://wa.me/917982912207" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
