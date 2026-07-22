@@ -13,7 +13,7 @@
       }
 
       function submitViaFallbackEndpoint(payload) {
-        const fallbackEndpoint = form.dataset.fallbackEndpoint;
+        const fallbackEndpoint = atob(form.dataset.fallbackEndpointEncrypted);
         const fallbackForm = document.createElement('form');
         fallbackForm.method = 'POST';
         fallbackForm.action = fallbackEndpoint;
@@ -62,7 +62,7 @@
         payload.append('_next', 'https://www.jwithkp.com/services?submitted=1');
 
         try {
-          const response = await fetch(form.dataset.endpoint, {
+          const response = await fetch(atob(form.dataset.endpointEncrypted), {
             method: 'POST',
             headers: {
               Accept: 'application/json'

@@ -58,7 +58,7 @@ const contactForm = document.getElementById('smartContactForm');
     }
 
     function submitViaFallbackEndpoint(payload) {
-      const fallbackEndpoint = contactForm.dataset.fallbackEndpoint;
+      const fallbackEndpoint = atob(contactForm.dataset.fallbackEndpointEncrypted);
       const fallbackForm = document.createElement('form');
       fallbackForm.method = 'POST';
       fallbackForm.action = fallbackEndpoint;
@@ -104,7 +104,7 @@ const contactForm = document.getElementById('smartContactForm');
         message: document.getElementById('message').value.trim()
       };
 
-      const endpoint = contactForm.dataset.endpoint;
+      const endpoint = atob(contactForm.dataset.endpointEncrypted);
       const payload = new FormData();
 
       payload.append('_subject', `New project inquiry from ${formData.name}`);
