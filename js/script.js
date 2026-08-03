@@ -350,6 +350,19 @@
     }
   }());
 
+  // ── Hero SVG Crossfade (10 s rotation) ──────────────────────────────────
+  const svgSlides = document.querySelectorAll('.hero-svg-slide');
+  if (svgSlides.length >= 2 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let svgIdx = 0;
+    setInterval(function () {
+      svgSlides[svgIdx].setAttribute('aria-hidden', 'true');
+      svgSlides[svgIdx].classList.remove('hero-svg-active');
+      svgIdx = (svgIdx + 1) % svgSlides.length;
+      svgSlides[svgIdx].removeAttribute('aria-hidden');
+      svgSlides[svgIdx].classList.add('hero-svg-active');
+    }, 10000);
+  }
+
   // ── Service Worker Registration ──────────────────────────────────────────
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {

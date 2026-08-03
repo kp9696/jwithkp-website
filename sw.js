@@ -1,4 +1,4 @@
-const CACHE_NAME = 'jwithkp-v1';
+const CACHE_NAME = 'jwithkp-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -6,8 +6,7 @@ const ASSETS_TO_CACHE = [
   '/js/script.min.js',
   '/Logo.webp',
   '/Logo.png',
-  '/manifest.json',
-  '/images/jwithkp-ecosystem.svg'
+  '/manifest.json'
 ];
 
 self.addEventListener('install', (event) => {
@@ -36,20 +35,28 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
-  
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
-        fetch(event.request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, networkResponse);
-            });
-          }
-        }).catch(() => {});
+        // Stale-while-revalidate: serve cache, refresh in background
+        event.waitUntil(
+          fetch(event.request).then((res) => {
+            if (res && res.status === 200) {
+              return caches.open(CACHE_NAME).then((cache) => cache.put(event.request, res));
+            }
+          }).catch(() => {})
+        );
         return cachedResponse;
       }
-      return fetch(event.request);
+      // Not cached yet: fetch, cache for next visit, and return
+      return fetch(event.request).then((res) => {
+        if (res && res.status === 200) {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        }
+        return res;
+      });
     })
   );
 });
