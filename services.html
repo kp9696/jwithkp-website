@@ -104,6 +104,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
       ]
     }
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Enterprise IT Infrastructure Implementation Methodology",
+      "description": "A proven 4-phase approach for Proxmox VE, Wazuh SIEM, and cloud infrastructure zero-downtime deployment.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Discovery & Infrastructure Mapping",
+          "text": "Comprehensive audit of current infrastructure, workloads, security posture, and licensing baseline."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Architecture Design & Proof of Concept",
+          "text": "High-Level (HLD) and Low-Level (LLD) design creation with isolated POC validation."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Zero-Downtime Migration & Deployment",
+          "text": "Phased batched VM migration, Wazuh agent setup, and production security tuning."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "24/7 Managed SOC & Continuous Support",
+          "text": "SLA-backed 24/7 SOC threat monitoring, active incident response, and continuous optimization."
+        }
+      ]
+    }
   </script>
 </head>
 <body>
@@ -508,14 +541,93 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="text-secondary">Most businesses do not need every service at once. The better starting point is to identify whether the current pressure is recurring licensing cost, migration risk, weak security visibility, collaboration friction, or infrastructure instability. From there, the service scope can stay focused, measurable, and easier to deliver in phases.</p>
       </section>
 
-      <section class="cta">
-        <h2>Frequently asked questions about service engagement</h2>
-        <p class="text-secondary"><strong>Can you start with a pilot?</strong> Yes. Many environments benefit from a branch rollout, one-platform migration, or a limited validation scope before a wider implementation.</p>
-        <p class="text-secondary"><strong>Do you work with internal IT teams?</strong> Yes. Projects can be delivered end-to-end or alongside the existing team for architecture, execution, handover, and support planning.</p>
+      <!-- IMPLEMENTATION METHODOLOGY SECTION -->
+      <section id="methodology" class="page-section" aria-label="Enterprise Implementation Methodology">
+        <div class="container">
+          <div class="section-header text-center" data-aos="fade-up">
+            <h2>Our Enterprise Implementation Methodology</h2>
+            <p>A proven 4-phase approach to deliver zero-downtime infrastructure transformation and security compliance.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem;" data-aos="fade-up">
+            
+            <!-- Phase 1 -->
+            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; padding: 1.8rem; position: relative;">
+              <div style="font-size: 2rem; font-weight: 800; color: #38bdf8; opacity: 0.8; margin-bottom: 0.5rem;">01</div>
+              <h3 style="font-size: 1.2rem; color: #f8fafc; margin-bottom: 0.4rem;">Discovery & Infrastructure Mapping</h3>
+              <span style="display: inline-block; font-size: 0.8rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600; margin-bottom: 1rem;">⏱️ Weeks 1–2</span>
+              
+              <ul style="font-size: 0.85rem; color: #cbd5e1; padding-left: 1.2rem; line-height: 1.6; margin-bottom: 1.2rem;">
+                <li>Full audit of existing servers, hypervisors, and networks</li>
+                <li>Workload dependency & performance baseline mapping</li>
+                <li>Vulnerability and compliance gap assessments</li>
+                <li>Hypervisor & SaaS cost reduction modeling</li>
+              </ul>
+              
+              <div style="background: rgba(30, 41, 59, 0.6); padding: 0.75rem; border-radius: 6px; font-size: 0.8rem; color: #94a3b8;">
+                <strong style="color: #38bdf8;">Deliverables:</strong> Audit Report, Gap Analysis, Proposed HLD Architecture.
+              </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; padding: 1.8rem; position: relative;">
+              <div style="font-size: 2rem; font-weight: 800; color: #38bdf8; opacity: 0.8; margin-bottom: 0.5rem;">02</div>
+              <h3 style="font-size: 1.2rem; color: #f8fafc; margin-bottom: 0.4rem;">Architecture Design & PoC Validation</h3>
+              <span style="display: inline-block; font-size: 0.8rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600; margin-bottom: 1rem;">⏱️ Weeks 2–3</span>
+              
+              <ul style="font-size: 0.85rem; color: #cbd5e1; padding-left: 1.2rem; line-height: 1.6; margin-bottom: 1.2rem;">
+                <li>Proxmox VE cluster & Ceph storage LLD design</li>
+                <li>Wazuh SIEM manager, indexer, and rule set design</li>
+                <li>pfSense/Fortinet firewall VLAN segmentation topology</li>
+                <li>PoC testing in isolated lab environment</li>
+              </ul>
+              
+              <div style="background: rgba(30, 41, 59, 0.6); padding: 0.75rem; border-radius: 6px; font-size: 0.8rem; color: #94a3b8;">
+                <strong style="color: #38bdf8;">Deliverables:</strong> LLD Specifications, Tested PoC, Validation Sign-off.
+              </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; padding: 1.8rem; position: relative;">
+              <div style="font-size: 2rem; font-weight: 800; color: #38bdf8; opacity: 0.8; margin-bottom: 0.5rem;">03</div>
+              <h3 style="font-size: 1.2rem; color: #f8fafc; margin-bottom: 0.4rem;">Zero-Downtime Migration & Rollout</h3>
+              <span style="display: inline-block; font-size: 0.8rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600; margin-bottom: 1rem;">⏱️ Weeks 3–4</span>
+              
+              <ul style="font-size: 0.85rem; color: #cbd5e1; padding-left: 1.2rem; line-height: 1.6; margin-bottom: 1.2rem;">
+                <li>Production environment staging & hardware validation</li>
+                <li>Phased VM migrations (non-critical to core databases)</li>
+                <li>Wazuh agent rollout & active threat response tuning</li>
+                <li>Internal team SOP handover and operational training</li>
+              </ul>
+              
+              <div style="background: rgba(30, 41, 59, 0.6); padding: 0.75rem; border-radius: 6px; font-size: 0.8rem; color: #94a3b8;">
+                <strong style="color: #38bdf8;">Deliverables:</strong> Production Cluster, Custom SOPs, Team Training.
+              </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; padding: 1.8rem; position: relative;">
+              <div style="font-size: 2rem; font-weight: 800; color: #10b981; opacity: 0.8; margin-bottom: 0.5rem;">04</div>
+              <h3 style="font-size: 1.2rem; color: #f8fafc; margin-bottom: 0.4rem;">24/7 Managed SOC & SLA Support</h3>
+              <span style="display: inline-block; font-size: 0.8rem; background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600; margin-bottom: 1rem;">⏱️ Ongoing SLA</span>
+              
+              <ul style="font-size: 0.85rem; color: #cbd5e1; padding-left: 1.2rem; line-height: 1.6; margin-bottom: 1.2rem;">
+                <li>24/7 log monitoring via Wazuh SIEM operations</li>
+                <li>Incident response escalation (15-min SLA guarantee)</li>
+                <li>Weekly vulnerability scans and ISO 27001 audit dashboards</li>
+                <li>Proxmox Backup Server (PBS) automated verification</li>
+              </ul>
+              
+              <div style="background: rgba(30, 41, 59, 0.6); padding: 0.75rem; border-radius: 6px; font-size: 0.8rem; color: #94a3b8;">
+                <strong style="color: #10b981;">Deliverables:</strong> Monthly SLA Dashboards, Audit Readiness Reports.
+              </div>
+            </div>
+
+          </div>
+        </div>
       </section>
   </main>
 
-    
   <section id="seo-link-hub" class="seo-link-hub" aria-label="Explore related pages">
     <div class="container">
       <h2>Explore Next</h2>
