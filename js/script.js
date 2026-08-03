@@ -302,4 +302,58 @@
       else btn.classList.remove('active');
     });
   };
+
+  // ── Cookie Consent (Google Consent Mode v2 / GDPR / India DPDP) ─────────
+  (function () {
+    var CONSENT_KEY = 'jwkp-cookie-consent';
+    var banner      = document.getElementById('cookieBanner');
+    var btnAccept   = document.getElementById('cookieAcceptAll');
+    var btnReject   = document.getElementById('cookieNecessaryOnly');
+
+    function pushConsent(granted) {
+      window.dataLayer = window.dataLayer || [];
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          analytics_storage: granted ? 'granted' : 'denied',
+          ad_storage: 'denied'
+        });
+      }
+    }
+
+    function hideBanner() {
+      if (banner) banner.hidden = true;
+    }
+
+    var stored = localStorage.getItem(CONSENT_KEY);
+    if (stored === 'granted') {
+      pushConsent(true);
+    } else if (stored === 'denied') {
+      pushConsent(false);
+    } else if (banner) {
+      setTimeout(function () { banner.hidden = false; }, 1200);
+    }
+
+    if (btnAccept) {
+      btnAccept.addEventListener('click', function () {
+        localStorage.setItem(CONSENT_KEY, 'granted');
+        pushConsent(true);
+        hideBanner();
+      });
+    }
+
+    if (btnReject) {
+      btnReject.addEventListener('click', function () {
+        localStorage.setItem(CONSENT_KEY, 'denied');
+        pushConsent(false);
+        hideBanner();
+      });
+    }
+  }());
+
+  // ── Service Worker Registration ──────────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    });
+  }
 })();

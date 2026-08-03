@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Consent Mode v2 (GDPR / India DPDP) -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'analytics_storage': 'denied',
+  'ad_storage': 'denied',
+  'wait_for_update': 2000
+});
+</script>
+<!-- End Consent Mode -->
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -12,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JwithKP Blog | IT Cost Optimization, Security, and Infrastructure Insights</title>
   <meta name="description" content="Read JwithKP insights on Proxmox, Wazuh, Nextcloud, IT cost optimization, infrastructure modernization, and practical technology decisions for Indian businesses.">
-  <meta name="author" content="JWithKP">
+  <meta name="author" content="JwithKP">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0a0f1e">
   <link rel="canonical" href="https://www.jwithkp.com/blog">
@@ -27,11 +38,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="og:image" content="https://www.jwithkp.com/images/tech-visual-2.webp">
   <meta property="og:image:alt" content="JwithKP blog with IT infrastructure and security insights">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@jwithkp">
+  <meta name="twitter:site" content="@JwithKP">
   <meta name="twitter:title" content="JwithKP Blog | IT Cost Optimization, Security, and Infrastructure Insights">
   <meta name="twitter:description" content="Read JwithKP insights on Proxmox, Wazuh, Nextcloud, IT cost optimization, infrastructure modernization, and practical technology decisions for Indian businesses.">
   <meta name="twitter:image" content="https://www.jwithkp.com/images/tech-visual-2.webp">
   <link rel="icon" type="image/png" href="https://www.jwithkp.com/Logo.png">
+  <link rel="manifest" href="/manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
@@ -81,8 +93,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {
           "@type": "ListItem",
           "position": 3,
-          "url": "https://www.jwithkp.com/blog-jwithkp-hrms-pricing",
-          "name": "JWithKP HRMS Pricing: Simple, Transparent, No Hidden Charges"
+          "url": "https://www.jwithkp.com/blog-JwithKP-hrms-pricing",
+          "name": "JwithKP HRMS Pricing: Simple, Transparent, No Hidden Charges"
         },
         {
           "@type": "ListItem",
@@ -189,11 +201,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="industries">Industries</a></li>
         <li><a href="roi-calculator">ROI Calculator</a></li>
         <li><a href="blog" class="active">Blog</a></li>
+        <li class="has-mega-menu">
+          <a href="#">Resources <i class="fas fa-chevron-down nav-arrow"></i></a>
+          <div class="mega-menu">
+            <a href="case-studies" class="mega-menu-item">
+              <i class="fas fa-chart-bar"></i>
+              <div>
+                <h4>Case Studies</h4>
+                <p>Real enterprise IT transformation results</p>
+              </div>
+            </a>
+            <a href="guides" class="mega-menu-item">
+              <i class="fas fa-book-open"></i>
+              <div>
+                <h4>Guides</h4>
+                <p>Step-by-step technical implementation guides</p>
+              </div>
+            </a>
+          </div>
+        </li>
         <li><a href="contact">Contact</a></li>
       </ul>
       
       <div class="nav-right">
-        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-btn" aria-label="JWithKP HRMS login">HRMS <i class="fas fa-arrow-right"></i></a>
+        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-btn" aria-label="JwithKP HRMS login">HRMS <i class="fas fa-arrow-right"></i></a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
           <i class="fas fa-moon"></i>
         </button>
@@ -275,9 +306,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="tag">HRMS</span>
               <span>April 27, 2026</span>
             </div>
-            <h3>JWithKP HRMS Pricing: Simple, Transparent, No Hidden Charges</h3>
+            <h3>JwithKP HRMS Pricing: Simple, Transparent, No Hidden Charges</h3>
             <p>A complete breakdown of Free, Growth, Scale, and Enterprise plans with clear features, employee limits, and no surprise add-ons.</p>
-            <a href="blog-jwithkp-hrms-pricing" class="btn btn-primary">Read Article</a>
+            <a href="blog-JwithKP-hrms-pricing" class="btn btn-primary">Read Article</a>
           </div>
         </article>
 
@@ -429,9 +460,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="footer-newsletter">
           <h4>Newsletter</h4>
           <p>Get monthly insights on cybersecurity, virtualization, and IT cost optimization.</p>
-          <form class="newsletter-form" id="newsletterForm" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();">
+          <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/info@jwithkp.com" method="POST">
+            <input type="hidden" name="_subject" value="New Newsletter Subscription — JwithKP">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_next" value="https://www.jwithkp.com/contact">
             <div class="form-group-inline">
-              <input type="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
+              <input type="email" name="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
               <button type="submit" class="btn btn-hrms-primary btn-sm footer-subscribe-btn">Subscribe</button>
             </div>
           </form>
@@ -452,6 +486,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="https://wa.me/917982912207" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
+
+<!-- Cookie Consent Banner (GDPR / India DPDP Act 2023) -->
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite" hidden>
+  <div class="cookie-banner-inner">
+    <p class="cookie-banner-text">
+      We use analytics cookies to understand how visitors use our site and improve your experience.
+      See our <a href="privacy-policy">Privacy Policy</a> for details.
+    </p>
+    <div class="cookie-banner-actions">
+      <button id="cookieAcceptAll" class="btn btn-hrms-primary btn-sm">Accept All</button>
+      <button id="cookieNecessaryOnly" class="btn btn-hrms-secondary btn-sm">Necessary Only</button>
+    </div>
+  </div>
+</div>
 <!-- FOOTER_END -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="js/script.min.js" defer></script>

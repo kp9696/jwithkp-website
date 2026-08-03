@@ -58,9 +58,12 @@
         <div class="footer-newsletter">
           <h4>Newsletter</h4>
           <p>Get monthly insights on cybersecurity, virtualization, and IT cost optimization.</p>
-          <form class="newsletter-form" id="newsletterForm" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();">
+          <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/info@jwithkp.com" method="POST">
+            <input type="hidden" name="_subject" value="New Newsletter Subscription — JwithKP">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_next" value="https://www.jwithkp.com/contact">
             <div class="form-group-inline">
-              <input type="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
+              <input type="email" name="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
               <button type="submit" class="btn btn-hrms-primary btn-sm footer-subscribe-btn">Subscribe</button>
             </div>
           </form>
@@ -81,3 +84,17 @@
 <a href="https://wa.me/917982912207" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
+
+<!-- Cookie Consent Banner (GDPR / India DPDP Act 2023) -->
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite" hidden>
+  <div class="cookie-banner-inner">
+    <p class="cookie-banner-text">
+      We use analytics cookies to understand how visitors use our site and improve your experience.
+      See our <a href="privacy-policy">Privacy Policy</a> for details.
+    </p>
+    <div class="cookie-banner-actions">
+      <button id="cookieAcceptAll" class="btn btn-hrms-primary btn-sm">Accept All</button>
+      <button id="cookieNecessaryOnly" class="btn btn-hrms-secondary btn-sm">Necessary Only</button>
+    </div>
+  </div>
+</div>

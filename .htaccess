@@ -10,3 +10,24 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
 # Redirect direct .html requests to clean URLs
 RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
+
+# HTTP Security Headers (Phase 8 Fixes)
+<IfModule mod_headers.c>
+  # HSTS Header (Strict-Transport-Security)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+  
+  # Content Security Policy (CSP Header)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'strict-dynamic' 'sha256-lqHbOEEAby9fnGqAdZboQNDCxEYDQR0WEzLBVCYPFJA=' 'sha256-rpguyiNWoZCuvZLtlmrQ0adnlr0D05RSbyHDt9et8GM=' 'sha256-ifTqRVlWE5pVmQK/3/E9qwVm1jlOtlVruKhmv51hgds=' 'sha256-McDmq54u0JDL4slSSqWpTk7Zn+zorSRIHX0OOm2LgSQ=' 'sha256-tBqR0yFB0oUz5TA2IZsqGZz6sTnEbm/n605UKAzgQS4=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; frame-src https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none';"
+  
+  # X-Frame-Options Header
+  Header always set X-Frame-Options "SAMEORIGIN"
+  
+  # X-Content-Type-Options Header
+  Header always set X-Content-Type-Options "nosniff"
+  
+  # Referrer Policy Header
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions Policy Header
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+</IfModule>

@@ -16,6 +16,18 @@ const GTM_BODY_SNIPPET = `<!-- Google Tag Manager (noscript) -->
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->`;
 
+const CONSENT_INIT_SNIPPET = `<!-- Google Consent Mode v2 (GDPR / India DPDP) -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'analytics_storage': 'denied',
+  'ad_storage': 'denied',
+  'wait_for_update': 2000
+});
+</script>
+<!-- End Consent Mode -->`;
+
 const routeMap = {
   'index.html': 'https://www.jwithkp.com/',
   'about.html': 'about',
@@ -38,16 +50,23 @@ function ensureHreflang(content) {
 
 function ensureCoreSeoMeta(content) {
   if (!/meta name="author"/i.test(content)) {
-    content = content.replace(/(<meta name="description"[^>]*>)/i, '$1\n  <meta name="author" content="JWithKP">');
+    content = content.replace(/(<meta name="description"[^>]*>)/i, '$1\n  <meta name="author" content="JwithKP">');
   }
 
   return content;
 }
 
+function ensureManifest(content) {
+  if (content.includes('rel="manifest"')) return content;
+  return content.replace(/(<link rel="icon"[^>]+>)/i, '$1\n  <link rel="manifest" href="/manifest.json">');
+}
+
 function ensureGtmSnippets(content) {
   if (!content.includes('GTM-M98KB4X7')) {
-    content = content.replace(/<head>/i, '<head>\n' + GTM_HEAD_SNIPPET);
+    content = content.replace(/<head>/i, '<head>\n' + CONSENT_INIT_SNIPPET + '\n' + GTM_HEAD_SNIPPET);
     content = content.replace(/<body([^>]*)>/i, '<body$1>\n    ' + GTM_BODY_SNIPPET);
+  } else if (!content.includes("'consent', 'default'")) {
+    content = content.replace('<!-- Google Tag Manager -->', CONSENT_INIT_SNIPPET + '\n<!-- Google Tag Manager -->');
   }
 
   return content;
@@ -95,8 +114,10 @@ async function build() {
 
         if (currentHref) {
           dynamicNavbar = dynamicNavbar.replace(`<li><a href="${currentHref}">`, `<li><a href="${currentHref}" class="active">`);
-        } else if (file.startsWith('blog-') || file === 'case-studies.html' || file === 'guides.html') {
+        } else if (file.startsWith('blog-')) {
           dynamicNavbar = dynamicNavbar.replace('<li><a href="blog">', '<li><a href="blog" class="active">');
+      } else if (file === 'case-studies.html' || file === 'guides.html') {
+          dynamicNavbar = dynamicNavbar.replace('<li class="has-mega-menu">\n          <a href="#">Resources', '<li class="has-mega-menu active">\n          <a href="#">Resources');
         }
 
         content = content.replace(
@@ -114,6 +135,7 @@ async function build() {
 
       content = ensureCoreSeoMeta(content);
       content = ensureHreflang(content);
+      content = ensureManifest(content);
       content = ensureGtmSnippets(content);
       content = content.replace(/<script\s+src="([^"]+)"(?![\s>]*defer)/gi, '<script src="$1" defer');
       content = content.replace('href="css/style.css"', 'href="css/style.min.css"');
@@ -121,6 +143,15 @@ async function build() {
       fs.writeFileSync(filePath, content, 'utf8');
       console.log(`Compiled: ${file}`);
     }
+  }
+
+  const sitemapPath = path.join(__dirname, 'sitemap.xml');
+  if (fs.existsSync(sitemapPath)) {
+    const todayISO = new Date().toISOString().slice(0, 10);
+    let sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
+    sitemapContent = sitemapContent.replace(/<lastmod>[^<]+<\/lastmod>/g, `<lastmod>${todayISO}</lastmod>`);
+    fs.writeFileSync(sitemapPath, sitemapContent, 'utf8');
+    console.log(`Updated sitemap.xml lastmod dates to ${todayISO}`);
   }
 
   console.log('Build completed successfully.');

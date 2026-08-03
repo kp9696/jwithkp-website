@@ -14,5 +14,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Host: https://www.jwithkp.com
 Sitemap: https://www.jwithkp.com/sitemap.xml
