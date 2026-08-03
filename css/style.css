@@ -6265,11 +6265,54 @@ main .cta p + p {
   .hp-case-studies-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 768px) {
-  .hp-services-grid, .hp-products-grid, .hp-why-grid, .hp-blog-grid, .hp-industries-grid { grid-template-columns: 1fr; }
-  .hp-tech-categories { grid-template-columns: 1fr; }
-  .hp-security-grid { grid-template-columns: repeat(2, 1fr); }
-  .hp-stats-grid { grid-template-columns: 1fr; }
-  .footer-bottom-flex { flex-direction: column; text-align: center; }
+/* WHATSAPP FLOATING BUTTON & MOBILE STICKY OVERLAY */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 54px;
+  height: 54px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
 }
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background-color: #128c7e;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 80px;
+    right: 18px;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+}
+
+/* LIGHT MODE CONTRAST & WCAG 2.1 ACCESSIBILITY FIXES */
+[data-theme="light"] .text-secondary,
+[data-theme="light"] .hp-hero-desc,
+[data-theme="light"] p {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .hp-stat-info p,
+[data-theme="light"] .logo-tagline {
+  color: #475569 !important;
+}
+
 
