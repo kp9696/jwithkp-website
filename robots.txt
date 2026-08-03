@@ -1,6 +1,18 @@
 User-agent: *
 Allow: /
 
+# AI Search & LLM Crawler Directives
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Host: https://www.jwithkp.com
 Sitemap: https://www.jwithkp.com/sitemap.xml
-
