@@ -134,13 +134,21 @@
     const decimals = (String(target).split('.')[1] || '').length;
     const start    = performance.now();
 
+    // Group thousands so 50000 renders as "50,000" rather than "50000".
+    function format(n) {
+      return n.toLocaleString('en-IN', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      });
+    }
+
     function tick(now) {
       const elapsed  = now - start;
       const progress = Math.min(elapsed / duration, 1);
       const value    = easeOutQuart(progress) * target;
-      el.textContent = prefix + value.toFixed(decimals) + suffix;
+      el.textContent = prefix + format(value) + suffix;
       if (progress < 1) requestAnimationFrame(tick);
-      else el.textContent = prefix + target.toFixed(decimals) + suffix;
+      else el.textContent = prefix + format(target) + suffix;
     }
 
     requestAnimationFrame(tick);

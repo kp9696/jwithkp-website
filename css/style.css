@@ -1192,7 +1192,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   gap: 0.5rem;
 }
 
-.footer-links h4 {
+.footer-links .footer-col-title {
   margin-bottom: 1rem;
   font-size: 0.95rem;
   font-weight: 700;
@@ -3599,8 +3599,8 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
       max-width: 360px;
     }
 
-    .footer-links h4,
-    .footer-contact h4 {
+    .footer-links .footer-col-title,
+    .footer-contact .footer-col-title {
       margin-bottom: 1rem;
     }
 
@@ -4693,7 +4693,7 @@ main .cta p + p {
 }
 
 /* Match footer column heading treatment across all three columns */
-.footer-contact h4 {
+.footer-contact .footer-col-title {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-size: 0.95rem;
@@ -4815,7 +4815,7 @@ main .cta p + p {
   color: var(--hrms-primary);
   margin-top: 0.15rem;
 }
-.mega-menu-item h4 {
+.mega-menu-item .mega-menu-title {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--hrms-text-heading);
@@ -6147,7 +6147,7 @@ main .cta p + p {
   transform: translateY(-2px);
 }
 
-.footer-newsletter h4 {
+.footer-newsletter .footer-col-title {
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -6342,3 +6342,14 @@ main .cta p + p {
 }
 
 
+
+/* Nav mega-menu and footer column labels.
+   These were <h4> elements, which placed 8 headings before every page's <h1>
+   and broke document outline sitewide. They are now <span>s, so they need an
+   explicit block display for the existing margin rules to apply. */
+.mega-menu-item .mega-menu-title,
+.footer-links .footer-col-title,
+.footer-contact .footer-col-title,
+.footer-newsletter .footer-col-title {
+  display: block;
+}

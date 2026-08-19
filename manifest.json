@@ -9,21 +9,9 @@
   "icons": [
     {
       "src": "/Logo.png",
-      "sizes": "192x192",
+      "sizes": "1536x1024",
       "type": "image/png",
       "purpose": "any"
-    },
-    {
-      "src": "/Logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/Logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
     }
   ]
 }

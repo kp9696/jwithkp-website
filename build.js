@@ -39,6 +39,18 @@ const routeMap = {
   'contact.html': 'contact'
 };
 
+// Adds class="active" to the first nav <a> whose href matches exactly.
+// Throws if no match, so a template change can never silently disable the
+// active state again.
+function setActiveLink(navHtml, href) {
+  const escaped = href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(`(<a\\s+href="${escaped}")(?=[\\s>])`);
+  if (!re.test(navHtml)) {
+    throw new Error(`setActiveLink: no nav link found for href="${href}" — navbar template changed?`);
+  }
+  return navHtml.replace(re, '$1 class="active"');
+}
+
 function ensureHreflang(content) {
   if (content.includes('hreflang')) return content;
   const canonicalMatch = content.match(/<link rel="canonical" href="([^"]+)"/i);
@@ -112,12 +124,18 @@ async function build() {
         let dynamicNavbar = navbarTemplate;
         const currentHref = routeMap[file];
 
+        // Mark the current page's nav link active.
+        // Targets the <a> itself rather than the surrounding <li>, so it works
+        // whether or not the item is a mega-menu parent, and is independent of
+        // line endings (the templates are CRLF).
         if (currentHref) {
-          dynamicNavbar = dynamicNavbar.replace(`<li><a href="${currentHref}">`, `<li><a href="${currentHref}" class="active">`);
+          dynamicNavbar = setActiveLink(dynamicNavbar, currentHref);
         } else if (file.startsWith('blog-')) {
-          dynamicNavbar = dynamicNavbar.replace('<li><a href="blog">', '<li><a href="blog" class="active">');
-      } else if (file === 'case-studies.html' || file === 'guides.html') {
-          dynamicNavbar = dynamicNavbar.replace('<li class="has-mega-menu">\n          <a href="#">Resources', '<li class="has-mega-menu active">\n          <a href="#">Resources');
+          dynamicNavbar = setActiveLink(dynamicNavbar, 'blog');
+        } else if (file === 'case-studies.html' || file === 'guides.html') {
+          // The Resources parent links to case-studies and appears before its
+          // mega-menu children, so this marks the parent, not the child item.
+          dynamicNavbar = setActiveLink(dynamicNavbar, 'case-studies');
         }
 
         content = content.replace(
@@ -145,13 +163,32 @@ async function build() {
     }
   }
 
+  // Derive each <lastmod> from the matching file's real mtime, so the sitemap
+  // reflects actual freshness per page instead of stamping every URL with today.
   const sitemapPath = path.join(__dirname, 'sitemap.xml');
   if (fs.existsSync(sitemapPath)) {
     const todayISO = new Date().toISOString().slice(0, 10);
     let sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
-    sitemapContent = sitemapContent.replace(/<lastmod>[^<]+<\/lastmod>/g, `<lastmod>${todayISO}</lastmod>`);
+    let resolved = 0;
+
+    sitemapContent = sitemapContent.replace(
+      /<loc>([^<]+)<\/loc>(\s*)<lastmod>[^<]+<\/lastmod>/g,
+      (whole, loc, gap) => {
+        const slug = loc.replace(/^https?:\/\/[^/]+\//, '').replace(/\/$/, '');
+        const candidate = path.join(__dirname, (slug === '' ? 'index' : slug) + '.html');
+        let stamp = todayISO;
+        if (fs.existsSync(candidate)) {
+          stamp = fs.statSync(candidate).mtime.toISOString().slice(0, 10);
+          resolved++;
+        } else {
+          console.warn(`  sitemap: no file for <loc>${loc}</loc> — using today`);
+        }
+        return `<loc>${loc}</loc>${gap}<lastmod>${stamp}</lastmod>`;
+      }
+    );
+
     fs.writeFileSync(sitemapPath, sitemapContent, 'utf8');
-    console.log(`Updated sitemap.xml lastmod dates to ${todayISO}`);
+    console.log(`Updated sitemap.xml lastmod (${resolved} URLs from file mtime)`);
   }
 
   console.log('Build completed successfully.');
