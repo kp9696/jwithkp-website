@@ -1,0 +1,6 @@
+# .htaccess has no effect on Cloudflare Pages but was still being served as
+# a plain static file, publicly exposing the server config. templates/*.html
+# are build-time fragments (no doctype/title/canonical) that shouldn't be
+# reachable as pages either. Serve 404 for both instead of the real file.
+/.htaccess       /404.html   404
+/templates/*     /404.html   404
