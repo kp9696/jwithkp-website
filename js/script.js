@@ -2,13 +2,13 @@
    JwithKP  Shared JavaScript
    Features:
      1. Theme toggle (localStorage persistence)
-     2. Hamburger menu
+     2. Hamburger menu + mega-menu submenus
      3. Navbar scroll class
-     4. Smooth scroll
-     5. Scroll-reveal
-     6. Animated counters (countUp)
-     7. AOS initialisation
-     8. Filterable cards (blog & case-studies)
+     4. Smooth scroll (with focus management for a11y)
+     5. Animated counters (countUp)
+     6. Canvas "matrix" background
+     7. Cookie consent
+     8. Hero SVG crossfade
    ============================================================= */
 
 (function () {
@@ -39,12 +39,40 @@
   const menuToggle = document.getElementById('menuToggle');
   const navMenu    = document.getElementById('navMenu');
 
+  // ── Mega-menu submenus: click/tap toggle for touch + keyboard users ─────
+  // Desktop already reveals these on :hover/:focus-within (see CSS); this
+  // toggle is what makes the six Services items and two Resources items
+  // reachable at all on touch devices, where the absolute-positioned
+  // desktop dropdown is hidden below the mobile-nav breakpoint.
+  const megaToggles = document.querySelectorAll('.mega-menu-toggle');
+
+  function closeAllMegaMenus(exceptLi) {
+    megaToggles.forEach(function (btn) {
+      const li = btn.closest('.has-mega-menu');
+      if (li && li !== exceptLi) {
+        li.classList.remove('mega-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  megaToggles.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const li = btn.closest('.has-mega-menu');
+      if (!li) return;
+      const isOpen = li.classList.toggle('mega-open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+      closeAllMegaMenus(isOpen ? li : null);
+    });
+  });
+
   if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', function () {
       const isOpen = navMenu.classList.toggle('open');
       menuToggle.setAttribute('aria-expanded', String(isOpen));
       const icon = menuToggle.querySelector('i');
       if (icon) icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+      if (!isOpen) closeAllMegaMenus();
     });
 
     navMenu.querySelectorAll('a').forEach(function (link) {
@@ -53,6 +81,7 @@
         menuToggle.setAttribute('aria-expanded', 'false');
         const icon = menuToggle.querySelector('i');
         if (icon) icon.className = 'fas fa-bars';
+        closeAllMegaMenus();
       });
     });
 
@@ -63,6 +92,7 @@
         menuToggle.setAttribute('aria-expanded', 'false');
         const icon = menuToggle.querySelector('i');
         if (icon) icon.className = 'fas fa-bars';
+        closeAllMegaMenus();
       }
     });
 
@@ -90,6 +120,21 @@
           }
         }
       }
+
+      if (e.key === 'Escape') {
+        const openLi = document.querySelector('.has-mega-menu.mega-open');
+        if (openLi) {
+          closeAllMegaMenus();
+          const toggleBtn = openLi.querySelector('.mega-menu-toggle');
+          if (toggleBtn) toggleBtn.focus();
+        } else if (navMenu.classList.contains('open')) {
+          navMenu.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          const icon = menuToggle.querySelector('i');
+          if (icon) icon.className = 'fas fa-bars';
+          menuToggle.focus();
+        }
+      }
     });
   }
 
@@ -106,18 +151,26 @@
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Move keyboard focus to the target too, not just the scroll
+        // position — otherwise the skip link (and any other in-page anchor)
+        // scrolls a keyboard user to the right place but leaves their next
+        // Tab press resuming from wherever focus already was, defeating the
+        // point. Most jump targets (<main>, <section>, a heading) aren't
+        // natively focusable, so give it a temporary tabindex, focus it, and
+        // drop the tabindex again on blur so it doesn't linger in the tab
+        // order.
+        if (!target.hasAttribute('tabindex')) {
+          target.setAttribute('tabindex', '-1');
+          target.addEventListener('blur', function onBlur() {
+            target.removeAttribute('tabindex');
+            target.removeEventListener('blur', onBlur);
+          });
+        }
+        target.focus({ preventScroll: true });
       }
     });
   });
-
-  function revealOnScroll() {
-    const trigger = window.innerHeight * 0.88;
-    document.querySelectorAll('.reveal').forEach(function (el) {
-      if (el.getBoundingClientRect().top < trigger) el.classList.add('active');
-    });
-  }
-  window.addEventListener('scroll', revealOnScroll, { passive: true });
-  revealOnScroll();
 
   function easeOutQuart(t) {
     return 1 - Math.pow(1 - t, 4);
@@ -164,46 +217,38 @@
     counterObserver.observe(el);
   });
 
-  if (typeof AOS !== 'undefined') {
-    AOS.init({
-      duration: 700,
-      easing:   'ease-out-cubic',
-      once:     true,
-      offset:   80,
+  // Scroll-reveal for data-aos="fade-up|fade-left|fade-right" elements (see
+  // the matching CSS in section 9). Replaces the AOS library previously
+  // loaded from unpkg.com — same effect (fade + 100px slide, 700ms
+  // ease-out, once per element, ~80px early-trigger offset), same
+  // attributes already in the markup, no third-party dependency.
+  const aosElements = document.querySelectorAll('[data-aos]');
+  if (aosElements.length) {
+    const prefersReducedMotionAOS = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    aosElements.forEach(function (el) {
+      const delay = el.dataset.aosDelay;
+      if (delay) el.style.transitionDelay = delay + 'ms';
     });
-  }
 
-  const filterBtns = document.querySelectorAll('.filter-btn');
-
-  if (filterBtns.length) {
-    filterBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        const filter = btn.dataset.filter;
-
-        filterBtns.forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-
-        document.querySelectorAll('.filterable-card').forEach(function (card) {
-          const tags = (card.dataset.tags || '').toLowerCase();
-          const match = filter === 'all' || tags.includes(filter.toLowerCase());
-
-          if (match) {
-            card.style.display = '';
-            card.classList.remove('filter-visible');
-            requestAnimationFrame(function () {
-              card.classList.add('filter-visible');
-            });
-          } else {
-            card.style.display = 'none';
-            card.classList.remove('filter-visible');
+    if (prefersReducedMotionAOS) {
+      // The CSS media query already neutralizes opacity/transform/transition
+      // for these elements; still mark them "animated" so nothing depends on
+      // .aos-animate ever being added is left in a permanently-unfinished
+      // state.
+      aosElements.forEach(function (el) { el.classList.add('aos-animate'); });
+    } else {
+      const aosObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('aos-animate');
+            aosObserver.unobserve(entry.target);
           }
         });
-      });
-    });
+      }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
 
-    document.querySelectorAll('.filterable-card').forEach(function (card) {
-      card.classList.add('filter-visible');
-    });
+      aosElements.forEach(function (el) { aosObserver.observe(el); });
+    }
   }
 
   function initMatrix(canvasId, chars, colorDark, colorLight) {
@@ -296,21 +341,6 @@
 
   window.initMatrix = initMatrix;
 
-  window.switchHeroTab = function (tabName) {
-    const tabs = ['network', 'hrms'];
-    tabs.forEach(function (t) {
-      const content = document.getElementById('hero-tab-' + t);
-      if (content) content.style.display = (t === tabName) ? 'block' : 'none';
-    });
-
-    const btns = document.querySelectorAll('.hero-tab-btn');
-    btns.forEach(function (btn) {
-      const isMatch = btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabName);
-      if (isMatch) btn.classList.add('active');
-      else btn.classList.remove('active');
-    });
-  };
-
   // ── Cookie Consent (Google Consent Mode v2 / GDPR / India DPDP) ─────────
   (function () {
     var CONSENT_KEY = 'jwkp-cookie-consent';
@@ -318,18 +348,28 @@
     var btnAccept   = document.getElementById('cookieAcceptAll');
     var btnReject   = document.getElementById('cookieNecessaryOnly');
 
+    var btnSettings = document.getElementById('cookieSettingsBtn');
+
     function pushConsent(granted) {
       window.dataLayer = window.dataLayer || [];
       if (typeof window.gtag === 'function') {
+        // This site runs analytics only, not ads — ad_storage/ad_user_data/
+        // ad_personalization stay denied regardless of the visitor's choice.
         window.gtag('consent', 'update', {
           analytics_storage: granted ? 'granted' : 'denied',
-          ad_storage: 'denied'
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
         });
       }
     }
 
     function hideBanner() {
       if (banner) banner.hidden = true;
+    }
+
+    function showBanner() {
+      if (banner) banner.hidden = false;
     }
 
     var stored = localStorage.getItem(CONSENT_KEY);
@@ -354,6 +394,16 @@
         localStorage.setItem(CONSENT_KEY, 'denied');
         pushConsent(false);
         hideBanner();
+      });
+    }
+
+    // Lets a returning visitor reopen the banner and change an earlier
+    // choice — the banner itself only ever appears once per browser
+    // otherwise, with no other way to withdraw or change consent.
+    if (btnSettings) {
+      btnSettings.addEventListener('click', function () {
+        showBanner();
+        if (btnAccept) btnAccept.focus();
       });
     }
   }());

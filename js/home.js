@@ -6,60 +6,6 @@
     window.initMatrix('matrix-canvas', '01<>/+=-:*');
   }
 
-  // 2. Parallax mouse movement in the new hero
-  (function () {
-    const hero = document.querySelector('.hp-hero');
-    const visualArea = document.querySelector('.hp-visual-area');
-    if (!hero || !visualArea) return;
-
-    const cards = visualArea.querySelectorAll('.hp-float-card');
-    const center = visualArea.querySelector('.hp-center-illustration');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-    if (reduceMotion || !finePointer) return;
-
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    let rafId = null;
-
-    function renderParallax() {
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
-
-      if (center) {
-        center.style.transform = 'translate3d(' + (currentX * 12) + 'px,' + (currentY * 12) + 'px, 0)';
-      }
-
-      cards.forEach(function (card, idx) {
-        const factor = (idx + 1) * 6;
-        card.style.transform = 'translate3d(' + (currentX * -factor) + 'px,' + (currentY * -factor) + 'px, 0)';
-      });
-
-      rafId = window.requestAnimationFrame(renderParallax);
-    }
-
-    hero.addEventListener('mousemove', function (event) {
-      const rect = hero.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width;
-      const y = (event.clientY - rect.top) / rect.height;
-      targetX = (x - 0.5) * 2;
-      targetY = (y - 0.5) * 2;
-    });
-
-    hero.addEventListener('mouseleave', function () {
-      targetX = 0;
-      targetY = 0;
-    });
-
-    rafId = window.requestAnimationFrame(renderParallax);
-    window.addEventListener('beforeunload', function () {
-      if (rafId) window.cancelAnimationFrame(rafId);
-    });
-  })();
-
   // 3. Testimonials Carousel
   (function () {
     const track = document.querySelector('.hp-carousel-track');
@@ -70,6 +16,7 @@
 
     let currentIndex = 0;
     let timer = null;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Create dot indicators dynamically
     dotsContainer.innerHTML = '';
@@ -77,6 +24,7 @@
       const dot = document.createElement('button');
       dot.className = 'hp-carousel-dot' + (idx === 0 ? ' active' : '');
       dot.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+      if (idx === 0) dot.setAttribute('aria-current', 'true');
       dot.addEventListener('click', function () {
         goToSlide(idx);
         resetTimer();
@@ -93,10 +41,16 @@
       track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
       dots.forEach(function (dot, idx) {
         dot.classList.toggle('active', idx === currentIndex);
+        if (idx === currentIndex) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
       });
     }
 
+    // Autoplay is a "motion" a visitor may have explicitly opted out of;
+    // manual navigation via the dots (and the arrow-key handler below)
+    // still works either way, it just won't advance on its own.
     function startTimer() {
+      if (prefersReducedMotion) return;
       timer = setInterval(function () {
         goToSlide(currentIndex + 1);
       }, 6000);
