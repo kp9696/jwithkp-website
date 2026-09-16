@@ -1,26 +1,41 @@
 # Cloudflare Pages reads this file directly; it does NOT process .htaccess
-# (that's an Apache-only mechanism). .htaccess is kept in the repo only as
-# portable reference in case the site ever moves to an Apache host — it has
-# no effect here. Keep the two in sync if you edit security headers.
+# (that's an Apache-only mechanism). A .htaccess used to be kept in the repo
+# as portable reference in case the site ever moves to an Apache host, but
+# since it has no effect here and Cloudflare Pages always serves an existing
+# static file ahead of any _redirects rule (so _redirects could never
+# actually stop it being fetched directly), it has been removed rather than
+# kept as a file this platform can't block — still recoverable from git
+# history if ever needed.
 #
 # NOTE: 'strict-dynamic' and script hashes are deliberately absent from CSP:
 #   - 'strict-dynamic' makes browsers ignore 'self' and all host allowlists.
 #   - Any hash present makes browsers ignore 'unsafe-inline', which would
 #     block the inline onload="" handlers used for async font loading.
+#
+# Font Awesome and AOS are self-hosted now (see css/fontawesome.min.css and
+# the data-aos handling in js/script.js), so cdnjs.cloudflare.com and
+# unpkg.com are no longer needed anywhere in this policy.
 
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; frame-src https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; frame-src https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
 
-# Long-cache immutable static assets. Filenames don't currently carry a
-# content hash, so a deploy that changes css/js will be served under the
-# same URL — Cloudflare's edge cache is purged on new deploys, but any
-# client that cached the old file for a year will keep it until then.
+# Long-cache immutable static assets. css/style.*.min.css and
+# js/script.*.min.js carry a content hash (see build.js) — an edit changes
+# the filename, so this is safe: no client ever needs to revalidate an old
+# URL, it simply stops being referenced. Font Awesome's self-hosted webfonts
+# and images aren't hashed, but they change rarely and a Cloudflare Pages
+# deploy still gets a fresh edge cache immediately; only a browser that
+# already cached the old bytes under the same URL would keep them for up to
+# a year.
 /css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/css/webfonts/*
   Cache-Control: public, max-age=31536000, immutable
 
 /js/*

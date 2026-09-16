@@ -1,6 +1,19 @@
-# .htaccess has no effect on Cloudflare Pages but was still being served as
-# a plain static file, publicly exposing the server config. templates/*.html
-# are build-time fragments (no doctype/title/canonical) that shouldn't be
-# reachable as pages either. Serve 404 for both instead of the real file.
-/.htaccess       /404.html   404
+# Cloudflare Pages serves an existing static asset at a matching path BEFORE
+# it evaluates _redirects rules — a rule here can never suppress a file that
+# is actually deployed at that exact path. That's why the /.htaccess rule
+# below used to be a no-op: .htaccess was a real deployed file, so Cloudflare
+# served it directly and never reached this rule. It has since been deleted
+# from the repo (it had no effect on Cloudflare Pages anyway, and duplicated
+# _headers) rather than kept as a file this platform can't actually block;
+# it's still recoverable from git history if ever needed for an Apache host.
+#
+# The /templates/* rule has the same limitation and is still a no-op today:
+# templates/navbar.html and templates/footer.html are genuinely deployed
+# (build.js reads them from this path at build time), so Cloudflare serves
+# them directly rather than the 404 below. Fixing that for real would mean
+# publishing from a separate build output directory that excludes template
+# sources — a Cloudflare Pages project-settings change, not a file change,
+# so it's left as a documented gap rather than a rule that looks like a fix
+# but isn't. robots.txt already disallows /templates/ for crawlers; the two
+# files it serves contain no secrets, just nav/footer markup fragments.
 /templates/*     /404.html   404
