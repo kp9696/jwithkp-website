@@ -3391,6 +3391,79 @@ main .cta p + p {
   justify-content: center;
   margin-bottom: 1.5rem;
   color: var(--hrms-primary);
+  font-size: 1.3rem;
+}
+
+/* Solid-color heading accent — used for most section headings instead of
+   .gradient-text, which is reserved for the hero H1 so it reads as a single
+   highlight rather than a pattern repeated on every section. */
+.section-accent {
+  color: var(--hrms-accent);
+}
+
+/* Compact industries row — icon + label chips, replacing a 9-card grid with
+   full paragraphs so the same breadth of coverage takes a fraction of the
+   vertical space. */
+.hp-industries-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.hp-industry-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.hp-industry-chip i {
+  color: var(--hrms-accent);
+}
+
+/* Compact technology ecosystem row — one flat badge row instead of 8
+   category cards; the full categorized breakdown lives on
+   technology-stack.html. */
+.hp-tech-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+}
+
+/* Compact compliance/security row appended under Why-Choose-Us, replacing
+   the standalone 6-card Security & Compliance section. */
+.hp-compliance-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.hp-compliance-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.hp-compliance-chip i {
+  color: var(--hrms-primary);
+  font-size: 1rem;
 }
 
 .hp-service-card h3 {
@@ -3562,9 +3635,10 @@ main .cta p + p {
 /* 6. FEATURED PRODUCTS */
 .hp-products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 900px;
+  margin: 3rem auto 0 auto;
   gap: 2rem;
-  margin-top: 3rem;
 }
 
 .hp-product-card {
