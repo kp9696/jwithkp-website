@@ -172,6 +172,22 @@
     });
   });
 
+  // A fresh page load that already carries a #hash (e.g. arriving from a
+  // mega-menu link on another page) gets the browser's one-time, automatic
+  // anchor jump — but self-hosted web fonts swap in and hero visuals finish
+  // sizing shortly after that, shifting the layout so the jump lands well
+  // short of the real target. Redo the scroll once the page has settled.
+  if (window.location.hash) {
+    const rejumpToHash = function () {
+      const target = document.getElementById(window.location.hash.slice(1));
+      if (target) target.scrollIntoView({ block: 'start' });
+    };
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(rejumpToHash);
+    }
+    window.addEventListener('load', rejumpToHash);
+  }
+
   function easeOutQuart(t) {
     return 1 - Math.pow(1 - t, 4);
   }
