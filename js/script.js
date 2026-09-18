@@ -176,12 +176,27 @@
   // mega-menu link on another page) gets the browser's one-time, automatic
   // anchor jump — but self-hosted web fonts swap in and hero visuals finish
   // sizing shortly after that, shifting the layout so the jump lands well
-  // short of the real target. Redo the scroll once the page has settled.
+  // short of the real target. A single fonts.ready/load correction wasn't
+  // enough in practice (production still landed ~1000px short even after
+  // both had resolved — some other late shift, or a race with the browser's
+  // own native jump), so re-check on a short spread of delays instead of
+  // trying to name the exact one true "settled" moment.
   if (window.location.hash) {
     const rejumpToHash = function () {
       const target = document.getElementById(window.location.hash.slice(1));
-      if (target) target.scrollIntoView({ block: 'start' });
+      if (!target) return;
+      if (Math.abs(target.getBoundingClientRect().top) > 4) {
+        // The site sets scroll-behavior: smooth globally, which turns this
+        // correction into an animated scroll — fine for one call, but
+        // repeated corrective calls (needed because layout keeps shifting)
+        // would each restart/fight the previous animation. Force an
+        // instant jump instead so every correction is atomic.
+        target.scrollIntoView({ block: 'start', behavior: 'instant' });
+      }
     };
+    [0, 150, 400, 800, 1500].forEach(function (delay) {
+      setTimeout(rejumpToHash, delay);
+    });
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(rejumpToHash);
     }
