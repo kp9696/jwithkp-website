@@ -145,12 +145,26 @@
     }, { passive: true });
   }
 
+  // navbar is position:fixed and sits on top of the document (z-index above
+  // page content), so scrollIntoView's default block:'start' lands a target
+  // flush with the viewport top — directly underneath the navbar, not below
+  // it. Every in-page and cross-page hash jump needs the navbar's own height
+  // subtracted, plus a little breathing room, or the thing the user clicked
+  // for ends up hidden behind the bar they're still looking at.
+  const NAV_SCROLL_GAP = 16;
+
+  function scrollToTarget(target, behavior) {
+    const navHeight = navbar ? navbar.offsetHeight : 0;
+    const y = target.getBoundingClientRect().top + window.scrollY - navHeight - NAV_SCROLL_GAP;
+    window.scrollTo({ top: Math.max(0, y), left: 0, behavior: behavior });
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        scrollToTarget(target, 'smooth');
 
         // Move keyboard focus to the target too, not just the scroll
         // position — otherwise the skip link (and any other in-page anchor)
@@ -185,13 +199,15 @@
     const rejumpToHash = function () {
       const target = document.getElementById(window.location.hash.slice(1));
       if (!target) return;
-      if (Math.abs(target.getBoundingClientRect().top) > 4) {
+      const navHeight = navbar ? navbar.offsetHeight : 0;
+      const wanted = navHeight + NAV_SCROLL_GAP;
+      if (Math.abs(target.getBoundingClientRect().top - wanted) > 4) {
         // The site sets scroll-behavior: smooth globally, which turns this
         // correction into an animated scroll — fine for one call, but
         // repeated corrective calls (needed because layout keeps shifting)
         // would each restart/fight the previous animation. Force an
         // instant jump instead so every correction is atomic.
-        target.scrollIntoView({ block: 'start', behavior: 'instant' });
+        scrollToTarget(target, 'instant');
       }
     };
     [0, 150, 400, 800, 1500].forEach(function (delay) {
