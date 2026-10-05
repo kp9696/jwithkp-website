@@ -4613,3 +4613,109 @@ main .cta p + p {
 .footer-newsletter .footer-col-title {
   display: block;
 }
+
+
+/* ===== Contact form: optional detail, collapsed by default ===== */
+.form-optional {
+  font-weight: 400;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+
+.form-more {
+  margin: 0 0 1.25rem;
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+}
+
+.form-more > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.form-more > summary::-webkit-details-marker {
+  display: none;
+}
+
+.form-more > summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--hrms-accent);
+}
+
+.form-more[open] > summary::after {
+  content: "\2013";
+}
+
+.form-more > summary:focus-visible {
+  outline: 3px solid var(--accent-teal);
+  outline-offset: 2px;
+  border-radius: 14px;
+}
+
+.form-more-body {
+  padding: 0.25rem 1rem 0.25rem;
+}
+
+/* ===== Mobile: sticky CTA, WhatsApp button, cookie banner =====
+   Previously all three were pinned to the bottom independently: the bar sat
+   permanently on top of the hero buttons, the WhatsApp button hovered at a
+   hard-coded 80px whether or not a bar existed (it only exists on the
+   homepage), and the cookie banner stacked over both. Now the bar appears only
+   once the hero buttons scroll away, WhatsApp lifts clear of it, and both step
+   aside while the cookie banner is open. */
+@media (max-width: 768px) {
+  .sticky-mobile-cta {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(calc(100% + 1.5rem));
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+  }
+
+  .sticky-mobile-cta.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .cookie-banner-open .sticky-mobile-cta {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .whatsapp-float {
+    bottom: 1rem;
+    transition: bottom 0.3s ease, transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .sticky-cta-visible .whatsapp-float {
+    bottom: 6.25rem;
+  }
+
+  .cookie-banner-open .whatsapp-float {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* keep the last lines of the page (copyright, legal links) clear of the bar */
+  .sticky-cta-visible {
+    padding-bottom: 5.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticky-mobile-cta,
+  .sticky-mobile-cta.is-visible,
+  .whatsapp-float {
+    transition: none;
+  }
+}

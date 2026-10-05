@@ -395,12 +395,20 @@
       }
     }
 
+    // The body class lets the mobile sticky CTA and the WhatsApp button step
+    // aside while the banner is open instead of stacking underneath it.
+    function setBannerHidden(isHidden) {
+      if (!banner) return;
+      banner.hidden = isHidden;
+      document.body.classList.toggle('cookie-banner-open', !isHidden);
+    }
+
     function hideBanner() {
-      if (banner) banner.hidden = true;
+      setBannerHidden(true);
     }
 
     function showBanner() {
-      if (banner) banner.hidden = false;
+      setBannerHidden(false);
     }
 
     var stored = localStorage.getItem(CONSENT_KEY);
@@ -409,7 +417,7 @@
     } else if (stored === 'denied') {
       pushConsent(false);
     } else if (banner) {
-      setTimeout(function () { banner.hidden = false; }, 1200);
+      setTimeout(showBanner, 1200);
     }
 
     if (btnAccept) {
@@ -438,6 +446,20 @@
       });
     }
   }());
+
+  // ── Mobile sticky CTA ───────────────────────────────────────────────────
+  // Shown only once the hero's own buttons have scrolled out of view, so it
+  // never sits on top of them. The body class also lifts the WhatsApp button
+  // clear of the bar (see .sticky-cta-visible in the stylesheet).
+  const stickyCta = document.querySelector('.sticky-mobile-cta');
+  const heroActions = document.querySelector('.hp-hero-actions');
+  if (stickyCta && heroActions && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      const heroButtonsVisible = entries[0].isIntersecting;
+      stickyCta.classList.toggle('is-visible', !heroButtonsVisible);
+      document.body.classList.toggle('sticky-cta-visible', !heroButtonsVisible);
+    }, { threshold: 0 }).observe(heroActions);
+  }
 
   // ── Hero SVG Crossfade (10 s rotation) ──────────────────────────────────
   const svgSlides = document.querySelectorAll('.hero-svg-slide');
