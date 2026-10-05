@@ -78,7 +78,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "name": "How much can Indian businesses save by migrating from VMware to Proxmox?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most organizations reduce their virtualization TCO by 60% to 75% by eliminating per-core recurring hypervisor subscription taxes and vendor lock-in."
+            "text": "Savings depend on your environment, but eliminating per-core recurring hypervisor subscriptions and vendor lock-in can cut virtualization licensing costs substantially — our planning estimate is up to 70%."
           }
         },
         {
@@ -97,7 +97,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/fontawesome.min.css">
   
-  <link rel="stylesheet" href="css/style.bf8ff137f3.min.css">
+  <link rel="stylesheet" href="css/style.04e134381a.min.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -301,22 +301,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Before any VMware replacement project begins, confirm workload criticality, backup recovery testing, storage design, hardware compatibility, monitoring coverage, rollback options, and the skills required to operate the target environment after cutover. Our team specializes in <a href="services">enterprise Proxmox migration consulting</a> with zero production downtime.</p>
 
       <h2>Frequently Asked Questions: Proxmox vs VMware</h2>
-      <div class="faq-list" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 1.25rem;">
-          <h3 style="font-size: 1.05rem; color: #38bdf8; margin-bottom: 0.5rem;"><i class="fas fa-question-circle"></i> Can Proxmox completely replace VMware ESXi in production?</h3>
-          <p style="font-size: 0.95rem; line-height: 1.5; color: #cbd5e1; margin: 0;">Yes. Proxmox VE combines enterprise KVM virtualization, LXC containers, High-Availability clustering, and native Proxmox Backup Server integration, matching VMware capabilities for SMBs and mid-market enterprises.</p>
-        </div>
-        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 1.25rem;">
-          <h3 style="font-size: 1.05rem; color: #38bdf8; margin-bottom: 0.5rem;"><i class="fas fa-question-circle"></i> How much can Indian businesses save by migrating from VMware to Proxmox?</h3>
-          <p style="font-size: 0.95rem; line-height: 1.5; color: #cbd5e1; margin: 0;">Most organizations reduce their virtualization TCO by 60% to 75% by eliminating per-core recurring hypervisor subscription taxes and vendor lock-in.</p>
-        </div>
-        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 1.25rem;">
-          <h3 style="font-size: 1.05rem; color: #38bdf8; margin-bottom: 0.5rem;"><i class="fas fa-question-circle"></i> Is live VM migration supported in Proxmox?</h3>
-          <p style="font-size: 0.95rem; line-height: 1.5; color: #cbd5e1; margin: 0;">Yes. Proxmox VE supports zero-downtime live migration of running virtual machines between cluster nodes using shared storage (NFS, iSCSI, Ceph) or local ZFS replication.</p>
-        </div>
+      <div class="svc-faq-grid svc-faq-grid--stack">
+        <article class="svc-faq-card">
+          <h3><i class="fas fa-question-circle" aria-hidden="true"></i> Can Proxmox completely replace VMware ESXi in production?</h3>
+          <p>Yes. Proxmox VE combines enterprise KVM virtualization, LXC containers, High-Availability clustering, and native Proxmox Backup Server integration, matching VMware capabilities for SMBs and mid-market enterprises.</p>
+        </article>
+        <article class="svc-faq-card">
+          <h3><i class="fas fa-question-circle" aria-hidden="true"></i> How much can Indian businesses save by migrating from VMware to Proxmox?</h3>
+          <p>Savings depend on your environment, but eliminating per-core recurring hypervisor subscriptions and vendor lock-in can cut virtualization licensing costs substantially — our planning estimate is up to 70%.</p>
+        </article>
+        <article class="svc-faq-card">
+          <h3><i class="fas fa-question-circle" aria-hidden="true"></i> Is live VM migration supported in Proxmox?</h3>
+          <p>Yes. Proxmox VE supports zero-downtime live migration of running virtual machines between cluster nodes using shared storage (NFS, iSCSI, Ceph) or local ZFS replication.</p>
+        </article>
       </div>
 
-      <div class="cta" style="margin-top: 2rem;">
+      <div class="cta">
         <p>If you are evaluating VMware to Proxmox migration, JwithKP can help you review the architecture, estimate the savings, and create a phased rollout plan through our <a href="services">enterprise Proxmox infrastructure services</a>.</p>
         <p>Want to test Proxmox in your environment first? Book a free 30-minute architecture review and we can assess pilot scope, migration risk, and likely savings.</p>
         <a class="btn" href="contact">Book a Free 30-Min Architecture Review</a>

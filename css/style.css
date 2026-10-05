@@ -3627,6 +3627,22 @@ main .cta p + p {
   margin-right: 0.4rem;
 }
 
+/* Single-column FAQ list for use inside a narrow article column. */
+.svc-faq-grid--stack {
+  grid-template-columns: 1fr;
+  margin-top: 1.5rem;
+}
+
+/* Short "good to know" note sections on inner pages. */
+.page-section--tight {
+  padding: 0 0 3rem;
+}
+
+/* Checklist tick colour (was an inline style on every list item). */
+.check-icon {
+  color: var(--accent-success);
+}
+
 .svc-faq-card p {
   font-size: 0.95rem;
   line-height: 1.6;
