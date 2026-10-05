@@ -245,6 +245,9 @@
   --hrms-border:        var(--hrms-dark-border);
   --hrms-text-heading:  var(--hrms-dark-text-prim);
   --hrms-text-body:     var(--hrms-dark-text-sec);
+  /* Was left at the light-theme #64748B (~3.9:1 on the dark card), failing
+     WCAG AA for the small card copy that uses it. #94A3B8 is ~6.9:1. */
+  --hrms-text-secondary: #94A3B8;
 }
 
 /* --------------------------------------------------
@@ -3401,6 +3404,13 @@ main .cta p + p {
   color: var(--hrms-accent);
 }
 
+/* Used on section-intro paragraphs across the site, but never defined — the
+   760px-max-width <p> sat pinned left under a centered heading. */
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Compact industries row — icon + label chips, replacing a 9-card grid with
    full paragraphs so the same breadth of coverage takes a fraction of the
    vertical space. */
@@ -3452,6 +3462,13 @@ main .cta p + p {
   border-top: 1px solid var(--border);
 }
 
+.hp-compliance-note {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
 .hp-compliance-chip {
   display: inline-flex;
   align-items: center;
@@ -3464,6 +3481,157 @@ main .cta p + p {
 .hp-compliance-chip i {
   color: var(--hrms-primary);
   font-size: 1rem;
+}
+
+/* #06B6D4 on a white page is ~2.4:1 — fine on the dark default, too faint on
+   the light theme for large heading text. */
+[data-theme="light"] .section-accent {
+  color: var(--hrms-primary);
+}
+
+/* Inner-page process + FAQ cards. Replace per-element style="" blocks (which
+   hard-coded dark-theme colors) with the same theme-aware tokens the
+   homepage cards use. */
+.svc-method-grid,
+.svc-faq-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.svc-method-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.svc-faq-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+}
+
+.svc-method-card,
+.svc-faq-card {
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  padding: 1.75rem;
+}
+
+.svc-method-num {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--hrms-primary);
+  margin-bottom: 0.75rem;
+}
+
+.svc-method-card h3,
+.svc-faq-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--hrms-text-heading);
+  margin: 0 0 0.6rem;
+}
+
+.svc-method-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--hrms-primary);
+  margin-bottom: 1rem;
+}
+
+.svc-method-card ul {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--hrms-text-secondary);
+  padding-left: 1.2rem;
+  margin: 0 0 1.2rem;
+}
+
+.svc-method-deliver {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--hrms-text-secondary);
+  background: var(--hrms-bg-main);
+  border: 1px solid var(--hrms-border);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+}
+
+.svc-method-deliver strong {
+  color: var(--hrms-text-heading);
+}
+
+.svc-method-card--ongoing .svc-method-num {
+  color: var(--hrms-success);
+}
+
+.svc-method-card--ongoing .svc-method-time {
+  background: rgba(16, 185, 129, 0.1);
+  color: #047857;
+}
+
+/* About page: both grids declared grid-template-columns but never
+   display: grid, so the two-column cards and 2x2 value grid rendered as one
+   long stack of full-width blocks. */
+.content-grid,
+.value-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.content-grid {
+  align-items: stretch;
+}
+
+/* Contact page on phones: a later legacy rule turns .quick-stats into a
+   nowrap flex row, which forced the single 1fr grid track to ~496px on a
+   375px screen and pushed every form input past the right edge (clipped by
+   the body's overflow-x: hidden). Let grid items shrink and the row wrap. */
+.contact-grid > * {
+  min-width: 0;
+}
+
+.quick-stats {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .quick-stats {
+    gap: 1rem;
+  }
+
+  .info-panel,
+  .contact-form-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Small chip text needs 4.5:1; the light-theme blue/green read too dim on dark. */
+[data-theme="dark"] .svc-method-time {
+  color: #60A5FA;
+}
+
+[data-theme="dark"] .svc-method-card--ongoing .svc-method-time {
+  color: #34D399;
+}
+
+.svc-faq-card h3 i {
+  color: var(--hrms-primary);
+  margin-right: 0.4rem;
+}
+
+.svc-faq-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--hrms-text-secondary);
+  margin: 0;
 }
 
 .hp-service-card h3 {
