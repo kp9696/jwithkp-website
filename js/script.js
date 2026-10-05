@@ -295,9 +295,14 @@
     let columns = [];
     let animationFrame;
     let lastFrame = 0;
+    let frameScheduled = false;
+    let inView = true;
 
     function resizeCanvas() {
-      const dpr = window.devicePixelRatio || 1;
+      // A phone's 2-3x pixel density multiplies fill cost for a faint
+      // background effect, so cap it on small screens.
+      const maxDpr = window.matchMedia('(max-width: 768px)').matches ? 1 : 2;
+      const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
       canvas.width = Math.floor(canvas.clientWidth * dpr);
       canvas.height = Math.floor(canvas.clientHeight * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -330,28 +335,49 @@
       });
     }
 
+    function schedule() {
+      if (frameScheduled) return;
+      frameScheduled = true;
+      animationFrame = window.requestAnimationFrame(animate);
+    }
+
     function animate(timestamp) {
+      frameScheduled = false;
       if (prefersReducedMotion.matches) {
         drawFrame();
         return;
       }
+      // Stop the loop while the hero is scrolled away or the tab is in the
+      // background; it is restarted below when either changes back.
+      if (!inView || document.hidden) return;
       if (timestamp - lastFrame > (1000 / targetFps)) {
         lastFrame = timestamp;
         drawFrame();
       }
-      animationFrame = window.requestAnimationFrame(animate);
+      schedule();
     }
 
     function start() {
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
+      frameScheduled = false;
       resizeCanvas();
       ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
       if (prefersReducedMotion.matches) {
         drawFrame();
         return;
       }
-      animationFrame = window.requestAnimationFrame(animate);
+      schedule();
     }
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+        if (inView && !prefersReducedMotion.matches) schedule();
+      }).observe(canvas);
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden && !prefersReducedMotion.matches) schedule();
+    });
 
     window.addEventListener('resize', start);
     if (prefersReducedMotion.addEventListener) {

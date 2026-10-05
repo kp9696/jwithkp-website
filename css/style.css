@@ -37,8 +37,8 @@
   /* Typography Colors */
   --hrms-text-heading:   #0F172A; /* Heading Text (Slate 900) */
   --hrms-text-body:      #334155; /* Body Text (Slate 700) */
-  --hrms-text-secondary: #64748B; /* Secondary Text (Slate 500) */
-  --hrms-text-muted:     #94A3B8; /* Muted Text (Slate 400) */
+  --hrms-text-secondary: #566579; /* Secondary Text — AA (5.4:1) on the light footer/panels; Slate 500 was 4.3:1 */
+  --hrms-text-muted:     #5B6B80; /* Muted Text — AA on white/light tints; Slate 400 was 2.6:1 */
   --hrms-text-white:     #FFFFFF; /* Pure White */
 
   /* Neutral Dark Mode Palette */
@@ -248,6 +248,9 @@
   /* Was left at the light-theme #64748B (~3.9:1 on the dark card), failing
      WCAG AA for the small card copy that uses it. #94A3B8 is ~6.9:1. */
   --hrms-text-secondary: #94A3B8;
+  /* The light-theme muted/section tokens above are too dark / too light here. */
+  --hrms-text-muted:     #94A3B8;
+  --hrms-bg-section:     #162033;
 }
 
 /* --------------------------------------------------
@@ -4718,4 +4721,94 @@ main .cta p + p {
   .whatsapp-float {
     transition: none;
   }
+}
+
+
+/* ===== Accessibility fixes from the Lighthouse/axe pass ===== */
+
+/* Visually hidden, still announced by screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Stat values were h3 elements directly under the hero h1 (skipping h2);
+   same look, no longer part of the heading outline. */
+.hp-stat-info .hp-stat-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+  color: var(--hrms-text-heading);
+}
+
+/* Timeline step titles moved from h4 to h3 to follow the section h2. */
+.hp-timeline-step h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--hrms-text-heading);
+}
+
+/* Logo strip text was #738095 on #0f172a (4.46:1) because of the 0.75 opacity. */
+.hp-logo-item {
+  opacity: 0.92;
+}
+
+/* Cookie-banner link: #2563eb on the dark banner was 3.45:1. */
+.cookie-banner-text a {
+  color: #7db3ff;
+}
+
+[data-theme="light"] .cookie-banner-text a {
+  color: var(--hrms-primary);
+}
+
+
+.pricing-table-wrap:focus-visible {
+  outline: 3px solid var(--accent-teal);
+  outline-offset: 2px;
+}
+
+
+/* ===== Contrast fixes (axe color-contrast pass) ===== */
+
+/* Success green #10B981 is 2.5:1 on white; use the darker emerald for text in the light theme. */
+[data-theme="light"] .hp-case-metric-value,
+[data-theme="light"] .svc-method-card--ongoing .svc-method-num,
+[data-theme="light"] .hrms-badge.status-present {
+  color: #047857;
+}
+
+/* Royal blue #2563EB on the tinted badge backgrounds: 4.4:1 in light, 3.1:1 in dark. */
+[data-theme="light"] .hrms-badge.status-wfh,
+[data-theme="light"] .hp-blog-card-meta .category-badge {
+  color: var(--hrms-primary-hover);
+}
+
+[data-theme="dark"] .hrms-badge.status-wfh,
+[data-theme="dark"] .hp-blog-card-meta .category-badge,
+[data-theme="dark"] .btn-hrms-ghost {
+  color: #7db3ff !important;
+}
+
+[data-theme="dark"] .btn-hrms-ghost:hover {
+  color: #a8ccff !important;
+}
+
+/* Label above the technology strip: was an h3 straight under the hero h1. */
+.hp-trusted-logos .hp-trusted-label {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--hrms-text-muted);
+  margin-bottom: 2rem;
 }
