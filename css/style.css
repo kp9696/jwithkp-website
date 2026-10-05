@@ -1358,8 +1358,15 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   }
 }
 
-/* Collapse the shared navigation before its desktop controls exceed tablet width. */
-@media (max-width: 1100px) {
+/* Collapse the shared navigation before its desktop controls exceed tablet
+   width. The full nav-menu's 9 links + 2 mega-menu carets don't actually fit
+   next to the logo and nav-right controls (HRMS button, theme toggle) inside
+   the 1240px container until ~1608px viewport width (measured: nav-right
+   overflows the container — and the viewport itself — from 1101px up to
+   1607px, silently clipping the theme toggle and menu button off-canvas with
+   no scrollbar to reveal them). 1650px keeps a safety margin above that
+   measured crossover point. */
+@media (max-width: 1650px) {
   .menu-toggle {
     display: flex;
   }

@@ -1,3 +1,9 @@
+const CACHE_NAME = 'jwithkp-70b3a2a3aa';
+const ASSETS_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/css/style.c22173f9f2.min.css',
+  '/js/script.15f00a8cd0.min.js',
 const CACHE_NAME = 'jwithkp-805e0b5c75';
 const ASSETS_TO_CACHE = [
   '/',
