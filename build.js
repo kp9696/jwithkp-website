@@ -11,13 +11,23 @@ function contentHash(content) {
   return crypto.createHash('sha256').update(content).digest('hex').slice(0, 10);
 }
 
+// GTM is deferred: gtm.js (and the GA4 tag it pulls in) cost ~0.5-1s of main-thread
+// blocking on desktop and ~2-4s on throttled mobile, so it starts on the first user
+// interaction, or ~6s after the load event for visitors who just read without
+// touching anything. Consent Mode defaults and any later gtag('consent','update')
+// calls are queued on dataLayer, which GTM drains in order once it loads. Trade-off:
+// a visit that bounces in under ~6s with no interaction is not counted.
 const GTM_HEAD_SNIPPET = `<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M98KB4X7');</script>
+<script>(function(w,d,l,i){w[l]=w[l]||[];var s=0,ev=['pointerdown','keydown','touchstart','scroll'];
+function go(){if(s)return;s=1;ev.forEach(function(e){w.removeEventListener(e,go,true)});
+w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j)}
+ev.forEach(function(e){w.addEventListener(e,go,{capture:true,passive:true})});
+w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallback?w.requestIdleCallback(go,{timeout:1500}):go())},6000)});
+})(window,document,'dataLayer','GTM-M98KB4X7');</script>
 <!-- End Google Tag Manager -->`;
+
+const GTM_HEAD_RE = /<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/;
 
 const GTM_BODY_SNIPPET = `<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M98KB4X7"
@@ -170,6 +180,10 @@ function ensureGtmSnippets(content) {
       CONSENT_INIT_SNIPPET
     );
   }
+
+  // Pages already carry an earlier copy of the head snippet; bring it up to date
+  // so the loader stays identical on every page. (Function form: no $-expansion.)
+  content = content.replace(GTM_HEAD_RE, () => GTM_HEAD_SNIPPET);
 
   return content;
 }

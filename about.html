@@ -15,11 +15,13 @@ gtag('consent', 'default', {
 </script>
 <!-- End Consent Mode -->
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M98KB4X7');</script>
+<script>(function(w,d,l,i){w[l]=w[l]||[];var s=0,ev=['pointerdown','keydown','touchstart','scroll'];
+function go(){if(s)return;s=1;ev.forEach(function(e){w.removeEventListener(e,go,true)});
+w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j)}
+ev.forEach(function(e){w.addEventListener(e,go,{capture:true,passive:true})});
+w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallback?w.requestIdleCallback(go,{timeout:1500}):go())},6000)});
+})(window,document,'dataLayer','GTM-M98KB4X7');</script>
 <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/fontawesome.min.css">
 
-  <link rel="stylesheet" href="css/style.eb79d31316.min.css">
+  <link rel="stylesheet" href="css/style.e8a8d884ae.min.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",

@@ -4812,3 +4812,19 @@ main .cta p + p {
   color: var(--hrms-text-muted);
   margin-bottom: 2rem;
 }
+
+
+/* ===== Home page: skip layout/paint of below-the-fold sections until needed =====
+   On a throttled phone the first full-page layout was ~0.8s and the page's
+   total blocking time ~0.5-1s. content-visibility:auto renders a section only
+   when it nears the viewport; "auto <len>" remembers the real height after the
+   first render, so the scrollbar does not keep re-estimating. Scoped with the
+   sibling combinator so it only applies after the home page's logo strip. */
+.hp-trusted-logos ~ .page-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 550px;
+}
+
+@media (max-width: 768px) {
+  .hp-trusted-logos ~ .page-section { contain-intrinsic-size: auto 1100px; }
+}
