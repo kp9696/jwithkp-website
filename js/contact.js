@@ -8,45 +8,7 @@ const contactForm = document.getElementById('smartContactForm');
 
     function setInterest(interest) {
       interestSelect.value = interest;
-      updateSubOptions();
       document.querySelector('.contact-form-card').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function updateSubOptions() {
-      const interest = interestSelect.value;
-      const subContainer = document.getElementById('sub-options-container');
-      const subSelect = document.getElementById('sub-interest');
-      const budgetContainer = document.getElementById('budget-container');
-      const budgetSelect = document.getElementById('budget');
-
-      const subOptions = {
-        virtualization: ['Proxmox New Setup', 'VMware to Proxmox Migration', 'Hyper-V to Proxmox', 'High Availability Cluster'],
-        'open-source': ['Nextcloud Setup', 'Zimbra Email Server', 'Odoo ERP', 'SuiteCRM', 'GLPI Helpdesk', 'Full Stack Implementation'],
-        security: ['Wazuh SIEM', 'pfSense Firewall', 'Fortinet Implementation', 'Sophos XG', 'Security Audit'],
-        monitoring: ['Zabbix Setup', 'Prometheus + Grafana', 'ELK Stack', 'Custom Dashboards'],
-        office365: ['Zimbra Migration', 'Office 365 Setup', 'Exchange to Zimbra', 'SharePoint Alternative'],
-        network: ['New Office Network', 'SD-WAN Implementation', 'WiFi Design', 'VPN Setup', 'Network Audit'],
-        endpoint: ['ESET Protect', 'Safetica DLP', 'Sophos Intercept X', 'Trend Micro', 'Kaspersky'],
-        ecom: ['WordPress', 'Shopify', 'Magento', 'Custom CMS', 'Payment Gateway'],
-        erp: ['Odoo Implementation', 'SuiteCRM', 'ERPNext', 'Custom ERP'],
-        backup: ['Veeam Backup', 'Bacula', 'Proxmox Backup Server', 'Disaster Recovery'],
-        hybrid: ['Complete IT Audit', 'Cost Optimization Strategy', 'Migration Planning']
-      };
-
-      if (subOptions[interest]) {
-        subSelect.innerHTML = '<option value="">-- Select specific need --</option>' +
-          subOptions[interest].map(opt => `<option value="${opt.toLowerCase().replace(/\s+/g, '-')}">${opt}</option>`).join('');
-        subContainer.style.display = 'block';
-        budgetContainer.style.display = 'block';
-      } else {
-        subSelect.innerHTML = '';
-        subSelect.value = '';
-        if (budgetSelect) {
-          budgetSelect.selectedIndex = 0;
-        }
-        subContainer.style.display = 'none';
-        budgetContainer.style.display = 'none';
-      }
     }
 
     function showNotification(message, isSuccess = true) {
@@ -87,21 +49,26 @@ const contactForm = document.getElementById('smartContactForm');
       }
 
       const submitButton = contactForm.querySelector('button[type="submit"]');
+      const submitLabel = submitButton.innerHTML;
       submitButton.disabled = true;
       submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
+      // Optional fields may be absent or empty, so read each defensively.
+      const field = (id) => {
+        const el = document.getElementById(id);
+        return el ? el.value.trim() : '';
+      };
       const formData = {
-        name: document.getElementById('full-name').value.trim(),
-        company: document.getElementById('company-name').value.trim(),
-        email: document.getElementById('contact-email').value.trim(),
-        phone: document.getElementById('contact-phone').value.trim(),
-        city: document.getElementById('city').value.trim(),
-        companySize: document.getElementById('company-size-select').value,
-        interest: document.getElementById('interest').value,
-        subInterest: document.getElementById('sub-interest')?.value || 'Not specified',
-        budget: document.getElementById('budget')?.value || 'Not specified',
-        timeline: document.getElementById('timeline').value,
-        message: document.getElementById('message').value.trim()
+        name: field('full-name'),
+        company: field('company-name'),
+        email: field('contact-email'),
+        phone: field('contact-phone'),
+        city: field('city'),
+        companySize: field('company-size-select'),
+        interest: field('interest'),
+        timeline: field('timeline'),
+        budget: field('budget'),
+        message: field('message')
       };
 
       const endpoint = atob(contactForm.dataset.endpointEncrypted);
@@ -111,13 +78,12 @@ const contactForm = document.getElementById('smartContactForm');
       payload.append('name', formData.name);
       payload.append('company', formData.company || 'Not provided');
       payload.append('email', formData.email);
-      payload.append('phone', formData.phone);
+      payload.append('phone', formData.phone || 'Not provided');
       payload.append('city', formData.city || 'Not provided');
       payload.append('companySize', formData.companySize || 'Not provided');
       payload.append('interest', formData.interest);
-      payload.append('subInterest', formData.subInterest);
-      payload.append('budget', formData.budget);
-      payload.append('timeline', formData.timeline);
+      payload.append('timeline', formData.timeline || 'Not provided');
+      payload.append('budget', formData.budget || 'Not provided');
       payload.append('message', formData.message || 'Not provided');
       payload.append('submittedAt', new Date().toISOString());
 
@@ -144,22 +110,19 @@ const contactForm = document.getElementById('smartContactForm');
         showNotification('Request submitted successfully. We will respond within 24 hours.');
         contactForm.reset();
         formStartedAtInput.value = String(Date.now());
-        updateSubOptions();
       } catch (error) {
         showNotification('Network issue detected. Retrying with secure fallback submission...', false);
         submitViaFallbackEndpoint(payload);
         return;
       } finally {
         submitButton.disabled = false;
-        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request';
+        submitButton.innerHTML = submitLabel;
       }
     }
 
     dismissSuccessBanner?.addEventListener('click', () => {
       successBanner.style.display = 'none';
     });
-
-    interestSelect?.addEventListener('change', updateSubOptions);
 
     interestTags?.addEventListener('click', (event) => {
       const trigger = event.target.closest('[data-interest]');
@@ -178,5 +141,4 @@ const contactForm = document.getElementById('smartContactForm');
     }
 
     formStartedAtInput.value = String(Date.now());
-    updateSubOptions();
 

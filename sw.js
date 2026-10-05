@@ -4,8 +4,14 @@ const ASSETS_TO_CACHE = [
   '/index.html',
   '/css/style.c22173f9f2.min.css',
   '/js/script.15f00a8cd0.min.js',
+const CACHE_NAME = 'jwithkp-805e0b5c75';
+const ASSETS_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/css/style.eb79d31316.min.css',
+  '/js/script.fcf8a7a9d9.min.js',
   '/Logo.webp',
-  '/Logo.png',
+  '/images/icons/icon-192.png',
   '/manifest.json'
 ];
 
