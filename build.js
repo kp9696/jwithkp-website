@@ -237,6 +237,48 @@ async function build() {
     console.error('Error minifying JS:', err);
   }
 
+  // Font Awesome gets the same treatment. Its CSS and webfonts used to be
+  // served from fixed URLs under a 1-year "immutable" Cache-Control, so a
+  // changed file was invisible to every cache that already held the old bytes:
+  // after the font subset shipped, Cloudflare's edge kept handing browsers the
+  // old 150KB/108KB fonts (and the old CSS) for a CORS font request, while a
+  // plain request got the new ones. Sources stay hand-maintained at
+  // css/fontawesome.min.css and css/webfonts/fa-*.woff2; the build emits
+  // fingerprinted copies and the pages point at those.
+  let faCssHashedName = null;
+  try {
+    const cssDir = path.join(__dirname, 'css');
+    const fontDir = path.join(cssDir, 'webfonts');
+    const fontMap = {}; // 'fa-solid-900' -> 'fa-solid-900.<hash>.woff2'
+    for (const f of fs.readdirSync(fontDir)) {
+      const m = f.match(/^(fa-[a-z]+-\d+)\.woff2$/);
+      if (!m) continue;
+      const bytes = fs.readFileSync(path.join(fontDir, f));
+      fontMap[m[1]] = `${m[1]}.${contentHash(bytes)}.woff2`;
+    }
+    const keepFonts = new Set(Object.values(fontMap));
+    for (const f of fs.readdirSync(fontDir)) {
+      if (/^fa-[a-z]+-\d+\.[0-9a-f]{10}\.woff2$/.test(f) && !keepFonts.has(f)) fs.unlinkSync(path.join(fontDir, f));
+    }
+    for (const [base, hashed] of Object.entries(fontMap)) {
+      fs.copyFileSync(path.join(fontDir, `${base}.woff2`), path.join(fontDir, hashed));
+    }
+
+    const faSrc = fs.readFileSync(path.join(cssDir, 'fontawesome.min.css'), 'utf8');
+    const faOut = faSrc.replace(/webfonts\/(fa-[a-z]+-\d+)\.woff2/g, (whole, base) => {
+      if (!fontMap[base]) throw new Error(`fontawesome.min.css references webfonts/${base}.woff2 but no such file exists`);
+      return `webfonts/${fontMap[base]}`;
+    });
+    faCssHashedName = `fontawesome.${contentHash(faOut)}.min.css`;
+    for (const f of fs.readdirSync(cssDir)) {
+      if (/^fontawesome\.[0-9a-f]{10}\.min\.css$/.test(f) && f !== faCssHashedName) fs.unlinkSync(path.join(cssDir, f));
+    }
+    fs.writeFileSync(path.join(cssDir, faCssHashedName), faOut, 'utf8');
+    console.log(`Font Awesome fingerprinting: Successful (${faCssHashedName}, ${Object.keys(fontMap).length} fonts)`);
+  } catch (err) {
+    console.error('Error fingerprinting Font Awesome:', err);
+  }
+
   const navbarTemplatePath = path.join(__dirname, 'templates', 'navbar.html');
   const footerTemplatePath = path.join(__dirname, 'templates', 'footer.html');
   const navbarTemplate = fs.readFileSync(navbarTemplatePath, 'utf8');
@@ -298,6 +340,9 @@ async function build() {
       }
       if (jsHashedName) {
         content = content.replace(/src="js\/script(?:\.[0-9a-f]{10})?\.min\.js"/, `src="js/${jsHashedName}"`);
+      }
+      if (faCssHashedName) {
+        content = content.replace(/href="css\/fontawesome(?:\.[0-9a-f]{10})?\.min\.css"/g, `href="css/${faCssHashedName}"`);
       }
 
       fs.writeFileSync(filePath, content, 'utf8');

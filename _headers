@@ -27,11 +27,13 @@
 # Long-cache immutable static assets. css/style.*.min.css and
 # js/script.*.min.js carry a content hash (see build.js) — an edit changes
 # the filename, so this is safe: no client ever needs to revalidate an old
-# URL, it simply stops being referenced. Font Awesome's self-hosted webfonts
-# and images aren't hashed, but they change rarely and a Cloudflare Pages
-# deploy still gets a fresh edge cache immediately; only a browser that
-# already cached the old bytes under the same URL would keep them for up to
-# a year.
+# URL, it simply stops being referenced. Font Awesome's CSS and webfonts are
+# fingerprinted the same way (css/fontawesome.<hash>.min.css and
+# css/webfonts/fa-*.<hash>.woff2, see build.js). They were not at first, and a
+# deploy does NOT purge Cloudflare's edge cache: the old 150KB fonts kept being
+# served to CORS font requests for a day after the 7KB subset shipped. Anything
+# under an immutable rule needs a content hash in its name. Images are still
+# unhashed, so never replace one in place — add a new filename.
 /css/*
   Cache-Control: public, max-age=31536000, immutable
 
