@@ -2,28 +2,31 @@
           <article class="tier-card" data-aos="fade-up">
             <h4>2&ndash;10 people</h4>
             <p class="tier-for">A first team that needs someone to call.</p>
-            {{#if cfg.offers.retainer.priceSmall}}<p class="tier-price">{{cfg.offers.retainer.priceSmall}} per month</p>{{/if}}
-            <ul class="hp-check-list">
-              <li><i class="fas fa-circle-check" aria-hidden="true"></i> Support: {{cfg.support.responseTarget}}</li>
-              {{#if cfg.support.hours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Support hours: {{cfg.support.hours}}</li>{{/if}}
-            </ul>
+            {{#if cfg.offers.retainer.small.price}}<p class="tier-price">Starting from {{cfg.offers.retainer.small.price}}/month</p>{{/if}}
+            {{#ifany cfg.offers.retainer.small.hours cfg.offers.retainer.small.review cfg.offers.retainer.small.visits}}<ul class="hp-check-list">
+              {{#if cfg.offers.retainer.small.hours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Included hours: {{cfg.offers.retainer.small.hours}}</li>{{/if}}
+              {{#if cfg.offers.retainer.small.review}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Monthly review: {{cfg.offers.retainer.small.review}}</li>{{/if}}
+              {{#if cfg.offers.retainer.small.visits}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> On-site visits: {{cfg.offers.retainer.small.visits}}</li>{{/if}}
+            </ul>{{/ifany}}
           </article>
           <article class="tier-card" data-aos="fade-up" data-aos-delay="50">
             <h4>11&ndash;25 people</h4>
             <p class="tier-for">More laptops, more tools, more joiners and leavers.</p>
-            {{#if cfg.offers.retainer.priceMedium}}<p class="tier-price">{{cfg.offers.retainer.priceMedium}} per month</p>{{/if}}
-            <ul class="hp-check-list">
-              <li><i class="fas fa-circle-check" aria-hidden="true"></i> Support: {{cfg.support.responseTarget}}</li>
-              {{#if cfg.support.hours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Support hours: {{cfg.support.hours}}</li>{{/if}}
-            </ul>
+            {{#if cfg.offers.retainer.medium.price}}<p class="tier-price">Starting from {{cfg.offers.retainer.medium.price}}/month</p>{{/if}}
+            {{#ifany cfg.offers.retainer.medium.hours cfg.offers.retainer.medium.review cfg.offers.retainer.medium.visits}}<ul class="hp-check-list">
+              {{#if cfg.offers.retainer.medium.hours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Included hours: {{cfg.offers.retainer.medium.hours}}</li>{{/if}}
+              {{#if cfg.offers.retainer.medium.review}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Monthly review: {{cfg.offers.retainer.medium.review}}</li>{{/if}}
+              {{#if cfg.offers.retainer.medium.visits}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> On-site visits: {{cfg.offers.retainer.medium.visits}}</li>{{/if}}
+            </ul>{{/ifany}}
           </article>
           <article class="tier-card" data-aos="fade-up" data-aos-delay="100">
             <h4>26&ndash;50 people</h4>
             <p class="tier-for">A growing company that needs planning as well as support.</p>
-            {{#if cfg.offers.retainer.priceLarge}}<p class="tier-price">{{cfg.offers.retainer.priceLarge}} per month</p>{{/if}}
-            <ul class="hp-check-list">
-              <li><i class="fas fa-circle-check" aria-hidden="true"></i> Support: {{cfg.support.responseTarget}}</li>
-              {{#if cfg.support.hours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Support hours: {{cfg.support.hours}}</li>{{/if}}
-            </ul>
+            {{#if cfg.offers.retainer.large.price}}<p class="tier-price">Starting from {{cfg.offers.retainer.large.price}}/month</p>{{/if}}
+            {{#ifany cfg.offers.retainer.large.hours cfg.offers.retainer.large.review cfg.offers.retainer.large.visits}}<ul class="hp-check-list">
+              {{#if cfg.offers.retainer.large.hours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Included hours: {{cfg.offers.retainer.large.hours}}</li>{{/if}}
+              {{#if cfg.offers.retainer.large.review}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Monthly review: {{cfg.offers.retainer.large.review}}</li>{{/if}}
+              {{#if cfg.offers.retainer.large.visits}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> On-site visits: {{cfg.offers.retainer.large.visits}}</li>{{/if}}
+            </ul>{{/ifany}}
           </article>
         </div>

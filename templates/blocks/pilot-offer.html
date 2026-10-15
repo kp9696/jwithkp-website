@@ -1,6 +1,6 @@
-      {{#ifall cfg.offers.pilot.price cfg.offers.pilot.gst cfg.offers.pilot.supportPeriod}}
+      {{#ifall cfg.offers.pilot.enabled cfg.offers.pilot.price cfg.offers.pilot.gst cfg.offers.pilot.supportPeriod}}
       <section class="offer-panel" id="starter-plan" aria-label="Starter pilot for existing businesses">
-        <span class="section-badge">Starter pilot</span>
+        <span class="section-badge">Starter pilot</span>{{#if cfg.offers.pilot.enabled}}{{/if}}
         <h3>A fixed-price first step for an existing setup</h3>
         <span class="offer-price">{{cfg.offers.pilot.price}} fixed-price pilot</span>
         <p>For businesses that want a practical start instead of a large project: a structured pilot for one location or branch with up to 3 servers.</p>

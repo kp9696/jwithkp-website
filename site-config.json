@@ -51,11 +51,27 @@
       "supportPeriod": ""
     },
     "retainer": {
-      "priceSmall": "",
-      "priceMedium": "",
-      "priceLarge": ""
+      "small": {
+        "price": "",
+        "hours": "",
+        "review": "",
+        "visits": ""
+      },
+      "medium": {
+        "price": "",
+        "hours": "",
+        "review": "",
+        "visits": ""
+      },
+      "large": {
+        "price": "",
+        "hours": "",
+        "review": "",
+        "visits": ""
+      }
     },
     "pilot": {
+      "enabled": "",
       "price": "INR 49,999",
       "gst": "",
       "supportPeriod": ""
@@ -77,5 +93,8 @@
       "Virtualization and VMware to Proxmox migration",
       "IT cost optimization"
     ]
+  },
+  "practices": {
+    "ndaOnRequest": ""
   }
 }
