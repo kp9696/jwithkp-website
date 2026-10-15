@@ -55,7 +55,7 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
-  <link rel="stylesheet" href="css/style.0759dfd88b.min.css">
+  <link rel="stylesheet" href="css/style.82d7341f70.min.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -320,13 +320,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="calculator-grid">
         <section class="calculator-card">
           <h3 aria-level="2">IT Cost Optimizer</h3>
-          <p class="calculator-note">Enter your current annual spending in INR for the categories below. The pre-filled numbers are examples — replace them with your own.</p>
+          <p class="calculator-note">Enter your current annual spending in INR, and how much lower you expect each cost to be after a change. The pre-filled numbers are examples: replace them with your own. We pre-fill 30% as an illustration only. It is not a market average or a promise, so replace it with figures from your own quotes.</p>
 
           <div class="calc-group">
             <label for="virt-cost"><i class="fas fa-server"></i> Virtualization (VMware) Annual Cost</label>
             <div class="input-wrapper">
               <span class="currency">INR</span>
               <input type="number" id="virt-cost" value="2500000" step="100000" placeholder="e.g., 2500000">
+            </div>
+            <div class="calc-assume">
+              <label for="virt-pct">Assumed reduction</label>
+              <div class="input-wrapper"><input type="number" id="virt-pct" value="30" min="0" max="90" step="5" inputmode="numeric"><span class="currency">%</span></div>
             </div>
           </div>
 
@@ -336,6 +340,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="currency">INR</span>
               <input type="number" id="mon-cost" value="1500000" step="100000" placeholder="e.g., 1500000">
             </div>
+            <div class="calc-assume">
+              <label for="mon-pct">Assumed reduction</label>
+              <div class="input-wrapper"><input type="number" id="mon-pct" value="30" min="0" max="90" step="5" inputmode="numeric"><span class="currency">%</span></div>
+            </div>
           </div>
 
           <div class="calc-group">
@@ -343,6 +351,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="input-wrapper">
               <span class="currency">INR</span>
               <input type="number" id="sec-cost" value="2000000" step="100000" placeholder="e.g., 2000000">
+            </div>
+            <div class="calc-assume">
+              <label for="sec-pct">Assumed reduction</label>
+              <div class="input-wrapper"><input type="number" id="sec-pct" value="30" min="0" max="90" step="5" inputmode="numeric"><span class="currency">%</span></div>
             </div>
           </div>
 
@@ -352,6 +364,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="currency">INR</span>
               <input type="number" id="fw-cost" value="800000" step="50000" placeholder="e.g., 800000">
             </div>
+            <div class="calc-assume">
+              <label for="fw-pct">Assumed reduction</label>
+              <div class="input-wrapper"><input type="number" id="fw-pct" value="30" min="0" max="90" step="5" inputmode="numeric"><span class="currency">%</span></div>
+            </div>
           </div>
 
           <div class="calc-group">
@@ -359,6 +375,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="input-wrapper">
               <span class="currency">INR</span>
               <input type="number" id="email-cost" value="1200000" step="50000" placeholder="e.g., 1200000">
+            </div>
+            <div class="calc-assume">
+              <label for="email-pct">Assumed reduction</label>
+              <div class="input-wrapper"><input type="number" id="email-pct" value="30" min="0" max="90" step="5" inputmode="numeric"><span class="currency">%</span></div>
             </div>
           </div>
 
@@ -386,19 +406,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
 
           <div class="result-item highlight">
-            <span>With JwithKP Hybrid Stack:</span>
-            <span id="optimized-spend">INR 28,00,000</span>
+            <span>After your assumed reductions:</span>
+            <span id="optimized-spend">INR 56,00,000</span>
           </div>
 
           <div class="savings-big">
-            <span class="savings-label">Annual Savings</span>
-            <span class="savings-number" id="annual-savings">INR 52,00,000</span>
+            <span class="savings-label">Estimated annual savings (from your assumptions)</span>
+            <span class="savings-number" id="annual-savings">INR 24,00,000</span>
           </div>
 
           <div class="progress-bar">
             <div class="progress-fill" id="savings-progress"></div>
           </div>
-          <div class="text-center" id="savings-percent">65% Cost Reduction</div>
+          <div class="text-center" id="savings-percent">30% lower, based on your assumptions</div>
 
           <!-- Animated Bar Chart -->
           <div class="roi-chart">
@@ -406,45 +426,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="roi-bar-row">
               <span class="roi-bar-label">Virtualization</span>
               <div class="roi-bar-track"><div class="roi-bar-fill" id="bar-virt"></div></div>
-              <span class="roi-bar-pct" id="pct-virt">70%</span>
+              <span class="roi-bar-pct" id="pct-virt">30%</span>
             </div>
             <div class="roi-bar-row">
               <span class="roi-bar-label">Monitoring</span>
               <div class="roi-bar-track"><div class="roi-bar-fill" id="bar-mon"></div></div>
-              <span class="roi-bar-pct" id="pct-mon">80%</span>
+              <span class="roi-bar-pct" id="pct-mon">30%</span>
             </div>
             <div class="roi-bar-row">
               <span class="roi-bar-label">Security</span>
               <div class="roi-bar-track"><div class="roi-bar-fill" id="bar-sec"></div></div>
-              <span class="roi-bar-pct" id="pct-sec">70%</span>
+              <span class="roi-bar-pct" id="pct-sec">30%</span>
             </div>
             <div class="roi-bar-row">
               <span class="roi-bar-label">Firewall</span>
               <div class="roi-bar-track"><div class="roi-bar-fill" id="bar-fw"></div></div>
-              <span class="roi-bar-pct" id="pct-fw">50%</span>
+              <span class="roi-bar-pct" id="pct-fw">30%</span>
             </div>
             <div class="roi-bar-row">
               <span class="roi-bar-label">Email / Collab</span>
               <div class="roi-bar-track"><div class="roi-bar-fill" id="bar-email"></div></div>
-              <span class="roi-bar-pct" id="pct-email">70%</span>
+              <span class="roi-bar-pct" id="pct-email">30%</span>
             </div>
           </div>
 
           <div class="breakdown-details">
             <h4>Savings Breakdown</h4>
             <ul id="savings-breakdown">
-              <li><i class="fas fa-check-circle"></i> Virtualization: Save INR 17.5L (70%)</li>
-              <li><i class="fas fa-check-circle"></i> Monitoring: Save INR 12L (80%)</li>
-              <li><i class="fas fa-check-circle"></i> Security: Save INR 14L (70%)</li>
-              <li><i class="fas fa-check-circle"></i> Firewall: Save INR 4L (50%)</li>
-              <li><i class="fas fa-check-circle"></i> Email/Collab: Save INR 8.4L (70%)</li>
+              <li><i class="fas fa-check-circle"></i> Virtualization: Save INR 7.5L (30%)</li>
+              <li><i class="fas fa-check-circle"></i> Monitoring: Save INR 4.5L (30%)</li>
+              <li><i class="fas fa-check-circle"></i> Security: Save INR 6L (30%)</li>
+              <li><i class="fas fa-check-circle"></i> Firewall: Save INR 2.4L (30%)</li>
+              <li><i class="fas fa-check-circle"></i> Email/Collab: Save INR 3.6L (30%)</li>
             </ul>
           </div>
 
           <div class="results-cta">
             <a href="contact" class="btn btn-primary">Get Exact Quote in INR</a>
           </div>
-          <p class="disclaimer">Based on indicative optimization assumptions — not guaranteed outcomes or past client results. Final savings depend on architecture, scale, support model, and migration scope.</p>
+          <p class="disclaimer">Based on the reductions you assume. It is not a promise of results, and not a result from a past client. Final savings depend on architecture, scale, support model and migration scope. <a href="#how-we-calculate">How we calculate it</a>.</p>
         </section>
       </div>
 
@@ -480,6 +500,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="contact">Get an exact quote in INR</a></li>
         </ul>
       </section>
+
+    <section class="page-section" id="how-we-calculate" aria-labelledby="how-calc-title">
+      <div class="container">
+        <div class="section-head text-center" data-aos="fade-up">
+          <span class="section-badge">Method</span>
+          <h2 id="how-calc-title">How we <span class="section-accent">calculate it</span></h2>
+          <p class="mx-auto">There is no headline saving on this page. The result comes from your own spend and the reductions you assume.</p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card" data-aos="fade-up">
+            <h3>In this calculator</h3>
+            <ol>
+              <li>You enter what you pay each year in five categories.</li>
+              <li>You set an assumed reduction for each, from 0% to 90%. We pre-fill 30% as an illustration. It is not a market average, a promise or a result from a client.</li>
+              <li>Spend after the change = current spend &times; (1 &minus; assumed reduction).</li>
+              <li>Estimated annual saving = current spend &minus; spend after the change.</li>
+            </ol>
+          </article>
+          <article class="content-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>For a VMware to Proxmox move</h3>
+            <p>In our planning conversations we compare your current annual VMware subscription with a Proxmox VE support subscription for the same number of CPU sockets, before one-time migration effort. We use your actual renewal quote, edition and core count, so we do not quote a headline percentage up front.</p>
+            <p>Some environments depend on VMware-specific features and are not good candidates for a move.</p>
+          </article>
+        </div>
+
+        <div class="notice-card" style="margin-top: 1.5rem;">
+          <h3>What it leaves out</h3>
+          <p>One-time migration and setup effort, training, hardware changes, downtime risk, GST, and any change in how much you use. These can move the real number up or down.</p>
+        </div>
+      </div>
+    </section>
 
     <section class="page-section page-section--tight">
       <div class="container">
@@ -656,11 +708,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         sizeDisplay.textContent = companySize;
 
-        const virtOptimized = virtCost * 0.3;
-        const monOptimized = monCost * 0.2;
-        const secOptimized = secCost * 0.3;
-        const fwOptimized = fwCost * 0.5;
-        const emailOptimized = emailCost * 0.3;
+        // The reduction for each category is the visitor's own assumption (0-90%),
+        // not a figure we publish. See the "How we calculate" section on the page.
+        const keep = (id) => 1 - Math.min(Math.max(parseFloat(document.getElementById(id).value) || 0, 0), 90) / 100;
+        const virtOptimized = virtCost * keep('virt-pct');
+        const monOptimized = monCost * keep('mon-pct');
+        const secOptimized = secCost * keep('sec-pct');
+        const fwOptimized = fwCost * keep('fw-pct');
+        const emailOptimized = emailCost * keep('email-pct');
 
         const currentTotal = virtCost + monCost + secCost + fwCost + emailCost;
         const optimizedTotal = virtOptimized + monOptimized + secOptimized + fwOptimized + emailOptimized;
@@ -671,7 +726,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.getElementById('optimized-spend').textContent = `${RUPEE}${formatIndianCurrency(optimizedTotal)}`;
         document.getElementById('annual-savings').textContent = `${RUPEE}${formatIndianCurrency(savingsTotal)}`;
         document.getElementById('savings-progress').style.width = `${Math.min(savingsPercent, 100)}%`;
-        document.getElementById('savings-percent').textContent = `${savingsPercent}% Cost Reduction`;
+        document.getElementById('savings-percent').textContent = `${savingsPercent}% lower, based on your assumptions`;
 
         // Update CTA link so contact form is pre-filled with ROI context
         const ctaLinks = document.querySelectorAll('.results-cta a[href^="contact"]');
@@ -711,6 +766,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       window.calculateROI = calculateROI;
+      ['virt', 'mon', 'sec', 'fw', 'email'].forEach((k) => { const el = document.getElementById(k + '-pct'); if (el) el.addEventListener('input', calculateROI); });
 
       if (calculateButton) {
         calculateButton.addEventListener('click', calculateROI);

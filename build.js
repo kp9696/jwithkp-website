@@ -504,6 +504,31 @@ async function build() {
     console.error('Error minifying JS:', err);
   }
 
+  // Page-specific scripts (contact.js, services.js, home.js, estimator.js ...)
+  // get the same fingerprinting. They used to be served from fixed URLs under the
+  // 1-year "immutable" cache in _headers, so a returning visitor would keep an
+  // old copy after an edit. Sources stay at js/<name>.js; the build emits
+  // js/<name>.<hash>.min.js and the pages are pointed at that.
+  const pageScriptMap = {}; // 'contact' -> 'contact.<hash>.min.js'
+  try {
+    const jsDir = path.join(__dirname, 'js');
+    for (const f of fs.readdirSync(jsDir)) {
+      const m = f.match(/^([a-z0-9-]+)\.js$/);
+      if (!m || m[1] === 'script') continue;
+      const code = (await minify(fs.readFileSync(path.join(jsDir, f), 'utf8'))).code;
+      const hashed = `${m[1]}.${contentHash(code)}.min.js`;
+      pageScriptMap[m[1]] = hashed;
+      fs.writeFileSync(path.join(jsDir, hashed), code, 'utf8');
+    }
+    for (const f of fs.readdirSync(jsDir)) {
+      const m = f.match(/^([a-z0-9-]+)\.[0-9a-f]{10}\.min\.js$/);
+      if (m && m[1] !== 'script' && pageScriptMap[m[1]] !== f) fs.unlinkSync(path.join(jsDir, f));
+    }
+    console.log(`Page scripts fingerprinted: ${Object.values(pageScriptMap).join(', ') || 'none'}`);
+  } catch (err) {
+    console.error('Error fingerprinting page scripts:', err);
+  }
+
   // Font Awesome gets the same treatment. Its CSS and webfonts used to be
   // served from fixed URLs under a 1-year "immutable" Cache-Control, so a
   // changed file was invisible to every cache that already held the old bytes:
@@ -614,6 +639,9 @@ async function build() {
       }
       if (faCssHashedName) {
         content = content.replace(/href="css\/fontawesome(?:\.[0-9a-f]{10})?\.min\.css"/g, `href="css/${faCssHashedName}"`);
+      }
+      for (const [name, hashed] of Object.entries(pageScriptMap)) {
+        content = content.replace(new RegExp(`src="js/${name}(?:\\.[0-9a-f]{10}\\.min)?\\.js"`, 'g'), `src="js/${hashed}"`);
       }
 
       // Preview-only ribbon. Always stripped first so a production build leaves

@@ -5138,7 +5138,7 @@ mark.todo-marker {
   box-shadow: var(--shadow-sm);
   padding: 1.75rem;
 }
-.offer-card h3, .notice-card h4 { font-size: 1.1rem; margin: 0 0 0.9rem; color: var(--hrms-text-heading); }
+.offer-card h3, .notice-card h3, .notice-card h4 { font-size: 1.1rem; margin: 0 0 0.9rem; color: var(--hrms-text-heading); }
 .offer-card h3:not(:first-child) { margin-top: 1.6rem; }
 .offer-card--terms .btn-row { margin-top: 1.25rem; }
 .hp-check-list--no li i { color: #dc2626; }
@@ -5217,3 +5217,72 @@ mark.todo-marker {
 }
 .company-details h2 { font-size: 1.25rem; margin: 0 0 0.75rem; color: var(--hrms-text-heading); }
 .company-details .offer-terms { margin: 0; }
+
+/* ===== IT Cost Estimator ===== */
+.est-layout { display: grid; grid-template-columns: 340px 1fr; gap: 2rem; align-items: start; }
+.est-form, .est-results {
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  padding: 1.75rem;
+}
+.est-form { position: sticky; top: 100px; }
+.est-title { font-size: 1.2rem; margin: 0 0 1.1rem; color: var(--hrms-text-heading); }
+.est-sub { font-size: 1.4rem; margin: 0 0 1rem; color: var(--hrms-text-heading); }
+.est-form .form-group { margin-bottom: 1rem; }
+.est-check { display: flex; gap: 0.6rem; align-items: flex-start; }
+.est-check input { margin-top: 0.3rem; width: auto; }
+.est-check label { margin: 0; font-weight: 500; }
+.est-totals { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.1rem; }
+.est-total { border: 1px solid var(--hrms-border); border-radius: 16px; padding: 1.1rem 1.25rem; background: rgba(37, 99, 235, 0.05); }
+.est-total h3 { font-size: 0.95rem; margin: 0 0 0.35rem; color: var(--hrms-text-secondary); text-transform: uppercase; letter-spacing: 0.04em; }
+.est-range { font-size: 1.5rem; font-weight: 800; margin: 0 0 0.25rem; color: var(--hrms-text-heading); line-height: 1.25; }
+.est-year { margin: 0; font-size: 0.85rem; color: var(--hrms-text-secondary); }
+.est-verdict { margin: 0 0 1.25rem; padding: 0.85rem 1rem; border-left: 4px solid var(--hrms-primary); background: rgba(37, 99, 235, 0.07); border-radius: 0 12px 12px 0; font-size: 0.93rem; color: var(--hrms-text-body); }
+.est-table-wrap { overflow-x: auto; }
+.est-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.est-table th, .est-table td { text-align: left; vertical-align: top; padding: 0.75rem 0.8rem; border-bottom: 1px solid var(--hrms-border); color: var(--hrms-text-body); }
+.est-table thead th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--hrms-text-secondary); }
+.est-table tbody th { color: var(--hrms-text-heading); font-weight: 700; }
+.est-basis { font-size: 0.82rem; color: var(--hrms-text-secondary); }
+.est-sources th, .est-sources td { font-size: 0.85rem; }
+.est-sources a { text-decoration: underline; }
+@media (max-width: 960px) {
+  .est-layout { grid-template-columns: 1fr; }
+  .est-form { position: static; }
+}
+@media (max-width: 560px) {
+  .est-totals { grid-template-columns: 1fr; }
+}
+
+/* Estimator: no grid blow-out, and the tables stack into labelled cards on phones */
+.est-layout > * { min-width: 0; }
+@media (max-width: 640px) {
+  .est-table, .est-table tbody, .est-table tr, .est-table th, .est-table td { display: block; width: 100%; }
+  .est-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .est-table tbody tr { border-bottom: 1px solid var(--hrms-border); padding: 0.7rem 0; }
+  .est-table tbody tr:last-child { border-bottom: 0; }
+  .est-table th, .est-table td { border-bottom: 0; padding: 0.25rem 0; }
+  .est-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--hrms-text-secondary);
+  }
+}
+
+/* ROI calculator: editable assumed reduction */
+.calc-assume {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+.calc-assume label { margin: 0; font-weight: 600; color: var(--hrms-text-secondary); white-space: nowrap; }
+.calc-assume .input-wrapper { max-width: 9rem; }
+.calc-assume input { width: 100%; }

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Consent Mode v2 (GDPR / India DPDP) -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'analytics_storage': 'denied',
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'wait_for_update': 2000
+});
+</script>
+<!-- End Consent Mode -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,l,i){w[l]=w[l]||[];var s=0,ev=['pointerdown','keydown','touchstart','scroll'];
+function go(){if(s)return;s=1;ev.forEach(function(e){w.removeEventListener(e,go,true)});
+w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j)}
+ev.forEach(function(e){w.addEventListener(e,go,{capture:true,passive:true})});
+w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallback?w.requestIdleCallback(go,{timeout:1500}):go())},6000)});
+})(window,document,'dataLayer','GTM-M98KB4X7');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Cost Estimator for Startups | JwithKP</title>
+  <meta name="description" content="Estimate monthly IT costs for a startup or small team: enterprise vs open-source tools, using published vendor prices in INR, with every assumption shown.">
+  <meta name="author" content="JwithKP">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0f1e">
+  <link rel="canonical" href="https://www.jwithkp.com/it-cost-estimator">
+  <link rel="alternate" hreflang="en-IN" href="https://www.jwithkp.com/it-cost-estimator">
+  <link rel="alternate" hreflang="x-default" href="https://www.jwithkp.com/it-cost-estimator">
+  <meta property="og:title" content="IT Cost Estimator for Startups | JwithKP">
+  <meta property="og:description" content="Estimate monthly IT costs for a startup or small team: enterprise vs open-source tools, using published vendor prices in INR, with every assumption shown.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:site_name" content="JwithKP">
+  <meta property="og:url" content="https://www.jwithkp.com/it-cost-estimator">
+  <meta property="og:image" content="https://www.jwithkp.com/images/og-home-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="JwithKP IT Cost Estimator: compare enterprise and open-source tools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@JwithKP">
+  <meta name="twitter:title" content="IT Cost Estimator for Startups | JwithKP">
+  <meta name="twitter:description" content="Estimate monthly IT costs for a startup or small team: enterprise vs open-source tools, using published vendor prices in INR, with every assumption shown.">
+  <meta name="twitter:image" content="https://www.jwithkp.com/images/og-home-1200x630.jpg">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/images/icons/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
+
+  <link rel="stylesheet" href="css/style.82d7341f70.min.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.jwithkp.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "IT Cost Estimator",
+      "item": "https://www.jwithkp.com/it-cost-estimator"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json" id="faq-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this a quote?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It is a planning estimate based on published list prices. Final costs depend on the plans you choose, discounts, how much you use and exchange rates. We confirm real numbers in a written estimate after a free call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is open source not always cheaper?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open-source tools have no licence fee, but someone has to host, secure and maintain them. For a small team, a cloud server for monitoring can cost more each month than per-user licences. It gets cheaper as the team grows, or when you already own the hardware."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is left out?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hardware, backup storage, Veeam and enterprise SIEM licences, firewalls, GST and our own fees. Some of these vendors do not publish prices, so we do not guess them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How current are the prices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each price was read from the vendor’s page on the date shown in the sources table. Vendors change prices without notice, so treat the figures as a starting point and check the vendor page before buying."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json" id="entity-graph">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ProfessionalService"
+      ],
+      "@id": "https://www.jwithkp.com/#organization",
+      "name": "JwithKP",
+      "url": "https://www.jwithkp.com/",
+      "slogan": "Journey with Knowledge & Practice",
+      "description": "Founder-led IT consulting for startups and growing businesses in India: email, devices, network, cloud, backup and security, using enterprise tools where they fit and open source where it is better.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.jwithkp.com/images/icons/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "telephone": "+917982912207",
+      "email": "info@jwithkp.com",
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "knowsAbout": [
+        "IT setup for startups",
+        "Business email and collaboration (Microsoft 365, Google Workspace, Nextcloud)",
+        "Firewall and network security (pfSense, Fortinet)",
+        "Backup and disaster recovery (Proxmox Backup Server, Veeam)",
+        "Security monitoring (Wazuh)",
+        "Virtualization and VMware to Proxmox migration",
+        "IT cost optimization"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bangalore",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://x.com/jwithkp"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+917982912207",
+        "email": "info@jwithkp.com",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "en",
+          "hi"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jwithkp.com/#website",
+      "url": "https://www.jwithkp.com/",
+      "name": "JwithKP",
+      "publisher": {
+        "@id": "https://www.jwithkp.com/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.jwithkp.com/it-cost-estimator#webpage",
+      "url": "https://www.jwithkp.com/it-cost-estimator",
+      "isPartOf": {
+        "@id": "https://www.jwithkp.com/#website"
+      },
+      "about": {
+        "@id": "https://www.jwithkp.com/#organization"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M98KB4X7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+  <!-- NAV_START -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a class="logo" href="https://www.jwithkp.com/">
+        <img src="https://www.jwithkp.com/Logo.webp" alt="" decoding="async" loading="eager" fetchpriority="high" width="1536" height="1024">
+        <span class="logo-copy">
+          <span>JwithKP</span>
+          <small class="logo-tagline">Journey with Knowledge &amp; Practice</small>
+        </span>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="https://www.jwithkp.com/">Home</a></li>
+        <li class="has-mega-menu">
+          <a href="services">Services</a>
+          <button type="button" class="mega-menu-toggle" aria-expanded="false" aria-controls="mega-services" aria-label="Show Services submenu">
+            <i class="fas fa-chevron-down nav-arrow" aria-hidden="true"></i>
+          </button>
+          <div class="mega-menu" id="mega-services">
+            <a href="services#startup-launch-pack" class="mega-menu-item">
+              <i class="fas fa-bolt"></i>
+              <div>
+                <span class="mega-menu-title">Startup Launch Pack</span>
+                <p>Day-1 IT setup for new teams</p>
+              </div>
+            </a>
+            <a href="services#it-retainer" class="mega-menu-item">
+              <i class="fas fa-headset"></i>
+              <div>
+                <span class="mega-menu-title">IT Retainer</span>
+                <p>Ongoing IT help and a part-time IT head</p>
+              </div>
+            </a>
+            <a href="services#cost-optimization-migration" class="mega-menu-item">
+              <i class="fas fa-chart-line"></i>
+              <div>
+                <span class="mega-menu-title">Cost &amp; Migration</span>
+                <p>Cut licence costs, move off VMware or Splunk</p>
+              </div>
+            </a>
+            <a href="services#security-monitoring" class="mega-menu-item">
+              <i class="fas fa-shield-halved"></i>
+              <div>
+                <span class="mega-menu-title">Security &amp; Monitoring</span>
+                <p>Wazuh monitoring, firewall and backups</p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li><a href="it-cost-estimator" class="active">Cost Estimator</a></li>
+        <li class="has-mega-menu">
+          <a href="blog">Resources</a>
+          <button type="button" class="mega-menu-toggle" aria-expanded="false" aria-controls="mega-resources" aria-label="Show Resources submenu">
+            <i class="fas fa-chevron-down nav-arrow" aria-hidden="true"></i>
+          </button>
+          <div class="mega-menu" id="mega-resources">
+            <a href="blog" class="mega-menu-item">
+              <i class="fas fa-comments"></i>
+              <div>
+                <span class="mega-menu-title">Blog</span>
+                <p>Plain-language IT and security articles</p>
+              </div>
+            </a>
+            <a href="guides" class="mega-menu-item">
+              <i class="fas fa-book-open"></i>
+              <div>
+                <span class="mega-menu-title">Guides</span>
+                <p>Step-by-step planning guides</p>
+              </div>
+            </a>
+            <a href="case-studies" class="mega-menu-item">
+              <i class="fas fa-diagram-project"></i>
+              <div>
+                <span class="mega-menu-title">Example Scenarios</span>
+                <p>How we would approach common situations</p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li><a href="about">About</a></li>
+        <li><a href="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-btn" aria-label="JwithKP HRMS login">HRMS <i class="fas fa-arrow-right"></i></a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-controls="navMenu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+<!-- NAV_END -->
+
+  <header class="hero">
+    <div class="container">
+      <span class="section-badge">IT Cost Estimator</span>
+      <h1>What could your IT cost? <span class="gradient-text">An honest estimate</span></h1>
+      <p class="hero-copy">Choose your team size and a few options. We compare enterprise and open-source tools using prices the vendors publish, show every assumption, and leave out whatever we cannot price. It is an estimate, not a quote.</p>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-section">
+    <div class="container">
+      <noscript><p class="notice-card">The estimator needs JavaScript. You can still <a href="contact?intent=call#smartContactForm">book a free call</a> and we will work through it with you.</p></noscript>
+
+      <div class="est-layout">
+        <form class="est-form" id="est-form" aria-label="Estimator options">
+          <h2 class="est-title">Your team</h2>
+          <div class="form-group">
+            <label for="est-size">Team size</label>
+            <select id="est-size" name="size">
+              <option value="just-me">Just me</option>
+              <option value="2-10" selected>2&ndash;10</option>
+              <option value="11-25">11&ndash;25</option>
+              <option value="26-50">26&ndash;50</option>
+              <option value="51-200">51&ndash;200</option>
+              <option value="200+">200+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="est-work">How does the team work?</label>
+            <select id="est-work" name="work">
+              <option value="remote" selected>Remote</option>
+              <option value="office">In an office</option>
+              <option value="hybrid">Hybrid</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="est-hosting">Where would self-hosted tools run?</label>
+            <select id="est-hosting" name="hosting">
+              <option value="cloud" selected>On rented cloud servers</option>
+              <option value="own">On servers we already own</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="est-security">Security level</label>
+            <select id="est-security" name="security">
+              <option value="essential">Essential: email and a password manager</option>
+              <option value="standard" selected>Standard: plus device security</option>
+              <option value="strong">Strong: plus security monitoring</option>
+            </select>
+          </div>
+          <div class="form-group est-check">
+            <input type="checkbox" id="est-apps" name="apps">
+            <label for="est-apps">We need Microsoft Word, Excel and Outlook on our laptops</label>
+          </div>
+          <p class="hp-fineprint">Results update as you change an option.</p>
+        </form>
+
+        <div class="est-results" id="est-results" aria-live="polite" aria-atomic="false">
+          <h2 class="est-title">Estimated monthly cost for <span id="est-people">2&ndash;10 people</span></h2>
+          <div class="est-totals">
+            <div class="est-total">
+              <h3>Enterprise tools</h3>
+              <p class="est-range" id="est-ent-range">&hellip;</p>
+              <p class="est-year" id="est-ent-year"></p>
+            </div>
+            <div class="est-total">
+              <h3>Open-source tools</h3>
+              <p class="est-range" id="est-os-range">&hellip;</p>
+              <p class="est-year" id="est-os-year"></p>
+            </div>
+          </div>
+          <p class="est-verdict" id="est-verdict"></p>
+          <div class="est-table-wrap">
+            <table class="est-table" role="table">
+              <caption class="sr-only">Estimated monthly cost by line item, enterprise tools versus open-source tools</caption>
+              <thead><tr role="row"><th scope="col" role="columnheader">Line item</th><th scope="col">Enterprise</th><th scope="col">Open source</th><th scope="col">Basis</th></tr></thead>
+              <tbody id="est-rows"></tbody>
+            </table>
+          </div>
+          <p class="hp-fineprint">Monthly figures exclude GST and are shown as ranges because plans and team size vary. Open-source tools have no licence fee, but someone has to set them up, secure them and keep them updated. That effort is not in this table.</p>
+        </div>
+      </div>
+
+      <section class="offer-block" aria-labelledby="est-excluded-title">
+        <div class="offer-grid">
+          <div class="offer-card">
+            <h2 id="est-excluded-title" class="est-sub">What is not in this estimate</h2>
+            <ul class="hp-check-list hp-check-list--no" id="est-unpriced"></ul>
+          </div>
+          <div class="notice-card">
+            <h3>One-time costs and our fees</h3>
+            <p>The tools above are subscriptions, so there is no one-time licence cost in the table. Your one-time costs are the hardware you buy and the setup work.</p>
+            <!-- BLOCK:estimator-our-fee -->
+            <p>The Startup Launch Pack starts from <mark class="todo-marker" title="Set offers.launchPack.price in site-config.json">[ADD PRICE]</mark> for up to 10 people. IT retainers and larger projects are quoted after a free call. Our fees are separate from the tool costs above.</p>
+<!-- /BLOCK:estimator-our-fee -->
+            <!-- BLOCK:book-buttons -->
+      <div class="btn-row">
+        <a href="contact?intent=call#smartContactForm" class="btn btn-primary">Book a free 30-min call</a>
+        <a href="it-cost-estimator" class="btn btn-secondary">Estimate my IT cost</a>
+      </div>
+<!-- /BLOCK:book-buttons -->
+          </div>
+        </div>
+      </section>
+
+      <section class="offer-block" aria-labelledby="est-sources-title">
+        <div class="section-head">
+          <h2 id="est-sources-title" class="est-sub">Where the numbers come from</h2>
+          <p>Every price below was read from the vendor&rsquo;s own page on <strong class="est-asof">the date shown</strong>. Vendors change prices, so check before you buy. Items priced in US dollars are converted at the rate shown.</p>
+        </div>
+        <div class="est-table-wrap">
+          <table class="est-table est-sources" role="table">
+            <caption class="sr-only">Published vendor prices and sources used by the estimator</caption>
+            <thead><tr role="row"><th scope="col" role="columnheader">Vendor</th><th scope="col">Plan</th><th scope="col">Price</th><th scope="col">Notes</th><th scope="col">Source</th></tr></thead>
+            <tbody id="est-sources"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="page-section" id="estimator-faq" aria-labelledby="est-faq-title" style="padding-bottom: 0;">
+        <div class="section-head text-center">
+          <h2 id="est-faq-title">Questions about <span class="section-accent">this estimate</span></h2>
+        </div>
+        <div class="svc-faq-grid">
+          <article class="svc-faq-card">
+            <h3><i class="fas fa-question-circle" aria-hidden="true"></i> Is this a quote?</h3>
+            <p>No. It is a planning estimate based on published list prices. Final costs depend on the plans you choose, discounts, how much you use and exchange rates. We confirm real numbers in a written estimate after a free call.</p>
+          </article>
+          <article class="svc-faq-card">
+            <h3><i class="fas fa-question-circle" aria-hidden="true"></i> Why is open source not always cheaper?</h3>
+            <p>Open-source tools have no licence fee, but someone has to host, secure and maintain them. For a small team, a cloud server for monitoring can cost more each month than per-user licences. It gets cheaper as the team grows, or when you already own the hardware.</p>
+          </article>
+          <article class="svc-faq-card">
+            <h3><i class="fas fa-question-circle" aria-hidden="true"></i> What is left out?</h3>
+            <p>Hardware, backup storage, Veeam and enterprise SIEM licences, firewalls, GST and our own fees. Some of these vendors do not publish prices, so we do not guess them.</p>
+          </article>
+          <article class="svc-faq-card">
+            <h3><i class="fas fa-question-circle" aria-hidden="true"></i> How current are the prices?</h3>
+            <p>Each price was read from the vendor&rsquo;s page on the date shown in the sources table. Vendors change prices without notice, so treat the figures as a starting point and check the vendor page before buying.</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="cta-panel">
+        <div>
+          <h3>Want these numbers worked out for your team?</h3>
+          <p>Book a free 30-minute call. Tell us your team, tools and budget, and we will give you a written estimate you can rely on.</p>
+        </div>
+        <!-- BLOCK:book-buttons -->
+      <div class="btn-row">
+        <a href="contact?intent=call#smartContactForm" class="btn btn-primary">Book a free 30-min call</a>
+        <a href="it-cost-estimator" class="btn btn-secondary">Estimate my IT cost</a>
+      </div>
+<!-- /BLOCK:book-buttons -->
+      </div>
+    </div>
+  </main>
+
+
+  <!-- FOOTER_START -->
+<footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Company Column -->
+        <div class="footer-company">
+          <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/">
+            <img loading="lazy" decoding="async" src="https://www.jwithkp.com/Logo.webp" alt="" width="1536" height="1024">
+            <span class="logo-copy">
+              <span>JwithKP</span>
+              <small class="logo-tagline">Journey with Knowledge &amp; Practice</small>
+            </span>
+          </a>
+          <p>Right-sized IT for startups and growing businesses in India: enterprise or open source, whichever fits.</p>
+          <div class="footer-socials">
+            <mark class="todo-marker" title="Set social.linkedinCompany in site-config.json">[ADD LINKEDIN COMPANY]</mark><a href="#add-social.linkedinCompany" target="_blank" rel="noopener noreferrer" aria-label="JwithKP on LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/917982912207" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://x.com/jwithkp" target="_blank" rel="noopener noreferrer" aria-label="JwithKP on X (Twitter)"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <!-- Services Column -->
+        <div class="footer-links">
+          <span class="footer-col-title">Services</span>
+          <ul>
+            <li><a href="services#startup-launch-pack">Startup Launch Pack</a></li>
+            <li><a href="services#it-retainer">IT Retainer</a></li>
+            <li><a href="services#cost-optimization-migration">Cost &amp; Migration</a></li>
+            <li><a href="services#security-monitoring">Security &amp; Monitoring</a></li>
+            <li><a href="it-cost-estimator">Cost Estimator</a></li>
+          </ul>
+        </div>
+
+        <!-- Solutions Column -->
+        <div class="footer-links">
+          <span class="footer-col-title">Popular topics</span>
+          <ul>
+            <li><a href="services#virtualization">VMware to Proxmox</a></li>
+            <li><a href="services#siem">Managed Wazuh SIEM</a></li>
+            <li><a href="services#network-security">Firewall &amp; VPN</a></li>
+            <li><a href="services#backup-recovery">Backup &amp; Recovery</a></li>
+            <li><a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer">JwithKP HRMS</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources Column -->
+        <div class="footer-links">
+          <span class="footer-col-title">Resources</span>
+          <ul>
+            <li><a href="blog">Blog / Articles</a></li>
+            <li><a href="case-studies">Example Scenarios</a></li>
+            <li><a href="guides">Guides &amp; Docs</a></li>
+            <li><a href="roi-calculator">ROI Calculator</a></li>
+            <li><a href="technology-stack">Technology Stack</a></li>
+            <li><a href="industries">Industries</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Column -->
+        <div class="footer-newsletter">
+          <span class="footer-col-title">Newsletter</span>
+          <p>Practical IT and security tips for founders and small teams, about once a month.</p>
+          <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/info@jwithkp.com" method="POST">
+            <input type="hidden" name="_subject" value="New Newsletter Subscription — JwithKP">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_next" value="https://www.jwithkp.com/contact">
+            <div class="form-group-inline">
+              <input type="email" name="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
+              <button type="submit" class="btn btn-hrms-primary btn-sm footer-subscribe-btn">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        
+        <p class="footer-legal-id"><mark class="todo-marker" title="Set legal.entityName in site-config.json">[ADD ENTITY NAME]</mark> (<mark class="todo-marker" title="Set legal.entityType in site-config.json">[ADD ENTITY TYPE]</mark>) &middot; GSTIN <mark class="todo-marker" title="Set legal.gstin in site-config.json">[ADD GSTIN]</mark> &middot; <mark class="todo-marker" title="Set location.address in site-config.json">[ADD ADDRESS]</mark></p>
+        
+        <div class="footer-bottom-flex">
+          <p class="copyright">&copy; 2026 JwithKP. All rights reserved. | Journey with Knowledge &amp; Practice</p>
+          <div class="footer-legal-links">
+            <a href="privacy-policy">Privacy Policy</a>
+            <a href="terms">Terms &amp; Conditions</a>
+            <button type="button" id="cookieSettingsBtn">Cookie Settings</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</footer>
+<aside aria-label="Quick chat">
+<a href="https://wa.me/917982912207" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
+</aside>
+
+<!-- Cookie Consent Banner (GDPR / India DPDP Act 2023) -->
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite" hidden>
+  <div class="cookie-banner-inner">
+    <p class="cookie-banner-text">
+      We use analytics cookies to understand how visitors use our site and improve your experience.
+      See our <a href="privacy-policy">Privacy Policy</a> for details.
+    </p>
+    <div class="cookie-banner-actions">
+      <button id="cookieAcceptAll" class="btn btn-hrms-primary btn-sm">Accept All</button>
+      <button id="cookieNecessaryOnly" class="btn btn-hrms-secondary btn-sm">Necessary Only</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER_END -->
+
+  <script src="js/estimator.c50a288236.min.js" defer></script>
+  <script src="js/script.cfad73326f.min.js" defer></script>
+<!-- PREVIEW_RIBBON --><aside class="preview-ribbon" aria-label="Preview build notice">Preview build &middot; shows [ADD &hellip;] placeholders &middot; not for production</aside><!-- /PREVIEW_RIBBON -->
+</body>
+</html>
