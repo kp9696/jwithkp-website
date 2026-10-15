@@ -45,6 +45,7 @@ function todoMarker(keyPath) {
 // {{cfg.a.b|attr}}       for attribute values; "#add-a.b" in preview if missing
 // {{#if cfg.a.b}}..{{/if}}           keep block only when filled (always kept in preview)
 // {{#ifany cfg.a cfg.b}}..{{/ifany}} keep block when any of the keys is filled
+// {{#ifall cfg.a cfg.b}}..{{/ifall}} keep block only when ALL of the keys are filled
 // Blocks may nest (the innermost is resolved first).
 // {{#unless cfg.a.b}}..{{/unless}}   fallback shown only when the key is NOT
 //                                    filled (same in preview and production)
@@ -53,7 +54,7 @@ function todoMarker(keyPath) {
 // {{cfg.a.b|or:fallback text}}       the value, or the fallback when not filled
 //                                    (never a marker)
 function renderTemplate(tpl) {
-  const blockRe = /\{\{#(if|ifany|unless|when)\s+([^}]+?)\}\}((?:(?!\{\{#(?:if|unless|when))[\s\S])*?)\{\{\/\1\}\}/;
+  const blockRe = /\{\{#(if|ifany|ifall|unless|when)\s+([^}]+?)\}\}((?:(?!\{\{#(?:if|unless|when))[\s\S])*?)\{\{\/\1\}\}/;
   let out = tpl;
   let guard = 0;
   while (blockRe.test(out) && guard++ < 200) {
@@ -61,7 +62,7 @@ function renderTemplate(tpl) {
       const keys = args.trim().split(/\s+/).map(k => k.replace(/^cfg\./, ''));
       if (kind === 'unless') return cfgFilled(keys[0]) ? '' : inner;
       if (kind === 'when') return cfgFilled(keys[0]) ? inner : '';
-      const ok = kind === 'if' ? cfgFilled(keys[0]) : keys.some(cfgFilled);
+      const ok = kind === 'if' ? cfgFilled(keys[0]) : kind === 'ifall' ? keys.every(cfgFilled) : keys.some(cfgFilled);
       if (ok) return inner;
       if (!PREVIEW) return '';
       // preview: keep the block; make sure at least one marker is visible. A
@@ -103,11 +104,15 @@ function plainText(html) {
 // FAQPage JSON-LD is generated from the visible accordion (.hp-faq-item), so
 // the structured data can never drift from the text a visitor reads.
 function syncFaqSchema(content) {
-  if (!content.includes('class="hp-faq-accordion"')) return content;
+  // Two FAQ markups exist: the home accordion (.hp-faq-item) and the card grid
+  // used on the services page (.svc-faq-card, an <h3> question and a <p> answer).
+  if (!content.includes('class="hp-faq-accordion"') && !content.includes('class="svc-faq-card"')) return content;
   const items = [];
-  const re = /<button class="hp-faq-trigger"[^>]*>([\s\S]*?)<span class="hp-faq-icon"[\s\S]*?<\/button>[\s\S]*?<div class="hp-faq-content-inner">([\s\S]*?)<\/div>/g;
+  const accordion = /<button class="hp-faq-trigger"[^>]*>([\s\S]*?)<span class="hp-faq-icon"[\s\S]*?<\/button>[\s\S]*?<div class="hp-faq-content-inner">([\s\S]*?)<\/div>/g;
+  const cards = /<article class="svc-faq-card">\s*<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>\s*<\/article>/g;
   let m;
-  while ((m = re.exec(content))) items.push({ q: plainText(m[1]), a: plainText(m[2]) });
+  while ((m = accordion.exec(content))) items.push({ q: plainText(m[1]), a: plainText(m[2]) });
+  if (!items.length) while ((m = cards.exec(content))) items.push({ q: plainText(m[1]), a: plainText(m[2]) });
   if (!items.length) return content;
   content = content.replace(/[ \t]*<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>[ \t]*\r?\n?/gi, (whole, json) => {
     try {
@@ -197,14 +202,18 @@ gtag('consent', 'default', {
 </script>
 <!-- End Consent Mode -->`;
 
+// Which main-menu link is "active" on which page. Industries and Technology
+// are no longer in the main menu (they are linked from the footer), so they
+// have no entry. Resource pages all light up the Resources parent (href "blog").
 const routeMap = {
   'index.html': 'https://www.jwithkp.com/',
   'about.html': 'about',
-  'industries.html': 'industries',
-  'technology-stack.html': 'technology-stack',
   'services.html': 'services',
-  'roi-calculator.html': 'roi-calculator',
+  'roi-calculator.html': 'it-cost-estimator',
+  'it-cost-estimator.html': 'it-cost-estimator',
   'blog.html': 'blog',
+  'guides.html': 'blog',
+  'case-studies.html': 'blog',
   'contact.html': 'contact'
 };
 
@@ -411,7 +420,9 @@ const CLAIM_PATTERNS = [
   ['"zero data loss"', /zero[- ]data[- ]loss/gi],
   ['"zero downtime"', /zero[- ]downtime/gi],
   ['"guarantee(d)"', /guarantee[ds]?\b/gi],
-  ['"SOC 2" (only "aligned with" is acceptable)', /SOC ?2/g]
+  ['"SOC 2" (only "aligned with" is acceptable)', /SOC ?2/g],
+  ['"70%" savings figure (no confirmed methodology: use "significantly lower")', /\b70\s?%/g],
+  ['"24 hours" support wording (use "first response within 24 business hours")', /\b24[ -](?:hours?|hrs?)\b/gi]
 ];
 
 // RFC 9116 security.txt. Expires is kept under a year out and is refreshed on
@@ -544,7 +555,6 @@ async function build() {
   console.log(`Build mode: ${PREVIEW ? 'PREVIEW (placeholders shown as [ADD ...])' : 'PRODUCTION (placeholders hidden, build fails if any remain)'}`);
   const leaks = [];
   const claimHits = [];
-  let seventyPercent = 0;
 
   const files = fs.readdirSync(__dirname);
   for (const file of files) {
@@ -563,11 +573,9 @@ async function build() {
         if (currentHref) {
           dynamicNavbar = setActiveLink(dynamicNavbar, currentHref);
         } else if (file.startsWith('blog-')) {
+          // The Resources parent (href "blog") comes before its mega-menu
+          // children, so this marks the parent, not the "Blog" child item.
           dynamicNavbar = setActiveLink(dynamicNavbar, 'blog');
-        } else if (file === 'case-studies.html' || file === 'guides.html') {
-          // The Resources parent links to case-studies and appears before its
-          // mega-menu children, so this marks the parent, not the child item.
-          dynamicNavbar = setActiveLink(dynamicNavbar, 'case-studies');
         }
 
         content = content.replace(
@@ -625,7 +633,6 @@ async function build() {
         const n = (visibleText.match(re) || []).length;
         if (n) claimHits.push(`${file}: ${n} x ${label}`);
       }
-      seventyPercent += (visibleText.match(/up to 70%/gi) || []).length;
 
       fs.writeFileSync(filePath, content, 'utf8');
       console.log(`Compiled: ${file}`);
@@ -641,7 +648,6 @@ async function build() {
     console.warn(`\nClaims lint (${claimHits.length} hits) — wording the site should not use:`);
     claimHits.forEach(h => console.warn('  ' + h));
   }
-  console.log(`"up to 70%" appears ${seventyPercent} times in visible text (target: 2-3 site-wide).`);
 
   writeSecurityTxt();
 

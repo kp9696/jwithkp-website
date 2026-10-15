@@ -1,0 +1,29 @@
+        <div class="tier-grid">
+          <article class="tier-card" data-aos="fade-up">
+            <h4>2&ndash;10 people</h4>
+            <p class="tier-for">A first team that needs someone to call.</p>
+            {{#if cfg.offers.retainer.priceSmall}}<p class="tier-price">{{cfg.offers.retainer.priceSmall}} per month</p>{{/if}}
+            <ul class="hp-check-list">
+              <li><i class="fas fa-circle-check" aria-hidden="true"></i> Support: {{cfg.support.responseTarget}}</li>
+              {{#if cfg.support.hours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Support hours: {{cfg.support.hours}}</li>{{/if}}
+            </ul>
+          </article>
+          <article class="tier-card" data-aos="fade-up" data-aos-delay="50">
+            <h4>11&ndash;25 people</h4>
+            <p class="tier-for">More laptops, more tools, more joiners and leavers.</p>
+            {{#if cfg.offers.retainer.priceMedium}}<p class="tier-price">{{cfg.offers.retainer.priceMedium}} per month</p>{{/if}}
+            <ul class="hp-check-list">
+              <li><i class="fas fa-circle-check" aria-hidden="true"></i> Support: {{cfg.support.responseTarget}}</li>
+              {{#if cfg.support.hours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Support hours: {{cfg.support.hours}}</li>{{/if}}
+            </ul>
+          </article>
+          <article class="tier-card" data-aos="fade-up" data-aos-delay="100">
+            <h4>26&ndash;50 people</h4>
+            <p class="tier-for">A growing company that needs planning as well as support.</p>
+            {{#if cfg.offers.retainer.priceLarge}}<p class="tier-price">{{cfg.offers.retainer.priceLarge}} per month</p>{{/if}}
+            <ul class="hp-check-list">
+              <li><i class="fas fa-circle-check" aria-hidden="true"></i> Support: {{cfg.support.responseTarget}}</li>
+              {{#if cfg.support.hours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Support hours: {{cfg.support.hours}}</li>{{/if}}
+            </ul>
+          </article>
+        </div>

@@ -40,7 +40,32 @@
   "support": {
     "hours": "",
     "afterHours": "",
+    "escalation": "",
     "responseTarget": "first response within 24 business hours"
+  },
+  "offers": {
+    "launchPack": {
+      "price": "",
+      "gst": "",
+      "timeline": "",
+      "supportPeriod": ""
+    },
+    "retainer": {
+      "priceSmall": "",
+      "priceMedium": "",
+      "priceLarge": ""
+    },
+    "pilot": {
+      "price": "INR 49,999",
+      "gst": "",
+      "supportPeriod": ""
+    }
+  },
+  "vendors": {
+    "partnerStatus": ""
+  },
+  "privacy": {
+    "retention": ""
   },
   "seo": {
     "knowsAbout": [

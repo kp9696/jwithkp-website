@@ -65,7 +65,9 @@ const contactForm = document.getElementById('smartContactForm');
         phone: field('contact-phone'),
         city: field('city'),
         companySize: field('company-size-select'),
-        interest: field('interest'),
+        interest: interestSelect.options[interestSelect.selectedIndex] ? interestSelect.options[interestSelect.selectedIndex].text : '',
+        audience: (() => { const a = document.getElementById('audience'); return a && a.selectedIndex > 0 ? a.options[a.selectedIndex].text : ''; })(),
+        existingSetup: field('existing-setup'),
         timeline: field('timeline'),
         budget: field('budget'),
         message: field('message')
@@ -82,6 +84,8 @@ const contactForm = document.getElementById('smartContactForm');
       payload.append('city', formData.city || 'Not provided');
       payload.append('companySize', formData.companySize || 'Not provided');
       payload.append('interest', formData.interest);
+      payload.append('audience', formData.audience || 'Not provided');
+      payload.append('existingSetup', formData.existingSetup || 'Not provided');
       payload.append('timeline', formData.timeline || 'Not provided');
       payload.append('budget', formData.budget || 'Not provided');
       payload.append('message', formData.message || 'Not provided');
@@ -107,7 +111,7 @@ const contactForm = document.getElementById('smartContactForm');
           throw new Error('Submission failed');
         }
 
-        showNotification('Request submitted successfully. We will respond within 24 hours.');
+        showNotification('Request received. You will get a first response within 24 business hours.');
         contactForm.reset();
         formStartedAtInput.value = String(Date.now());
       } catch (error) {
@@ -143,10 +147,10 @@ const contactForm = document.getElementById('smartContactForm');
     formStartedAtInput.value = String(Date.now());
 
 
-// Deep link from the home page "Book a free call" buttons (contact?intent=call):
-// pre-fill the message so the visitor only has to add their details.
+// Deep link from the "Book a free call" buttons (contact?intent=call): pre-select
+// the free-call option so the visitor only has to add their details.
 (function applyCallIntent() {
   if (new URLSearchParams(window.location.search).get('intent') !== 'call') return;
-  const message = document.getElementById('message');
-  if (message && !message.value) message.value = "I'd like to book a free 30-minute IT setup call.";
+  const interest = document.getElementById('interest');
+  if (interest) interest.value = 'call';
 })();

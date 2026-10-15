@@ -1,0 +1,6 @@
+          <div class="business-details">
+            {{#if cfg.legal.entityName}}<p><strong>{{cfg.legal.entityName}}</strong>{{#if cfg.legal.entityType}} ({{cfg.legal.entityType}}){{/if}}</p>{{/if}}
+            {{#if cfg.location.address}}<p>{{cfg.location.address}}</p>{{/if}}
+            {{#if cfg.legal.gstin}}<p>GSTIN: {{cfg.legal.gstin}}</p>{{/if}}
+            {{#if cfg.location.mapEmbedUrl}}<iframe class="business-map" src="{{cfg.location.mapEmbedUrl|attr}}" title="Map showing where JwithKP is based" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="240"></iframe>{{/if}}
+          </div>

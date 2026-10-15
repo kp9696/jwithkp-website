@@ -1,0 +1,10 @@
+      {{#ifany cfg.legal.entityName cfg.legal.gstin cfg.location.address}}
+      <section class="company-details" aria-labelledby="company-heading">
+        <h2 id="company-heading">Company details</h2>
+        <dl class="offer-terms">
+          {{#if cfg.legal.entityName}}<div><dt>Legal name</dt><dd>{{cfg.legal.entityName}}{{#if cfg.legal.entityType}} ({{cfg.legal.entityType}}){{/if}}</dd></div>{{/if}}
+          {{#if cfg.legal.gstin}}<div><dt>GSTIN</dt><dd>{{cfg.legal.gstin}}</dd></div>{{/if}}
+          {{#if cfg.location.address}}<div><dt>Address</dt><dd>{{cfg.location.address}}</dd></div>{{/if}}
+        </dl>
+      </section>
+      {{/ifany}}

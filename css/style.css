@@ -1358,16 +1358,19 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   }
 }
 
-/* Collapse the shared navigation before its desktop controls exceed tablet
-   width. The full nav-menu's 9 links + 2 mega-menu carets don't actually fit
-   next to the logo and nav-right controls (HRMS button, theme toggle) inside
-   the 1240px container until ~1608px viewport width (measured: nav-right
-   overflows the container — and the viewport itself — from 1101px up to
-   1607px, silently clipping the theme toggle and menu button off-canvas with
-   no scrollbar to reveal them). Re-measured after the nav gained width:
-   nav-right's right edge stays past the viewport until ~1685px, so the
-   cut-over is 1700px (was 1650px, which still clipped 1651-1685px). */
-@media (max-width: 1700px) {
+/* Collapse the shared navigation into the menu button before its desktop
+   controls would overflow the viewport. The main menu is now six items (Home,
+   Services, Cost Estimator, Resources, About, Contact) plus the small HRMS
+   link, and the long logo tagline is hidden below 1320px, which together fit
+   with the logo and controls down to about 1100px (measured, see the build
+   notes). Before the menu was simplified (nine links) it needed 1700px. */
+@media (max-width: 1320px) {
+  .logo-tagline {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
   .menu-toggle {
     display: flex;
   }
@@ -5113,3 +5116,104 @@ mark.todo-marker {
   .hp-stats-grid { grid-template-columns: 1fr; gap: 0.9rem; }
   .hp-stat-card { padding: 1rem 1.1rem; }
 }
+
+
+/* ===== Services page: four offers (Phase 2b) ===== */
+.offer-block { padding: 3.5rem 0 1rem; scroll-margin-top: 90px; }
+.offer-block .section-head { max-width: 760px; margin: 0 0 2rem; }
+.offer-block .section-head p { color: var(--hrms-text-secondary); line-height: 1.6; }
+.offer-block--compact { padding-top: 1.5rem; }
+.offer-block--compact .section-head { margin: 0 auto 1rem; }
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+.offer-card, .notice-card {
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  padding: 1.75rem;
+}
+.offer-card h3, .notice-card h4 { font-size: 1.1rem; margin: 0 0 0.9rem; color: var(--hrms-text-heading); }
+.offer-card h3:not(:first-child) { margin-top: 1.6rem; }
+.offer-card--terms .btn-row { margin-top: 1.25rem; }
+.hp-check-list--no li i { color: #dc2626; }
+[data-theme="dark"] .hp-check-list--no li i { color: #f87171; }
+
+.offer-terms { margin: 0 0 1rem; }
+.offer-terms > div {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--hrms-border);
+  font-size: 0.93rem;
+}
+.offer-terms > div:last-child { border-bottom: 0; }
+.offer-terms dt { font-weight: 700; color: var(--hrms-text-heading); }
+.offer-terms dd { margin: 0; color: var(--hrms-text-body); }
+
+.offer-subhead { margin: 2.25rem 0 1rem; font-size: 1.1rem; color: var(--hrms-text-heading); }
+.tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.tier-card {
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+}
+.tier-card h4 { margin: 0 0 0.35rem; font-size: 1.15rem; color: var(--hrms-text-heading); }
+.tier-for { margin: 0 0 0.9rem; font-size: 0.9rem; color: var(--hrms-text-secondary); }
+.tier-price { margin: 0 0 0.9rem; font-weight: 800; font-size: 1.15rem; color: var(--hrms-text-heading); }
+
+.offer-note {
+  margin: 1.5rem 0 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--hrms-primary);
+  background: rgba(37, 99, 235, 0.07);
+  border-radius: 0 12px 12px 0;
+  font-size: 0.93rem;
+  color: var(--hrms-text-body);
+}
+.offer-block .offer-panel { margin-top: 2rem; }
+
+.svc-chooser { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.65rem; }
+.svc-chooser a { display: block; padding: 0.6rem 0.85rem; border-radius: 10px; border: 1px solid var(--border); }
+.svc-chooser a:hover { border-color: var(--accent-teal); }
+
+@media (max-width: 900px) {
+  .offer-grid { grid-template-columns: 1fr; }
+  .tier-grid { grid-template-columns: 1fr; }
+  .offer-terms > div { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+
+/* Contact page extras */
+.business-details { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+.business-details p { margin: 0 0 0.4rem; color: var(--text-secondary); font-size: 0.93rem; }
+.business-map { display: block; width: 100%; border: 0; border-radius: 14px; margin-top: 0.9rem; }
+.form-privacy {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin: 1rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.form-privacy i { margin-top: 0.2rem; color: var(--accent-teal); }
+.form-privacy a { text-decoration: underline; }
+
+/* About page: company details card */
+.company-details {
+  max-width: 920px;
+  margin: 3rem auto 0;
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: var(--radius-card);
+  padding: 1.5rem 1.75rem;
+}
+.company-details h2 { font-size: 1.25rem; margin: 0 0 0.75rem; color: var(--hrms-text-heading); }
+.company-details .offer-terms { margin: 0; }

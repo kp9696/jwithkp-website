@@ -1,0 +1,11 @@
+        <div class="notice-card" id="support-terms">
+          <h4>How support and monitoring work</h4>
+          <ul class="hp-check-list">
+            <li><i class="fas fa-circle-check" aria-hidden="true"></i> Business-hours support, with {{cfg.support.responseTarget}}.</li>
+            {{#if cfg.support.hours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Support hours: {{cfg.support.hours}}.</li>{{/if}}
+            {{#if cfg.support.afterHours}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Outside support hours: {{cfg.support.afterHours}}</li>{{/if}}
+            {{#if cfg.support.escalation}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> Escalation: {{cfg.support.escalation}}</li>{{/if}}
+            <li><i class="fas fa-circle-check" aria-hidden="true"></i> We do not run a 24x7 security operations centre. Alerts are reviewed during support hours.</li>
+          </ul>
+          <p class="hp-fineprint">Exact hours, response times and what happens to urgent alerts are written into your agreement before work starts.</p>
+        </div>
