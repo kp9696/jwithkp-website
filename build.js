@@ -383,9 +383,12 @@ async function build() {
     let sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
     let resolved = 0;
 
+    // Consumes every consecutive <lastmod> after a <loc> and writes back exactly
+    // one, so a duplicate introduced by a merge can't survive a build (the
+    // sitemap protocol allows one <lastmod> per <url>).
     sitemapContent = sitemapContent.replace(
-      /<loc>([^<]+)<\/loc>(\s*)<lastmod>[^<]+<\/lastmod>/g,
-      (whole, loc, gap) => {
+      /<loc>([^<]+)<\/loc>(\s*)(?:<lastmod>[^<]*<\/lastmod>(\s*))+/g,
+      (whole, loc, gap, trail) => {
         const slug = loc.replace(/^https?:\/\/[^/]+\//, '').replace(/\/$/, '');
         const candidate = path.join(__dirname, (slug === '' ? 'index' : slug) + '.html');
         let stamp = todayISO;
@@ -395,7 +398,7 @@ async function build() {
         } else {
           console.warn(`  sitemap: no file for <loc>${loc}</loc> — using today`);
         }
-        return `<loc>${loc}</loc>${gap}<lastmod>${stamp}</lastmod>`;
+        return `<loc>${loc}</loc>${gap}<lastmod>${stamp}</lastmod>${trail}`;
       }
     );
 
