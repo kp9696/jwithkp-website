@@ -95,6 +95,13 @@
     ]
   },
   "practices": {
-    "ndaOnRequest": ""
+    "ndaOnRequest": "",
+    "mfa": "",
+    "passwordManager": "",
+    "leastAccess": "",
+    "namedAccounts": "",
+    "deviceEncryption": "",
+    "incidentNotice": "",
+    "lastReviewed": ""
   }
 }

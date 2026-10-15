@@ -1,8 +1,8 @@
-const CACHE_NAME = 'jwithkp-2a313c1569';
+const CACHE_NAME = 'jwithkp-6d6738537c';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
-  '/css/style.b97f05707a.min.css',
+  '/css/style.f0908eb093.min.css',
   '/js/script.cfad73326f.min.js',
   '/Logo.webp',
   '/images/icons/icon-192.png',

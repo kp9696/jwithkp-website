@@ -1,0 +1,14 @@
+<ul class="hp-check-list">
+  <li><i class="fas fa-circle-check" aria-hidden="true"></i> Scope and price are agreed in writing before work starts.</li>
+  <li><i class="fas fa-circle-check" aria-hidden="true"></i> You keep every configuration, runbook and admin access. Credentials are handed over securely at the end of the project.</li>
+  <li><i class="fas fa-circle-check" aria-hidden="true"></i> Support is during business hours, with {{cfg.support.responseTarget}}.</li>
+  <li><i class="fas fa-circle-check" aria-hidden="true"></i> We do not run a 24x7 security operations centre. Security alerts are reviewed during support hours.</li>
+  {{#item cfg.practices.mfa}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> We use multi-factor authentication on the accounts we use to work on your systems.</li>{{/item}}
+  {{#item cfg.practices.passwordManager}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> We keep credentials in a password manager, not in chat, email or spreadsheets.</li>{{/item}}
+  {{#item cfg.practices.leastAccess}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> We ask for only the access the work needs, and agree with you when it ends.</li>{{/item}}
+  {{#item cfg.practices.namedAccounts}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> We use our own named accounts on your systems, not shared logins, so changes can be traced.</li>{{/item}}
+  {{#item cfg.practices.deviceEncryption}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> The laptops we work from use disk encryption and are kept up to date.</li>{{/item}}
+  {{#item cfg.practices.incidentNotice}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> If we find a problem that affects your data, we tell you as soon as we know.</li>{{/item}}
+  {{#item cfg.practices.ndaOnRequest}}<li><i class="fas fa-circle-check" aria-hidden="true"></i> We can sign an NDA first if you ask.</li>{{/item}}
+</ul>
+{{#if cfg.practices.lastReviewed}}<p class="hp-fineprint">Last reviewed: {{cfg.practices.lastReviewed}}.</p>{{/if}}

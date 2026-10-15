@@ -51,10 +51,14 @@ function todoMarker(keyPath) {
 //                                    filled (same in preview and production)
 // {{#when cfg.a.b}}..{{/when}}       like #if but silent: never shows a marker
 //                                    (use it inside a tag's attributes)
+// {{#item cfg.a.b}}<li>..</li>{{/item}}  a list item kept only when the key is
+//                                    filled. In preview the unfilled item stays
+//                                    and the marker goes INSIDE the <li>, so a
+//                                    <ul> never gets a stray direct child.
 // {{cfg.a.b|or:fallback text}}       the value, or the fallback when not filled
 //                                    (never a marker)
 function renderTemplate(tpl) {
-  const blockRe = /\{\{#(if|ifany|ifall|unless|when)\s+([^}]+?)\}\}((?:(?!\{\{#(?:if|unless|when))[\s\S])*?)\{\{\/\1\}\}/;
+  const blockRe = /\{\{#(if|ifany|ifall|unless|when|item)\s+([^}]+?)\}\}((?:(?!\{\{#(?:if|ifany|ifall|unless|when|item))[\s\S])*?)\{\{\/\1\}\}/;
   let out = tpl;
   let guard = 0;
   while (blockRe.test(out) && guard++ < 200) {
@@ -62,6 +66,11 @@ function renderTemplate(tpl) {
       const keys = args.trim().split(/\s+/).map(k => k.replace(/^cfg\./, ''));
       if (kind === 'unless') return cfgFilled(keys[0]) ? '' : inner;
       if (kind === 'when') return cfgFilled(keys[0]) ? inner : '';
+      if (kind === 'item') {
+        if (cfgFilled(keys[0])) return inner;
+        if (!PREVIEW) return '';
+        return inner.replace(/^(\s*<li[^>]*>)/, (m, open) => `${open}${todoMarker(keys[0])} `);
+      }
       const ok = kind === 'if' ? cfgFilled(keys[0]) : kind === 'ifall' ? keys.every(cfgFilled) : keys.some(cfgFilled);
       if (ok) return inner;
       if (!PREVIEW) return '';
@@ -213,6 +222,7 @@ const routeMap = {
   'it-cost-estimator.html': 'it-cost-estimator',
   'blog.html': 'blog',
   'guides.html': 'blog',
+  'startup-it-checklist.html': 'blog',
   'case-studies.html': 'blog',
   'contact.html': 'contact'
 };
