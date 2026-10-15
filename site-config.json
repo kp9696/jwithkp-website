@@ -24,7 +24,10 @@
     "entityType": "",
     "gstin": "",
     "grievanceName": "",
-    "grievanceEmail": ""
+    "grievanceEmail": "",
+    "policyEffectiveDate": "",
+    "governingLaw": "",
+    "cancellationTerms": ""
   },
   "founder": {
     "name": "",
@@ -81,7 +84,8 @@
     "partnerStatus": ""
   },
   "privacy": {
-    "retention": ""
+    "retention": "",
+    "grievanceResponseTime": ""
   },
   "seo": {
     "knowsAbout": [

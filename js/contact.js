@@ -144,6 +144,13 @@ const contactForm = document.getElementById('smartContactForm');
       window.history.replaceState({}, document.title, cleanUrl);
     }
 
+    // Team size passed from the ROI calculator (?size=2-10): pre-select it when it matches an option.
+    const sizeParam = new URLSearchParams(window.location.search).get('size');
+    const sizeSelect = document.getElementById('company-size-select');
+    if (sizeParam && sizeSelect && Array.from(sizeSelect.options).some((o) => o.value === sizeParam)) {
+      sizeSelect.value = sizeParam;
+    }
+
     formStartedAtInput.value = String(Date.now());
 
 

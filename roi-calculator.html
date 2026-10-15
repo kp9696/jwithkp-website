@@ -55,7 +55,7 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
-  <link rel="stylesheet" href="css/style.22a68f2110.min.css">
+  <link rel="stylesheet" href="css/style.394652671d.min.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -390,13 +390,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
 
           <div class="calc-group">
-            <label for="company-size"><i class="fas fa-users"></i> Company Size (Employees)</label>
-            <input type="range" id="company-size" min="10" max="1000" value="100" step="10">
-            <div class="range-meta">
-              <span>10</span>
-              <span id="size-display">100</span>
-              <span>1000+</span>
-            </div>
+            <label for="company-size"><i class="fas fa-users"></i> Team size</label>
+            <select id="company-size">
+              <option value="just-me">Just me</option>
+              <option value="2-10">2&ndash;10</option>
+              <option value="11-25">11&ndash;25</option>
+              <option value="26-50">26&ndash;50</option>
+              <option value="51-200" selected>51&ndash;200</option>
+              <option value="200+">200+</option>
+            </select>
+            <p class="range-meta">Only used to pre-select your team size on the contact form. It does not change the result.</p>
           </div>
 
           <button class="btn btn-primary calc-btn" id="calculate-roi-btn" type="button">
@@ -643,6 +646,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <input type="email" name="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
               <button type="submit" class="btn btn-hrms-primary btn-sm footer-subscribe-btn">Subscribe</button>
             </div>
+            <label class="newsletter-consent"><input type="checkbox" name="consent" value="yes" required> <span>I agree to receive the newsletter by email and can unsubscribe at any time. See the <a href="privacy-policy#newsletter">Privacy Policy</a>.</span></label>
           </form>
         </div>
       </div>
@@ -690,7 +694,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const RUPEE = '\u20B9';
       const fieldIds = ['virt-cost', 'mon-cost', 'sec-cost', 'fw-cost', 'email-cost', 'company-size'];
       const sizeInput = document.getElementById('company-size');
-      const sizeDisplay = document.getElementById('size-display');
       const calculateButton = document.getElementById('calculate-roi-btn');
 
       function safePercent(value, total) {
@@ -713,10 +716,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const secCost = parseFloat(document.getElementById('sec-cost').value) || 0;
         const fwCost = parseFloat(document.getElementById('fw-cost').value) || 0;
         const emailCost = parseFloat(document.getElementById('email-cost').value) || 0;
-        const companySize = parseInt(sizeInput.value, 10) || 100;
-
-        sizeDisplay.textContent = companySize;
-
         // The reduction for each category is the visitor's own assumption (0-90%),
         // not a figure we publish. See the "How we calculate" section on the page.
         const keep = (id) => 1 - Math.min(Math.max(parseFloat(document.getElementById(id).value) || 0, 0), 90) / 100;
@@ -737,12 +736,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         document.getElementById('savings-progress').style.width = `${Math.min(savingsPercent, 100)}%`;
         document.getElementById('savings-percent').textContent = `${savingsPercent}% lower, based on your assumptions`;
 
-        // Update CTA link so contact form is pre-filled with ROI context
+        // Pre-select the team size on the contact form. Only the size band goes in the
+        // link: the spend figures the visitor typed are never put in a URL, because
+        // URLs end up in analytics and server logs.
         const ctaLinks = document.querySelectorAll('.results-cta a[href^="contact"]');
         ctaLinks.forEach(link => {
-          if (savingsTotal > 0) {
-            link.href = `contact?savings=${Math.round(savingsTotal)}&current=${Math.round(currentTotal)}&headcount=${companySize}`;
-          }
+          link.href = `contact?size=${encodeURIComponent(sizeInput.value)}`;
         });
 
         const virtSavings = Math.max(Math.round(virtCost - virtOptimized), 0);
@@ -782,10 +781,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       if (sizeInput) {
-        sizeInput.addEventListener('input', (event) => {
-          sizeDisplay.textContent = event.target.value;
-          calculateROI();
-        });
+        sizeInput.addEventListener('change', calculateROI);
       }
 
       fieldIds.forEach((id) => {

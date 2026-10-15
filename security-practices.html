@@ -56,7 +56,7 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
 
-  <link rel="stylesheet" href="css/style.22a68f2110.min.css">
+  <link rel="stylesheet" href="css/style.394652671d.min.css">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -319,7 +319,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li><i class="fas fa-circle-check" aria-hidden="true"></i> The contact and newsletter forms send your message to our inbox through FormSubmit, a third-party form service.</li>
             </ul>
           </div>
-          <div class="offer-card">
+          <div class="offer-card" id="report">
             <h2 id="sp-report-title" class="sp-sub">Report a security problem</h2>
             <!-- BLOCK:security-report -->
 <p>Email <a href="mailto:info@jwithkp.com">info@jwithkp.com</a> with the page or system affected, what you found and the steps to reproduce it. The same contact is published in our <a href="/.well-known/security.txt">security.txt</a> file.</p>
@@ -329,6 +329,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li><i class="fas fa-circle-check" aria-hidden="true"></i> Please give us a reasonable time to fix a problem before you share it publicly.</li>
               <li><i class="fas fa-circle-check" aria-hidden="true"></i> This is not a paid bug-bounty programme, and we do not offer rewards.</li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer-block" id="cert-in" aria-labelledby="sp-certin-title">
+        <div class="section-head">
+          <h2 id="sp-certin-title" class="sp-sub">Incident reporting in India (CERT-In)</h2>
+          <p>A plain-language summary for non-lawyers. It is not legal advice, and whether the rules apply to your business is for you and your adviser to decide.</p>
+        </div>
+        <div class="offer-grid">
+          <div class="offer-card">
+            <h3>What the directions say</h3>
+            <ul class="hp-check-list">
+              <li><i class="fas fa-circle-check" aria-hidden="true"></i> CERT-In&rsquo;s directions of 28 April 2022, issued under section 70B(6) of the IT Act, 2000, apply to service providers, intermediaries, data centres, body corporate and government organisations.</li>
+              <li><i class="fas fa-circle-check" aria-hidden="true"></i> Listed cyber incidents must be reported to CERT-In within 6 hours of noticing them or being told about them. The list includes unauthorised access, ransomware and other malicious code, data breaches and leaks, phishing and denial-of-service attacks.</li>
+              <li><i class="fas fa-circle-check" aria-hidden="true"></i> Reports go to incident@cert-in.org.in or 1800-11-4949.</li>
+              <li><i class="fas fa-circle-check" aria-hidden="true"></i> Logs of ICT systems must be kept securely for a rolling 180 days within India, and given to CERT-In with an incident report or when it asks.</li>
+              <li><i class="fas fa-circle-check" aria-hidden="true"></i> System clocks must be synchronised with the NIC or NPL time servers, or sources traceable to them.</li>
+              <li><i class="fas fa-circle-check" aria-hidden="true"></i> A point of contact must be designated for CERT-In.</li>
+            </ul>
+            <p class="hp-fineprint">Source: <a href="https://www.cert-in.org.in/PDF/CERT-In_Directions_70B_28.04.2022.pdf" target="_blank" rel="noopener noreferrer">CERT-In directions, 28 April 2022 (PDF)</a>. Check <a href="https://www.cert-in.org.in/" target="_blank" rel="noopener noreferrer">cert-in.org.in</a> for the current version.</p>
+            <p class="hp-fineprint">Separately, the DPDP Rules, 2025 (rule 7) will require a business that holds personal data to tell each affected person and the Data Protection Board about a personal data breach without delay, with fuller details to the Board within 72 hours. That part of the Rules starts to apply eighteen months after their publication on 13 November 2025.</p>
+          </div>
+          <div class="notice-card">
+            <h3>What monitoring can and cannot do</h3>
+            <p>Logging and monitoring tools such as Wazuh give you visibility. They can collect and keep logs and alert you to unusual activity, which supports noticing an incident and gathering the records a report needs. Whether logs are kept for 180 days inside India depends on how the system is set up and where it is hosted, which we would agree with you in writing.</p>
+            <p>Monitoring does not make a business compliant, and we do not file reports for you. Our monitoring is not 24x7: alerts are reviewed during support hours, so we cannot promise that an incident will be noticed, or reported, within 6 hours. If you need round-the-clock cover, ask us what we can and cannot do.</p>
           </div>
         </div>
       </section>
@@ -437,6 +464,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <input type="email" name="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
               <button type="submit" class="btn btn-hrms-primary btn-sm footer-subscribe-btn">Subscribe</button>
             </div>
+            <label class="newsletter-consent"><input type="checkbox" name="consent" value="yes" required> <span>I agree to receive the newsletter by email and can unsubscribe at any time. See the <a href="privacy-policy#newsletter">Privacy Policy</a>.</span></label>
           </form>
         </div>
       </div>

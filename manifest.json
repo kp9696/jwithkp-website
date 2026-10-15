@@ -1,7 +1,7 @@
 {
-  "name": "JwithKP - Enterprise IT Infrastructure & SaaS",
+  "name": "JwithKP - IT setup for startups & growing businesses",
   "short_name": "JwithKP",
-  "description": "IT consulting, Proxmox virtualization migration, Wazuh SIEM SOC, pfSense firewall, and HRMS SaaS platform.",
+  "description": "Founder-led IT for startups and growing businesses in India: email, devices, network, backup, cost review and security monitoring.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0f1e",

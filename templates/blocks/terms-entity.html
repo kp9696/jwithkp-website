@@ -1,0 +1,2 @@
+<p>JwithKP is a founder-led IT consulting practice based in {{cfg.location.city}}, {{cfg.location.region}}, India.</p>
+{{#ifany cfg.legal.entityName cfg.legal.gstin cfg.location.address}}<p>{{#if cfg.legal.entityName}}Legal entity: {{cfg.legal.entityName}}{{#if cfg.legal.entityType}} ({{cfg.legal.entityType}}){{/if}}. {{/if}}{{#if cfg.legal.gstin}}GSTIN: {{cfg.legal.gstin}}. {{/if}}{{#if cfg.location.address}}Address: {{cfg.location.address}}.{{/if}}</p>{{/ifany}}
