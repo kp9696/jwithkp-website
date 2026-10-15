@@ -142,3 +142,11 @@ const contactForm = document.getElementById('smartContactForm');
 
     formStartedAtInput.value = String(Date.now());
 
+
+// Deep link from the home page "Book a free call" buttons (contact?intent=call):
+// pre-fill the message so the visitor only has to add their details.
+(function applyCallIntent() {
+  if (new URLSearchParams(window.location.search).get('intent') !== 'call') return;
+  const message = document.getElementById('message');
+  if (message && !message.value) message.value = "I'd like to book a free 30-minute IT setup call.";
+})();

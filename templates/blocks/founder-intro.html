@@ -1,0 +1,18 @@
+      <div class="hp-founder-card" data-aos="fade-up">
+        <div class="hp-founder-avatar">
+          {{#when cfg.founder.photo}}<img src="{{cfg.founder.photo|attr}}" alt="" width="160" height="160" loading="lazy" decoding="async">{{/when}}
+          {{#unless cfg.founder.photo}}<img src="images/icons/icon-192.png" alt="" width="96" height="96" loading="lazy" decoding="async">{{/unless}}
+        </div>
+        <div class="hp-founder-body">
+          <h3>Direct access to the engineer who does the work</h3>
+          {{#if cfg.founder.name}}<p class="hp-founder-name"><strong>{{cfg.founder.name}}</strong>, founder</p>{{/if}}
+          <p>JwithKP is a founder-led practice. The engineer who scopes your setup is the one who builds it and answers your calls, so there are no hand-offs and no sales layer between you and the person doing the work.</p>
+          {{#if cfg.founder.background}}<p>{{cfg.founder.background}}</p>{{/if}}
+          {{#if cfg.founder.certifications}}<p><strong>Certifications:</strong> {{cfg.founder.certifications}}</p>{{/if}}
+          <ul class="hp-check-list hp-founder-points">
+            <li><i class="fas fa-circle-check" aria-hidden="true"></i> No lock-in: you keep every configuration, password vault and runbook.</li>
+            <li><i class="fas fa-circle-check" aria-hidden="true"></i> No unnecessary tools: we only recommend what your stage needs.</li>
+          </ul>
+          {{#if cfg.founder.linkedin}}<p><a href="{{cfg.founder.linkedin|attr}}" target="_blank" rel="noopener noreferrer">Founder on LinkedIn <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></p>{{/if}}
+        </div>
+      </div>

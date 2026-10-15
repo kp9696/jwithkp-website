@@ -4869,3 +4869,247 @@ mark.todo-marker {
   border-top-right-radius: 6px;
   pointer-events: none;
 }
+
+
+/* ===== Home page, founder positioning (Phase 2) ===== */
+
+/* Hero: actions + note, and the Day-1 setup card in place of the old SVG rotator */
+.hp-hero-actions { margin-bottom: 0.9rem; }
+.hp-hero-note {
+  font-size: 0.88rem;
+  color: var(--hrms-text-secondary);
+  margin: 0 0 3rem;
+}
+.hp-hero .hp-visual-area { height: auto; min-height: 0; }
+
+.hp-day1-card {
+  width: 100%;
+  max-width: 470px;
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+}
+.hp-day1-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.hp-day1-head i { font-size: 1.4rem; color: var(--hrms-primary); }
+.hp-day1-head h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--hrms-text-heading);
+}
+.hp-day1-foot {
+  margin: 1.25rem 0 0;
+  font-size: 0.82rem;
+  color: var(--hrms-text-secondary);
+}
+
+/* Shared tick list */
+.hp-check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+.hp-check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--hrms-text-body);
+}
+.hp-check-list li i {
+  flex: none;
+  margin-top: 0.2rem;
+  color: var(--hrms-success);
+}
+[data-theme="light"] .hp-check-list li i { color: #047857; }
+
+/* Two-path chooser */
+.hp-path-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.hp-path-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem;
+}
+.hp-path-card .hp-service-icon-wrapper { margin-bottom: 1.1rem; }
+.hp-path-card h3 { font-size: 1.4rem; margin: 0 0 0.6rem; color: var(--hrms-text-heading); }
+.hp-path-card > p { color: var(--hrms-text-secondary); margin: 0 0 1.1rem; line-height: 1.55; }
+.hp-path-card .hp-check-list { margin-bottom: 1.5rem; }
+.hp-path-card .btn { margin-top: auto; align-self: flex-start; }
+
+/* Stage cards */
+.hp-stage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.75rem;
+  margin-top: 3rem;
+}
+.hp-stage-card {
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  padding: 1.75rem;
+}
+.hp-stage-head { margin-bottom: 1.1rem; }
+.hp-stage-head h3 { font-size: 1.2rem; margin: 0.55rem 0 0; color: var(--hrms-text-heading); }
+.hp-stage-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--hrms-primary-hover);
+}
+[data-theme="dark"] .hp-stage-badge { color: #7db3ff; }
+
+.hp-fineprint {
+  margin: 1.75rem auto 0;
+  max-width: 720px;
+  font-size: 0.9rem;
+  color: var(--hrms-text-secondary);
+}
+.hp-fineprint a, .hp-estimate-note a, .hp-product-note a { text-decoration: underline; }
+
+/* Enterprise vs open-source table */
+.hp-compare-wrap { margin-top: 3rem; }
+.hp-compare {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.hp-compare th, .hp-compare td {
+  text-align: left;
+  vertical-align: top;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--hrms-border);
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+.hp-compare thead th {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--hrms-text-heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.hp-compare tbody th { width: 17%; color: var(--hrms-text-heading); font-weight: 700; }
+.hp-compare td { width: 41.5%; color: var(--hrms-text-body); }
+.hp-compare td p { margin: 0 0 0.6rem; }
+.hp-compare td p:last-child { margin-bottom: 0; }
+.hp-compare td strong { color: var(--hrms-text-heading); }
+.hp-compare tbody tr:last-child th, .hp-compare tbody tr:last-child td { border-bottom: 0; }
+
+@media (max-width: 768px) {
+  .hp-compare, .hp-compare tbody, .hp-compare tr, .hp-compare th, .hp-compare td { display: block; width: 100%; }
+  .hp-compare thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .hp-compare tbody tr { border-bottom: 1px solid var(--hrms-border); padding-bottom: 0.4rem; }
+  .hp-compare tbody tr:last-child { border-bottom: 0; }
+  .hp-compare tbody th { width: 100%; background: rgba(37, 99, 235, 0.08); border-bottom: 0; }
+  .hp-compare td { border-bottom: 0; padding-top: 0.7rem; padding-bottom: 0.2rem; width: 100%; }
+  .hp-compare td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--hrms-text-secondary);
+  }
+  .hp-path-grid { grid-template-columns: 1fr; }
+}
+
+/* Estimate note under the 70% claim */
+.hp-estimate-note {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--hrms-text-secondary);
+  margin: 0 0 1.25rem;
+}
+
+/* Founder / engineer intro */
+.hp-founder-card {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  max-width: 920px;
+  margin: 3rem auto 0;
+  background: var(--hrms-bg-card);
+  border: 1px solid var(--hrms-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem;
+}
+.hp-founder-avatar {
+  flex: none;
+  width: 128px;
+  height: 128px;
+  border-radius: 28px;
+  background: #fff;
+  border: 1px solid var(--hrms-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hp-founder-avatar img { width: 96px; height: 96px; object-fit: contain; }
+.hp-founder-avatar img[width="160"] { width: 100%; height: 100%; object-fit: cover; }
+.hp-founder-body h3 { font-size: 1.3rem; margin: 0 0 0.75rem; color: var(--hrms-text-heading); }
+.hp-founder-body p { color: var(--hrms-text-body); line-height: 1.6; margin: 0 0 0.9rem; }
+.hp-founder-body .hp-founder-name { margin-bottom: 0.4rem; color: var(--hrms-text-heading); }
+.hp-founder-points { margin: 1rem 0 0.4rem; }
+@media (max-width: 640px) {
+  .hp-founder-card { flex-direction: column; align-items: center; text-align: left; padding: 1.5rem; }
+}
+
+/* Small "our product" note under the final CTA */
+.hp-product-note {
+  text-align: center;
+  margin: 1.75rem auto 0;
+  max-width: 640px;
+  font-size: 0.95rem;
+  color: var(--hrms-text-secondary);
+}
+
+/* Three-up variant of the card grid (the default grid is four-up) */
+.hp-services-grid.hp-services-grid--3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 980px) {
+  .hp-services-grid.hp-services-grid--3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .hp-services-grid.hp-services-grid--3 { grid-template-columns: 1fr; }
+}
+
+/* Hero card text stays left-aligned even though the hero is centred on phones */
+.hp-day1-card { text-align: left; }
+
+/* Trust strip: one column on small phones so the longer labels do not wrap word by word */
+@media (max-width: 560px) {
+  .hp-stats-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+  .hp-stat-card { padding: 1rem 1.1rem; }
+}

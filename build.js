@@ -46,13 +46,21 @@ function todoMarker(keyPath) {
 // {{#if cfg.a.b}}..{{/if}}           keep block only when filled (always kept in preview)
 // {{#ifany cfg.a cfg.b}}..{{/ifany}} keep block when any of the keys is filled
 // Blocks may nest (the innermost is resolved first).
+// {{#unless cfg.a.b}}..{{/unless}}   fallback shown only when the key is NOT
+//                                    filled (same in preview and production)
+// {{#when cfg.a.b}}..{{/when}}       like #if but silent: never shows a marker
+//                                    (use it inside a tag's attributes)
+// {{cfg.a.b|or:fallback text}}       the value, or the fallback when not filled
+//                                    (never a marker)
 function renderTemplate(tpl) {
-  const blockRe = /\{\{#(if|ifany)\s+([^}]+?)\}\}((?:(?!\{\{#if)[\s\S])*?)\{\{\/\1\}\}/;
+  const blockRe = /\{\{#(if|ifany|unless|when)\s+([^}]+?)\}\}((?:(?!\{\{#(?:if|unless|when))[\s\S])*?)\{\{\/\1\}\}/;
   let out = tpl;
   let guard = 0;
   while (blockRe.test(out) && guard++ < 200) {
     out = out.replace(blockRe, (whole, kind, args, inner) => {
       const keys = args.trim().split(/\s+/).map(k => k.replace(/^cfg\./, ''));
+      if (kind === 'unless') return cfgFilled(keys[0]) ? '' : inner;
+      if (kind === 'when') return cfgFilled(keys[0]) ? inner : '';
       const ok = kind === 'if' ? cfgFilled(keys[0]) : keys.some(cfgFilled);
       if (ok) return inner;
       if (!PREVIEW) return '';
@@ -63,11 +71,56 @@ function renderTemplate(tpl) {
       return hasVisibleToken ? inner : todoMarker(keys.find(k => !cfgFilled(k)) || keys[0]) + inner;
     });
   }
+  out = out.replace(/\{\{cfg\.([A-Za-z0-9_.]+)\|or:([^}]*)\}\}/g, (whole, keyPath, fallback) =>
+    cfgFilled(keyPath) ? escHtml(cfgGet(keyPath)) : fallback);
   return out.replace(/\{\{cfg\.([A-Za-z0-9_.]+)(\|attr)?\}\}/g, (whole, keyPath, attr) => {
     if (cfgFilled(keyPath)) return escHtml(cfgGet(keyPath));
     if (!PREVIEW) return '';
     return attr ? `#add-${keyPath}` : todoMarker(keyPath);
   });
+}
+
+// Page blocks: any region of a page wrapped in
+//   <!-- BLOCK:name --> ... <!-- /BLOCK:name -->
+// is regenerated on every build from templates/blocks/name.html, rendered with
+// the same {{cfg.*}} engine. Pages are edited in place, so this is how page
+// content can depend on site-config.json without the tokens being lost the
+// first time the page is built.
+function renderBlocks(content, file) {
+  return content.replace(/<!-- BLOCK:([a-z0-9-]+) -->[\s\S]*?<!-- \/BLOCK:\1 -->/g, (whole, name) => {
+    const blockPath = path.join(__dirname, 'templates', 'blocks', `${name}.html`);
+    if (!fs.existsSync(blockPath)) throw new Error(`${file}: BLOCK "${name}" has no templates/blocks/${name}.html`);
+    const body = renderTemplate(fs.readFileSync(blockPath, 'utf8').replace(/\r\n/g, '\n').replace(/\s+$/, ''));
+    return `<!-- BLOCK:${name} -->\n${body}\n<!-- /BLOCK:${name} -->`;
+  });
+}
+
+const HTML_ENTITIES = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'", '&apos;': "'", '&nbsp;': ' ', '&mdash;': '—', '&ndash;': '–', '&rsquo;': '’', '&lsquo;': '‘', '&hellip;': '…', '&middot;': '·' };
+function plainText(html) {
+  return html.replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/gi, e => HTML_ENTITIES[e.toLowerCase()] || e).replace(/\s+/g, ' ').trim();
+}
+
+// FAQPage JSON-LD is generated from the visible accordion (.hp-faq-item), so
+// the structured data can never drift from the text a visitor reads.
+function syncFaqSchema(content) {
+  if (!content.includes('class="hp-faq-accordion"')) return content;
+  const items = [];
+  const re = /<button class="hp-faq-trigger"[^>]*>([\s\S]*?)<span class="hp-faq-icon"[\s\S]*?<\/button>[\s\S]*?<div class="hp-faq-content-inner">([\s\S]*?)<\/div>/g;
+  let m;
+  while ((m = re.exec(content))) items.push({ q: plainText(m[1]), a: plainText(m[2]) });
+  if (!items.length) return content;
+  content = content.replace(/[ \t]*<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>[ \t]*\r?\n?/gi, (whole, json) => {
+    try {
+      const j = JSON.parse(json);
+      return [].concat(j['@graph'] || j).some(n => n && n['@type'] === 'FAQPage') ? '' : whole;
+    } catch (e) { return whole; }
+  });
+  const faq = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map(i => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: i.a } }))
+  };
+  return content.replace('</head>', `  <script type="application/ld+json" id="faq-schema">\n${JSON.stringify(faq, null, 2)}\n  </script>\n</head>`);
 }
 
 // Reads width/height from a PNG, JPEG or WebP file buffer (no dependencies).
@@ -530,6 +583,8 @@ async function build() {
         );
       }
 
+      content = renderBlocks(content, file);
+      content = syncFaqSchema(content);
       content = ensureCoreSeoMeta(content);
       content = ensureHreflang(content);
       content = ensureManifest(content);
