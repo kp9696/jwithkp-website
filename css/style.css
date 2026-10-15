@@ -5232,6 +5232,8 @@ mark.todo-marker {
 .est-sub { font-size: 1.4rem; margin: 0 0 1rem; color: var(--hrms-text-heading); }
 .est-form .form-group { margin-bottom: 1rem; }
 .est-check { display: flex; gap: 0.6rem; align-items: flex-start; }
+.est-check[hidden] { display: none; }
+.est-check--sub { margin-left: 1.6rem; }
 .est-check input { margin-top: 0.3rem; width: auto; }
 .est-check label { margin: 0; font-weight: 500; }
 .est-totals { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.1rem; }
