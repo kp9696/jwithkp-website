@@ -4836,3 +4836,36 @@ main .cta p + p {
 @media (max-width: 768px) {
   .hp-trusted-logos ~ .page-section { contain-intrinsic-size: auto 1100px; }
 }
+
+
+/* ===== Footer legal identity line (shown only when the details exist) ===== */
+.footer-legal-id {
+  font-size: 0.8rem;
+  color: var(--hrms-text-secondary);
+  text-align: center;
+  margin: 0 0 0.75rem;
+}
+
+/* ===== Preview-build helpers (rendered only by `node build.js --preview`) ===== */
+mark.todo-marker {
+  background: #fde68a;
+  color: #78350f;
+  padding: 0 0.3em;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 0.92em;
+}
+
+.preview-ribbon {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2000;
+  background: #fde68a;
+  color: #78350f;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-top-right-radius: 6px;
+  pointer-events: none;
+}

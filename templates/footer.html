@@ -12,9 +12,9 @@
           </a>
           <p>Smart IT implementation combining open-source power with commercial reliability. Cut IT licensing costs with open-source infrastructure, built for Indian businesses.</p>
           <div class="footer-socials">
-            <a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://wa.me/917982912207" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://twitter.com/jwithkp" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile"><i class="fab fa-twitter"></i></a>
+            {{#if cfg.social.linkedinCompany}}<a href="{{cfg.social.linkedinCompany|attr}}" target="_blank" rel="noopener noreferrer" aria-label="JwithKP on LinkedIn"><i class="fab fa-linkedin"></i></a>{{/if}}
+            <a href="https://wa.me/{{cfg.contact.whatsapp|attr}}" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="{{cfg.social.x|attr}}" target="_blank" rel="noopener noreferrer" aria-label="JwithKP on X (Twitter)"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
 
@@ -22,11 +22,10 @@
         <div class="footer-links">
           <span class="footer-col-title">Services</span>
           <ul>
-            <li><a href="services">Cloud Solutions</a></li>
-            <li><a href="services">Microsoft 365</a></li>
-            <li><a href="services">Google Workspace</a></li>
-            <li><a href="services">Cybersecurity</a></li>
-            <li><a href="services">Website Development</a></li>
+            <li><a href="services#cloud-infrastructure">Cloud Solutions</a></li>
+            <li><a href="services#cloud-infrastructure">Microsoft 365</a></li>
+            <li><a href="services#cloud-infrastructure">Google Workspace</a></li>
+            <li><a href="services#siem">Cybersecurity</a></li>
             <li><a href="services">IT Consulting</a></li>
           </ul>
         </div>
@@ -36,7 +35,7 @@
           <span class="footer-col-title">Solutions</span>
           <ul>
             <li><a href="services#virtualization">Proxmox Virtualization</a></li>
-            <li><a href="services#siem">Wazuh SIEM Cloud</a></li>
+            <li><a href="services#siem">Managed Wazuh SIEM</a></li>
             <li><a href="services#network-security">pfSense Firewall</a></li>
             <li><a href="services#backup-recovery">Immutable Backup</a></li>
             <li><a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer">HRMS SaaS</a></li>
@@ -58,7 +57,7 @@
         <div class="footer-newsletter">
           <span class="footer-col-title">Newsletter</span>
           <p>Get monthly insights on cybersecurity, virtualization, and IT cost optimization.</p>
-          <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/info@jwithkp.com" method="POST">
+          <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/{{cfg.contact.email|attr}}" method="POST">
             <input type="hidden" name="_subject" value="New Newsletter Subscription — JwithKP">
             <input type="hidden" name="_captcha" value="true">
             <input type="hidden" name="_next" value="https://www.jwithkp.com/contact">
@@ -71,6 +70,9 @@
       </div>
 
       <div class="footer-bottom">
+        {{#ifany cfg.legal.entityName cfg.legal.gstin cfg.location.address}}
+        <p class="footer-legal-id">{{#if cfg.legal.entityName}}{{cfg.legal.entityName}}{{#if cfg.legal.entityType}} ({{cfg.legal.entityType}}){{/if}}{{/if}}{{#if cfg.legal.gstin}} &middot; GSTIN {{cfg.legal.gstin}}{{/if}}{{#if cfg.location.address}} &middot; {{cfg.location.address}}{{/if}}</p>
+        {{/ifany}}
         <div class="footer-bottom-flex">
           <p class="copyright">&copy; {{YEAR}} JwithKP. All rights reserved. | Journey with Knowledge &amp; Practice</p>
           <div class="footer-legal-links">
@@ -83,7 +85,7 @@
     </div>
 </footer>
 <aside aria-label="Quick chat">
-<a href="https://wa.me/917982912207" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+<a href="https://wa.me/{{cfg.contact.whatsapp|attr}}" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
 </aside>

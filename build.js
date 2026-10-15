@@ -4,6 +4,102 @@ const crypto = require('crypto');
 const CleanCSS = require('clean-css');
 const { minify } = require('terser');
 
+// ---------------------------------------------------------------------------
+// Site config + preview/production modes
+//
+// site-config.json holds the business facts that are not yet (or not always)
+// known: legal entity, GSTIN, address, founder details, social URLs, hours.
+// Templates reference them as {{cfg.path}}.
+//
+//   node build.js            PRODUCTION: a value that is not filled in renders
+//                            as nothing, and any {{#if}} block around it is
+//                            dropped. The build FAILS if a placeholder marker
+//                            is still present in the output, so "[ADD ...]" can
+//                            never be committed as a production build by mistake.
+//   node build.js --preview  PREVIEW: missing values render as a visible
+//                            [ADD ...] marker and conditional blocks stay, so
+//                            the branch preview shows exactly what is still
+//                            needed. Adds a small "preview build" ribbon.
+// ---------------------------------------------------------------------------
+const PREVIEW = process.argv.includes('--preview') || process.env.SITE_ENV === 'preview';
+const SITE_CONFIG = JSON.parse(fs.readFileSync(path.join(__dirname, 'site-config.json'), 'utf8'));
+const SITE_ORIGIN = 'https://www.jwithkp.com';
+
+function cfgGet(keyPath) {
+  return keyPath.split('.').reduce((o, k) => (o == null ? undefined : o[k]), SITE_CONFIG);
+}
+function cfgFilled(keyPath) {
+  const v = cfgGet(keyPath);
+  if (Array.isArray(v)) return v.length > 0;
+  return v !== undefined && v !== null && String(v).trim() !== '';
+}
+function escHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+function todoMarker(keyPath) {
+  const label = keyPath.split('.').pop().replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
+  return `<mark class="todo-marker" title="Set ${keyPath} in site-config.json">[ADD ${label}]</mark>`;
+}
+
+// {{cfg.a.b}}            text value (HTML-escaped); marker in preview if missing
+// {{cfg.a.b|attr}}       for attribute values; "#add-a.b" in preview if missing
+// {{#if cfg.a.b}}..{{/if}}           keep block only when filled (always kept in preview)
+// {{#ifany cfg.a cfg.b}}..{{/ifany}} keep block when any of the keys is filled
+// Blocks may nest (the innermost is resolved first).
+function renderTemplate(tpl) {
+  const blockRe = /\{\{#(if|ifany)\s+([^}]+?)\}\}((?:(?!\{\{#if)[\s\S])*?)\{\{\/\1\}\}/;
+  let out = tpl;
+  let guard = 0;
+  while (blockRe.test(out) && guard++ < 200) {
+    out = out.replace(blockRe, (whole, kind, args, inner) => {
+      const keys = args.trim().split(/\s+/).map(k => k.replace(/^cfg\./, ''));
+      const ok = kind === 'if' ? cfgFilled(keys[0]) : keys.some(cfgFilled);
+      if (ok) return inner;
+      if (!PREVIEW) return '';
+      // preview: keep the block; make sure at least one marker is visible. A
+      // block whose only tokens are attribute values (|attr) would otherwise
+      // show nothing, so it gets an explicit marker in front.
+      const hasVisibleToken = /\{\{cfg\.[A-Za-z0-9_.]+\}\}/.test(inner);
+      return hasVisibleToken ? inner : todoMarker(keys.find(k => !cfgFilled(k)) || keys[0]) + inner;
+    });
+  }
+  return out.replace(/\{\{cfg\.([A-Za-z0-9_.]+)(\|attr)?\}\}/g, (whole, keyPath, attr) => {
+    if (cfgFilled(keyPath)) return escHtml(cfgGet(keyPath));
+    if (!PREVIEW) return '';
+    return attr ? `#add-${keyPath}` : todoMarker(keyPath);
+  });
+}
+
+// Reads width/height from a PNG, JPEG or WebP file buffer (no dependencies).
+function imageSize(buf) {
+  try {
+    if (buf.slice(0, 8).toString('hex') === '89504e470d0a1a0a') {
+      return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+    }
+    if (buf[0] === 0xff && buf[1] === 0xd8) {
+      let i = 2;
+      while (i < buf.length) {
+        if (buf[i] !== 0xff) { i++; continue; }
+        const marker = buf[i + 1];
+        if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+          return { height: buf.readUInt16BE(i + 5), width: buf.readUInt16BE(i + 7) };
+        }
+        i += 2 + buf.readUInt16BE(i + 2);
+      }
+    }
+    if (buf.slice(0, 4).toString() === 'RIFF' && buf.slice(8, 12).toString() === 'WEBP') {
+      const fmt = buf.slice(12, 16).toString();
+      if (fmt === 'VP8X') return { width: 1 + buf.readUIntLE(24, 3), height: 1 + buf.readUIntLE(27, 3) };
+      if (fmt === 'VP8 ') return { width: buf.readUInt16LE(26) & 0x3fff, height: buf.readUInt16LE(28) & 0x3fff };
+      if (fmt === 'VP8L') {
+        const b = buf.readUInt32LE(21);
+        return { width: (b & 0x3fff) + 1, height: ((b >> 14) & 0x3fff) + 1 };
+      }
+    }
+  } catch (e) { /* fall through */ }
+  return null;
+}
+
 // Short, stable content hash used for cache-busting filenames. Deterministic
 // per build (same source content -> same hash), so an unchanged file gets a
 // stable URL and an edited one gets a new one automatically.
@@ -85,6 +181,31 @@ function ensureCoreSeoMeta(content) {
     content = content.replace(/(<meta name="description"[^>]*>)/i, '$1\n  <meta name="author" content="JwithKP">');
   }
 
+  // The keywords meta tag has been ignored by Google for years; drop it.
+  content = content.replace(/^[ \t]*<meta name="keywords"[^>]*>[ \t]*\r?\n/gim, '');
+
+  // One title everywhere: og:title and twitter:title always mirror <title>.
+  const titleMatch = content.match(/<title>([^<]*)<\/title>/i);
+  if (titleMatch) {
+    const t = titleMatch[1].trim().replace(/"/g, '&quot;');
+    content = content.replace(/(<meta property="og:title" content=")[^"]*(")/i, (m, a, b) => a + t + b);
+    content = content.replace(/(<meta name="twitter:title" content=")[^"]*(")/i, (m, a, b) => a + t + b);
+  }
+
+  // og:image:width/height must describe the file actually referenced. They
+  // were left at 2816x1536 after the image was resized to 960x524.
+  const ogImg = content.match(/<meta property="og:image" content="([^"]+)"/i);
+  if (ogImg && ogImg[1].startsWith(SITE_ORIGIN + '/')) {
+    const file = path.join(__dirname, ogImg[1].slice(SITE_ORIGIN.length + 1).split('?')[0]);
+    if (fs.existsSync(file)) {
+      const size = imageSize(fs.readFileSync(file));
+      if (size) {
+        content = content.replace(/(<meta property="og:image:width" content=")\d+(")/i, (m, a, b) => a + size.width + b);
+        content = content.replace(/(<meta property="og:image:height" content=")\d+(")/i, (m, a, b) => a + size.height + b);
+      }
+    }
+  }
+
   return content;
 }
 
@@ -101,49 +222,92 @@ function ensureManifest(content) {
 // differently-shaped Organization/ProfessionalService objects that used to
 // appear independently on index/about/contact/services with no @id tying
 // them together.
-function ensureEntityGraph(content) {
-  if (content.includes('/#organization"')) return content; // already injected
-  const canonicalMatch = content.match(/<link rel="canonical" href="([^"]+)"/i);
-  const pageUrl = canonicalMatch ? canonicalMatch[1] : 'https://www.jwithkp.com/';
-  const graph = `<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
+//
+// The graph is now regenerated from site-config.json on every build: any
+// existing block that DEFINES the Organization / WebSite / WebPage entities
+// (including the separate ones the home page used to carry) is removed and
+// replaced by a single block, so a config change always reaches every page and
+// there is never more than one definition of the same @id. Blocks that merely
+// reference the organisation (Article author/publisher, FAQPage, ...) are left
+// alone. Fields without a confirmed value (founder, street address, hours) are
+// omitted rather than guessed.
+function buildEntityGraph(pageUrl) {
+  const org = {
+    '@type': ['Organization', 'ProfessionalService'],
+    '@id': `${SITE_ORIGIN}/#organization`,
+    name: SITE_CONFIG.brand.name,
+    url: `${SITE_ORIGIN}/`,
+    slogan: SITE_CONFIG.brand.tagline,
+    description: SITE_CONFIG.brand.description,
+    logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/images/icons/icon-512.png`, width: 512, height: 512 },
+    telephone: SITE_CONFIG.contact.phoneE164,
+    email: SITE_CONFIG.contact.email,
+    areaServed: { '@type': 'Country', name: 'India' },
+    knowsAbout: SITE_CONFIG.seo.knowsAbout
+  };
+  if (SITE_CONFIG.location.city) {
+    org.address = {
+      '@type': 'PostalAddress',
+      addressLocality: SITE_CONFIG.location.city,
+      addressRegion: SITE_CONFIG.location.region,
+      addressCountry: SITE_CONFIG.location.country
+    };
+    if (cfgFilled('location.address')) org.address.streetAddress = SITE_CONFIG.location.address;
+  }
+  if (cfgFilled('legal.entityName')) org.legalName = SITE_CONFIG.legal.entityName;
+  if (cfgFilled('legal.gstin')) org.taxID = SITE_CONFIG.legal.gstin;
+  const sameAs = [SITE_CONFIG.social.x, SITE_CONFIG.social.linkedinCompany].filter(Boolean);
+  if (sameAs.length) org.sameAs = sameAs;
+  org.contactPoint = {
+    '@type': 'ContactPoint',
+    telephone: SITE_CONFIG.contact.phoneE164,
+    email: SITE_CONFIG.contact.email,
+    contactType: 'customer service',
+    areaServed: 'IN',
+    availableLanguage: ['en', 'hi']
+  };
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      org,
       {
-        "@type": "Organization",
-        "@id": "https://www.jwithkp.com/#organization",
-        "name": "JwithKP",
-        "url": "https://www.jwithkp.com/",
-        "logo": { "@type": "ImageObject", "url": "https://www.jwithkp.com/Logo.webp" },
-        "sameAs": [
-          "https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/",
-          "https://twitter.com/jwithkp"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+917982912207",
-          "contactType": "customer service",
-          "areaServed": "IN",
-          "availableLanguage": ["en", "hi"]
-        }
+        '@type': 'WebSite',
+        '@id': `${SITE_ORIGIN}/#website`,
+        url: `${SITE_ORIGIN}/`,
+        name: SITE_CONFIG.brand.name,
+        publisher: { '@id': `${SITE_ORIGIN}/#organization` }
       },
       {
-        "@type": "WebSite",
-        "@id": "https://www.jwithkp.com/#website",
-        "url": "https://www.jwithkp.com/",
-        "name": "JwithKP",
-        "publisher": { "@id": "https://www.jwithkp.com/#organization" }
-      },
-      {
-        "@type": "WebPage",
-        "@id": "${pageUrl}#webpage",
-        "url": "${pageUrl}",
-        "isPartOf": { "@id": "https://www.jwithkp.com/#website" },
-        "about": { "@id": "https://www.jwithkp.com/#organization" }
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        url: pageUrl,
+        isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+        about: { '@id': `${SITE_ORIGIN}/#organization` }
       }
     ]
-  }
-  </script>`;
+  };
+}
+
+function isEntityDefinition(node) {
+  const id = node && node['@id'];
+  return typeof id === 'string' && /\/#(organization|website)$|#webpage$/.test(id) && !node['@id'].includes('{');
+}
+
+function ensureEntityGraph(content) {
+  const canonicalMatch = content.match(/<link rel="canonical" href="([^"]+)"/i);
+  const pageUrl = canonicalMatch ? canonicalMatch[1] : `${SITE_ORIGIN}/`;
+
+  content = content.replace(/[ \t]*<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>[ \t]*\r?\n?/gi, (whole, json) => {
+    let parsed;
+    try { parsed = JSON.parse(json); } catch (e) { return whole; }
+    const nodes = parsed['@graph'] || [parsed];
+    if (!nodes.some(isEntityDefinition)) return whole;
+    const rest = nodes.filter(n => !isEntityDefinition(n));
+    if (!rest.length) return '';
+    return `  <script type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': rest }, null, 2)}\n  </script>\n`;
+  });
+
+  const graph = `<script type="application/ld+json" id="entity-graph">\n${JSON.stringify(buildEntityGraph(pageUrl), null, 2)}\n  </script>`;
   return content.replace('</head>', `  ${graph}\n</head>`);
 }
 
@@ -186,6 +350,45 @@ function ensureGtmSnippets(content) {
   content = content.replace(GTM_HEAD_RE, () => GTM_HEAD_SNIPPET);
 
   return content;
+}
+
+// Wording the site must not use (see the "no absolute guarantees" and "no
+// unearned certifications" rules). The build only warns; it never rewrites copy.
+const CLAIM_PATTERNS = [
+  ['"zero data loss"', /zero[- ]data[- ]loss/gi],
+  ['"zero downtime"', /zero[- ]downtime/gi],
+  ['"guarantee(d)"', /guarantee[ds]?\b/gi],
+  ['"SOC 2" (only "aligned with" is acceptable)', /SOC ?2/g]
+];
+
+// RFC 9116 security.txt. Expires is kept under a year out and is refreshed on
+// any build run within 90 days of expiry, so it cannot silently lapse.
+function writeSecurityTxt() {
+  const dir = path.join(__dirname, '.well-known');
+  fs.mkdirSync(dir, { recursive: true });
+  const file = path.join(dir, 'security.txt');
+  const DAY = 24 * 60 * 60 * 1000;
+  let expires = null;
+  if (fs.existsSync(file)) {
+    const m = fs.readFileSync(file, 'utf8').match(/^Expires:\s*(.+)$/m);
+    const d = m ? new Date(m[1].trim()) : null;
+    if (d && !isNaN(d) && d.getTime() - Date.now() > 90 * DAY) expires = d;
+  }
+  if (!expires) {
+    expires = new Date(Date.now() + 364 * DAY);
+    expires.setUTCHours(18, 29, 59, 0);
+  }
+  const lines = [
+    `Contact: mailto:${SITE_CONFIG.contact.securityEmail}`,
+    `Expires: ${expires.toISOString().replace('.000Z', 'Z')}`,
+    'Preferred-Languages: en',
+    `Canonical: ${SITE_ORIGIN}/.well-known/security.txt`
+  ];
+  if (fs.existsSync(path.join(__dirname, 'security-practices.html'))) {
+    lines.push(`Policy: ${SITE_ORIGIN}/security-practices`);
+  }
+  fs.writeFileSync(file, lines.join('\n') + '\n', 'utf8');
+  console.log(`security.txt written (expires ${expires.toISOString().slice(0, 10)})`);
 }
 
 async function build() {
@@ -281,9 +484,14 @@ async function build() {
 
   const navbarTemplatePath = path.join(__dirname, 'templates', 'navbar.html');
   const footerTemplatePath = path.join(__dirname, 'templates', 'footer.html');
-  const navbarTemplate = fs.readFileSync(navbarTemplatePath, 'utf8');
-  const footerTemplate = fs.readFileSync(footerTemplatePath, 'utf8')
+  const navbarTemplate = renderTemplate(fs.readFileSync(navbarTemplatePath, 'utf8'));
+  const footerTemplate = renderTemplate(fs.readFileSync(footerTemplatePath, 'utf8'))
     .replace('{{YEAR}}', String(new Date().getFullYear()));
+
+  console.log(`Build mode: ${PREVIEW ? 'PREVIEW (placeholders shown as [ADD ...])' : 'PRODUCTION (placeholders hidden, build fails if any remain)'}`);
+  const leaks = [];
+  const claimHits = [];
+  let seventyPercent = 0;
 
   const files = fs.readdirSync(__dirname);
   for (const file of files) {
@@ -345,10 +553,42 @@ async function build() {
         content = content.replace(/href="css\/fontawesome(?:\.[0-9a-f]{10})?\.min\.css"/g, `href="css/${faCssHashedName}"`);
       }
 
+      // Preview-only ribbon. Always stripped first so a production build leaves
+      // no trace of it.
+      content = content.replace(/[ \t]*<!-- PREVIEW_RIBBON -->[\s\S]*?<!-- \/PREVIEW_RIBBON -->[ \t]*\r?\n?/g, '');
+      if (PREVIEW) {
+        content = content.replace('</body>', '<!-- PREVIEW_RIBBON --><aside class="preview-ribbon" aria-label="Preview build notice">Preview build &middot; shows [ADD &hellip;] placeholders &middot; not for production</aside><!-- /PREVIEW_RIBBON -->\n</body>');
+      }
+
+      if (!PREVIEW && /todo-marker|\[ADD [A-Z]/.test(content)) leaks.push(file);
+
+      // Claims lint (warnings only): wording that must not come back.
+      const visibleText = content
+        .replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<!--[\s\S]*?-->/gi, ' ')
+        .replace(/<[^>]+>/g, ' ');
+      for (const [label, re] of CLAIM_PATTERNS) {
+        const n = (visibleText.match(re) || []).length;
+        if (n) claimHits.push(`${file}: ${n} x ${label}`);
+      }
+      seventyPercent += (visibleText.match(/up to 70%/gi) || []).length;
+
       fs.writeFileSync(filePath, content, 'utf8');
       console.log(`Compiled: ${file}`);
     }
   }
+
+  if (leaks.length) {
+    console.error(`\nBUILD FAILED: placeholder markers are still present in a PRODUCTION build: ${leaks.join(', ')}`);
+    console.error('Fill the values in site-config.json, or build with --preview.');
+    process.exitCode = 1;
+  }
+  if (claimHits.length) {
+    console.warn(`\nClaims lint (${claimHits.length} hits) — wording the site should not use:`);
+    claimHits.forEach(h => console.warn('  ' + h));
+  }
+  console.log(`"up to 70%" appears ${seventyPercent} times in visible text (target: 2-3 site-wide).`);
+
+  writeSecurityTxt();
 
   // Keep the service worker's precache list and cache name in sync with the
   // hashed filenames above. Its own CACHE_NAME is derived from the same
@@ -402,8 +642,23 @@ async function build() {
       }
     );
 
+    // Pages that exist on disk but are missing from the sitemap are added
+    // (so a new page can't be forgotten); 404 and the Search Console
+    // verification file are intentionally not listed.
+    const listed = new Set([...sitemapContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]));
+    const missing = fs.readdirSync(__dirname)
+      .filter(f => f.endsWith('.html') && f !== '404.html' && !f.startsWith('google'))
+      .map(f => ({ f, loc: f === 'index.html' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}/${f.replace(/\.html$/, '')}` }))
+      .filter(p => !listed.has(p.loc));
+    for (const p of missing) {
+      const stamp = fs.statSync(path.join(__dirname, p.f)).mtime.toISOString().slice(0, 10);
+      const entry = `  <url>\n    <loc>${p.loc}</loc>\n    <lastmod>${stamp}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n`;
+      sitemapContent = sitemapContent.replace('</urlset>', entry + '</urlset>');
+      console.log(`  sitemap: added ${p.loc}`);
+    }
+
     fs.writeFileSync(sitemapPath, sitemapContent, 'utf8');
-    console.log(`Updated sitemap.xml lastmod (${resolved} URLs from file mtime)`);
+    console.log(`Updated sitemap.xml lastmod (${resolved} URLs from file mtime, ${missing.length} added)`);
   }
 
   console.log('Build completed successfully.');
