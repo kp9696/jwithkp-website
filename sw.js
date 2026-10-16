@@ -1,10 +1,11 @@
-const CACHE_NAME = 'jwithkp-08ae53e90c';
+const CACHE_NAME = 'jwithkp-1d7c99bfae';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
-  '/css/style.394652671d.min.css',
-  '/js/script.cfad73326f.min.js',
-  '/Logo.webp',
+  '/css/style.2a3d9ba3a6.min.css',
+  '/js/script.6de089b341.min.js',
+  '/images/logo-mark-on-dark.webp',
+  '/images/logo-mark.webp',
   '/images/icons/icon-192.png',
   '/manifest.json'
 ];

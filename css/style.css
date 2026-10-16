@@ -3024,16 +3024,19 @@ main .cta p + p {
 .mega-menu {
   position: absolute;
   top: 100%;
-  left: -180px;
-  width: 760px;
+  /* Centred under its link: both menus have four items, laid out 2 x 2 so the
+     descriptions wrap instead of running into the next column. */
+  left: 50%;
+  margin-left: -300px;
+  width: 600px;
   background: var(--hrms-bg-card);
   border: 1px solid var(--hrms-border);
   border-radius: 20px;
-  padding: 1.75rem;
+  padding: 1.25rem;
   box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
@@ -3072,12 +3075,16 @@ main .cta p + p {
   margin-bottom: 0.2rem;
 }
 .mega-menu-item p {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--hrms-text-secondary);
-  line-height: 1.35;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
+.mega-menu-item > div { min-width: 0; }
 
-@media (max-width: 980px) {
+/* Same breakpoint as the hamburger menu (1100px), not 980px: between the two,
+   the submenu used to float as a 600px panel detached from its link. */
+@media (max-width: 1100px) {
   .mega-menu { display: none; }
   /* Click/tap-opened state: render as a plain stacked list inside the
      mobile dropdown instead of the desktop's absolute-positioned panel. */
@@ -5245,7 +5252,7 @@ mark.todo-marker {
 .est-table-wrap { overflow-x: auto; }
 .est-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 .est-table th, .est-table td { text-align: left; vertical-align: top; padding: 0.75rem 0.8rem; border-bottom: 1px solid var(--hrms-border); color: var(--hrms-text-body); }
-.est-table thead th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--hrms-text-secondary); }
+.est-table thead th { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--hrms-text-secondary); }
 .est-table tbody th { color: var(--hrms-text-heading); font-weight: 700; }
 .est-basis { font-size: 0.82rem; color: var(--hrms-text-secondary); }
 .est-sources th, .est-sources td { font-size: 0.85rem; }
@@ -5440,3 +5447,58 @@ mark.todo-marker {
 }
 .calc-group select option { background: var(--bg-card); color: var(--text-primary); }
 .calc-group .range-meta { display: block; }
+
+/* Logo mark: transparent cut-outs, one per theme. The old single image had an
+   off-white background that was blended away on dark, which also hid the navy
+   mark. Dark is the default; the light variant is shown when data-theme="light". */
+.logo img.logo-mark,
+.footer-logo-wrap img.logo-mark { mix-blend-mode: normal; width: auto; }
+.logo-mark--on-light { display: none; }
+[data-theme="light"] .logo-mark--on-dark { display: none; }
+[data-theme="light"] .logo-mark--on-light { display: block; }
+
+/* Contact page on phones and tablets: the form comes first. It used to sit about
+   half-way down a long page, after the hero cards and the info panel. The three
+   hero cards repeat what the info panel already says, so they are dropped here. */
+@media (max-width: 980px) {
+  .contact-grid .contact-form-card { order: -1; }
+  .contact-grid .info-panel { order: 2; }
+  .hero--contact .hero-points { display: none; }
+}
+
+/* Services chooser: make it read as links (arrow + hover tint) */
+.svc-chooser a { position: relative; padding-right: 2.4rem; transition: background-color 0.2s ease, border-color 0.2s ease; }
+.svc-chooser a::after {
+  content: "\2192";
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-teal);
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+.svc-chooser a:hover { background: rgba(37, 99, 235, 0.07); }
+.svc-chooser a:hover::after { transform: translate(3px, -50%); }
+
+/* Minimum text size: small labels, badges and table headers were 10-12.8px.
+   13px is the floor for anything a visitor is meant to read. */
+.newsletter-consent,
+.footer-legal-id,
+.hp-stage-badge,
+.category-badge,
+.hp-blog-card-meta span,
+.hp-blog-author,
+.svc-method-time,
+.est-table th,
+.scn-label,
+.savings-badge,
+.tech-badge { font-size: 0.8125rem; }
+.logo-tagline,
+.logo-copy .logo-tagline,
+.footer-logo-wrap .logo-tagline { font-size: 0.75rem; }
+
+/* Mega-menu items are <a> elements inside .nav-menu, which sets white-space:
+   nowrap on its links. That stopped the descriptions wrapping and made them run
+   into the next column, so wrapping is switched back on for the items. */
+.nav-menu .mega-menu-item { white-space: normal; }

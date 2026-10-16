@@ -14,12 +14,20 @@
 (function () {
   'use strict';
 
+  // localStorage can throw (blocked site data, some private modes). A throw here
+  // used to stop the whole script, which left the mobile menu dead, so every
+  // read and write goes through these two helpers.
+  const store = {
+    get: function (key) { try { return localStorage.getItem(key); } catch (e) { return null; } },
+    set: function (key, value) { try { localStorage.setItem(key, value); } catch (e) { /* storage unavailable */ } }
+  };
+
   const themeToggle = document.getElementById('themeToggle');
   const root = document.documentElement;
 
   function applyTheme(theme) {
     root.setAttribute('data-theme', theme);
-    localStorage.setItem('jwkp-theme', theme);
+    store.set('jwkp-theme', theme);
     if (themeToggle) {
       const icon = themeToggle.querySelector('i');
       if (icon) icon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
@@ -28,7 +36,7 @@
     }
   }
 
-  applyTheme(localStorage.getItem('jwkp-theme') || 'dark');
+  applyTheme(store.get('jwkp-theme') || 'dark');
 
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
@@ -453,7 +461,7 @@
       setBannerHidden(false);
     }
 
-    var stored = localStorage.getItem(CONSENT_KEY);
+    var stored = store.get(CONSENT_KEY);
     if (stored === 'granted') {
       pushConsent(true);
     } else if (stored === 'denied') {
@@ -464,7 +472,7 @@
 
     if (btnAccept) {
       btnAccept.addEventListener('click', function () {
-        localStorage.setItem(CONSENT_KEY, 'granted');
+        store.set(CONSENT_KEY, 'granted');
         pushConsent(true);
         hideBanner();
       });
@@ -472,7 +480,7 @@
 
     if (btnReject) {
       btnReject.addEventListener('click', function () {
-        localStorage.setItem(CONSENT_KEY, 'denied');
+        store.set(CONSENT_KEY, 'denied');
         pushConsent(false);
         hideBanner();
       });
