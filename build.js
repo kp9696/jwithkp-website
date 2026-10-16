@@ -174,6 +174,58 @@ function contentHash(content) {
   return crypto.createHash('sha256').update(content).digest('hex').slice(0, 10);
 }
 
+// ---------------------------------------------------------------------------
+// Self-hosted fonts (Inter and Space Grotesk, SIL OFL 1.1, see
+// css/webfonts/OFL-LICENSE.txt). They used to come from Google Fonts, which cost
+// two extra connections before any text could use them, and the late swap moved
+// the page (layout shift). Sources stay at css/webfonts/<name>.woff2; the build
+// emits fingerprinted copies (the folder is served as immutable, like Font
+// Awesome's) and rewrites the @font-face URLs in the stylesheet. No preload is
+// needed: the files are same-origin and are found as soon as the stylesheet is parsed.
+// ---------------------------------------------------------------------------
+let siteFontMap = {}; // 'inter-latin' -> 'inter-latin.<hash>.woff2'
+const SITE_FONT_RE = /^((?:inter|space-grotesk)-(?:latin|rupee))\.woff2$/;
+function fingerprintSiteFonts() {
+  const fontDir = path.join(__dirname, 'css', 'webfonts');
+  const map = {};
+  for (const f of fs.readdirSync(fontDir)) {
+    const m = f.match(SITE_FONT_RE);
+    if (m) map[m[1]] = `${m[1]}.${contentHash(fs.readFileSync(path.join(fontDir, f)))}.woff2`;
+  }
+  const keep = new Set(Object.values(map));
+  for (const f of fs.readdirSync(fontDir)) {
+    if (/^(?:inter|space-grotesk)-(?:latin|rupee)\.[0-9a-f]{10}\.woff2$/.test(f) && !keep.has(f)) fs.unlinkSync(path.join(fontDir, f));
+  }
+  for (const [base, hashed] of Object.entries(map)) fs.copyFileSync(path.join(fontDir, `${base}.woff2`), path.join(fontDir, hashed));
+  return map;
+}
+
+// Applies the current theme before first paint. Without it the page always paints
+// dark and then flips to light once the deferred script runs, which flashes for
+// anyone who chose the light theme.
+const THEME_INIT = "(function(){var t='dark';try{if(localStorage.getItem('jwkp-theme')==='light')t='light'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();";
+
+// Per-page head block: no Google Fonts, the theme applied before first paint, and a
+// preload for the heading font only. Preloading both fonts delayed first paint in a
+// throttled test (they compete with the stylesheet for bandwidth), but the heading
+// font is small (11 KB) and it is the one whose late swap re-wraps h1s and shifts the
+// page; the metric-matched fallbacks cover the body font.
+function ensureHeadPerf(content) {
+  content = content.replace(/[ \t]*<noscript>\s*<link[^>]*fonts\.googleapis\.com[^>]*>\s*<\/noscript>/g, '');
+  content = content.replace(/[ \t]*<link[^>]*fonts\.(?:googleapis|gstatic)\.com[^>]*>[ \t]*\r?\n?/g, '');
+  content = content.replace(/[ \t]*<!-- HEAD_PERF -->[\s\S]*?<!-- \/HEAD_PERF -->[ \t]*\r?\n?/g, '');
+  const idx = content.search(/[ \t]*<link rel="stylesheet" href="css\//);
+  if (idx < 0 || !siteFontMap['space-grotesk-latin']) return content;
+  const block = [
+    '  <!-- HEAD_PERF -->',
+    `  <script>${THEME_INIT}</script>`,
+    `  <link rel="preload" href="/css/webfonts/${siteFontMap['space-grotesk-latin']}" as="font" type="font/woff2" crossorigin>`,
+    '  <!-- /HEAD_PERF -->',
+    ''
+  ].join('\n');
+  return content.slice(0, idx) + block + content.slice(idx);
+}
+
 // GTM is deferred: gtm.js (and the GA4 tag it pulls in) cost ~0.5-1s of main-thread
 // blocking on desktop and ~2-4s on throttled mobile, so it starts on the first user
 // interaction, or ~6s after the load event for visitors who just read without
@@ -479,7 +531,11 @@ async function build() {
   try {
     const cssDir = path.join(__dirname, 'css');
     const cssPath = path.join(cssDir, 'style.css');
-    const cssContent = fs.readFileSync(cssPath, 'utf8');
+    siteFontMap = fingerprintSiteFonts();
+    const cssContent = fs.readFileSync(cssPath, 'utf8').replace(/webfonts\/((?:inter|space-grotesk)-(?:latin|rupee))\.woff2/g, (whole, base) => {
+      if (!siteFontMap[base]) throw new Error(`style.css references webfonts/${base}.woff2 but no such file exists`);
+      return `webfonts/${siteFontMap[base]}`;
+    });
     const minifiedCss = new CleanCSS().minify(cssContent).styles;
     cssHashedName = `style.${contentHash(minifiedCss)}.min.css`;
 
@@ -650,6 +706,7 @@ async function build() {
       if (faCssHashedName) {
         content = content.replace(/href="css\/fontawesome(?:\.[0-9a-f]{10})?\.min\.css"/g, `href="css/${faCssHashedName}"`);
       }
+      content = ensureHeadPerf(content);
       for (const [name, hashed] of Object.entries(pageScriptMap)) {
         content = content.replace(new RegExp(`src="js/${name}(?:\\.[0-9a-f]{10}\\.min)?\\.js"`, 'g'), `src="js/${hashed}"`);
       }
