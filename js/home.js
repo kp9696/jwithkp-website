@@ -132,5 +132,60 @@
     });
   })();
 
+  // 6. Phones only: the stage cards open one at a time and the enterprise / open-source
+  // table opens row by row. The markup is unchanged, so without JavaScript (or on a wider
+  // screen) everything stays open. The toggle is a transparent button laid over the card or
+  // row heading, so the heading keeps its own semantics.
+  (function () {
+    var mq = window.matchMedia('(max-width: 768px)');
+    var groups = [
+      {
+        items: '.hp-stage-grid .hp-stage-card', head: '.hp-stage-head', exclusive: true,
+        label: function (el) {
+          var b = el.querySelector('.hp-stage-badge'), h = el.querySelector('h3');
+          return (b ? b.textContent.trim() + ': ' : '') + (h ? h.textContent.trim() : '');
+        }
+      },
+      {
+        items: '.hp-compare tbody tr', head: 'th', exclusive: false,
+        label: function (el) { return el.querySelector('th').textContent.trim(); }
+      }
+    ];
+    function setOpen(item, open) {
+      item.classList.toggle('is-open', open);
+      var b = item.querySelector('.hp-collapse-toggle');
+      if (b) b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function enable(g) {
+      var items = Array.prototype.slice.call(document.querySelectorAll(g.items));
+      items.forEach(function (item, i) {
+        var head = item.querySelector(g.head);
+        if (!head || item.classList.contains('is-collapsible')) return;
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'hp-collapse-toggle';
+        btn.setAttribute('aria-label', g.label(item));
+        btn.addEventListener('click', function () {
+          var open = !item.classList.contains('is-open');
+          if (g.exclusive && open) items.forEach(function (other) { if (other !== item) setOpen(other, false); });
+          setOpen(item, open);
+        });
+        head.appendChild(btn);
+        item.classList.add('is-collapsible');
+        setOpen(item, i === 0);
+      });
+    }
+    function disable(g) {
+      document.querySelectorAll(g.items).forEach(function (item) {
+        var b = item.querySelector('.hp-collapse-toggle');
+        if (b) b.remove();
+        item.classList.remove('is-collapsible', 'is-open');
+      });
+    }
+    function apply() { groups.forEach(mq.matches ? enable : disable); }
+    apply();
+    if (mq.addEventListener) mq.addEventListener('change', apply); else mq.addListener(apply);
+  })();
+
 })();
 

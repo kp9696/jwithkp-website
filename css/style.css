@@ -5634,3 +5634,115 @@ mark.todo-marker {
 @media (max-width: 960px) {
   .est-bar-visible .whatsapp-float { bottom: 7.25rem; }
 }
+
+/* =====================================================================
+   Home page on phones: the same content, laid out more tightly.
+   Measured on a 390px screen the page was about 18,300px (21.7 screens).
+   The stage cards and the enterprise / open-source table now open one
+   at a time (home.js adds the toggles on phones only; without
+   JavaScript everything stays open), the blog row scrolls sideways, and
+   cards, timeline, trust strip and footer links use less height.
+   Nothing is removed from the page.
+   ===================================================================== */
+.hp-stage-card.is-collapsible .hp-stage-head,
+.hp-compare tr.is-collapsible th { position: relative; padding-right: 2.6rem; }
+.hp-collapse-toggle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: inherit;
+  cursor: pointer;
+}
+.hp-collapse-toggle:focus-visible { outline: 3px solid var(--hrms-primary); outline-offset: -3px; }
+.hp-stage-card.is-collapsible .hp-stage-head::after,
+.hp-compare tr.is-collapsible th::after {
+  content: "";
+  position: absolute;
+  right: 1.1rem;
+  top: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--hrms-text-secondary);
+  border-bottom: 2px solid var(--hrms-text-secondary);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+.hp-stage-card.is-collapsible.is-open .hp-stage-head::after,
+.hp-compare tr.is-collapsible.is-open th::after { transform: translateY(-30%) rotate(-135deg); }
+.hp-stage-card.is-collapsible:not(.is-open) .hp-stage-head { margin-bottom: 0; }
+.hp-stage-card.is-collapsible:not(.is-open) > :not(.hp-stage-head) { display: none; }
+.hp-compare tr.is-collapsible:not(.is-open) td { display: none; }
+
+@media (max-width: 768px) {
+  .hp-hero { padding: 6.25rem 0 2.25rem; min-height: 0; }
+  .hp-hero-grid { gap: 1.5rem; }
+  .hp-hero-title { margin-bottom: 1rem; }
+  .hp-hero-desc { font-size: 1.02rem; line-height: 1.55; margin-bottom: 1.25rem; }
+  .hp-day1-card { padding: 1.25rem 1.25rem 1.1rem; }
+  .hp-day1-head { margin-bottom: 0.9rem; }
+  .hp-stats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .hp-stat-card { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 0.85rem; }
+  .hp-stat-icon { width: 34px; height: 34px; border-radius: 10px; font-size: 1rem; }
+  .hp-stat-info .hp-stat-value { font-size: 0.98rem; }
+  .hp-stat-info p { font-size: 0.8125rem; line-height: 1.4; margin: 0.15rem 0 0; }
+
+  .page-section { padding-block: 0.5rem 2.25rem; }
+  .section-head { margin-bottom: 1.25rem; }
+  .hp-stage-grid, .hp-compare-wrap, .hp-services-grid, .hp-path-grid, .hp-blog-grid { margin-top: 1.25rem; }
+  .hp-stage-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .hp-stage-card { padding: 1.1rem 1.25rem; }
+  .hp-path-card { padding: 1.35rem; }
+  .hp-path-card .hp-service-icon-wrapper { margin-bottom: 0.8rem; }
+  .hp-path-card .hp-check-list { margin-bottom: 1.1rem; }
+  .hp-service-card { padding: 1.25rem; }
+  .hp-service-icon-wrapper { width: 44px; height: 44px; margin-bottom: 0.85rem; font-size: 1.1rem; }
+  .hp-service-card h3 { margin-bottom: 0.4rem; }
+  .hp-founder-card { margin-top: 1.25rem; padding: 1.25rem; gap: 1rem; }
+
+  .hp-timeline-line { display: none; }
+  .hp-timeline-grid { gap: 1rem; }
+  .hp-timeline-step { display: grid; grid-template-columns: 44px 1fr; column-gap: 0.9rem; align-items: start; text-align: left; }
+  .hp-timeline-icon { grid-row: 1 / span 2; width: 44px; height: 44px; margin: 0; border-width: 2px; font-size: 1.05rem; }
+  .hp-timeline-step h3 { margin: 0.1rem 0 0.15rem; }
+  .hp-timeline-step p { max-width: none; margin: 0; font-size: 0.9rem; }
+
+  .hp-blog-grid {
+    display: flex;
+    gap: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding: 0.25rem 1rem 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hp-blog-card { flex: 0 0 82%; scroll-snap-align: start; }
+  .hp-blog-card img { height: 150px; }
+  .hp-blog-card-body { padding: 1.1rem; }
+
+  /* result and project cards: icon beside the text instead of above it */
+  .hp-services-grid--3 { gap: 0.75rem; }
+  .hp-services-grid--3 .hp-service-card { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 0.9rem; align-content: start; }
+  .hp-services-grid--3 .hp-service-icon-wrapper { grid-column: 1; grid-row: 1 / span 2; margin: 0; }
+  .hp-services-grid--3 .hp-service-card > h3,
+  .hp-services-grid--3 .hp-service-card > p:not(.hp-estimate-note) { grid-column: 2; }
+  .hp-services-grid--3 .hp-service-card > p:not(.hp-estimate-note) { margin: 0; font-size: 0.95rem; line-height: 1.5; }
+  .hp-services-grid--3 .hp-service-card > .hp-estimate-note,
+  .hp-services-grid--3 .hp-service-card > .btn { grid-column: 1 / -1; }
+  .hp-services-grid--3 .hp-service-card > .hp-estimate-note { margin: 0.75rem 0 0; }
+  .hp-services-grid--3 .hp-service-card > .btn { margin-top: 0.85rem; }
+
+  .hp-trusted-logos ~ .page-section { contain-intrinsic-size: auto 800px; }
+}
+
+/* Footer link columns sit two across on phones (shared by every page) */
+@media (max-width: 700px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; }
+  .footer-company, .footer-newsletter { grid-column: 1 / -1; }
+}
