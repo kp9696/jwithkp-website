@@ -4870,7 +4870,7 @@ mark.todo-marker {
   position: fixed;
   left: 0;
   bottom: 0;
-  z-index: 2000;
+  z-index: 1100; /* below the sticky bars (1150, 1200), so it never hides them */
   background: #fde68a;
   color: #78350f;
   font-size: 0.72rem;
@@ -5502,3 +5502,114 @@ mark.todo-marker {
    nowrap on its links. That stopped the descriptions wrapping and made them run
    into the next column, so wrapping is switched back on for the items. */
 .nav-menu .mega-menu-item { white-space: normal; }
+
+/* ===== Mobile header: no unlabelled icon, 44px targets, a real call to action ===== */
+.nav-menu .nav-menu-cta,
+.nav-menu .nav-menu-hrms { display: none; }
+
+@media (max-width: 1100px) {
+  /* HRMS is a separate product: in the hamburger layout it becomes a small link in
+     the menu instead of an unlabelled arrow competing with the main action. */
+  .nav-right .nav-hrms-btn { display: none; }
+  .theme-toggle,
+  .menu-toggle { width: 44px; height: 44px; }
+  .mega-menu-toggle { min-width: 44px; min-height: 44px; }
+
+  .nav-menu {
+    max-height: calc(100vh - 72px);
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .nav-menu .nav-menu-cta { display: block; margin-top: 0.75rem; }
+  .nav-menu .nav-menu-cta .btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0.95rem 1rem;
+    color: #fff;
+    text-align: center;
+  }
+  .nav-menu .nav-menu-hrms {
+    display: block;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .nav-menu .nav-menu-hrms a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+}
+
+/* ===== Estimator: summary bar while the options are being changed (phones and tablets) ===== */
+.est-sticky { display: none; }
+#est-results { scroll-margin-top: 84px; }
+@media (max-width: 960px) {
+  .est-sticky {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: center;
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 1150;
+    padding: 0.6rem 0.6rem 0.6rem 0.9rem;
+    background: rgba(var(--bg-primary-rgb), 0.97);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(calc(100% + 1.5rem));
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+  }
+  .est-sticky.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .cookie-banner-open .est-sticky { opacity: 0; visibility: hidden; }
+  .est-sticky-item { margin: 0; min-width: 0; }
+  .est-sticky-item span {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--hrms-text-secondary);
+  }
+  .est-sticky-item strong {
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.25;
+    color: var(--hrms-text-heading);
+  }
+  .est-sticky-link {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--hrms-primary);
+    color: #fff;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .est-sticky, .est-sticky.is-visible { transition: none; }
+}
+@media print { .est-sticky { display: none !important; } }
+
+/* Active nav link on a light background: #06b6d4 on white is only 2.4:1 */
+[data-theme="light"] .nav-menu a.active,
+[data-theme="light"] .nav-menu a.active:hover { color: #0e7490; }
+
+/* Lift the WhatsApp button clear of the estimator bar (it is taller than the home page CTA bar) */
+@media (max-width: 960px) {
+  .est-bar-visible .whatsapp-float { bottom: 7.25rem; }
+}

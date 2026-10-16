@@ -173,6 +173,11 @@
     $('est-ent-year').textContent = 'About ' + range(r.ent.lo * 12, r.ent.hi * 12) + ' per year';
     $('est-os-range').textContent = range(r.os.lo, r.os.hi) + ' per month';
     $('est-os-year').textContent = 'About ' + range(r.os.lo * 12, r.os.hi * 12) + ' per year';
+    // The sticky bar repeats the two ranges (it is not a live region, so nothing is announced twice).
+    if ($('est-sticky-ent')) {
+      $('est-sticky-ent').textContent = range(r.ent.lo, r.ent.hi);
+      $('est-sticky-os').textContent = range(r.os.lo, r.os.hi);
+    }
     $('est-verdict').textContent = verdict(r);
     $('est-people').textContent = r.band[2];
     $('est-rows').innerHTML = r.rows.map(function (row) {
@@ -200,9 +205,29 @@
     for (var j = 0; j < fx.length; j++) fx[j].textContent = DATA.fx.label;
   }
 
+  // On a phone the results sit below the options. The summary bar shows while the
+  // options are on screen and the two totals are not (at least half of them), and
+  // steps aside otherwise, so it never covers the numbers it repeats.
+  function watchSummaryBar() {
+    var bar = $('est-sticky'), form = $('est-form'), totals = document.querySelector('.est-totals');
+    if (!bar || !form || !totals || !('IntersectionObserver' in window)) return;
+    var formIn = false, totalsIn = false;
+    function update() {
+      var show = formIn && !totalsIn;
+      bar.classList.toggle('is-visible', show);
+      document.body.classList.toggle('sticky-cta-visible', show);
+      document.body.classList.toggle('est-bar-visible', show);
+    }
+    // The form only counts once it reaches the upper part of the screen, so the bar
+    // does not cover the page the moment it loads.
+    new IntersectionObserver(function (es) { formIn = es[es.length - 1].isIntersecting; update(); }, { rootMargin: '0px 0px -45% 0px' }).observe(form);
+    new IntersectionObserver(function (es) { totalsIn = es[es.length - 1].intersectionRatio >= 0.5; update(); }, { threshold: [0, 0.5, 1] }).observe(totals);
+  }
+
   function init() {
     if (!$('est-form')) return;
     renderSources();
+    watchSummaryBar();
     ['est-size', 'est-work', 'est-hosting', 'est-apps', 'est-copilot', 'est-security'].forEach(function (id) {
       $(id).addEventListener('change', render);
     });
