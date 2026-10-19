@@ -56,7 +56,7 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
   <link rel="preload" href="/css/webfonts/space-grotesk-latin.8f6c221f42.woff2" as="font" type="font/woff2" crossorigin>
   <!-- /HEAD_PERF -->
   <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
-  <link rel="stylesheet" href="css/style.433de4d99b.min.css">
+  <link rel="stylesheet" href="css/style.9ea5ce54f2.min.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -478,7 +478,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="results-cta">
             <!-- BLOCK:book-call-button -->
-<a href="contact?intent=call#smartContactForm" class="btn btn-primary">Book a free 30-min call</a>
+<a data-book-call href="contact?intent=call#smartContactForm" class="btn btn-primary">Book a free 30-min call</a>
 <!-- /BLOCK:book-call-button -->
           </div>
           <p class="disclaimer">Based on the reductions you assume. It is not a promise of results, and not a result from a past client. Final savings depend on architecture, scale, support model and migration scope. <a href="#how-we-calculate">How we calculate it</a>.</p>
@@ -501,7 +501,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>We can turn this rough estimate into a practical recommendation with migration phases, budget range, rollout risks, and operational support options.</p>
           <div class="results-cta text-left">
             <!-- BLOCK:book-call-button-secondary -->
-<a href="contact?intent=call#smartContactForm" class="btn btn-secondary">Book a free 30-min call</a>
+<a data-book-call href="contact?intent=call#smartContactForm" class="btn btn-secondary">Book a free 30-min call</a>
 <!-- /BLOCK:book-call-button-secondary -->
           </div>
         </section>
@@ -585,6 +585,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
   </main>
+
+  <!-- BLOCK:mobile-cta -->
+  <div class="sticky-mobile-cta" role="region" aria-label="Quick contact">
+    <a href="tel:+917982912207" class="btn btn-secondary"><i class="fas fa-phone" aria-hidden="true"></i> Call Us</a>
+    <a href="contact?intent=call#smartContactForm" class="btn btn-primary">Book a free call</a>
+  </div>
+<!-- /BLOCK:mobile-cta -->
 
     <!-- FOOTER_START -->
 <footer class="footer" role="contentinfo">
@@ -809,7 +816,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       calculateROI();
     });
   </script>
-  <script src="js/script.334583c29f.min.js" defer></script>
+  <script src="js/script.73b0f1dd4e.min.js" defer></script>
 <!-- PREVIEW_RIBBON --><aside class="preview-ribbon" aria-label="Preview build notice">Preview build &middot; shows [ADD &hellip;] placeholders &middot; not for production</aside><!-- /PREVIEW_RIBBON -->
 </body>
 </html>

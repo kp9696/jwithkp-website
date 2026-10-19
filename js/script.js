@@ -501,14 +501,48 @@
   // Shown only once the hero's own buttons have scrolled out of view, so it
   // never sits on top of them. The body class also lifts the WhatsApp button
   // clear of the bar (see .sticky-cta-visible in the stylesheet).
+  // On the home page that moment is when the hero buttons leave the screen. On the
+  // other content pages it is when the hero has scrolled away, and the bar steps
+  // aside again while an in-page call button or the footer is on screen, or while
+  // a form field is focused (so it never sits over a field or the on-screen keyboard).
   const stickyCta = document.querySelector('.sticky-mobile-cta');
-  const heroActions = document.querySelector('.hp-hero-actions');
-  if (stickyCta && heroActions && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      const heroButtonsVisible = entries[0].isIntersecting;
-      stickyCta.classList.toggle('is-visible', !heroButtonsVisible);
-      document.body.classList.toggle('sticky-cta-visible', !heroButtonsVisible);
-    }, { threshold: 0 }).observe(heroActions);
+  if (stickyCta && 'IntersectionObserver' in window) {
+    const setBar = function (show) {
+      stickyCta.classList.toggle('is-visible', show);
+      document.body.classList.toggle('sticky-cta-visible', show);
+    };
+    const heroActions = document.querySelector('.hp-hero-actions');
+    if (heroActions) {
+      new IntersectionObserver(function (entries) {
+        setBar(!entries[0].isIntersecting);
+      }, { threshold: 0 }).observe(heroActions);
+    } else {
+      const hero = document.querySelector('header.hero');
+      const covered = new Set();
+      let pastHero = !hero;
+      let typing = false;
+      const update = function () { setBar(pastHero && !typing && covered.size === 0); };
+      if (hero) {
+        new IntersectionObserver(function (entries) {
+          const entry = entries[entries.length - 1];
+          pastHero = !entry.isIntersecting && entry.boundingClientRect.bottom <= 0;
+          update();
+        }).observe(hero);
+      }
+      // The extra 120px below the screen hides the bar just before a button arrives.
+      const watcher = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) covered.add(entry.target); else covered.delete(entry.target);
+        });
+        update();
+      }, { rootMargin: '0px 0px 120px 0px' });
+      document.querySelectorAll('[data-book-call], .footer').forEach(function (el) { watcher.observe(el); });
+      const isField = function (el) {
+        return !!el && /^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName) && !/^(checkbox|radio|button|submit)$/.test(el.type);
+      };
+      document.addEventListener('focusin', function (e) { typing = isField(e.target); update(); });
+      document.addEventListener('focusout', function () { typing = false; update(); });
+    }
   }
 
   // ── Hero SVG Crossfade (10 s rotation) ──────────────────────────────────

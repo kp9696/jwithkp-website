@@ -5369,7 +5369,7 @@ mark.todo-marker {
   .chk-toolbar { padding: 1rem 1.1rem; }
 }
 @media print {
-  .navbar, footer, .whatsapp-float, .cookie-banner, .preview-ribbon, .chk-actions, .cta-panel, #checklist-faq, .hero .section-badge { display: none !important; }
+  .navbar, footer, .whatsapp-float, .sticky-mobile-cta, .cookie-banner, .preview-ribbon, .chk-actions, .cta-panel, #checklist-faq, .hero .section-badge { display: none !important; }
   .chk-group { break-inside: avoid; box-shadow: none; }
   .chk-toolbar { box-shadow: none; }
   body { background: #fff !important; color: #000 !important; }
@@ -5784,3 +5784,15 @@ mark.todo-marker {
 .newsletter-status[hidden] { display: none; }
 .newsletter-status.is-ok { border-left-color: #10b981; }
 .newsletter-status.is-error { border-left-color: #ef4444; }
+
+/* Sticky call bar on very narrow phones: keep both labels on one line */
+.sticky-mobile-cta .btn { white-space: nowrap; }
+@media (max-width: 360px) {
+  .sticky-mobile-cta { gap: 0.45rem; padding: 0.5rem; }
+  .sticky-mobile-cta .btn { padding: 0.75rem 0.4rem; font-size: 0.85rem; }
+}
+
+/* The open mobile menu has its own call button, so the bar steps aside while it is open */
+@media (max-width: 768px) {
+  body:has(#menuToggle[aria-expanded="true"]) .sticky-mobile-cta { opacity: 0; visibility: hidden; }
+}
