@@ -614,4 +614,109 @@
     });
   })();
 
+  // 8. Phones only: Services and Technology Stack are long runs of similar cards. On a phone each
+  // card becomes a tap-to-open row, and the two image galleries scroll sideways. The markup is
+  // unchanged, so without JavaScript, or on a wider screen, everything stays open. The title (and
+  // the logo, icon or step number next to it) is moved into a head row with a transparent button
+  // laid over it, and moved back on wider screens. The first card of each run starts open. A link
+  // that points at a closed card (for example services#virtualization) opens it.
+  (function () {
+    var mq = window.matchMedia('(max-width: 768px)');
+    var groups = [
+      { scope: '.stack-page .tech-grid', item: '.tech-card', parts: ['.tech-logo', 'h4'], open: 1 },
+      { scope: '.services-section .service-grid', item: '.service-card', parts: ['.service-icon', 'h3'], open: 1 },
+      { scope: '.services-section .svc-method-grid', item: '.svc-method-card', parts: ['.svc-method-num', 'h3', '.svc-method-time'], open: 1 },
+      { scope: '.services-section .svc-faq-grid, .stack-page .svc-faq-grid', item: '.svc-faq-card', parts: ['h3'], open: 1 },
+      { scope: '.services-section #support-terms', self: true, parts: ['h4'], open: 0 }
+    ];
+    var carousels = [
+      { sel: '.stack-page .visual-showcase', label: 'Technology visuals, scroll sideways' },
+      { sel: '.stack-page .solution-gallery-grid', label: 'Solution visuals, scroll sideways' }
+    ];
+
+    function direct(parent, selector) {
+      return Array.prototype.filter.call(parent.children, function (c) { return c.matches(selector); })[0] || null;
+    }
+    function setOpen(item, open) {
+      item.classList.toggle('is-open', open);
+      var b = item.querySelector(':scope > .collapse-head > .collapse-toggle');
+      if (b) b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function enableItem(item, parts, open) {
+      if (item.classList.contains('is-collapsible')) return;
+      var found = parts.map(function (sel) { return direct(item, sel); }).filter(Boolean);
+      var title = found.filter(function (el) { return /^H[1-6]$/.test(el.tagName); })[0];
+      if (!title) return;
+      var head = document.createElement('div');
+      head.className = 'collapse-head';
+      item.insertBefore(head, found[0]);
+      found.forEach(function (el) { head.appendChild(el); });
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'collapse-toggle';
+      btn.setAttribute('aria-label', title.textContent.replace(/\s+/g, ' ').trim());
+      btn.addEventListener('click', function () { setOpen(item, !item.classList.contains('is-open')); });
+      head.appendChild(btn);
+      item.classList.add('is-collapsible');
+      setOpen(item, open);
+    }
+    function disableItem(item) {
+      var head = direct(item, '.collapse-head');
+      if (!head) return;
+      Array.prototype.slice.call(head.children).forEach(function (c) {
+        if (c.classList.contains('collapse-toggle')) c.remove(); else item.insertBefore(c, head);
+      });
+      head.remove();
+      item.classList.remove('is-collapsible', 'is-open');
+    }
+    function itemsOf(g) {
+      var out = [];
+      document.querySelectorAll(g.scope).forEach(function (scope) {
+        if (g.self) { out.push({ item: scope, first: true }); return; }
+        var n = 0;
+        Array.prototype.forEach.call(scope.children, function (c) { if (c.matches(g.item)) out.push({ item: c, first: n++ < g.open }); });
+      });
+      return out;
+    }
+    function apply() {
+      var on = mq.matches;
+      groups.forEach(function (g) {
+        itemsOf(g).forEach(function (x) { if (on) enableItem(x.item, g.parts, g.self ? g.open > 0 : x.first); else disableItem(x.item); });
+      });
+      carousels.forEach(function (c) {
+        document.querySelectorAll(c.sel).forEach(function (el) {
+          if (on) { el.setAttribute('tabindex', '0'); el.setAttribute('role', 'group'); el.setAttribute('aria-label', c.label); }
+          else { el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('aria-label'); }
+        });
+      });
+      if (on) openHash();
+    }
+    // once the page has finished loading the layout above the target can still move, so the
+    // first call after load scrolls again even if the card is already open
+    function openHash(rescroll) {
+      var id = '';
+      try { id = decodeURIComponent((window.location.hash || '').slice(1)); } catch (e) { return; }
+      var target = id && document.getElementById(id);
+      var card = target && target.closest('.is-collapsible');
+      if (!card) return;
+      var wasOpen = card.classList.contains('is-open');
+      if (!wasOpen) setOpen(card, true);
+      if (wasOpen && rescroll !== true) return;
+      // cards slide up into place as they appear; show the target in its final position first
+      for (var el = target; el && el !== document.body; el = el.parentElement) {
+        if (el.hasAttribute('data-aos')) {
+          el.style.transition = 'none';
+          el.classList.add('aos-animate');
+          void el.offsetHeight;
+          el.style.transition = '';
+        }
+      }
+      target.scrollIntoView();
+    }
+    apply();
+    window.addEventListener('hashchange', function () { if (mq.matches) openHash(); });
+    window.addEventListener('load', function () { if (mq.matches) openHash(true); });
+    if (mq.addEventListener) mq.addEventListener('change', apply); else mq.addListener(apply);
+  })();
+
 })();

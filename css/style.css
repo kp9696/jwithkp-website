@@ -5796,3 +5796,189 @@ mark.todo-marker {
 @media (max-width: 768px) {
   body:has(#menuToggle[aria-expanded="true"]) .sticky-mobile-cta { opacity: 0; visibility: hidden; }
 }
+
+/* =====================================================================
+   Services and Technology Stack on phones: the same content, in less height.
+   Measured on a 390px screen Services was about 20,000px (23.7 screens) and
+   Technology Stack about 16,200px (19.2). script.js turns the long runs of
+   cards (technology cards, service cards, project steps, FAQ answers and the
+   support terms) into tap-to-open rows on phones only and makes the two image
+   galleries scroll sideways; without JavaScript, or on a wider screen,
+   everything stays open. Nothing is removed from the page.
+   ===================================================================== */
+.collapse-head { position: relative; }
+.collapse-toggle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: inherit;
+  cursor: pointer;
+}
+.collapse-toggle:focus-visible { outline: 3px solid var(--hrms-primary); outline-offset: -3px; }
+.is-collapsible > .collapse-head { padding-right: 2.2rem; }
+.is-collapsible > .collapse-head::after {
+  content: "";
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--hrms-text-secondary);
+  border-bottom: 2px solid var(--hrms-text-secondary);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+.is-collapsible.is-open > .collapse-head::after { transform: translateY(-30%) rotate(-135deg); }
+.services-section .is-collapsible:not(.is-open) > :not(.collapse-head),
+.stack-page .is-collapsible:not(.is-open) > :not(.collapse-head) { display: none; }
+.services-section .notice-card.is-collapsible > .collapse-head h4 { margin: 0; }
+.services-section .notice-card.is-open > .collapse-head { margin-bottom: 0.6rem; }
+.services-section .service-card,
+.services-section .svc-faq-card,
+.services-section #support-terms,
+.stack-page .tech-card,
+.stack-page .svc-faq-card { scroll-margin-top: 90px; }
+.stack-page [role="group"][tabindex]:focus-visible { outline: 3px solid var(--hrms-primary); outline-offset: 2px; border-radius: 12px; }
+
+@media (max-width: 768px) {
+  /* ---- Services: hero ---- */
+  .hero--services { padding-bottom: 1.5rem; }
+  .hero--services .hero-grid { gap: 0.75rem; margin-top: 1.25rem; }
+  .hero--services .hero-panel { padding: 1.05rem 1.15rem; border-radius: 18px; }
+  .hero--services .hero-panel h3 { font-size: 1.05rem; margin: 0; }
+  .hero--services .hero-panel ul:not(.svc-chooser) { margin: 0.6rem 0 0 1.1rem; }
+  .hero--services .hero-panel li { margin-bottom: 0.3rem; font-size: 0.93rem; line-height: 1.45; }
+  .hero--services .svc-chooser { grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0.7rem 0 0; }
+  .hero--services .svc-chooser a { padding: 0.55rem 1.5rem 0.55rem 0.65rem; font-size: 0.85rem; line-height: 1.35; height: 100%; }
+  .hero--services .svc-chooser a::after { right: 0.5rem; }
+
+  /* ---- Services: the four offers ---- */
+  .services-section .offer-block { padding: 2rem 0 0.25rem; }
+  .services-section .offer-block .section-head { margin-bottom: 1rem; }
+  .services-section .offer-block .section-head p { font-size: 0.95rem; line-height: 1.5; }
+  .services-section .offer-grid { gap: 0.75rem; }
+  .services-section .offer-card,
+  .services-section .notice-card { padding: 1.05rem 1.15rem; }
+  .services-section .offer-card h3,
+  .services-section .notice-card h4 { font-size: 1.02rem; margin-bottom: 0.6rem; }
+  .services-section .offer-card h3:not(:first-child) { margin-top: 1.1rem; }
+  .services-section .hp-check-list li { margin-bottom: 0.35rem; font-size: 0.93rem; line-height: 1.45; }
+  .services-section .offer-terms { margin-bottom: 0.6rem; }
+  .services-section .offer-terms > div { padding: 0.45rem 0; gap: 0.1rem; font-size: 0.9rem; }
+  .services-section .offer-card--terms .btn-row { margin-top: 0.9rem; }
+  .services-section .offer-subhead { margin: 1.4rem 0 0.4rem; }
+  .services-section .offer-subhead + .hp-fineprint { margin-bottom: 0.7rem; }
+  .services-section .tier-grid { gap: 0.6rem; }
+  .services-section .tier-card { padding: 0.95rem 1.1rem; }
+  .services-section .tier-card h4 { margin-bottom: 0.15rem; font-size: 1.05rem; }
+  .services-section .tier-for { margin-bottom: 0.4rem; font-size: 0.88rem; }
+  .services-section .tier-price { margin-bottom: 0.5rem; font-size: 1.05rem; }
+  .services-section .offer-note { margin-top: 0.9rem; padding: 0.8rem 1rem; font-size: 0.9rem; }
+  .services-section .offer-block .offer-panel { margin-top: 1rem; padding: 1.1rem 1.15rem; }
+  .services-section .service-grid { gap: 0.6rem; }
+  .services-section .service-card { padding: 0.9rem 1.1rem; }
+  .services-section .service-card.is-collapsible > .collapse-head { display: flex; align-items: center; gap: 0.8rem; }
+  .services-section .service-card.is-collapsible .service-icon { width: 40px; height: 40px; flex: 0 0 40px; margin: 0; border-radius: 12px; font-size: 1rem; }
+  .services-section .service-card.is-collapsible h3 { margin: 0; font-size: 1.05rem; }
+  .services-section .service-card.is-open > p { margin: 0.8rem 0 0; font-size: 0.95rem; line-height: 1.5; }
+  .services-section .service-card.is-open ul { margin-top: 0.6rem; }
+  .services-section .service-card li { margin-bottom: 0.3rem; font-size: 0.93rem; line-height: 1.45; }
+  .services-section .service-card li::before { top: 0.55rem; }
+
+  /* ---- Services: how a project runs, trust strip, FAQ ---- */
+  .services-section .page-section { padding: 2rem 0; }
+  .services-section .page-section .section-head p { font-size: 0.95rem; line-height: 1.5; }
+  .services-section .svc-method-grid,
+  .services-section .svc-faq-grid,
+  .stack-page .svc-faq-grid { gap: 0.6rem; margin-top: 1.25rem; }
+  .services-section .svc-method-card,
+  .services-section .svc-faq-card,
+  .stack-page .svc-faq-card { padding: 0.9rem 1.1rem; }
+  .services-section .svc-method-card.is-collapsible > .collapse-head { display: grid; grid-template-columns: 2.6rem 1fr; column-gap: 0.7rem; align-items: center; }
+  .services-section .svc-method-card.is-collapsible .svc-method-num { grid-row: 1 / span 2; margin: 0; font-size: 1.7rem; }
+  .services-section .svc-method-card.is-collapsible h3 { grid-column: 2; margin: 0; font-size: 1.05rem; }
+  .services-section .svc-method-card.is-collapsible .svc-method-time { grid-column: 2; justify-self: start; margin: 0.3rem 0 0; }
+  .services-section .svc-method-card.is-open > ul { margin: 0.8rem 0 0.8rem; }
+  .services-section .svc-method-deliver { padding: 0.6rem 0.8rem; }
+  .services-section .trust-strip { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .services-section .trust-badge { padding: 0.75rem 0.85rem; }
+  .services-section .trust-badge strong { font-size: 0.93rem; }
+  .services-section .trust-badge span { font-size: 0.85rem; line-height: 1.4; }
+  .services-section .svc-faq-card.is-collapsible h3,
+  .stack-page .svc-faq-card.is-collapsible h3 { margin: 0; font-size: 1rem; line-height: 1.35; }
+  .services-section .svc-faq-card.is-open > p,
+  .stack-page .svc-faq-card.is-open > p { margin-top: 0.6rem; }
+
+  /* ---- Services: quote form, resource links, closing call to action ---- */
+  .services-section .quote-panel { padding: 1.15rem; }
+  .services-section .quote-panel > p { margin-bottom: 0.9rem; font-size: 0.95rem; line-height: 1.5; }
+  .services-section .quote-form { gap: 0.7rem; }
+  .services-section .quote-form input,
+  .services-section .quote-form select,
+  .services-section .quote-form textarea { padding-top: 0.7rem; padding-bottom: 0.7rem; }
+  .services-section .quote-form textarea { min-height: 96px; }
+  .services-section .resource-hub { padding: 1.15rem; }
+  .services-section .resource-links { gap: 0.6rem; }
+  .services-section .resource-link-card { padding: 0.8rem 1rem; }
+  .services-section .resource-link-card h4 { margin-bottom: 0.25rem; }
+  .services-section .resource-link-card p { margin-bottom: 0.4rem; font-size: 0.9rem; line-height: 1.45; }
+  .services-section .cta-panel { padding: 1.15rem; }
+
+  /* ---- Technology Stack ---- */
+  .hero--stack { padding-bottom: 1.5rem; }
+  .hero--stack .hero-grid { gap: 0.75rem; margin-top: 1.25rem; }
+  .hero--stack .hero-panel { padding: 1.05rem 1.15rem; border-radius: 18px; }
+  .hero--stack .hero-panel h3 { font-size: 1.05rem; margin: 0; }
+  .hero--stack .hero-panel ul { margin: 0.6rem 0 0 1.1rem; }
+  .hero--stack .hero-panel li { margin-bottom: 0.3rem; font-size: 0.93rem; line-height: 1.45; }
+  .hero--stack .hero-visual { padding: 0; }
+  .hero--stack .hero-visual img { min-height: 0; height: 210px; }
+  .hero--stack .hero-visual-copy { padding: 1rem 1.15rem; }
+  .stack-page .section-head { margin-bottom: 1rem; }
+  .stack-page .section-head p { font-size: 0.95rem; line-height: 1.5; }
+
+  .stack-page .visual-showcase,
+  .stack-page .solution-gallery-grid {
+    display: flex;
+    gap: 0.85rem;
+    margin: 1rem -1rem 0;
+    padding: 0.25rem 1rem 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .stack-page .visual-showcase { margin-bottom: 1rem; }
+  .stack-page .visual-card,
+  .stack-page .solution-card { flex: 0 0 80%; scroll-snap-align: start; border-radius: 18px; }
+  .stack-page .visual-card img,
+  .stack-page .solution-card img { height: 150px; }
+  .stack-page .visual-copy,
+  .stack-page .solution-card-copy { padding: 0.9rem 1.05rem 1.05rem; }
+  .stack-page .visual-copy h3,
+  .stack-page .solution-card-copy h3 { margin-bottom: 0.35rem; font-size: 1.05rem; }
+  .stack-page .visual-copy p,
+  .stack-page .solution-card-copy p { font-size: 0.92rem; line-height: 1.5; margin: 0; }
+  .stack-page .solution-gallery { margin: 1.5rem 0; }
+  .stack-page .solution-gallery-head p { font-size: 0.95rem; line-height: 1.5; }
+
+  .stack-page .stack-category { margin-top: 1.75rem; }
+  .stack-page .category-title { margin-bottom: 0.9rem; font-size: 1.2rem; }
+  .stack-page .tech-grid { gap: 0.55rem; }
+  .stack-page .tech-card { padding: 0.8rem 1rem; border-radius: 16px; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; }
+  .stack-page .tech-card:hover { transform: none; }
+  .stack-page .tech-card.is-collapsible > .collapse-head { display: flex; align-items: center; gap: 0.9rem; min-height: 44px; }
+  .stack-page .tech-card.is-collapsible .tech-logo { width: 76px; height: 40px; flex: 0 0 76px; margin: 0; }
+  .stack-page .tech-card.is-collapsible .tech-logo img { max-width: 76px; max-height: 40px; }
+  .stack-page .tech-card.is-collapsible h4 { margin: 0; font-size: 1.02rem; }
+  .stack-page .tech-card.is-open > p { margin: 0.7rem 0 0.7rem; font-size: 0.92rem; line-height: 1.5; flex: none; }
+  .stack-page .tech-card.is-open > .savings-badge { margin-bottom: 0.45rem; }
+  .stack-page .stack-footer-card { padding: 1.4rem 1.25rem; }
+  .stack-page .stack-footer-copy { font-size: 0.95rem; line-height: 1.55; }
+  .stack-page .page-section--tight { padding-bottom: 1.75rem; }
+}
