@@ -530,4 +530,54 @@
       navigator.serviceWorker.register('/sw.js').catch(function () {});
     });
   }
+  // 7. Newsletter signup (footer, every page). It used to post to FormSubmit's own captcha
+  // page and then land on /contact with no confirmation. It now sends in the page and says
+  // what happened. If sending fails, nothing is lost: the visitor is told to write to us.
+  (function () {
+    var form = document.getElementById('newsletterForm');
+    var status = document.getElementById('newsletterStatus');
+    if (!form || !status) return;
+    var loadedAt = Date.now();
+    var address = (form.action.split('formsubmit.co/')[1] || '').split(/[?#]/)[0];
+
+    function say(message, ok) {
+      status.hidden = false;
+      status.className = 'newsletter-status ' + (ok ? 'is-ok' : 'is-error');
+      status.textContent = message;
+    }
+
+    // Visitors without JavaScript are redirected here by the form's own _next value.
+    if (new URLSearchParams(window.location.search).get('newsletter') === 'thanks') {
+      say('Thanks. Your email is on the list. You can unsubscribe at any time by writing to us.', true);
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      if (form.elements._honey && form.elements._honey.value) return;
+      if (Date.now() - loadedAt < 2500) { say('That was quick. Please try again in a moment.', false); return; }
+      var button = form.querySelector('button[type="submit"]');
+      var label = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Subscribing...';
+      fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email: form.elements.email.value, consent: 'yes', _subject: form.elements._subject.value, _captcha: 'false', page: window.location.pathname })
+      }).then(function (response) {
+        return response.json().catch(function () { return {}; }).then(function (data) {
+          if (!response.ok || data.success === false || data.success === 'false') throw new Error('not accepted');
+        });
+      }).then(function () {
+        form.reset();
+        say('Thanks. Your email is on the list. You can unsubscribe at any time by writing to us.', true);
+      }).catch(function () {
+        say('Sorry, that did not go through. Please try again, or email ' + (address || 'us') + ' and we will add you.', false);
+      }).then(function () {
+        button.disabled = false;
+        button.textContent = label;
+      });
+    });
+  })();
+
 })();

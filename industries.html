@@ -57,7 +57,7 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
   <!-- /HEAD_PERF -->
   <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
 
-  <link rel="stylesheet" href="css/style.6fffb94448.min.css">
+  <link rel="stylesheet" href="css/style.433de4d99b.min.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -308,7 +308,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
 
       <div class="nav-right">
-        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-btn" aria-label="JwithKP HRMS login">HRMS <i class="fas fa-arrow-right"></i></a>
+        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-link">HRMS <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="sr-only"> (JwithKP HRMS, opens in a new tab)</span></a>
+        <a href="contact?intent=call#smartContactForm" class="btn btn-primary nav-cta">Book a free call</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
           <i class="fas fa-moon"></i>
         </button>
@@ -327,7 +328,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1>IT shaped around how <span class="gradient-text">your business works</span></h1>
       <p class="hero-copy">A software startup, a clinic and a factory all need email, secure devices and backups, but for different reasons. This page shows what usually matters in each setting. JwithKP is a new practice, so we describe how we would approach your setup rather than claim sector track records or certifications.</p>
       <div class="btn-row">
-        <a href="contact?intent=call#smartContactForm" class="btn btn-primary">Discuss Your Business</a>
+        <!-- BLOCK:book-call-button -->
+<a href="contact?intent=call#smartContactForm" class="btn btn-primary">Book a free 30-min call</a>
+<!-- /BLOCK:book-call-button -->
         <a href="services" class="btn btn-secondary">See Services</a>
       </div>
     </div>
@@ -445,8 +448,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Share your business type, team size, current tools and biggest constraints. We can help map the right priorities before any implementation begins.</p>
         </div>
         <div class="btn-row">
-          <a href="contact?intent=call#smartContactForm" class="btn btn-primary">Start With Your Setup</a>
-          <a href="it-cost-estimator" class="btn btn-secondary">Estimate My IT Cost</a>
+          <!-- BLOCK:book-call-button -->
+<a href="contact?intent=call#smartContactForm" class="btn btn-primary">Book a free 30-min call</a>
+<!-- /BLOCK:book-call-button -->
+          <a href="it-cost-estimator" class="btn btn-secondary">Estimate my IT cost</a>
         </div>
       </div>
     </div>
@@ -460,7 +465,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="startup-it-checklist">Work through the Startup IT Checklist</a></li>
           <li><a href="technology-stack">See the recommended technology stack</a></li>
           <li><a href="security-practices">Read how we handle security</a></li>
-          <li><a href="contact">Discuss your environment</a></li>
+          <li><!-- BLOCK:book-call-link -->
+<a href="contact?intent=call#smartContactForm">Book a free 30-min call</a>
+<!-- /BLOCK:book-call-link --></li>
         </ul>
       </section>
 
@@ -469,7 +476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="section-head text-center">
         <span class="section-badge">Good to Know</span>
         <h2>How to use this <span class="section-accent">industry page</span></h2>
-        <p class="mx-auto">Use these examples to identify where your environment is most sensitive: uptime, security, multiple locations, collaboration, reporting, or recurring cost control. That makes it easier to decide whether your next step should be a basic setup, a focused pilot, or a broader modernization roadmap.</p>
+        <p class="mx-auto">Use these examples to identify where your environment is most sensitive: uptime, security, multiple locations, collaboration, reporting, or recurring cost control. That makes it easier to decide whether your next step should be a basic setup, a focused pilot, or a broader roadmap.</p>
       </div>
     </div>
     </section>
@@ -569,14 +576,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Practical IT and security tips for founders and small teams, about once a month.</p>
           <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/info@jwithkp.com" method="POST">
             <input type="hidden" name="_subject" value="New Newsletter Subscription — JwithKP">
-            <input type="hidden" name="_captcha" value="true">
-            <input type="hidden" name="_next" value="https://www.jwithkp.com/contact">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.jwithkp.com/?newsletter=thanks">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="sr-only-spam-trap" aria-hidden="true">
             <div class="form-group-inline">
               <input type="email" name="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
               <button type="submit" class="btn btn-hrms-primary btn-sm footer-subscribe-btn">Subscribe</button>
             </div>
             <label class="newsletter-consent"><input type="checkbox" name="consent" value="yes" required> <span>I agree to receive the newsletter by email and can unsubscribe at any time. See the <a href="privacy-policy#newsletter">Privacy Policy</a>.</span></label>
           </form>
+          <p class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite" hidden></p>
         </div>
       </div>
 
@@ -618,7 +627,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- FOOTER_END -->
 
-  <script src="js/script.6de089b341.min.js" defer></script>
+  <script src="js/script.334583c29f.min.js" defer></script>
 <!-- PREVIEW_RIBBON --><aside class="preview-ribbon" aria-label="Preview build notice">Preview build &middot; shows [ADD &hellip;] placeholders &middot; not for production</aside><!-- /PREVIEW_RIBBON -->
 </body>
 </html>

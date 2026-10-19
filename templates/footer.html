@@ -63,14 +63,16 @@
           <p>Practical IT and security tips for founders and small teams, about once a month.</p>
           <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/{{cfg.contact.email|attr}}" method="POST">
             <input type="hidden" name="_subject" value="New Newsletter Subscription — JwithKP">
-            <input type="hidden" name="_captcha" value="true">
-            <input type="hidden" name="_next" value="https://www.jwithkp.com/contact">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.jwithkp.com/?newsletter=thanks">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="sr-only-spam-trap" aria-hidden="true">
             <div class="form-group-inline">
               <input type="email" name="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
               <button type="submit" class="btn btn-hrms-primary btn-sm footer-subscribe-btn">Subscribe</button>
             </div>
             <label class="newsletter-consent"><input type="checkbox" name="consent" value="yes" required> <span>I agree to receive the newsletter by email and can unsubscribe at any time. See the <a href="privacy-policy#newsletter">Privacy Policy</a>.</span></label>
           </form>
+          <p class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite" hidden></p>
         </div>
       </div>
 

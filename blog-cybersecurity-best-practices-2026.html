@@ -145,7 +145,7 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
   <link rel="preload" href="/css/webfonts/space-grotesk-latin.8f6c221f42.woff2" as="font" type="font/woff2" crossorigin>
   <!-- /HEAD_PERF -->
   <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
-  <link rel="stylesheet" href="css/style.6fffb94448.min.css">
+  <link rel="stylesheet" href="css/style.433de4d99b.min.css">
   <script type="application/ld+json" id="entity-graph">
 {
   "@context": "https://schema.org",
@@ -326,7 +326,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
 
       <div class="nav-right">
-        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-btn" aria-label="JwithKP HRMS login">HRMS <i class="fas fa-arrow-right"></i></a>
+        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-link">HRMS <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="sr-only"> (JwithKP HRMS, opens in a new tab)</span></a>
+        <a href="contact?intent=call#smartContactForm" class="btn btn-primary nav-cta">Book a free call</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
           <i class="fas fa-moon"></i>
         </button>
@@ -534,7 +535,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="cta">
         <p>JwithKP helps organizations build practical, scalable <strong>business cybersecurity</strong> — from Wazuh SIEM and pfSense firewall to <strong>endpoint security</strong>, <strong>network security</strong>, Microsoft 365 hardening, and backup and disaster recovery. Whether you are starting from scratch or strengthening an existing setup, we can help you prioritize the right controls for your environment.</p>
         <p>Book a free 30-minute security assessment and get a clear picture of your current risk posture and the highest-impact steps to reduce it.</p>
-        <a class="btn btn-primary" href="contact">Book a Free Security Assessment</a>
+        <!-- BLOCK:book-call-button -->
+<a href="contact?intent=call#smartContactForm" class="btn btn-primary">Book a free 30-min call</a>
+<!-- /BLOCK:book-call-button -->
         <a class="btn btn-secondary" href="technology-stack">See Our Security Stack</a>
         <div class="related-links">
           <h3>Related resources</h3>
@@ -559,7 +562,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="technology-stack">Technology Stack — Wazuh, pfSense, and More</a></li>
         <li><a href="blog-wazuh-security-smb">Wazuh SIEM for SMBs — Practical Guide</a></li>
         <li><a href="roi-calculator">IT Cost and Savings Calculator</a></li>
-        <li><a href="contact">Book a Free Security Assessment</a></li>
+        <li><!-- BLOCK:book-call-link -->
+<a href="contact?intent=call#smartContactForm">Book a free 30-min call</a>
+<!-- /BLOCK:book-call-link --></li>
       </ul>
     </div>
   </section>
@@ -630,14 +635,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Practical IT and security tips for founders and small teams, about once a month.</p>
           <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/info@jwithkp.com" method="POST">
             <input type="hidden" name="_subject" value="New Newsletter Subscription — JwithKP">
-            <input type="hidden" name="_captcha" value="true">
-            <input type="hidden" name="_next" value="https://www.jwithkp.com/contact">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.jwithkp.com/?newsletter=thanks">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="sr-only-spam-trap" aria-hidden="true">
             <div class="form-group-inline">
               <input type="email" name="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
               <button type="submit" class="btn btn-hrms-primary btn-sm footer-subscribe-btn">Subscribe</button>
             </div>
             <label class="newsletter-consent"><input type="checkbox" name="consent" value="yes" required> <span>I agree to receive the newsletter by email and can unsubscribe at any time. See the <a href="privacy-policy#newsletter">Privacy Policy</a>.</span></label>
           </form>
+          <p class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite" hidden></p>
         </div>
       </div>
 
@@ -678,7 +685,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- FOOTER_END -->
-  <script src="js/script.6de089b341.min.js" defer></script>
+  <script src="js/script.334583c29f.min.js" defer></script>
 <!-- PREVIEW_RIBBON --><aside class="preview-ribbon" aria-label="Preview build notice">Preview build &middot; shows [ADD &hellip;] placeholders &middot; not for production</aside><!-- /PREVIEW_RIBBON -->
 </body>
 </html>

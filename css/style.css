@@ -5746,3 +5746,41 @@ mark.todo-marker {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; }
   .footer-company, .footer-newsletter { grid-column: 1 / -1; }
 }
+
+/* ===== Desktop header: one clear action, HRMS as a small link ===== */
+.nav-hrms-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.nav-hrms-link i { font-size: 0.7rem; }
+.nav-hrms-link:hover { color: var(--text-primary); background: rgba(127, 127, 127, 0.1); }
+.nav-hrms-link:focus-visible { outline: 3px solid var(--hrms-primary); outline-offset: 2px; }
+.nav-cta { padding: 0.55rem 1.05rem; font-size: 0.9rem; white-space: nowrap; }
+@media (max-width: 1100px) {
+  .nav-right .nav-hrms-link,
+  .nav-right .nav-cta { display: none; }
+}
+
+/* ===== Newsletter: confirmation shown in the page ===== */
+.newsletter-status {
+  margin-top: 0.7rem;
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid var(--hrms-primary);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--hrms-text-heading);
+  background: rgba(127, 127, 127, 0.1);
+}
+.newsletter-status[hidden] { display: none; }
+.newsletter-status.is-ok { border-left-color: #10b981; }
+.newsletter-status.is-error { border-left-color: #ef4444; }

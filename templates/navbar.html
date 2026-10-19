@@ -91,7 +91,8 @@
       </ul>
 
       <div class="nav-right">
-        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-btn" aria-label="JwithKP HRMS login">HRMS <i class="fas fa-arrow-right"></i></a>
+        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-link">HRMS <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="sr-only"> (JwithKP HRMS, opens in a new tab)</span></a>
+        <a href="{{cfg.contact.bookingUrl|or:contact?intent=call#smartContactForm}}" class="btn btn-primary nav-cta"{{#when cfg.contact.bookingUrl}} target="_blank" rel="noopener noreferrer"{{/when}}>Book a free call</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
           <i class="fas fa-moon"></i>
         </button>
