@@ -3088,11 +3088,16 @@ main .cta p + p {
   outline-offset: 2px;
 }
 
-/* Gradient text */
+/* Gradient text: the home headline accent. One hue (blue, light to deep) so the heading
+   reads calm. Large text needs 3:1: on the dark page the stops are 7.5:1 and 3.7:1; the
+   light theme starts one step deeper (3.5:1 and 6.4:1). The old cyan start was 2.3:1 there. */
 .gradient-text-accent {
-  background: linear-gradient(135deg, var(--c-cyan-500) 0%, var(--c-blue-500) 50%, var(--c-violet-500) 100%);
+  background: linear-gradient(135deg, var(--c-blue-400) 0%, var(--c-blue-600) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .gradient-text-accent {
+  background-image: linear-gradient(135deg, var(--c-blue-500) 0%, var(--c-blue-700) 100%);
 }
 
 /* 1. HERO SECTION REDESIGN */
