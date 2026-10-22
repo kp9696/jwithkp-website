@@ -422,24 +422,31 @@ function buildEntityGraph(page) {
     }
   ];
   if (page.url) {
-    const webPage = { '@type': 'WebPage', '@id': `${page.url}#webpage`, url: page.url };
+    const orgRef = { '@id': `${SITE_ORIGIN}/#organization` };
+    // A hand-written AboutPage / ContactPage / CollectionPage for this URL is merged in as an extra type.
+    const webPage = { '@type': page.types && page.types.length ? ['WebPage', ...page.types] : 'WebPage', '@id': `${page.url}#webpage`, url: page.url };
     // name and description come from the page's own <title> and meta description, so this entry
     // cannot drift from what the page says (hand-written copies of it had).
     if (page.name) webPage.name = page.name;
     if (page.description) webPage.description = page.description;
     webPage.isPartOf = { '@id': `${SITE_ORIGIN}/#website` };
-    webPage.about = { '@id': `${SITE_ORIGIN}/#organization` };
+    webPage.about = page.topics && page.topics.length ? [orgRef, ...page.topics] : orgRef;
+    if (page.mainEntityIsOrg) webPage.mainEntity = orgRef;
     graph.push(webPage);
   }
   return { '@context': 'https://schema.org', '@graph': graph };
 }
 
 // A generated entity (organization, website, webpage) is rebuilt on every page. A hand-written
-// WebPage for the same URL is the same entity again, so it is dropped too.
+// WebPage, AboutPage, ContactPage or CollectionPage for the same URL is the same page described
+// again, so it is dropped too (its type, topics and contact reference are merged into the
+// generated WebPage by ensureEntityGraph).
+const PAGE_TYPES = ['AboutPage', 'ContactPage', 'CollectionPage'];
 function isEntityDefinition(node, pageUrl) {
   const id = node && node['@id'];
   if (typeof id === 'string' && /\/#(organization|website)$|#webpage$/.test(id) && !id.includes('{')) return true;
-  return !!node && node['@type'] === 'WebPage' && !!pageUrl && node.url === pageUrl;
+  const type = node && node['@type'];
+  return !!node && !!pageUrl && node.url === pageUrl && (type === 'WebPage' || PAGE_TYPES.includes(type));
 }
 
 function ensureEntityGraph(content) {
@@ -447,13 +454,19 @@ function ensureEntityGraph(content) {
   const pageUrl = canonicalMatch ? canonicalMatch[1] : '';
   const titleMatch = content.match(/<title>([\s\S]*?)<\/title>/i);
   const descMatch = content.match(/<meta name="description" content="([^"]*)"/i);
-  const page = { url: pageUrl, name: titleMatch ? plainText(titleMatch[1]) : '', description: descMatch ? plainText(descMatch[1]) : '' };
+  const page = { url: pageUrl, name: titleMatch ? plainText(titleMatch[1]) : '', description: descMatch ? plainText(descMatch[1]) : '', types: [], topics: [], mainEntityIsOrg: false };
 
   content = content.replace(/[ \t]*<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>[ \t]*\r?\n?/gi, (whole, json) => {
     let parsed;
     try { parsed = JSON.parse(json); } catch (e) { return whole; }
     const nodes = parsed['@graph'] || [parsed];
     if (!nodes.some(n => isEntityDefinition(n, pageUrl))) return whole;
+    nodes.filter(n => n && PAGE_TYPES.includes(n['@type']) && n.url === pageUrl).forEach(n => {
+      if (!page.types.includes(n['@type'])) page.types.push(n['@type']);
+      if (Array.isArray(n.about)) n.about.filter(a => typeof a === 'string').forEach(a => { if (!page.topics.includes(a)) page.topics.push(a); });
+      // an inline copy of the business details is the same organization again: refer to it instead
+      if (n.mainEntity && /^(ProfessionalService|Organization)$/.test([].concat(n.mainEntity['@type']).join(''))) page.mainEntityIsOrg = true;
+    });
     const rest = nodes.filter(n => !isEntityDefinition(n, pageUrl));
     if (!rest.length) return '';
     return `  <script type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': rest }, null, 2)}\n  </script>\n`;

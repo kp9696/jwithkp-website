@@ -78,16 +78,6 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
       ]
     }
   </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Business IT Technology Stack for Infrastructure, Security, and Collaboration",
-      "url": "https://www.jwithkp.com/technology-stack",
-      "description": "Explore the JwithKP technology stack across virtualization, security, collaboration, monitoring, networking, backup, analytics, and business systems.",
-      "about": ["Proxmox", "Nextcloud", "Wazuh", "pfSense", "Zabbix"]
-    }
-  </script>
   <script type="application/ld+json" id="faq-schema">
 {
   "@context": "https://schema.org",
@@ -180,7 +170,10 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
       }
     },
     {
-      "@type": "WebPage",
+      "@type": [
+        "WebPage",
+        "CollectionPage"
+      ],
       "@id": "https://www.jwithkp.com/technology-stack#webpage",
       "url": "https://www.jwithkp.com/technology-stack",
       "name": "IT Technology Stack: Enterprise & Open Source | JwithKP",
@@ -188,9 +181,16 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
       "isPartOf": {
         "@id": "https://www.jwithkp.com/#website"
       },
-      "about": {
-        "@id": "https://www.jwithkp.com/#organization"
-      }
+      "about": [
+        {
+          "@id": "https://www.jwithkp.com/#organization"
+        },
+        "Proxmox",
+        "Nextcloud",
+        "Wazuh",
+        "pfSense",
+        "Zabbix"
+      ]
     }
   ]
 }

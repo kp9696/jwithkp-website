@@ -78,16 +78,6 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
       ]
     }
   </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "IT for Startups and Growing Businesses, by Industry",
-      "url": "https://www.jwithkp.com/industries",
-      "description": "How JwithKP shapes everyday IT for software startups, D2C brands, professional services, small clinics, education, manufacturing, logistics and retail.",
-      "about": ["Software and SaaS startups", "D2C and online brands", "Professional Services", "Small clinics", "Education", "Manufacturing", "Logistics", "Retail"]
-    }
-  </script>
   <script type="application/ld+json" id="faq-schema">
 {
   "@context": "https://schema.org",
@@ -196,7 +186,10 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
       }
     },
     {
-      "@type": "WebPage",
+      "@type": [
+        "WebPage",
+        "CollectionPage"
+      ],
       "@id": "https://www.jwithkp.com/industries#webpage",
       "url": "https://www.jwithkp.com/industries",
       "name": "IT by Industry for Startups & SMEs | JwithKP",
@@ -204,9 +197,19 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
       "isPartOf": {
         "@id": "https://www.jwithkp.com/#website"
       },
-      "about": {
-        "@id": "https://www.jwithkp.com/#organization"
-      }
+      "about": [
+        {
+          "@id": "https://www.jwithkp.com/#organization"
+        },
+        "Software and SaaS startups",
+        "D2C and online brands",
+        "Professional Services",
+        "Small clinics",
+        "Education",
+        "Manufacturing",
+        "Logistics",
+        "Retail"
+      ]
     }
   ]
 }
