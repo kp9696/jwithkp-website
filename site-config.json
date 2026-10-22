@@ -2,7 +2,7 @@
   "brand": {
     "name": "JwithKP",
     "tagline": "Journey with Knowledge & Practice",
-    "description": "Founder-led IT consulting for startups and growing businesses in India: email, devices, network, cloud, backup and security, using enterprise tools where they fit and open source where it is better."
+    "description": "Founder-led IT services for startups and growing businesses in India: firewall and network security, networking, custom applications, websites, e-commerce and ERP, plus IT setup, support and migration, using enterprise tools where they fit and open source where it is better."
   },
   "contact": {
     "phoneDisplay": "+91 79829 12207",
@@ -92,6 +92,9 @@
       "IT setup for startups",
       "Business email and collaboration (Microsoft 365, Google Workspace, Nextcloud)",
       "Firewall and network security (pfSense, Fortinet)",
+      "Networking solutions: office and branch networks, Wi-Fi, VPN and monitoring",
+      "Application development",
+      "Websites, e-commerce and ERP",
       "Backup and disaster recovery (Proxmox Backup Server, Veeam)",
       "Security monitoring (Wazuh)",
       "Virtualization and VMware to Proxmox migration",

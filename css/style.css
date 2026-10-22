@@ -5947,3 +5947,17 @@ mark.todo-marker {
 @media (pointer: coarse), (max-width: 768px) {
   .contact-method a { display: inline-flex; align-items: center; min-height: 44px; }
 }
+
+/* =====================================================================
+   General IT-services positioning: home "What we build and run" cards end in a link,
+   and the Services chooser now has eight tiles, so it is two columns at every width.
+   ===================================================================== */
+.hp-card-link { display: inline-flex; align-items: center; margin-top: 0.75rem; font-weight: 600; color: var(--c-blue-300); text-decoration: underline; }
+[data-theme="light"] .hp-card-link { color: var(--hrms-primary-hover); }
+@media (max-width: 768px) {
+  .hp-services-grid--3 .hp-service-card > .hp-card-link { grid-column: 2; margin-top: 0.4rem; }
+}
+@media (pointer: coarse), (max-width: 768px) {
+  .hp-card-link { min-height: 44px; }
+}
+.hero--services .svc-chooser { grid-template-columns: 1fr 1fr; }
