@@ -25,6 +25,24 @@ const PREVIEW = process.argv.includes('--preview') || process.env.SITE_ENV === '
 const SITE_CONFIG = JSON.parse(fs.readFileSync(path.join(__dirname, 'site-config.json'), 'utf8'));
 const SITE_ORIGIN = 'https://www.jwithkp.com';
 
+// legal.gstin and location.address may hold the owner's own "Soon" / "Coming soon" wording, which is fine
+// to show in the footer and on the contact and about pages. Structured data and the legal pages only
+// state facts, so they use cfg.legalDoc.*: the GSTIN only when it is a real 15-character GSTIN, the
+// address only when it is not a "coming soon" style placeholder.
+const PENDING_TEXT = /\b(soon|tbd|tba|pending|n\/a)\b|to be (added|announced|confirmed)/i;
+const GSTIN_FORMAT = /^\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/;
+{
+  const gstin = String((SITE_CONFIG.legal || {}).gstin || '').replace(/\s+/g, '').toUpperCase();
+  const address = String((SITE_CONFIG.location || {}).address || '').trim();
+  SITE_CONFIG.legalDoc = {
+    gstin: GSTIN_FORMAT.test(gstin) ? gstin : '',
+    address: address && !PENDING_TEXT.test(address) ? address : ''
+  };
+  if (gstin && !SITE_CONFIG.legalDoc.gstin && !PENDING_TEXT.test(gstin)) {
+    console.warn('Warning: legal.gstin is set but is not a valid 15-character GSTIN, so it is shown in the footer only and kept out of structured data and the legal pages.');
+  }
+}
+
 function cfgGet(keyPath) {
   return keyPath.split('.').reduce((o, k) => (o == null ? undefined : o[k]), SITE_CONFIG);
 }
@@ -376,10 +394,10 @@ function buildEntityGraph(pageUrl) {
       addressRegion: SITE_CONFIG.location.region,
       addressCountry: SITE_CONFIG.location.country
     };
-    if (cfgFilled('location.address')) org.address.streetAddress = SITE_CONFIG.location.address;
+    if (cfgFilled('legalDoc.address')) org.address.streetAddress = SITE_CONFIG.legalDoc.address;
   }
   if (cfgFilled('legal.entityName')) org.legalName = SITE_CONFIG.legal.entityName;
-  if (cfgFilled('legal.gstin')) org.taxID = SITE_CONFIG.legal.gstin;
+  if (cfgFilled('legalDoc.gstin')) org.taxID = SITE_CONFIG.legalDoc.gstin;
   const sameAs = [SITE_CONFIG.social.x, SITE_CONFIG.social.linkedinCompany].filter(Boolean);
   if (sameAs.length) org.sameAs = sameAs;
   org.contactPoint = {

@@ -78,7 +78,7 @@
 
       <div class="footer-bottom">
         {{#ifany cfg.legal.entityName cfg.legal.gstin cfg.location.address}}
-        <p class="footer-legal-id">{{#if cfg.legal.entityName}}{{cfg.legal.entityName}}{{#if cfg.legal.entityType}} ({{cfg.legal.entityType}}){{/if}}{{/if}}{{#if cfg.legal.gstin}} &middot; GSTIN {{cfg.legal.gstin}}{{/if}}{{#if cfg.location.address}} &middot; {{cfg.location.address}}{{/if}}</p>
+        <p class="footer-legal-id">{{#if cfg.legal.entityName}}{{cfg.legal.entityName}}{{#if cfg.legal.entityType}} ({{cfg.legal.entityType}}){{/if}}{{/if}}{{#if cfg.legal.gstin}} &middot; GSTIN&nbsp;{{cfg.legal.gstin}}{{/if}}{{#if cfg.location.address}} &middot; {{cfg.location.address}}{{/if}}</p>
         {{/ifany}}
         <div class="footer-bottom-flex">
           <p class="copyright">&copy; {{YEAR}} JwithKP. All rights reserved. | Journey with Knowledge &amp; Practice</p>
