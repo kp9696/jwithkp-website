@@ -373,7 +373,10 @@ function ensureManifest(content) {
 // reference the organisation (Article author/publisher, FAQPage, ...) are left
 // alone. Fields without a confirmed value (founder, street address, hours) are
 // omitted rather than guessed.
-function buildEntityGraph(pageUrl) {
+// page: { url, name, description } of the page being built. url is empty for a page with no
+// canonical link (the 404 page), which then gets no WebPage entry: it used to fall back to the
+// home page's URL and declare itself to be the home page.
+function buildEntityGraph(page) {
   const org = {
     '@type': ['Organization', 'ProfessionalService'],
     '@id': `${SITE_ORIGIN}/#organization`,
@@ -408,48 +411,55 @@ function buildEntityGraph(pageUrl) {
     areaServed: 'IN',
     availableLanguage: ['en', 'hi']
   };
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      org,
-      {
-        '@type': 'WebSite',
-        '@id': `${SITE_ORIGIN}/#website`,
-        url: `${SITE_ORIGIN}/`,
-        name: SITE_CONFIG.brand.name,
-        publisher: { '@id': `${SITE_ORIGIN}/#organization` }
-      },
-      {
-        '@type': 'WebPage',
-        '@id': `${pageUrl}#webpage`,
-        url: pageUrl,
-        isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
-        about: { '@id': `${SITE_ORIGIN}/#organization` }
-      }
-    ]
-  };
+  const graph = [
+    org,
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_ORIGIN}/#website`,
+      url: `${SITE_ORIGIN}/`,
+      name: SITE_CONFIG.brand.name,
+      publisher: { '@id': `${SITE_ORIGIN}/#organization` }
+    }
+  ];
+  if (page.url) {
+    const webPage = { '@type': 'WebPage', '@id': `${page.url}#webpage`, url: page.url };
+    // name and description come from the page's own <title> and meta description, so this entry
+    // cannot drift from what the page says (hand-written copies of it had).
+    if (page.name) webPage.name = page.name;
+    if (page.description) webPage.description = page.description;
+    webPage.isPartOf = { '@id': `${SITE_ORIGIN}/#website` };
+    webPage.about = { '@id': `${SITE_ORIGIN}/#organization` };
+    graph.push(webPage);
+  }
+  return { '@context': 'https://schema.org', '@graph': graph };
 }
 
-function isEntityDefinition(node) {
+// A generated entity (organization, website, webpage) is rebuilt on every page. A hand-written
+// WebPage for the same URL is the same entity again, so it is dropped too.
+function isEntityDefinition(node, pageUrl) {
   const id = node && node['@id'];
-  return typeof id === 'string' && /\/#(organization|website)$|#webpage$/.test(id) && !node['@id'].includes('{');
+  if (typeof id === 'string' && /\/#(organization|website)$|#webpage$/.test(id) && !id.includes('{')) return true;
+  return !!node && node['@type'] === 'WebPage' && !!pageUrl && node.url === pageUrl;
 }
 
 function ensureEntityGraph(content) {
   const canonicalMatch = content.match(/<link rel="canonical" href="([^"]+)"/i);
-  const pageUrl = canonicalMatch ? canonicalMatch[1] : `${SITE_ORIGIN}/`;
+  const pageUrl = canonicalMatch ? canonicalMatch[1] : '';
+  const titleMatch = content.match(/<title>([\s\S]*?)<\/title>/i);
+  const descMatch = content.match(/<meta name="description" content="([^"]*)"/i);
+  const page = { url: pageUrl, name: titleMatch ? plainText(titleMatch[1]) : '', description: descMatch ? plainText(descMatch[1]) : '' };
 
   content = content.replace(/[ \t]*<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>[ \t]*\r?\n?/gi, (whole, json) => {
     let parsed;
     try { parsed = JSON.parse(json); } catch (e) { return whole; }
     const nodes = parsed['@graph'] || [parsed];
-    if (!nodes.some(isEntityDefinition)) return whole;
-    const rest = nodes.filter(n => !isEntityDefinition(n));
+    if (!nodes.some(n => isEntityDefinition(n, pageUrl))) return whole;
+    const rest = nodes.filter(n => !isEntityDefinition(n, pageUrl));
     if (!rest.length) return '';
     return `  <script type="application/ld+json">\n${JSON.stringify({ '@context': 'https://schema.org', '@graph': rest }, null, 2)}\n  </script>\n`;
   });
 
-  const graph = `<script type="application/ld+json" id="entity-graph">\n${JSON.stringify(buildEntityGraph(pageUrl), null, 2)}\n  </script>`;
+  const graph = `<script type="application/ld+json" id="entity-graph">\n${JSON.stringify(buildEntityGraph(page), null, 2)}\n  </script>`;
   return content.replace('</head>', `  ${graph}\n</head>`);
 }
 
