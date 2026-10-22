@@ -6,9 +6,22 @@ const contactForm = document.getElementById('smartContactForm');
     const interestTags = document.querySelector('.interest-tags');
     const MIN_HUMAN_FILL_TIME_MS = 2500;
 
+    // The chips and the "What do you need help with?" select always agree: picking a chip sets the
+    // select, and changing the select (or arriving with ?intent=call) marks the matching chip.
+    function markInterest() {
+      if (!interestTags || !interestSelect) return;
+      interestTags.querySelectorAll('[data-interest]').forEach((chip) => {
+        chip.setAttribute('aria-pressed', String(chip.dataset.interest === interestSelect.value));
+      });
+    }
+
     function setInterest(interest) {
       interestSelect.value = interest;
-      document.querySelector('.contact-form-card').scrollIntoView({ behavior: 'smooth' });
+      markInterest();
+      // Side by side the form is already on screen; scroll only when it is not (phones, where the chips sit below the form).
+      const card = document.querySelector('.contact-form-card');
+      const top = card.getBoundingClientRect().top;
+      if (top < 0 || top > window.innerHeight * 0.6) card.scrollIntoView({ behavior: 'smooth' });
     }
 
     function showNotification(message, isSuccess = true) {
@@ -134,6 +147,8 @@ const contactForm = document.getElementById('smartContactForm');
       setInterest(trigger.dataset.interest);
     });
 
+    interestSelect?.addEventListener('change', markInterest);
+
     contactForm?.addEventListener('submit', handleSubmit);
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -160,4 +175,5 @@ const contactForm = document.getElementById('smartContactForm');
   if (new URLSearchParams(window.location.search).get('intent') !== 'call') return;
   const interest = document.getElementById('interest');
   if (interest) interest.value = 'call';
+  markInterest();
 })();

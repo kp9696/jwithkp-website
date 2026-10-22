@@ -57,7 +57,7 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
   <!-- /HEAD_PERF -->
   <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
   
-  <link rel="stylesheet" href="css/style.0589b4ceb6.min.css">
+  <link rel="stylesheet" href="css/style.92a31e0d2b.min.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -297,20 +297,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="hero-copy">Tell us what you are starting or working on. You talk directly to the engineer who would do the work, with no sales layer in between.<!-- BLOCK:nda-hero -->
 <mark class="todo-marker" title="Set practices.ndaOnRequest in site-config.json">[ADD NDA ON REQUEST]</mark>We can sign an NDA first if you would like one.
 <!-- /BLOCK:nda-hero --></p>
-      <div class="hero-points">
-        <div class="hero-point">
-          <strong>Direct access to the engineer</strong>
-          The call is with the engineer who would do the work, not a sales rep.
-        </div>
-        <div class="hero-point">
-          <strong>Free and no obligation</strong>
-          We tell you what to set up first and what can wait, in plain language.
-        </div>
-        <div class="hero-point">
-          <strong>First response within 24 business hours</strong>
-          A useful first reply with scope direction, not just a callback promise.
-        </div>
-      </div>
     </div>
   </header>
 
@@ -321,12 +307,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h2>Tell Us What You Are <span class="section-accent">Starting or Working On</span></h2>
           <p>Setting up IT for a new team, looking for ongoing help, cutting running costs, or tightening security? Pick the closest fit below and we will take it from there.</p>
 
-          <div class="interest-tags">
-            <button type="button" class="tag" data-interest="launch">Startup Launch Pack</button>
-            <button type="button" class="tag" data-interest="retainer">IT Retainer</button>
-            <button type="button" class="tag" data-interest="migration">Cost &amp; Migration</button>
-            <button type="button" class="tag" data-interest="security">Security &amp; Monitoring</button>
-            <button type="button" class="tag" data-interest="call">Not sure yet</button>
+          <div class="interest-tags" role="group" aria-label="Pick the closest fit">
+            <button type="button" class="tag" data-interest="launch" aria-pressed="false">Startup Launch Pack</button>
+            <button type="button" class="tag" data-interest="retainer" aria-pressed="false">IT Retainer</button>
+            <button type="button" class="tag" data-interest="migration" aria-pressed="false">Cost &amp; Migration</button>
+            <button type="button" class="tag" data-interest="security" aria-pressed="false">Security &amp; Monitoring</button>
+            <button type="button" class="tag" data-interest="call" aria-pressed="false">Not sure yet</button>
           </div>
 
           <div class="quick-stats">
@@ -338,7 +324,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div>
               <div class="quick-stat-value">
-                <span>24 business hrs</span>
+                <span>24 business hours</span>
               </div>
               <div>First response</div>
             </div>
@@ -352,29 +338,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <p class="support-copy">On the call we will ask about your team, tools and budget, then tell you what we would set up first, roughly what it costs, and what can wait.</p>
 
+          <!-- BLOCK:contact-methods -->
           <div class="contact-methods">
             <div class="contact-method">
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-envelope" aria-hidden="true"></i>
               <div>
                 <strong>Email</strong>
-                <p>info@jwithkp.com</p>
+                <p><a href="mailto:info@jwithkp.com">info@jwithkp.com</a></p>
               </div>
             </div>
             <div class="contact-method">
-              <i class="fas fa-phone"></i>
+              <i class="fas fa-phone" aria-hidden="true"></i>
               <div>
                 <strong>Phone / WhatsApp</strong>
-                <p><a href="tel:+917982912207">+91 79829 12207</a></p>
+                <p><a href="tel:+917982912207">+91 79829 12207</a> <a href="https://wa.me/917982912207" target="_blank" rel="noopener noreferrer" aria-label="Message JwithKP on WhatsApp (opens in a new tab)">Message on WhatsApp</a></p>
               </div>
             </div>
             <div class="contact-method">
-              <i class="fas fa-location-dot"></i>
+              <i class="fas fa-location-dot" aria-hidden="true"></i>
               <div>
                 <strong>Based in</strong>
                 <p>Bangalore, India</p>
               </div>
             </div>
           </div>
+<!-- /BLOCK:contact-methods -->
 
           <!-- BLOCK:business-details -->
           <div class="business-details">
@@ -638,7 +626,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FOOTER_END -->
 
   
-  <script src="js/contact.e07d415551.min.js" defer></script>
+  <script src="js/contact.36d75a0055.min.js" defer></script>
   <script src="js/script.8ceaedffba.min.js" defer></script>
   <script>
     (function () {

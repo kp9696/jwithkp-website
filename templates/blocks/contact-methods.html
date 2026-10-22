@@ -1,0 +1,23 @@
+          <div class="contact-methods">
+            <div class="contact-method">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <div>
+                <strong>Email</strong>
+                <p><a href="mailto:{{cfg.contact.email|attr}}">{{cfg.contact.email}}</a></p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              <div>
+                <strong>Phone / WhatsApp</strong>
+                <p><a href="tel:{{cfg.contact.phoneE164|attr}}">{{cfg.contact.phoneDisplay}}</a> <a href="https://wa.me/{{cfg.contact.whatsapp|attr}}" target="_blank" rel="noopener noreferrer" aria-label="Message JwithKP on WhatsApp (opens in a new tab)">Message on WhatsApp</a></p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <i class="fas fa-location-dot" aria-hidden="true"></i>
+              <div>
+                <strong>Based in</strong>
+                <p>{{cfg.location.city}}, India</p>
+              </div>
+            </div>
+          </div>
