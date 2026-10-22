@@ -2710,7 +2710,6 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 .btn:focus-visible,
 .theme-toggle:focus-visible,
 .menu-toggle:focus-visible,
-.nav-hrms-btn:focus-visible,
 .filter-btn:focus-visible,
 .tag:focus-visible,
 .form-group input:focus-visible,
@@ -4764,18 +4763,15 @@ main .cta p + p {
 
 /* Success green #10B981 is 2.5:1 on white; use the darker emerald for text in the light theme. */
 [data-theme="light"] .hp-case-metric-value,
-[data-theme="light"] .svc-method-card--ongoing .svc-method-num,
-[data-theme="light"] .hrms-badge.status-present {
+[data-theme="light"] .svc-method-card--ongoing .svc-method-num {
   color: var(--c-emerald-700);
 }
 
 /* Royal blue #2563EB on the tinted badge backgrounds: 4.4:1 in light, 3.1:1 in dark. */
-[data-theme="light"] .hrms-badge.status-wfh,
 [data-theme="light"] .hp-blog-card-meta .category-badge {
   color: var(--hrms-primary-hover);
 }
 
-[data-theme="dark"] .hrms-badge.status-wfh,
 [data-theme="dark"] .hp-blog-card-meta .category-badge,
 [data-theme="dark"] .btn-hrms-ghost {
   color: var(--c-blue-350) !important;
