@@ -5920,3 +5920,52 @@ mark.todo-marker {
   .stack-page .stack-footer-copy { font-size: 0.95rem; line-height: 1.55; }
   .stack-page .page-section--tight { padding-bottom: 1.75rem; }
 }
+
+/* =====================================================================
+   Tap targets: every standalone link, button and checkbox is at least 44 x 44px on
+   touch screens and narrow windows (a mouse on a wide window keeps the compact layout).
+   Links inside a sentence stay inline. Measured on a 390px screen before this change:
+   footer link lists 18px tall, footer icons 36px, "Explore Next" lists 20px, card links
+   20px, the estimator checkbox 13px wide, the closed support-terms row 18px.
+   ===================================================================== */
+@media (pointer: coarse), (max-width: 768px) {
+  /* footer */
+  .footer-links li { margin-bottom: 0; }
+  .footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
+  .footer-socials { gap: 0.5rem; }
+  .footer-socials a { width: 44px; height: 44px; }
+  .footer-legal-links { gap: 0 0.75rem; }
+  .footer-legal-links a,
+  .footer-legal-links button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.25rem; }
+  .footer-logo-wrap { min-height: 44px; }
+  .newsletter-consent { align-items: center; min-height: 44px; padding: 0.3rem 0; }
+  .newsletter-consent input { width: 1.25rem; height: 1.25rem; margin-top: 0; }
+
+  /* header logo: same look, bigger hit area */
+  .nav-container > a.logo { min-height: 44px; }
+
+  /* link lists and card links */
+  .seo-link-hub li { margin-bottom: 0; }
+  .seo-link-hub a,
+  .article-page .related-links a { display: inline-flex; align-items: center; min-height: 44px; }
+  .study-links,
+  .guide-links { display: flex; flex-wrap: wrap; column-gap: 1.1rem; }
+  .study-links a,
+  .guide-links a,
+  .resource-link-card a,
+  .solution-card-copy a,
+  .est-table td a { display: inline-flex; align-items: center; min-height: 44px; }
+  .solution-card-copy a { margin-top: 0.2rem; }
+  .est-table td a { min-width: 44px; justify-content: center; }
+  li > a[href^="mailto:"],
+  li > a[href^="tel:"],
+  .tap-link { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; }
+
+  /* forms */
+  .est-check input { flex: none; width: 1.5rem; height: 1.5rem; margin-top: 0.2rem; }
+  .est-check label { min-height: 44px; display: flex; align-items: center; }
+  .calc-assume label { display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* tap-to-open rows (Services, Technology Stack): the whole head row is the target */
+  .is-collapsible > .collapse-head { display: flex; align-items: center; min-height: 44px; }
+}
