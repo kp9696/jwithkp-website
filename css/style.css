@@ -885,11 +885,20 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   margin-bottom: 1rem;
 }
 
-.gradient-text {
-  background: var(--gradient-1);
+/* Headline accent (the highlighted words in every page's hero H1). One hue, blue, light to
+   deep, so headings read calm. Large text needs 3:1: on the dark page the stops are 7.5:1
+   and 3.7:1; the light theme starts one step deeper (3.5:1 and 6.4:1). The old cyan end was
+   2.3:1 on the light page. .gradient-text-accent is the same style under the home page's name. */
+.gradient-text,
+.gradient-text-accent {
+  background: linear-gradient(135deg, var(--c-blue-400) 0%, var(--c-blue-600) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+[data-theme="light"] .gradient-text,
+[data-theme="light"] .gradient-text-accent {
+  background-image: linear-gradient(135deg, var(--c-blue-500) 0%, var(--c-blue-700) 100%);
 }
 
 .btn-row {
@@ -3086,18 +3095,6 @@ main .cta p + p {
 *:focus-visible {
   outline: 3px solid var(--hrms-primary);
   outline-offset: 2px;
-}
-
-/* Gradient text: the home headline accent. One hue (blue, light to deep) so the heading
-   reads calm. Large text needs 3:1: on the dark page the stops are 7.5:1 and 3.7:1; the
-   light theme starts one step deeper (3.5:1 and 6.4:1). The old cyan start was 2.3:1 there. */
-.gradient-text-accent {
-  background: linear-gradient(135deg, var(--c-blue-400) 0%, var(--c-blue-600) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-[data-theme="light"] .gradient-text-accent {
-  background-image: linear-gradient(135deg, var(--c-blue-500) 0%, var(--c-blue-700) 100%);
 }
 
 /* 1. HERO SECTION REDESIGN */
