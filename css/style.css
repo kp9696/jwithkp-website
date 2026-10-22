@@ -62,9 +62,7 @@
   --c-blue-600: #2563eb; --c-blue-600-rgb: 37, 99, 235; /* primary */
   --c-blue-500: #3b82f6; --c-blue-500-rgb: 59, 130, 246; /* glass borders, tints */
   --c-blue-400: #60a5fa; /* chip text on dark */
-  --c-blue-350: #7db3ff; /* link text on dark */
   --c-blue-300: #93c5fd; /* link text on dark */
-  --c-blue-250: #a8ccff; /* link hover on dark */
   --c-blue-200: #bfdbfe;
   --c-sky-500: #0ea5e9; --c-sky-500-rgb: 14, 165, 233;
   --c-sky-400: #38bdf8; --c-sky-400-rgb: 56, 189, 248;
@@ -82,7 +80,6 @@
   --c-emerald-500: #10b981; --c-emerald-500-rgb: 16, 185, 129; /* success */
   --c-emerald-400: #34d399; /* success text on dark chips */
   --c-emerald-300: #6ee7b7; /* success text on dark */
-  --c-green-300: #86efac;
   --c-emerald-200: #a7f3d0; --c-emerald-200-rgb: 167, 243, 208;
   --c-whatsapp: #25d366; --c-whatsapp-rgb: 37, 211, 102; /* WhatsApp brand green */
   --c-whatsapp-dark: #128c7e; /* WhatsApp hover */
@@ -1764,7 +1761,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   padding: 0.3rem 0.6rem;
   border: 1px solid rgba(var(--c-emerald-500-rgb), 0.4);
   border-radius: 999px;
-  color: var(--c-green-300);
+  color: var(--c-emerald-300);
   margin-right: 0.4rem;
 }
 
@@ -4745,7 +4742,7 @@ main .cta p + p {
 
 /* Cookie-banner link: #2563eb on the dark banner was 3.45:1. */
 .cookie-banner-text a {
-  color: var(--c-blue-350);
+  color: var(--c-blue-300);
 }
 
 [data-theme="light"] .cookie-banner-text a {
@@ -4774,11 +4771,11 @@ main .cta p + p {
 
 [data-theme="dark"] .hp-blog-card-meta .category-badge,
 [data-theme="dark"] .btn-hrms-ghost {
-  color: var(--c-blue-350) !important;
+  color: var(--c-blue-300) !important;
 }
 
 [data-theme="dark"] .btn-hrms-ghost:hover {
-  color: var(--c-blue-250) !important;
+  color: var(--c-blue-200) !important;
 }
 
 /* Label above the technology strip: was an h3 straight under the hero h1. */
@@ -4951,7 +4948,7 @@ mark.todo-marker {
   background: rgba(var(--c-blue-600-rgb), 0.12);
   color: var(--hrms-primary-hover);
 }
-[data-theme="dark"] .hp-stage-badge { color: var(--c-blue-350); }
+[data-theme="dark"] .hp-stage-badge { color: var(--c-blue-300); }
 
 .hp-fineprint {
   margin: 1.75rem auto 0;
