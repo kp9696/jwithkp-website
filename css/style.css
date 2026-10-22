@@ -42,24 +42,18 @@
   --c-slate-950: #020617; --c-slate-950-rgb: 2, 6, 23; /* deepest dark background, shadows */
   --c-navy-900: #0a0f1e; --c-navy-900-rgb: 10, 15, 30; /* dark theme page background */
   --c-slate-900: #0f172a; --c-slate-900-rgb: 15, 23, 42; /* dark cards, headings on light */
-  --c-gray-900: #111827; --c-gray-900-rgb: 17, 24, 39;
-  --c-gray-900-alt: #111928; --c-gray-900-alt-rgb: 17, 25, 40;
   --c-slate-850: #162033; /* dark section band */
   --c-slate-800: #1e293b; /* dark borders */
   --c-slate-700: #334155; /* body text on light */
-  --c-slate-600: #475569;
   --c-gray-600: #4b5563; /* secondary text on light */
   --c-slate-550: #566579; /* secondary text on light, AA */
-  --c-slate-540: #5b6b80; /* muted text on light, AA */
   --c-gray-500: #6b7280; /* muted text (light theme) */
   --c-neutral-500: #7f7f7f; --c-neutral-500-rgb: 127, 127, 127; /* theme-neutral overlay tint */
   --c-slate-400: #94a3b8; --c-slate-400-rgb: 148, 163, 184; /* muted text (dark theme) */
   --c-slate-300: #cbd5e1; /* secondary text (dark theme), dividers */
   --c-slate-200: #e2e8f0; /* borders on light */
   --c-slate-100: #f1f5f9; /* section background on light */
-  --c-gray-100: #f3f4f6;
   --c-slate-50: #f8fafc; --c-slate-50-rgb: 248, 250, 252; /* page background on light, primary text on dark */
-  --c-gray-50: #f9fafb; --c-gray-50-rgb: 249, 250, 251;
   --c-white: #ffffff; --c-white-rgb: 255, 255, 255;
 
   /* Blue and sky */
@@ -131,7 +125,7 @@
   --hrms-text-heading:   var(--c-slate-900); /* Heading Text (Slate 900) */
   --hrms-text-body:      var(--c-slate-700); /* Body Text (Slate 700) */
   --hrms-text-secondary: var(--c-slate-550); /* Secondary Text — AA (5.4:1) on the light footer/panels; Slate 500 was 4.3:1 */
-  --hrms-text-muted:     var(--c-slate-540); /* Muted Text — AA on white/light tints; Slate 400 was 2.6:1 */
+  --hrms-text-muted:     var(--c-slate-550); /* Muted Text — AA on white/light tints; Slate 400 was 2.6:1 */
   --hrms-text-white:     var(--c-white); /* Pure White */
 
   /* Neutral Dark Mode Palette */
@@ -163,10 +157,10 @@
   /* Legacy & Site Core Tokens Mapping */
   --bg-primary:     var(--c-navy-900);
   --bg-primary-rgb: var(--c-navy-900-rgb);
-  --bg-secondary:   var(--c-gray-900);
-  --bg-card:        rgba(var(--c-gray-900-alt-rgb), 0.82);
+  --bg-secondary:   var(--c-slate-900);
+  --bg-card:        rgba(var(--c-slate-900-rgb), 0.82);
 
-  --text-primary:   var(--c-gray-100);
+  --text-primary:   var(--c-slate-100);
   --text-secondary: var(--c-slate-300);
   --text-muted:     var(--c-slate-400);
 
@@ -336,7 +330,7 @@
   .form-group { margin-bottom: 1rem; }
   .form-group label { display: block; margin-bottom: 0.55rem; font-weight: 600; }
   .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.95rem 1rem; border-radius: 16px; border: 1px solid var(--border); background: rgba(var(--c-white-rgb), 0.03); color: var(--text-primary); font: inherit; }
-  .form-group select option { color: var(--c-gray-900); }
+  .form-group select option { color: var(--c-slate-900); }
   .form-group textarea { resize: vertical; min-height: 120px; }
   .submit-btn { width: 100%; margin-top: 0.5rem; }
   .contact-methods { margin-top: 1.75rem; display: grid; gap: 0.85rem; }
@@ -675,7 +669,7 @@
 
 .field-group textarea { min-height: 110px; resize: vertical; }
 
-.field-group select option { color: var(--c-gray-900); }
+.field-group select option { color: var(--c-slate-900); }
 
 .quote-form .full-width { grid-column: 1 / -1; }
 
@@ -803,11 +797,11 @@
 
 /* Light theme overrides */
 [data-theme="light"] {
-  --bg-primary:     var(--c-gray-50);
-  --bg-primary-rgb: var(--c-gray-50-rgb);
-  --bg-secondary:   var(--c-gray-100);
+  --bg-primary:     var(--c-slate-50);
+  --bg-primary-rgb: var(--c-slate-50-rgb);
+  --bg-secondary:   var(--c-slate-100);
   --bg-card:        rgba(var(--c-white-rgb), 0.9);
-  --text-primary:   var(--c-gray-900);
+  --text-primary:   var(--c-slate-900);
   --text-secondary: var(--c-gray-600);
   --text-muted:     var(--c-gray-500);
   --border:         rgba(var(--c-black-rgb), 0.1);
@@ -1675,7 +1669,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   padding: 1rem 1.1rem;
   border: 1px solid var(--border);
   border-radius: 18px;
-  background: rgba(var(--c-gray-900-rgb), 0.72);
+  background: rgba(var(--c-slate-900-rgb), 0.72);
   color: var(--text-secondary);
 }
 
@@ -1799,7 +1793,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
       overflow: hidden;
       z-index: 10000;
       background: var(--c-white);
-      color: var(--c-gray-900);
+      color: var(--c-slate-900);
       padding: 0.5rem 1rem;
       border-radius: 5px;
       font-weight: bold;
@@ -2361,7 +2355,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
       padding: 6rem 0;
       background:
         radial-gradient(circle at top left, rgba(var(--c-orange-500-rgb), 0.12), transparent 32%),
-        linear-gradient(180deg, rgba(var(--c-gray-900-rgb), 0.78), rgba(var(--c-navy-900-rgb), 0.98));
+        linear-gradient(180deg, rgba(var(--c-slate-900-rgb), 0.78), rgba(var(--c-navy-900-rgb), 0.98));
     }
 
     .case-studies {
@@ -4591,7 +4585,7 @@ main .cta p + p {
 
 [data-theme="light"] .hp-stat-info p,
 [data-theme="light"] .logo-tagline {
-  color: var(--c-slate-600) !important;
+  color: var(--c-gray-600) !important;
 }
 
 
