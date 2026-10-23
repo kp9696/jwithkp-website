@@ -5961,3 +5961,13 @@ mark.todo-marker {
   .hp-card-link { min-height: 44px; }
 }
 .hero--services .svc-chooser { grid-template-columns: 1fr 1fr; }
+
+/* Home "What do you need right now?": four cards, so on phones the icon sits beside the text (as in the other card grids) */
+@media (max-width: 768px) {
+  .hp-path-grid { gap: 0.75rem; }
+  .hp-path-card { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 0.9rem; align-content: start; padding: 1.1rem; }
+  .hp-path-card .hp-service-icon-wrapper { grid-column: 1; grid-row: 1 / span 2; margin: 0; }
+  .hp-path-card h3 { grid-column: 2; margin: 0 0 0.3rem; font-size: 1.15rem; }
+  .hp-path-card > p { grid-column: 2; margin: 0 0 0.7rem; font-size: 0.95rem; line-height: 1.5; }
+  .hp-path-card .btn { grid-column: 1 / -1; justify-content: center; }
+}
