@@ -221,7 +221,7 @@ function fingerprintSiteFonts() {
 // Applies the current theme before first paint. Without it the page always paints
 // dark and then flips to light once the deferred script runs, which flashes for
 // anyone who chose the light theme.
-const THEME_INIT = "(function(){var t='dark';try{if(localStorage.getItem('jwkp-theme')==='light')t='light'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();";
+const THEME_INIT = "(function(){var t;try{t=localStorage.getItem('jwkp-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}var d=document.documentElement;d.setAttribute('data-theme',t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',t==='light'?'#f8fafc':'#020617')})();";
 
 // Per-page head block: no Google Fonts, the theme applied before first paint, and a
 // preload for the heading font only. Preloading both fonts delayed first paint in a

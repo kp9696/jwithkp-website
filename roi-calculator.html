@@ -52,11 +52,11 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
   <link rel="apple-touch-icon" href="/images/icons/icon-192.png">
   <link rel="manifest" href="/manifest.json">
   <!-- HEAD_PERF -->
-  <script>(function(){var t='dark';try{if(localStorage.getItem('jwkp-theme')==='light')t='light'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();</script>
+  <script>(function(){var t;try{t=localStorage.getItem('jwkp-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}var d=document.documentElement;d.setAttribute('data-theme',t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',t==='light'?'#f8fafc':'#020617')})();</script>
   <link rel="preload" href="/css/webfonts/space-grotesk-latin.8f6c221f42.woff2" as="font" type="font/woff2" crossorigin>
   <!-- /HEAD_PERF -->
   <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
-  <link rel="stylesheet" href="css/style.2ef46f2fdb.min.css">
+  <link rel="stylesheet" href="css/style.8e63e049e2.min.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -356,7 +356,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
       <div class="calculator-grid">
         <section class="calculator-card">
-          <h3 aria-level="2">IT Cost Optimizer</h3>
+          <h2 class="panel-title">IT Cost Optimizer</h2>
           <p class="calculator-note">Enter your current annual spending in INR, and how much lower you expect each cost to be after a change. The pre-filled numbers are examples: replace them with your own. We pre-fill 30% as an illustration only. It is not a market average or a promise, so replace it with figures from your own quotes.</p>
 
           <div class="calc-group">
@@ -845,7 +845,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       calculateROI();
     });
   </script>
-  <script src="js/script.8ceaedffba.min.js" defer></script>
+  <script src="js/script.757e64fd79.min.js" defer></script>
 <!-- PREVIEW_RIBBON --><aside class="preview-ribbon" aria-label="Preview build notice">Preview build &middot; shows [ADD &hellip;] placeholders &middot; not for production</aside><!-- /PREVIEW_RIBBON -->
 </body>
 </html>

@@ -25,9 +25,17 @@
   const themeToggle = document.getElementById('themeToggle');
   const root = document.documentElement;
 
-  function applyTheme(theme) {
+  // The first visit follows the visitor's system setting (light or dark) and is not saved: only a click
+  // on the toggle saves a choice, and a saved choice always wins over the system setting.
+  const systemLight = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+  function systemTheme() { return systemLight && systemLight.matches ? 'light' : 'dark'; }
+  function savedTheme() { const v = store.get('jwkp-theme'); return v === 'light' || v === 'dark' ? v : null; }
+
+  function applyTheme(theme, remember) {
     root.setAttribute('data-theme', theme);
-    store.set('jwkp-theme', theme);
+    if (remember) store.set('jwkp-theme', theme);
+    const bar = document.querySelector('meta[name="theme-color"]');
+    if (bar) bar.setAttribute('content', theme === 'light' ? '#f8fafc' : '#020617');
     if (themeToggle) {
       const icon = themeToggle.querySelector('i');
       if (icon) icon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
@@ -36,12 +44,18 @@
     }
   }
 
-  applyTheme(store.get('jwkp-theme') || 'dark');
+  applyTheme(savedTheme() || systemTheme(), false);
 
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
-      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
     });
+  }
+
+  // Until the visitor has chosen, the page follows the system setting if it changes while the page is open.
+  if (systemLight) {
+    const follow = function () { if (!savedTheme()) applyTheme(systemTheme(), false); };
+    if (systemLight.addEventListener) systemLight.addEventListener('change', follow); else if (systemLight.addListener) systemLight.addListener(follow);
   }
 
   const menuToggle = document.getElementById('menuToggle');

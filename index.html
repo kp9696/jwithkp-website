@@ -60,11 +60,11 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
   
   <!-- Fonts & Icons -->
   <!-- HEAD_PERF -->
-  <script>(function(){var t='dark';try{if(localStorage.getItem('jwkp-theme')==='light')t='light'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();</script>
+  <script>(function(){var t;try{t=localStorage.getItem('jwkp-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}var d=document.documentElement;d.setAttribute('data-theme',t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',t==='light'?'#f8fafc':'#020617')})();</script>
   <link rel="preload" href="/css/webfonts/space-grotesk-latin.8f6c221f42.woff2" as="font" type="font/woff2" crossorigin>
   <!-- /HEAD_PERF -->
   <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
-  <link rel="stylesheet" href="css/style.2ef46f2fdb.min.css">
+  <link rel="stylesheet" href="css/style.8e63e049e2.min.css">
 
   <!-- JSON-LD SEO Schemas -->
   <script type="application/ld+json">
@@ -1224,7 +1224,7 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
 
   <!-- Scripts -->
   <script src="js/home.b4a4caf2d9.min.js" defer></script>
-  <script src="js/script.8ceaedffba.min.js" defer></script>
+  <script src="js/script.757e64fd79.min.js" defer></script>
 <!-- PREVIEW_RIBBON --><aside class="preview-ribbon" aria-label="Preview build notice">Preview build &middot; shows [ADD &hellip;] placeholders &middot; not for production</aside><!-- /PREVIEW_RIBBON -->
 </body>
 </html>
