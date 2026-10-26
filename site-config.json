@@ -1,0 +1,114 @@
+{
+  "brand": {
+    "name": "JwithKP",
+    "tagline": "Journey with Knowledge & Practice",
+    "description": "Founder-led IT services for startups and growing businesses in India: firewall and network security, networking, custom applications, websites, e-commerce and ERP, plus IT setup, support and migration, using enterprise tools where they fit and open source where it is better."
+  },
+  "contact": {
+    "phoneDisplay": "+91 79829 12207",
+    "phoneE164": "+917982912207",
+    "whatsapp": "917982912207",
+    "email": "info@jwithkp.com",
+    "securityEmail": "info@jwithkp.com",
+    "bookingUrl": ""
+  },
+  "location": {
+    "city": "Bangalore",
+    "region": "Karnataka",
+    "country": "IN",
+    "address": "Coming Soon",
+    "mapEmbedUrl": ""
+  },
+  "legal": {
+    "entityName": "JwithKP Technology",
+    "entityType": "IT Consulting",
+    "gstin": "Soon",
+    "grievanceName": "",
+    "grievanceEmail": "",
+    "policyEffectiveDate": "",
+    "governingLaw": "",
+    "cancellationTerms": ""
+  },
+  "founder": {
+    "name": "JwithKP",
+    "photo": "",
+    "background": "",
+    "certifications": "",
+    "linkedin": ""
+  },
+  "social": {
+    "x": "https://x.com/jwithkp",
+    "linkedinCompany": "https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/"
+  },
+  "support": {
+    "hours": "",
+    "afterHours": "",
+    "escalation": "",
+    "responseTarget": "first response within 24 business hours"
+  },
+  "offers": {
+    "launchPack": {
+      "price": "",
+      "gst": "",
+      "timeline": "",
+      "supportPeriod": ""
+    },
+    "retainer": {
+      "small": {
+        "price": "",
+        "hours": "",
+        "review": "",
+        "visits": ""
+      },
+      "medium": {
+        "price": "",
+        "hours": "",
+        "review": "",
+        "visits": ""
+      },
+      "large": {
+        "price": "",
+        "hours": "",
+        "review": "",
+        "visits": ""
+      }
+    },
+    "pilot": {
+      "enabled": "",
+      "price": "INR 49,999",
+      "gst": "",
+      "supportPeriod": ""
+    }
+  },
+  "vendors": {
+    "partnerStatus": ""
+  },
+  "privacy": {
+    "retention": "",
+    "grievanceResponseTime": ""
+  },
+  "seo": {
+    "knowsAbout": [
+      "IT setup for startups",
+      "Business email and collaboration (Microsoft 365, Google Workspace, Nextcloud)",
+      "Firewall and network security (pfSense, Fortinet)",
+      "Networking solutions: office and branch networks, Wi-Fi, VPN and monitoring",
+      "Application development",
+      "Websites, e-commerce and ERP",
+      "Backup and disaster recovery (Proxmox Backup Server, Veeam)",
+      "Security monitoring (Wazuh)",
+      "Virtualization and VMware to Proxmox migration",
+      "IT cost optimization"
+    ]
+  },
+  "practices": {
+    "ndaOnRequest": "",
+    "mfa": "",
+    "passwordManager": "",
+    "leastAccess": "",
+    "namedAccounts": "",
+    "deviceEncryption": "",
+    "incidentNotice": "",
+    "lastReviewed": ""
+  }
+}

@@ -1,0 +1,9 @@
+        <div class="hp-hero-actions">
+          <a href="{{cfg.contact.bookingUrl|or:contact?intent=call#smartContactForm}}" class="btn btn-hrms-primary"{{#when cfg.contact.bookingUrl}} target="_blank" rel="noopener noreferrer"{{/when}}>
+            <i class="fas fa-calendar-check" aria-hidden="true"></i> Book a free 30-min call
+          </a>
+          <a href="it-cost-estimator" class="btn btn-hrms-secondary">
+            Estimate my IT cost
+          </a>
+        </div>
+        <p class="hp-hero-note">Free call &middot; No obligation &middot; No sales pitch</p>

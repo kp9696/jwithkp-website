@@ -1,97 +1,126 @@
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a class="logo" href="https://www.jwithkp.com/">
-        <img src="https://www.jwithkp.com/Logo.webp" alt="" decoding="async" loading="eager" fetchpriority="high" width="1536" height="1024">
+        <img class="logo-mark logo-mark--on-dark" src="/images/logo-mark-on-dark.webp" alt="" decoding="async" loading="eager" fetchpriority="high" width="176" height="145">
+        <img class="logo-mark logo-mark--on-light" src="/images/logo-mark.webp" alt="" decoding="async" loading="lazy" width="176" height="145">
         <span class="logo-copy">
           <span>JwithKP</span>
           <small class="logo-tagline">Journey with Knowledge &amp; Practice</small>
         </span>
       </a>
-      
+
       <ul class="nav-menu" id="navMenu">
         <li><a href="https://www.jwithkp.com/">Home</a></li>
-        <li><a href="about">About</a></li>
         <li class="has-mega-menu">
           <a href="services">Services</a>
           <button type="button" class="mega-menu-toggle" aria-expanded="false" aria-controls="mega-services" aria-label="Show Services submenu">
             <i class="fas fa-chevron-down nav-arrow" aria-hidden="true"></i>
           </button>
           <div class="mega-menu" id="mega-services">
-            <a href="services#cloud-infrastructure" class="mega-menu-item">
-              <i class="fas fa-cloud"></i>
+            <a href="services#firewall-network-security" class="mega-menu-item">
+              <i class="fas fa-lock"></i>
               <div>
-                <span class="mega-menu-title">Cloud Infrastructure</span>
-                <p>Azure, M365 &amp; Cloudflare hybrid cloud migration</p>
+                <span class="mega-menu-title">Firewall &amp; Network Security</span>
+                <p>Firewall setup, review and VPN</p>
               </div>
             </a>
-            <a href="services#siem" class="mega-menu-item">
-              <i class="fas fa-shield-alt"></i>
-              <div>
-                <span class="mega-menu-title">Cyber Security &amp; SIEM</span>
-                <p>Wazuh monitoring, EDR &amp; Zero Trust</p>
-              </div>
-            </a>
-            <a href="services#network-security" class="mega-menu-item">
+            <a href="services#networking" class="mega-menu-item">
               <i class="fas fa-network-wired"></i>
               <div>
-                <span class="mega-menu-title">Network Security</span>
-                <p>pfSense &amp; Fortinet firewall branch networks</p>
+                <span class="mega-menu-title">Networking Solutions</span>
+                <p>Offices, Wi-Fi and site links</p>
               </div>
             </a>
-            <a href="services#virtualization" class="mega-menu-item">
-              <i class="fas fa-server"></i>
+            <a href="services#application-development" class="mega-menu-item">
+              <i class="fas fa-code-branch"></i>
               <div>
-                <span class="mega-menu-title">Virtualization Stack</span>
-                <p>Proxmox VE &amp; VMware alternative migration</p>
+                <span class="mega-menu-title">Application Development</span>
+                <p>Custom software built for you</p>
               </div>
             </a>
-            <a href="services#backup-recovery" class="mega-menu-item">
-              <i class="fas fa-database"></i>
+            <a href="services#websites-ecommerce-erp" class="mega-menu-item">
+              <i class="fas fa-store"></i>
               <div>
-                <span class="mega-menu-title">Backup &amp; Recovery</span>
-                <p>3-2-1 immutable Veeam &amp; Bacula backup</p>
+                <span class="mega-menu-title">Websites, E-commerce &amp; ERP</span>
+                <p>Sites, online stores and ERP</p>
               </div>
             </a>
-            <a href="services#services-grid" class="mega-menu-item">
+            <a href="services#startup-launch-pack" class="mega-menu-item">
+              <i class="fas fa-bolt"></i>
+              <div>
+                <span class="mega-menu-title">Startup Launch Pack</span>
+                <p>Day-1 IT setup for new teams</p>
+              </div>
+            </a>
+            <a href="services#it-retainer" class="mega-menu-item">
+              <i class="fas fa-headset"></i>
+              <div>
+                <span class="mega-menu-title">IT Retainer</span>
+                <p>Ongoing IT help and a part-time IT head</p>
+              </div>
+            </a>
+            <a href="services#cost-optimization-migration" class="mega-menu-item">
               <i class="fas fa-chart-line"></i>
               <div>
-                <span class="mega-menu-title">Traffic Analytics</span>
-                <p>ntopng &amp; Zabbix real-time observability</p>
+                <span class="mega-menu-title">Cost &amp; Migration</span>
+                <p>Cut licence costs, move off VMware or Splunk</p>
+              </div>
+            </a>
+            <a href="services#security-monitoring" class="mega-menu-item">
+              <i class="fas fa-shield-halved"></i>
+              <div>
+                <span class="mega-menu-title">Security &amp; Monitoring</span>
+                <p>Wazuh monitoring, firewall and backups</p>
               </div>
             </a>
           </div>
         </li>
-        <li><a href="technology-stack">Technology</a></li>
-        <li><a href="industries">Industries</a></li>
-        <li><a href="roi-calculator">ROI Calculator</a></li>
-        <li><a href="blog">Blog</a></li>
+        <li><a href="it-cost-estimator">Cost Estimator</a></li>
         <li class="has-mega-menu">
-          <a href="case-studies">Resources</a>
+          <a href="blog">Resources</a>
           <button type="button" class="mega-menu-toggle" aria-expanded="false" aria-controls="mega-resources" aria-label="Show Resources submenu">
             <i class="fas fa-chevron-down nav-arrow" aria-hidden="true"></i>
           </button>
           <div class="mega-menu" id="mega-resources">
-            <a href="case-studies" class="mega-menu-item">
-              <i class="fas fa-chart-bar"></i>
+            <a href="blog" class="mega-menu-item">
+              <i class="fas fa-comments"></i>
               <div>
-                <span class="mega-menu-title">Example Scenarios</span>
-                <p>How we would approach common situations</p>
+                <span class="mega-menu-title">Blog</span>
+                <p>Plain-language IT and security articles</p>
               </div>
             </a>
             <a href="guides" class="mega-menu-item">
               <i class="fas fa-book-open"></i>
               <div>
                 <span class="mega-menu-title">Guides</span>
-                <p>Step-by-step technical implementation guides</p>
+                <p>Step-by-step planning guides</p>
+              </div>
+            </a>
+            <a href="startup-it-checklist" class="mega-menu-item">
+              <i class="fas fa-clipboard-check"></i>
+              <div>
+                <span class="mega-menu-title">Startup IT Checklist</span>
+                <p>The IT basics to get right early</p>
+              </div>
+            </a>
+            <a href="case-studies" class="mega-menu-item">
+              <i class="fas fa-diagram-project"></i>
+              <div>
+                <span class="mega-menu-title">Example Scenarios</span>
+                <p>How we would approach common situations</p>
               </div>
             </a>
           </div>
         </li>
+        <li><a href="about">About</a></li>
         <li><a href="contact">Contact</a></li>
+        <li class="nav-menu-cta"><a href="{{cfg.contact.bookingUrl|or:contact?intent=call#smartContactForm}}" class="btn btn-primary"{{#when cfg.contact.bookingUrl}} target="_blank" rel="noopener noreferrer"{{/when}}>Book a free 30-min call</a></li>
+        <li class="nav-menu-hrms"><a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer">JwithKP HRMS <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
       </ul>
-      
+
       <div class="nav-right">
-        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-btn" aria-label="JwithKP HRMS login">HRMS <i class="fas fa-arrow-right"></i></a>
+        <a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer" class="nav-hrms-link">HRMS <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="sr-only"> (JwithKP HRMS, opens in a new tab)</span></a>
+        <a href="{{cfg.contact.bookingUrl|or:contact?intent=call#smartContactForm}}" class="btn btn-primary nav-cta"{{#when cfg.contact.bookingUrl}} target="_blank" rel="noopener noreferrer"{{/when}}>Book a free call</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
           <i class="fas fa-moon"></i>
         </button>

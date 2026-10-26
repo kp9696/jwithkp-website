@@ -4,17 +4,18 @@
         <!-- Company Column -->
         <div class="footer-company">
           <a class="logo footer-logo-wrap" href="https://www.jwithkp.com/">
-            <img loading="lazy" decoding="async" src="https://www.jwithkp.com/Logo.webp" alt="" width="1536" height="1024">
+            <img class="logo-mark logo-mark--on-dark" loading="lazy" decoding="async" src="/images/logo-mark-on-dark.webp" alt="" width="176" height="145">
+            <img class="logo-mark logo-mark--on-light" loading="lazy" decoding="async" src="/images/logo-mark.webp" alt="" width="176" height="145">
             <span class="logo-copy">
               <span>JwithKP</span>
               <small class="logo-tagline">Journey with Knowledge &amp; Practice</small>
             </span>
           </a>
-          <p>Smart IT implementation combining open-source power with commercial reliability. Cut IT licensing costs with open-source infrastructure, built for Indian businesses.</p>
+          <p>Right-sized IT for startups and growing businesses in India: enterprise or open source, whichever fits.</p>
           <div class="footer-socials">
-            <a href="https://www.linkedin.com/in/jwithkp-it-consulting-2b2460270/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://wa.me/917982912207" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://twitter.com/jwithkp" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile"><i class="fab fa-twitter"></i></a>
+            {{#if cfg.social.linkedinCompany}}<a href="{{cfg.social.linkedinCompany|attr}}" target="_blank" rel="noopener noreferrer" aria-label="JwithKP on LinkedIn"><i class="fab fa-linkedin"></i></a>{{/if}}
+            <a href="https://wa.me/{{cfg.contact.whatsapp|attr}}" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="{{cfg.social.x|attr}}" target="_blank" rel="noopener noreferrer" aria-label="JwithKP on X (Twitter)"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
 
@@ -22,24 +23,27 @@
         <div class="footer-links">
           <span class="footer-col-title">Services</span>
           <ul>
-            <li><a href="services">Cloud Solutions</a></li>
-            <li><a href="services">Microsoft 365</a></li>
-            <li><a href="services">Google Workspace</a></li>
-            <li><a href="services">Cybersecurity</a></li>
-            <li><a href="services">Website Development</a></li>
-            <li><a href="services">IT Consulting</a></li>
+            <li><a href="services#firewall-network-security">Firewall &amp; Network Security</a></li>
+            <li><a href="services#networking">Networking Solutions</a></li>
+            <li><a href="services#application-development">Application Development</a></li>
+            <li><a href="services#websites-ecommerce-erp">Websites, E-commerce &amp; ERP</a></li>
+            <li><a href="services#startup-launch-pack">Startup Launch Pack</a></li>
+            <li><a href="services#it-retainer">IT Retainer</a></li>
+            <li><a href="services#cost-optimization-migration">Cost &amp; Migration</a></li>
+            <li><a href="services#security-monitoring">Security &amp; Monitoring</a></li>
+            <li><a href="it-cost-estimator">Cost Estimator</a></li>
           </ul>
         </div>
 
         <!-- Solutions Column -->
         <div class="footer-links">
-          <span class="footer-col-title">Solutions</span>
+          <span class="footer-col-title">Popular topics</span>
           <ul>
-            <li><a href="services#virtualization">Proxmox Virtualization</a></li>
-            <li><a href="services#siem">Wazuh SIEM Cloud</a></li>
-            <li><a href="services#network-security">pfSense Firewall</a></li>
-            <li><a href="services#backup-recovery">Immutable Backup</a></li>
-            <li><a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer">HRMS SaaS</a></li>
+            <li><a href="services#virtualization">VMware to Proxmox</a></li>
+            <li><a href="services#siem">Managed Wazuh SIEM</a></li>
+            <li><a href="services#network-security">Firewall &amp; VPN</a></li>
+            <li><a href="services#backup-recovery">Backup &amp; Recovery</a></li>
+            <li><a href="https://hrms.jwithkp.com/" target="_blank" rel="noopener noreferrer">JwithKP HRMS</a></li>
           </ul>
         </div>
 
@@ -47,35 +51,45 @@
         <div class="footer-links">
           <span class="footer-col-title">Resources</span>
           <ul>
+            <li><a href="startup-it-checklist">Startup IT Checklist</a></li>
             <li><a href="blog">Blog / Articles</a></li>
             <li><a href="case-studies">Example Scenarios</a></li>
             <li><a href="guides">Guides &amp; Docs</a></li>
             <li><a href="roi-calculator">ROI Calculator</a></li>
+            <li><a href="technology-stack">Technology Stack</a></li>
+            <li><a href="industries">Industries</a></li>
           </ul>
         </div>
 
         <!-- Newsletter Column -->
         <div class="footer-newsletter">
           <span class="footer-col-title">Newsletter</span>
-          <p>Get monthly insights on cybersecurity, virtualization, and IT cost optimization.</p>
-          <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/info@jwithkp.com" method="POST">
+          <p>Practical IT and security tips for founders and small teams, about once a month.</p>
+          <form class="newsletter-form" id="newsletterForm" action="https://formsubmit.co/{{cfg.contact.email|attr}}" method="POST">
             <input type="hidden" name="_subject" value="New Newsletter Subscription — JwithKP">
-            <input type="hidden" name="_captcha" value="true">
-            <input type="hidden" name="_next" value="https://www.jwithkp.com/contact">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.jwithkp.com/?newsletter=thanks">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="sr-only-spam-trap" aria-hidden="true">
             <div class="form-group-inline">
               <input type="email" name="email" placeholder="Business Email" aria-label="Business Email" required class="footer-email-input">
               <button type="submit" class="btn btn-hrms-primary btn-sm footer-subscribe-btn">Subscribe</button>
             </div>
+            <label class="newsletter-consent"><input type="checkbox" name="consent" value="yes" required> <span>I agree to receive the newsletter by email and can unsubscribe at any time. See the <a href="privacy-policy#newsletter">Privacy Policy</a>.</span></label>
           </form>
+          <p class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite" hidden></p>
         </div>
       </div>
 
       <div class="footer-bottom">
+        {{#ifany cfg.legal.entityName cfg.legal.gstin cfg.location.address}}
+        <p class="footer-legal-id">{{#if cfg.legal.entityName}}{{cfg.legal.entityName}}{{#if cfg.legal.entityType}} ({{cfg.legal.entityType}}){{/if}}{{/if}}{{#if cfg.legal.gstin}} &middot; GSTIN&nbsp;{{cfg.legal.gstin}}{{/if}}{{#if cfg.location.address}} &middot; {{cfg.location.address}}{{/if}}</p>
+        {{/ifany}}
         <div class="footer-bottom-flex">
           <p class="copyright">&copy; {{YEAR}} JwithKP. All rights reserved. | Journey with Knowledge &amp; Practice</p>
           <div class="footer-legal-links">
             <a href="privacy-policy">Privacy Policy</a>
             <a href="terms">Terms &amp; Conditions</a>
+            <a href="security-practices">Security Practices</a>
             <button type="button" id="cookieSettingsBtn">Cookie Settings</button>
           </div>
         </div>
@@ -83,7 +97,7 @@
     </div>
 </footer>
 <aside aria-label="Quick chat">
-<a href="https://wa.me/917982912207" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+<a href="https://wa.me/{{cfg.contact.whatsapp|attr}}" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
 </aside>

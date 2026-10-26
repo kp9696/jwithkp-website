@@ -1,0 +1,7 @@
+<p>To ask a question about your personal data, make a request under &ldquo;Your rights&rdquo; above, or raise a concern, contact:</p>
+<ul>
+  {{#when cfg.legal.grievanceName}}<li>Name: {{cfg.legal.grievanceName}}</li>{{/when}}
+  <li>Email: {{#when cfg.legal.grievanceEmail}}<a href="mailto:{{cfg.legal.grievanceEmail|attr}}">{{cfg.legal.grievanceEmail}}</a>{{/when}}{{#unless cfg.legal.grievanceEmail}}<a href="mailto:{{cfg.contact.email|attr}}">{{cfg.contact.email}}</a>{{/unless}}</li>
+  <li>Phone: <a href="tel:{{cfg.contact.phoneE164|attr}}">{{cfg.contact.phoneDisplay}}</a></li>
+</ul>
+<p>We will acknowledge your message and reply {{#if cfg.privacy.grievanceResponseTime}}within {{cfg.privacy.grievanceResponseTime}}{{/if}}{{#unless cfg.privacy.grievanceResponseTime}}within a reasonable time{{/unless}}. Please raise your concern with us first. If you are not satisfied with our reply, you can complain to the Data Protection Board of India.</p>

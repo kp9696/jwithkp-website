@@ -6,9 +6,22 @@ const contactForm = document.getElementById('smartContactForm');
     const interestTags = document.querySelector('.interest-tags');
     const MIN_HUMAN_FILL_TIME_MS = 2500;
 
+    // The chips and the "What do you need help with?" select always agree: picking a chip sets the
+    // select, and changing the select (or arriving with ?intent=call) marks the matching chip.
+    function markInterest() {
+      if (!interestTags || !interestSelect) return;
+      interestTags.querySelectorAll('[data-interest]').forEach((chip) => {
+        chip.setAttribute('aria-pressed', String(chip.dataset.interest === interestSelect.value));
+      });
+    }
+
     function setInterest(interest) {
       interestSelect.value = interest;
-      document.querySelector('.contact-form-card').scrollIntoView({ behavior: 'smooth' });
+      markInterest();
+      // Side by side the form is already on screen; scroll only when it is not (phones, where the chips sit below the form).
+      const card = document.querySelector('.contact-form-card');
+      const top = card.getBoundingClientRect().top;
+      if (top < 0 || top > window.innerHeight * 0.6) card.scrollIntoView({ behavior: 'smooth' });
     }
 
     function showNotification(message, isSuccess = true) {
@@ -65,7 +78,9 @@ const contactForm = document.getElementById('smartContactForm');
         phone: field('contact-phone'),
         city: field('city'),
         companySize: field('company-size-select'),
-        interest: field('interest'),
+        interest: interestSelect.options[interestSelect.selectedIndex] ? interestSelect.options[interestSelect.selectedIndex].text : '',
+        audience: (() => { const a = document.getElementById('audience'); return a && a.selectedIndex > 0 ? a.options[a.selectedIndex].text : ''; })(),
+        existingSetup: field('existing-setup'),
         timeline: field('timeline'),
         budget: field('budget'),
         message: field('message')
@@ -82,6 +97,8 @@ const contactForm = document.getElementById('smartContactForm');
       payload.append('city', formData.city || 'Not provided');
       payload.append('companySize', formData.companySize || 'Not provided');
       payload.append('interest', formData.interest);
+      payload.append('audience', formData.audience || 'Not provided');
+      payload.append('existingSetup', formData.existingSetup || 'Not provided');
       payload.append('timeline', formData.timeline || 'Not provided');
       payload.append('budget', formData.budget || 'Not provided');
       payload.append('message', formData.message || 'Not provided');
@@ -107,7 +124,7 @@ const contactForm = document.getElementById('smartContactForm');
           throw new Error('Submission failed');
         }
 
-        showNotification('Request submitted successfully. We will respond within 24 hours.');
+        showNotification('Request received. You will get a first response within 24 business hours.');
         contactForm.reset();
         formStartedAtInput.value = String(Date.now());
       } catch (error) {
@@ -130,6 +147,8 @@ const contactForm = document.getElementById('smartContactForm');
       setInterest(trigger.dataset.interest);
     });
 
+    interestSelect?.addEventListener('change', markInterest);
+
     contactForm?.addEventListener('submit', handleSubmit);
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -140,5 +159,21 @@ const contactForm = document.getElementById('smartContactForm');
       window.history.replaceState({}, document.title, cleanUrl);
     }
 
+    // Team size passed from the ROI calculator (?size=2-10): pre-select it when it matches an option.
+    const sizeParam = new URLSearchParams(window.location.search).get('size');
+    const sizeSelect = document.getElementById('company-size-select');
+    if (sizeParam && sizeSelect && Array.from(sizeSelect.options).some((o) => o.value === sizeParam)) {
+      sizeSelect.value = sizeParam;
+    }
+
     formStartedAtInput.value = String(Date.now());
 
+
+// Deep link from the "Book a free call" buttons (contact?intent=call): pre-select
+// the free-call option so the visitor only has to add their details.
+(function applyCallIntent() {
+  if (new URLSearchParams(window.location.search).get('intent') !== 'call') return;
+  const interest = document.getElementById('interest');
+  if (interest) interest.value = 'call';
+  markInterest();
+})();

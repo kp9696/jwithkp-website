@@ -14,12 +14,28 @@
 (function () {
   'use strict';
 
+  // localStorage can throw (blocked site data, some private modes). A throw here
+  // used to stop the whole script, which left the mobile menu dead, so every
+  // read and write goes through these two helpers.
+  const store = {
+    get: function (key) { try { return localStorage.getItem(key); } catch (e) { return null; } },
+    set: function (key, value) { try { localStorage.setItem(key, value); } catch (e) { /* storage unavailable */ } }
+  };
+
   const themeToggle = document.getElementById('themeToggle');
   const root = document.documentElement;
 
-  function applyTheme(theme) {
+  // The first visit follows the visitor's system setting (light or dark) and is not saved: only a click
+  // on the toggle saves a choice, and a saved choice always wins over the system setting.
+  const systemLight = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+  function systemTheme() { return systemLight && systemLight.matches ? 'light' : 'dark'; }
+  function savedTheme() { const v = store.get('jwkp-theme'); return v === 'light' || v === 'dark' ? v : null; }
+
+  function applyTheme(theme, remember) {
     root.setAttribute('data-theme', theme);
-    localStorage.setItem('jwkp-theme', theme);
+    if (remember) store.set('jwkp-theme', theme);
+    const bar = document.querySelector('meta[name="theme-color"]');
+    if (bar) bar.setAttribute('content', theme === 'light' ? '#f8fafc' : '#020617');
     if (themeToggle) {
       const icon = themeToggle.querySelector('i');
       if (icon) icon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
@@ -28,12 +44,18 @@
     }
   }
 
-  applyTheme(localStorage.getItem('jwkp-theme') || 'dark');
+  applyTheme(savedTheme() || systemTheme(), false);
 
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
-      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
     });
+  }
+
+  // Until the visitor has chosen, the page follows the system setting if it changes while the page is open.
+  if (systemLight) {
+    const follow = function () { if (!savedTheme()) applyTheme(systemTheme(), false); };
+    if (systemLight.addEventListener) systemLight.addEventListener('change', follow); else if (systemLight.addListener) systemLight.addListener(follow);
   }
 
   const menuToggle = document.getElementById('menuToggle');
@@ -453,7 +475,7 @@
       setBannerHidden(false);
     }
 
-    var stored = localStorage.getItem(CONSENT_KEY);
+    var stored = store.get(CONSENT_KEY);
     if (stored === 'granted') {
       pushConsent(true);
     } else if (stored === 'denied') {
@@ -464,7 +486,7 @@
 
     if (btnAccept) {
       btnAccept.addEventListener('click', function () {
-        localStorage.setItem(CONSENT_KEY, 'granted');
+        store.set(CONSENT_KEY, 'granted');
         pushConsent(true);
         hideBanner();
       });
@@ -472,7 +494,7 @@
 
     if (btnReject) {
       btnReject.addEventListener('click', function () {
-        localStorage.setItem(CONSENT_KEY, 'denied');
+        store.set(CONSENT_KEY, 'denied');
         pushConsent(false);
         hideBanner();
       });
@@ -493,14 +515,48 @@
   // Shown only once the hero's own buttons have scrolled out of view, so it
   // never sits on top of them. The body class also lifts the WhatsApp button
   // clear of the bar (see .sticky-cta-visible in the stylesheet).
+  // On the home page that moment is when the hero buttons leave the screen. On the
+  // other content pages it is when the hero has scrolled away, and the bar steps
+  // aside again while an in-page call button or the footer is on screen, or while
+  // a form field is focused (so it never sits over a field or the on-screen keyboard).
   const stickyCta = document.querySelector('.sticky-mobile-cta');
-  const heroActions = document.querySelector('.hp-hero-actions');
-  if (stickyCta && heroActions && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      const heroButtonsVisible = entries[0].isIntersecting;
-      stickyCta.classList.toggle('is-visible', !heroButtonsVisible);
-      document.body.classList.toggle('sticky-cta-visible', !heroButtonsVisible);
-    }, { threshold: 0 }).observe(heroActions);
+  if (stickyCta && 'IntersectionObserver' in window) {
+    const setBar = function (show) {
+      stickyCta.classList.toggle('is-visible', show);
+      document.body.classList.toggle('sticky-cta-visible', show);
+    };
+    const heroActions = document.querySelector('.hp-hero-actions');
+    if (heroActions) {
+      new IntersectionObserver(function (entries) {
+        setBar(!entries[0].isIntersecting);
+      }, { threshold: 0 }).observe(heroActions);
+    } else {
+      const hero = document.querySelector('header.hero');
+      const covered = new Set();
+      let pastHero = !hero;
+      let typing = false;
+      const update = function () { setBar(pastHero && !typing && covered.size === 0); };
+      if (hero) {
+        new IntersectionObserver(function (entries) {
+          const entry = entries[entries.length - 1];
+          pastHero = !entry.isIntersecting && entry.boundingClientRect.bottom <= 0;
+          update();
+        }).observe(hero);
+      }
+      // The extra 120px below the screen hides the bar just before a button arrives.
+      const watcher = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) covered.add(entry.target); else covered.delete(entry.target);
+        });
+        update();
+      }, { rootMargin: '0px 0px 120px 0px' });
+      document.querySelectorAll('[data-book-call], .footer').forEach(function (el) { watcher.observe(el); });
+      const isField = function (el) {
+        return !!el && /^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName) && !/^(checkbox|radio|button|submit)$/.test(el.type);
+      };
+      document.addEventListener('focusin', function (e) { typing = isField(e.target); update(); });
+      document.addEventListener('focusout', function () { typing = false; update(); });
+    }
   }
 
   // ── Hero SVG Crossfade (10 s rotation) ──────────────────────────────────
@@ -522,4 +578,159 @@
       navigator.serviceWorker.register('/sw.js').catch(function () {});
     });
   }
+  // 7. Newsletter signup (footer, every page). It used to post to FormSubmit's own captcha
+  // page and then land on /contact with no confirmation. It now sends in the page and says
+  // what happened. If sending fails, nothing is lost: the visitor is told to write to us.
+  (function () {
+    var form = document.getElementById('newsletterForm');
+    var status = document.getElementById('newsletterStatus');
+    if (!form || !status) return;
+    var loadedAt = Date.now();
+    var address = (form.action.split('formsubmit.co/')[1] || '').split(/[?#]/)[0];
+
+    function say(message, ok) {
+      status.hidden = false;
+      status.className = 'newsletter-status ' + (ok ? 'is-ok' : 'is-error');
+      status.textContent = message;
+    }
+
+    // Visitors without JavaScript are redirected here by the form's own _next value.
+    if (new URLSearchParams(window.location.search).get('newsletter') === 'thanks') {
+      say('Thanks. Your email is on the list. You can unsubscribe at any time by writing to us.', true);
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      if (form.elements._honey && form.elements._honey.value) return;
+      if (Date.now() - loadedAt < 2500) { say('That was quick. Please try again in a moment.', false); return; }
+      var button = form.querySelector('button[type="submit"]');
+      var label = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Subscribing...';
+      fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email: form.elements.email.value, consent: 'yes', _subject: form.elements._subject.value, _captcha: 'false', page: window.location.pathname })
+      }).then(function (response) {
+        return response.json().catch(function () { return {}; }).then(function (data) {
+          if (!response.ok || data.success === false || data.success === 'false') throw new Error('not accepted');
+        });
+      }).then(function () {
+        form.reset();
+        say('Thanks. Your email is on the list. You can unsubscribe at any time by writing to us.', true);
+      }).catch(function () {
+        say('Sorry, that did not go through. Please try again, or email ' + (address || 'us') + ' and we will add you.', false);
+      }).then(function () {
+        button.disabled = false;
+        button.textContent = label;
+      });
+    });
+  })();
+
+  // 8. Phones only: Services and Technology Stack are long runs of similar cards. On a phone each
+  // card becomes a tap-to-open row, and the two image galleries scroll sideways. The markup is
+  // unchanged, so without JavaScript, or on a wider screen, everything stays open. The title (and
+  // the logo, icon or step number next to it) is moved into a head row with a transparent button
+  // laid over it, and moved back on wider screens. The first card of each run starts open. A link
+  // that points at a closed card (for example services#virtualization) opens it.
+  (function () {
+    var mq = window.matchMedia('(max-width: 768px)');
+    var groups = [
+      { scope: '.stack-page .tech-grid', item: '.tech-card', parts: ['.tech-logo', 'h4'], open: 1 },
+      { scope: '.services-section .service-grid', item: '.service-card', parts: ['.service-icon', 'h3'], open: 1 },
+      { scope: '.services-section .svc-method-grid', item: '.svc-method-card', parts: ['.svc-method-num', 'h3', '.svc-method-time'], open: 1 },
+      { scope: '.services-section .svc-faq-grid, .stack-page .svc-faq-grid', item: '.svc-faq-card', parts: ['h3'], open: 1 },
+      { scope: '.services-section #support-terms', self: true, parts: ['h4'], open: 0 }
+    ];
+    var carousels = [
+      { sel: '.stack-page .visual-showcase', label: 'Technology visuals, scroll sideways' },
+      { sel: '.stack-page .solution-gallery-grid', label: 'Solution visuals, scroll sideways' }
+    ];
+
+    function direct(parent, selector) {
+      return Array.prototype.filter.call(parent.children, function (c) { return c.matches(selector); })[0] || null;
+    }
+    function setOpen(item, open) {
+      item.classList.toggle('is-open', open);
+      var b = item.querySelector(':scope > .collapse-head > .collapse-toggle');
+      if (b) b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function enableItem(item, parts, open) {
+      if (item.classList.contains('is-collapsible')) return;
+      var found = parts.map(function (sel) { return direct(item, sel); }).filter(Boolean);
+      var title = found.filter(function (el) { return /^H[1-6]$/.test(el.tagName); })[0];
+      if (!title) return;
+      var head = document.createElement('div');
+      head.className = 'collapse-head';
+      item.insertBefore(head, found[0]);
+      found.forEach(function (el) { head.appendChild(el); });
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'collapse-toggle';
+      btn.setAttribute('aria-label', title.textContent.replace(/\s+/g, ' ').trim());
+      btn.addEventListener('click', function () { setOpen(item, !item.classList.contains('is-open')); });
+      head.appendChild(btn);
+      item.classList.add('is-collapsible');
+      setOpen(item, open);
+    }
+    function disableItem(item) {
+      var head = direct(item, '.collapse-head');
+      if (!head) return;
+      Array.prototype.slice.call(head.children).forEach(function (c) {
+        if (c.classList.contains('collapse-toggle')) c.remove(); else item.insertBefore(c, head);
+      });
+      head.remove();
+      item.classList.remove('is-collapsible', 'is-open');
+    }
+    function itemsOf(g) {
+      var out = [];
+      document.querySelectorAll(g.scope).forEach(function (scope) {
+        if (g.self) { out.push({ item: scope, first: true }); return; }
+        var n = 0;
+        Array.prototype.forEach.call(scope.children, function (c) { if (c.matches(g.item)) out.push({ item: c, first: n++ < g.open }); });
+      });
+      return out;
+    }
+    function apply() {
+      var on = mq.matches;
+      groups.forEach(function (g) {
+        itemsOf(g).forEach(function (x) { if (on) enableItem(x.item, g.parts, g.self ? g.open > 0 : x.first); else disableItem(x.item); });
+      });
+      carousels.forEach(function (c) {
+        document.querySelectorAll(c.sel).forEach(function (el) {
+          if (on) { el.setAttribute('tabindex', '0'); el.setAttribute('role', 'group'); el.setAttribute('aria-label', c.label); }
+          else { el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('aria-label'); }
+        });
+      });
+      if (on) openHash();
+    }
+    // once the page has finished loading the layout above the target can still move, so the
+    // first call after load scrolls again even if the card is already open
+    function openHash(rescroll) {
+      var id = '';
+      try { id = decodeURIComponent((window.location.hash || '').slice(1)); } catch (e) { return; }
+      var target = id && document.getElementById(id);
+      var card = target && target.closest('.is-collapsible');
+      if (!card) return;
+      var wasOpen = card.classList.contains('is-open');
+      if (!wasOpen) setOpen(card, true);
+      if (wasOpen && rescroll !== true) return;
+      // cards slide up into place as they appear; show the target in its final position first
+      for (var el = target; el && el !== document.body; el = el.parentElement) {
+        if (el.hasAttribute('data-aos')) {
+          el.style.transition = 'none';
+          el.classList.add('aos-animate');
+          void el.offsetHeight;
+          el.style.transition = '';
+        }
+      }
+      target.scrollIntoView();
+    }
+    apply();
+    window.addEventListener('hashchange', function () { if (mq.matches) openHash(); });
+    window.addEventListener('load', function () { if (mq.matches) openHash(true); });
+    if (mq.addEventListener) mq.addEventListener('change', apply); else mq.addListener(apply);
+  })();
+
 })();
