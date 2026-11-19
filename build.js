@@ -754,18 +754,18 @@ async function build() {
       // very first build on a fresh checkout also works) — always rewriting
       // to the current build's hashed filename.
       if (cssHashedName) {
-        content = content.replace(/href="css\/style(?:\.[0-9a-f]{10})?\.min\.css"/, `href="css/${cssHashedName}"`);
-        content = content.replace('href="css/style.css"', `href="css/${cssHashedName}"`);
+        content = content.replace(/href="(\/?)css\/style(?:\.[0-9a-f]{10})?\.min\.css"/, (m, slash) => `href="${slash}css/${cssHashedName}"`);
+        content = content.replace(/href="(\/?)css\/style\.css"/, (m, slash) => `href="${slash}css/${cssHashedName}"`);
       }
       if (jsHashedName) {
-        content = content.replace(/src="js\/script(?:\.[0-9a-f]{10})?\.min\.js"/, `src="js/${jsHashedName}"`);
+        content = content.replace(/src="(\/?)js\/script(?:\.[0-9a-f]{10})?\.min\.js"/, (m, slash) => `src="${slash}js/${jsHashedName}"`);
       }
       if (faCssHashedName) {
-        content = content.replace(/href="css\/fontawesome(?:\.[0-9a-f]{10})?\.min\.css"/g, `href="css/${faCssHashedName}"`);
+        content = content.replace(/href="(\/?)css\/fontawesome(?:\.[0-9a-f]{10})?\.min\.css"/g, (m, slash) => `href="${slash}css/${faCssHashedName}"`);
       }
       content = ensureHeadPerf(content);
       for (const [name, hashed] of Object.entries(pageScriptMap)) {
-        content = content.replace(new RegExp(`src="js/${name}(?:\\.[0-9a-f]{10}\\.min)?\\.js"`, 'g'), `src="js/${hashed}"`);
+        content = content.replace(new RegExp(`src="(/?)js/${name}(?:\\.[0-9a-f]{10}\\.min)?\\.js"`, 'g'), (m, slash) => `src="${slash}js/${hashed}"`);
       }
 
       // Preview-only ribbon. Always stripped first so a production build leaves
