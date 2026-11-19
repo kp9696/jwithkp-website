@@ -92,6 +92,46 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
       ]
     }
   </script>
+  <script type="application/ld+json" id="faq-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Wazuh free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The software is open source with no licence fee. You still pay for the server resources and storage it needs, and for the time to deploy, tune and run it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Wazuh replace antivirus or endpoint protection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Wazuh adds visibility and alerting. It is typically used alongside endpoint protection, patching and good access control, not instead of them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do we need a dedicated security team to run Wazuh?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not necessarily, but someone must own the alerts. For a small business, that can be a trained IT person or an IT partner who reviews alerts and handles tuning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a Wazuh rollout take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on scope. A focused pilot on a handful of systems is quick; a full rollout depends on how many systems, log sources and reports you need, and how much tuning is required."
+      }
+    }
+  ]
+}
+  </script>
   <script type="application/ld+json" id="entity-graph">
 {
   "@context": "https://schema.org",
@@ -354,8 +394,84 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>That is why the project should include not just installation, but also scope definition, dashboard design, rule tuning, reporting needs, and admin enablement. Security tooling creates value when it improves decisions, not when it only increases data volume.</p>
       <h2>A better way to think about security investment</h2>
       <p>For smaller organizations, the right security investment is often the one that improves coverage and operational discipline first. Wazuh can be a strong step in that direction when the goal is practical improvement rather than tool accumulation. Explore our <a href="roi-calculator">IT cost calculator</a> to estimate SIEM licensing savings versus commercial tooling.</p>
-      <div class="cta">
-        <p>If you want to improve monitoring and visibility with a practical security rollout, JwithKP can help plan, deploy, and tune a Wazuh-based setup through our <a href="services">Wazuh SIEM implementation &amp; monitoring services</a>.</p>
+      <h2>What Wazuh actually does</h2>
+<p>Wazuh is an open-source security monitoring platform. Lightweight agents on your servers and endpoints send events to a central Wazuh server, which analyses them against rules. The results are stored and shown in a dashboard where you can search, investigate and report.</p>
+<ul>
+<li><strong>Log analysis:</strong> collecting and analysing logs from operating systems, applications and network devices.</li>
+<li><strong>File integrity monitoring:</strong> alerting when important files or configurations change.</li>
+<li><strong>Vulnerability detection:</strong> flagging installed software with known vulnerabilities.</li>
+<li><strong>Configuration assessment:</strong> checking systems against hardening benchmarks such as CIS.</li>
+<li><strong>Active response:</strong> optional automated actions, for example blocking an address after repeated failed logins.</li>
+<li><strong>Compliance views:</strong> dashboards that map events to frameworks such as PCI DSS or GDPR. This helps gather evidence; it does not make you compliant on its own.</li>
+</ul>
+
+<h2>A sensible rollout order</h2>
+<ol>
+<li><strong>Scope:</strong> decide which systems matter most, usually servers, admin workstations and anything holding sensitive data.</li>
+<li><strong>Pilot:</strong> install agents on a small group first and see what the dashboards and alerts look like.</li>
+<li><strong>Tune:</strong> silence or adjust noisy rules so that the alerts you see are worth reading.</li>
+<li><strong>Assign ownership:</strong> name who reviews alerts, how often, and what they do when something real appears.</li>
+<li><strong>Expand:</strong> add more systems in batches, checking server capacity as data grows.</li>
+<li><strong>Review:</strong> look at trends monthly and refine rules, retention and reporting.</li>
+</ol>
+
+<h2>What to monitor first</h2>
+<p>You do not need every log source on day one. Start with the events that most often point to a real problem:</p>
+<ul>
+<li>Failed and unusual administrator logins</li>
+<li>New user accounts and changes to privileges</li>
+<li>Changes to critical system files and configurations</li>
+<li>Vulnerable software on servers that face the internet</li>
+<li>Firewall and VPN logs for repeated denied or unusual connections</li>
+<li>Backup failures, since a silent backup failure is a security problem too</li>
+</ul>
+
+<h2>Wazuh versus a commercial SIEM</h2>
+<p>Wazuh and commercial SIEM products overlap, but they are not identical. This comparison is deliberately general, since editions and pricing change.</p>
+<div class="pricing-table-wrap" tabindex="0" role="region" aria-label="Wazuh versus commercial SIEM comparison (scrolls sideways on small screens)">
+<table class="pricing-table" aria-label="Wazuh versus commercial SIEM comparison">
+<caption>Wazuh compared with a commercial SIEM across licensing, cost drivers, capability, skills and support</caption><thead><tr><th scope="col">Area</th><th scope="col">Wazuh</th><th scope="col">Commercial SIEM</th></tr></thead>
+<tbody>
+<tr><th scope="row">Licensing</th><td>Open source, with no per-gigabyte licence fee</td><td>Usually priced by data volume, workload or user tier</td></tr>
+<tr><th scope="row">Main cost drivers</th><td>Server resources, storage and admin time</td><td>Licence tier, ingestion volume and add-on modules</td></tr>
+<tr><th scope="row">Strengths</th><td>Endpoint-focused monitoring, file integrity, vulnerability detection and log analysis</td><td>Broad data platform and large application ecosystems</td></tr>
+<tr><th scope="row">Skills needed</th><td>Linux administration and rule tuning</td><td>Product-specific skills, often a dedicated team</td></tr>
+<tr><th scope="row">Support</th><td>Community resources, paid options and partners</td><td>Vendor support contracts</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Wazuh is not a drop-in replacement for every commercial SIEM use case. For many small and mid-sized businesses, though, it covers the monitoring they actually need at a much lower cost.</p>
+<h2>Limits worth being honest about</h2>
+<ul>
+<li>Monitoring does not replace multi-factor sign-in, patching, tested backups or endpoint protection.</li>
+<li>Alerts only help if someone reads and acts on them. Unowned alerts are noise.</li>
+<li>Storage and server needs grow with log volume and retention, so size the deployment with growth in mind.</li>
+<li>JwithKP provides business-hours support, not a 24x7 security operations centre. Out-of-hours handling is agreed in writing.</li>
+</ul>
+
+<h2>Frequently asked questions: Wazuh for small businesses</h2>
+<div class="svc-faq-grid svc-faq-grid--stack">
+<article class="svc-faq-card">
+<h3><i class="fas fa-question-circle" aria-hidden="true"></i> Is Wazuh free to use?</h3>
+<p>The software is open source with no licence fee. You still pay for the server resources and storage it needs, and for the time to deploy, tune and run it.</p>
+</article>
+<article class="svc-faq-card">
+<h3><i class="fas fa-question-circle" aria-hidden="true"></i> Does Wazuh replace antivirus or endpoint protection?</h3>
+<p>No. Wazuh adds visibility and alerting. It is typically used alongside endpoint protection, patching and good access control, not instead of them.</p>
+</article>
+<article class="svc-faq-card">
+<h3><i class="fas fa-question-circle" aria-hidden="true"></i> Do we need a dedicated security team to run Wazuh?</h3>
+<p>Not necessarily, but someone must own the alerts. For a small business, that can be a trained IT person or an IT partner who reviews alerts and handles tuning.</p>
+</article>
+<article class="svc-faq-card">
+<h3><i class="fas fa-question-circle" aria-hidden="true"></i> How long does a Wazuh rollout take?</h3>
+<p>It depends on scope. A focused pilot on a handful of systems is quick; a full rollout depends on how many systems, log sources and reports you need, and how much tuning is required.</p>
+</article>
+</div>
+
+<div class="cta">
+        <p>If you want to improve monitoring and visibility with a practical security rollout, JwithKP can help plan, deploy, and tune a Wazuh-based setup through our <a href="services/cybersecurity">Wazuh SIEM implementation &amp; monitoring services</a>.</p>
         <p>Want to validate Wazuh for your environment before a full rollout? Book a free 30-minute architecture review and we can map agent scope, alert priorities, and pilot effort.</p>
         <!-- BLOCK:book-call-button -->
 <a data-book-call href="contact?intent=call#smartContactForm" class="btn btn-primary">Book a free 30-min call</a>
@@ -363,7 +479,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="related-links">
           <h3>Related resources</h3>
           <ul>
-            <li><a href="services">Explore Managed Cybersecurity &amp; SIEM Services</a></li>
+            <li><a href="services/cybersecurity">Explore our cybersecurity services</a></li>
+<li><a href="solutions/open-source">Open-source solutions we implement</a></li>
             <li><a href="technologies">Review the complete Security &amp; Open Source Stack</a></li>
             <li><a href="blog-proxmox-vmware-alternative">Why Proxmox Is a Strong VMware Alternative</a></li>
             <li><a href="blog-nextcloud-vs-microsoft365">Nextcloud vs Microsoft 365: How to Choose</a></li>

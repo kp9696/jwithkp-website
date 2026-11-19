@@ -63,45 +63,69 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
     }
   </script>
   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
     {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is there a free plan in JwithKP HRMS?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. JwithKP HRMS offers a Free plan for up to 5 employees with no credit card requirement and no time limit."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is included in the Growth plan?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Growth plan includes payroll automation, compliance calculations, GPS attendance, asset management, leave accrual, expense and loan management, and priority support for up to 50 employees."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does JwithKP HRMS include API and SSO access?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. API access and SSO are included in the Scale plan and Enterprise plan."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are there hidden charges or setup fees?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. JwithKP HRMS pricing is transparent with no hidden add-ons and no setup fees."
-          }
-        }
-      ]
+      "@type": "Question",
+      "name": "Is there a free plan in JwithKP HRMS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. JwithKP HRMS offers a Free plan for up to 5 employees with no credit card requirement and no time limit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is included in the Growth plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Growth plan includes payroll automation, compliance calculations, GPS attendance, asset management, leave accrual, expense and loan management, and priority support for up to 50 employees."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does JwithKP HRMS include API and SSO access?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. API access and SSO are included in the Scale plan and Enterprise plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are there hidden charges or setup fees?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. JwithKP HRMS pricing is transparent with no hidden add-ons and no setup fees."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when we grow beyond 5 employees on the Free plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Free plan covers up to 5 employees. Once you pass that, you move to Growth, which covers up to 50 employees and adds payroll and compliance features."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the price per employee or per plan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each plan has a fixed monthly price and an employee limit, so the cost per employee depends on how full the plan is."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can we upgrade later as the team grows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can start on the Free plan and upgrade as your team grows."
+      }
     }
-  </script>
+  ]
+}
+</script>
   <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192.png">
   <link rel="apple-touch-icon" href="/images/icons/icon-192.png">
   <link rel="manifest" href="/manifest.json">
@@ -475,7 +499,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </table>
       </div>
 
-      <h2>Why This Pricing Is Different</h2>
+      <h2>Which plan fits your team?</h2>
+<p>Each plan has a fixed monthly price and an employee limit, so the plan you need follows from your headcount:</p>
+<ul>
+<li><strong>1 to 5 employees:</strong> the Free plan covers attendance, leave and employee profiles.</li>
+<li><strong>6 to 50 employees:</strong> Growth adds payroll automation, compliance calculations and GPS attendance.</li>
+<li><strong>51 to 200 employees:</strong> Scale adds analytics, API access and SSO.</li>
+<li><strong>More than 200 employees:</strong> Enterprise, with custom pricing and requirements.</li>
+</ul>
+
+<h2>What each plan costs per year</h2>
+<p>The price is per plan, not per person, so the cost per employee falls as you fill a plan. These figures are 12 times the monthly price shown above.</p>
+<div class="pricing-table-wrap" tabindex="0" role="region" aria-label="Annual and per-employee HRMS cost (scrolls sideways on small screens)">
+<table class="pricing-table" aria-label="Annual and per-employee HRMS cost">
+<caption>Annual cost and approximate per-employee cost at full capacity for each JwithKP HRMS plan</caption><thead><tr><th scope="col">Plan</th><th scope="col">Monthly price</th><th scope="col">Annual (12 months)</th><th scope="col">Per employee at full capacity</th></tr></thead>
+<tbody>
+<tr><th scope="row">Free</th><td>INR 0</td><td>INR 0</td><td>INR 0 (up to 5 employees)</td></tr>
+<tr><th scope="row">Growth</th><td>INR 2,999</td><td>INR 35,988</td><td>About INR 59 per month (50 employees)</td></tr>
+<tr><th scope="row">Scale</th><td>INR 7,999</td><td>INR 95,988</td><td>About INR 40 per month (200 employees)</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>For example, a 20-person team on Growth pays about INR 150 per employee per month, because the plan is sized for up to 50. If you expect to reach 50 soon, that gap closes quickly.</p>
+<h2>Why This Pricing Is Different</h2>
       <p>Many HRMS platforms lock critical features behind add-ons. JwithKP HRMS keeps pricing simple:</p>
       <ul>
         <li>GPS attendance included in all plans</li>
@@ -488,7 +535,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
       <p>What you see is exactly what you pay.</p>
 
-      <div class="faq-card">
+      <h2>The statutory terms, in plain language</h2>
+<p>Indian payroll involves several compliance terms. Here is what they mean, so you can judge whether an HRMS handles them:</p>
+<ul>
+<li><strong>PF (Provident Fund):</strong> a retirement savings scheme to which the employer and employee contribute each month.</li>
+<li><strong>ESI (Employees&rsquo; State Insurance):</strong> a state insurance scheme providing medical and cash benefits to eligible employees.</li>
+<li><strong>TDS on salary:</strong> income tax that the employer deducts from salary and deposits with the government.</li>
+<li><strong>Form 16:</strong> the certificate an employer issues showing salary paid and tax deducted.</li>
+<li><strong>ECR (Electronic Challan cum Return):</strong> the monthly file used to report PF contributions.</li>
+<li><strong>GOSI and WPS (GCC):</strong> GOSI is Saudi Arabia&rsquo;s social insurance system, and WPS is a wage protection system used in several Gulf countries.</li>
+</ul>
+
+<p>Rules, rates and thresholds change. Confirm your specific obligations with your accountant or compliance consultant.</p>
+<h2>What to check in any HRMS</h2>
+<ul>
+<li>Does payroll calculation match your accountant&rsquo;s numbers on a sample month?</li>
+<li>How quickly are statutory changes reflected?</li>
+<li>Can you export all your data if you leave?</li>
+<li>Are there role-based permissions, so staff only see what they should?</li>
+<li>Is there an audit trail of changes to pay and personal data?</li>
+<li>What does support include, and how do you reach it?</li>
+<li>Are taxes such as GST included in the displayed price?</li>
+</ul>
+
+<h2>Getting started checklist</h2>
+<ol>
+<li>Collect employee records: personal details, joining dates, bank details and statutory numbers.</li>
+<li>Define leave types, holidays and accrual rules.</li>
+<li>Set up salary structures and deductions for each group of employees.</li>
+<li>Run one payroll cycle in parallel with your current process and compare the results.</li>
+<li>Switch over once the numbers match, and keep the old records safe.</li>
+</ol>
+
+<div class="faq-card">
         <h2>Frequently Asked Questions</h2>
 
         <h3>Is there a free plan in JwithKP HRMS?</h3>
@@ -502,7 +581,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <h3>Are there hidden charges or setup fees?</h3>
         <p>No. JwithKP HRMS pricing is transparent with no hidden add-ons and no setup fees.</p>
-      </div>
+      
+<h3>What happens when we grow beyond 5 employees on the Free plan?</h3>
+<p>The Free plan covers up to 5 employees. Once you pass that, you move to Growth, which covers up to 50 employees and adds payroll and compliance features.</p>
+
+<h3>Is the price per employee or per plan?</h3>
+<p>Each plan has a fixed monthly price and an employee limit, so the cost per employee depends on how full the plan is.</p>
+
+<h3>Can we upgrade later as the team grows?</h3>
+<p>Yes. You can start on the Free plan and upgrade as your team grows.</p>
+</div>
 
       <div class="cta">
         <h2>Start Free Today</h2>
