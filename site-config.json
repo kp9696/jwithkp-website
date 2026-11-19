@@ -16,13 +16,13 @@
     "city": "Bangalore",
     "region": "Karnataka",
     "country": "IN",
-    "address": "Coming Soon",
+    "address": "",
     "mapEmbedUrl": ""
   },
   "legal": {
     "entityName": "JwithKP Technology",
     "entityType": "IT Consulting",
-    "gstin": "Soon",
+    "gstin": "",
     "grievanceName": "",
     "grievanceEmail": "",
     "policyEffectiveDate": "",
