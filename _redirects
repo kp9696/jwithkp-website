@@ -17,3 +17,11 @@
 # but isn't. robots.txt already disallows /templates/ for crawlers; the two
 # files it serves contain no secrets, just nav/footer markup fragments.
 /templates/*     /404.html   404
+
+# Section renames (SEO: permanent redirects keep rankings and old links working)
+/blog              /insights            301
+/blog.html         /insights            301
+/technology-stack  /technologies        301
+/technology-stack.html /technologies    301
+/case-studies      /projects            301
+/case-studies.html /projects            301

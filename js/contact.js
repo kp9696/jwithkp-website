@@ -172,8 +172,17 @@ const contactForm = document.getElementById('smartContactForm');
 // Deep link from the "Book a free call" buttons (contact?intent=call): pre-select
 // the free-call option so the visitor only has to add their details.
 (function applyCallIntent() {
-  if (new URLSearchParams(window.location.search).get('intent') !== 'call') return;
+  const params = new URLSearchParams(window.location.search);
   const interest = document.getElementById('interest');
-  if (interest) interest.value = 'call';
+  if (!interest) return;
+  // ?service=<value> (from the service and solution pages) pre-selects that service.
+  const service = params.get('service');
+  if (service && Array.from(interest.options).some((o) => o.value === service)) {
+    interest.value = service;
+  } else if (params.get('intent') === 'call') {
+    interest.value = 'call';
+  } else {
+    return;
+  }
   markInterest();
 })();

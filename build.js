@@ -283,17 +283,17 @@ gtag('consent', 'default', {
 
 // Which main-menu link is "active" on which page. Industries and Technology
 // are no longer in the main menu (they are linked from the footer), so they
-// have no entry. Resource pages all light up the Resources parent (href "blog").
+// have no entry. Resource pages all light up the Resources parent (href "insights").
 const routeMap = {
   'index.html': 'https://www.jwithkp.com/',
   'about.html': 'about',
   'services.html': 'services',
   'roi-calculator.html': 'it-cost-estimator',
   'it-cost-estimator.html': 'it-cost-estimator',
-  'blog.html': 'blog',
-  'guides.html': 'blog',
-  'startup-it-checklist.html': 'blog',
-  'case-studies.html': 'blog',
+  'insights.html': 'insights',
+  'guides.html': 'insights',
+  'startup-it-checklist.html': 'insights',
+  'projects.html': 'projects',
   'contact.html': 'contact'
 };
 
@@ -691,7 +691,16 @@ async function build() {
   const leaks = [];
   const claimHits = [];
 
-  const files = fs.readdirSync(__dirname);
+  // Pages live in the repo root, plus the services/ and solutions/ sections
+  // (served at /services/<name> and /solutions/<name>). Pages in a section use
+  // the same relative links as root pages in their source; the build turns every
+  // relative URL on them into a root-relative one (see below), so the shared
+  // navbar and footer work unchanged at any depth.
+  const NESTED_DIRS = ['services', 'solutions'];
+  const files = fs.readdirSync(__dirname).concat(
+    ...NESTED_DIRS.filter(d => fs.existsSync(path.join(__dirname, d)))
+      .map(d => fs.readdirSync(path.join(__dirname, d)).filter(f => f.endsWith('.html')).map(f => `${d}/${f}`))
+  );
   for (const file of files) {
     if (file.endsWith('.html') && file !== 'google662243390838af12.html') {
       const filePath = path.join(__dirname, file);
@@ -707,10 +716,14 @@ async function build() {
         // line endings (the templates are CRLF).
         if (currentHref) {
           dynamicNavbar = setActiveLink(dynamicNavbar, currentHref);
+        } else if (file.startsWith('services/')) {
+          dynamicNavbar = setActiveLink(dynamicNavbar, 'services');
+        } else if (file.startsWith('solutions/')) {
+          dynamicNavbar = setActiveLink(dynamicNavbar, 'solutions/open-source');
         } else if (file.startsWith('blog-')) {
-          // The Resources parent (href "blog") comes before its mega-menu
+          // The Resources parent (href "insights") comes before its mega-menu
           // children, so this marks the parent, not the "Blog" child item.
-          dynamicNavbar = setActiveLink(dynamicNavbar, 'blog');
+          dynamicNavbar = setActiveLink(dynamicNavbar, 'insights');
         }
 
         content = content.replace(
@@ -771,6 +784,12 @@ async function build() {
       for (const [label, re] of CLAIM_PATTERNS) {
         const n = (visibleText.match(re) || []).length;
         if (n) claimHits.push(`${file}: ${n} x ${label}`);
+      }
+
+      if (file.includes('/')) {
+        // href/src/action values that are neither absolute, root-relative, a bare #fragment,
+        // nor a mailto:/tel:/data:/javascript: URL become root-relative.
+        content = content.replace(/(\s(?:href|src|action|poster)=")(?!https?:|\/|#|mailto:|tel:|data:|javascript:|\{\{)([^"]+)"/gi, '$1/$2"');
       }
 
       fs.writeFileSync(filePath, content, 'utf8');
@@ -871,7 +890,7 @@ async function build() {
     // (so a new page can't be forgotten); 404 and the Search Console
     // verification file are intentionally not listed.
     const listed = new Set([...sitemapContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]));
-    const missing = fs.readdirSync(__dirname)
+    const missing = files
       .filter(f => f.endsWith('.html') && f !== '404.html' && !f.startsWith('google'))
       .map(f => ({ f, loc: f === 'index.html' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}/${f.replace(/\.html$/, '')}` }))
       .filter(p => !listed.has(p.loc));
