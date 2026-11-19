@@ -387,7 +387,10 @@ function buildEntityGraph(page) {
     logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/images/icons/icon-512.png`, width: 512, height: 512 },
     telephone: SITE_CONFIG.contact.phoneE164,
     email: SITE_CONFIG.contact.email,
-    areaServed: { '@type': 'Country', name: 'India' },
+    areaServed: [
+      { '@type': 'Country', name: 'India' },
+      ...(SITE_CONFIG.location.city ? [{ '@type': 'City', name: SITE_CONFIG.location.city, containedInPlace: { '@type': 'State', name: SITE_CONFIG.location.region } }] : [])
+    ],
     knowsAbout: SITE_CONFIG.seo.knowsAbout
   };
   if (SITE_CONFIG.location.city) {
@@ -812,9 +815,33 @@ async function build() {
     }
   }
 
-  // Derive each <lastmod> from the matching file's real mtime, so the sitemap
-  // reflects actual freshness per page instead of stamping every URL with today.
+  // Derive each <lastmod> from the page's real last-modified date, in this order:
+  //   1. the Article "dateModified" in its JSON-LD (blog posts, set by hand on edit),
+  //   2. the date of the last git commit that touched the file (skipped on a shallow
+  //      clone, where every file would report the same commit),
+  //   3. the <lastmod> already committed in sitemap.xml (kept as-is, so a shallow
+  //      CI clone cannot restamp every page with the checkout time; bump it by hand,
+  //      or deploy from a full clone, when a page changes),
+  //   4. the file mtime (last resort, for a page with no sitemap entry yet).
+  // Stamping every URL with one date makes Google ignore <lastmod> altogether.
   const sitemapPath = path.join(__dirname, 'sitemap.xml');
+  const isShallow = (() => {
+    try { return require('child_process').execSync('git rev-parse --is-shallow-repository', { cwd: __dirname, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim() !== 'false'; }
+    catch (e) { return true; }
+  })();
+  const lastModified = (file, existing) => {
+    const html = fs.readFileSync(file, 'utf8');
+    const m = html.match(/"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
+    if (m) return m[1];
+    if (!isShallow) {
+      try {
+        const d = require('child_process').execFileSync('git', ['log', '-1', '--format=%cs', '--', path.basename(file)], { cwd: __dirname, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+        if (d) return d;
+      } catch (e) { /* fall through to mtime */ }
+    }
+    if (existing) return existing;
+    return fs.statSync(file).mtime.toISOString().slice(0, 10);
+  };
   if (fs.existsSync(sitemapPath)) {
     const todayISO = new Date().toISOString().slice(0, 10);
     let sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
@@ -826,11 +853,12 @@ async function build() {
     sitemapContent = sitemapContent.replace(
       /<loc>([^<]+)<\/loc>(\s*)(?:<lastmod>[^<]*<\/lastmod>(\s*))+/g,
       (whole, loc, gap, trail) => {
+        const prev = (whole.match(/<lastmod>([^<]*)<\/lastmod>/) || [])[1];
         const slug = loc.replace(/^https?:\/\/[^/]+\//, '').replace(/\/$/, '');
         const candidate = path.join(__dirname, (slug === '' ? 'index' : slug) + '.html');
         let stamp = todayISO;
         if (fs.existsSync(candidate)) {
-          stamp = fs.statSync(candidate).mtime.toISOString().slice(0, 10);
+          stamp = lastModified(candidate, prev);
           resolved++;
         } else {
           console.warn(`  sitemap: no file for <loc>${loc}</loc> — using today`);
@@ -848,14 +876,16 @@ async function build() {
       .map(f => ({ f, loc: f === 'index.html' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}/${f.replace(/\.html$/, '')}` }))
       .filter(p => !listed.has(p.loc));
     for (const p of missing) {
-      const stamp = fs.statSync(path.join(__dirname, p.f)).mtime.toISOString().slice(0, 10);
-      const entry = `  <url>\n    <loc>${p.loc}</loc>\n    <lastmod>${stamp}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n`;
+      const stamp = lastModified(path.join(__dirname, p.f));
+      const entry = `  <url>\n    <loc>${p.loc}</loc>\n    <lastmod>${stamp}</lastmod>\n  </url>\n`;
       sitemapContent = sitemapContent.replace('</urlset>', entry + '</urlset>');
       console.log(`  sitemap: added ${p.loc}`);
     }
 
+    // Google ignores <changefreq> and <priority>; keep the file minimal.
+    sitemapContent = sitemapContent.replace(/[ \t]*<(changefreq|priority)>[^<]*<\/\1>[ \t]*\r?\n/g, '');
     fs.writeFileSync(sitemapPath, sitemapContent, 'utf8');
-    console.log(`Updated sitemap.xml lastmod (${resolved} URLs from file mtime, ${missing.length} added)`);
+    console.log(`Updated sitemap.xml lastmod (${resolved} URLs from page dates, ${missing.length} added)`);
   }
 
   console.log('Build completed successfully.');

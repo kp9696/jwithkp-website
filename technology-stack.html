@@ -124,10 +124,20 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
       },
       "telephone": "+917982912207",
       "email": "info@jwithkp.com",
-      "areaServed": {
-        "@type": "Country",
-        "name": "India"
-      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "India"
+        },
+        {
+          "@type": "City",
+          "name": "Bangalore",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Karnataka"
+          }
+        }
+      ],
       "knowsAbout": [
         "IT setup for startups",
         "Business email and collaboration (Microsoft 365, Google Workspace, Nextcloud)",

@@ -57,7 +57,75 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
   <!-- /HEAD_PERF -->
   <link rel="stylesheet" href="css/fontawesome.7a39d32adc.min.css">
 
-  <link rel="stylesheet" href="css/style.8e63e049e2.min.css">
+  <link rel="stylesheet" href="css/style.8e63e049e2.min.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://www.jwithkp.com/case-studies#scenarios",
+  "name": "Illustrative IT scenarios (not past client work)",
+  "numberOfItems": 10,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "A 10-person SaaS startup",
+      "url": "https://www.jwithkp.com/case-studies#saas-startup"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "A small clinic",
+      "url": "https://www.jwithkp.com/case-studies#small-clinic"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "A D2C brand with a remote team",
+      "url": "https://www.jwithkp.com/case-studies#d2c-remote"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "An office with an ageing firewall",
+      "url": "https://www.jwithkp.com/case-studies#office-firewall"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "A business with two sites",
+      "url": "https://www.jwithkp.com/case-studies#two-site-network"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Replacing spreadsheets with an internal tool",
+      "url": "https://www.jwithkp.com/case-studies#internal-tool"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Virtualization Cost Reduction"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "Security Visibility Rollout for SMB"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Startup Infrastructure Baseline Build"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "Collaboration Cost Strategy Review"
+    }
+  ]
+}
+  </script>
   <script type="application/ld+json" id="entity-graph">
 {
   "@context": "https://schema.org",
@@ -80,10 +148,20 @@ w.addEventListener('load',function(){setTimeout(function(){(w.requestIdleCallbac
       },
       "telephone": "+917982912207",
       "email": "info@jwithkp.com",
-      "areaServed": {
-        "@type": "Country",
-        "name": "India"
-      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "India"
+        },
+        {
+          "@type": "City",
+          "name": "Bangalore",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Karnataka"
+          }
+        }
+      ],
       "knowsAbout": [
         "IT setup for startups",
         "Business email and collaboration (Microsoft 365, Google Workspace, Nextcloud)",
