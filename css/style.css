@@ -6005,3 +6005,6 @@ mark.todo-marker {
 .tech-split--3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .tech-note { margin: 1rem 0 0.75rem; font-size: 0.875rem; color: var(--text-secondary); }
 @media (prefers-reduced-motion: reduce) { .hp-pillar { transition: none; } }
+
+.value-card a { color: var(--accent-teal); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.value-card a:hover, .value-card a:focus-visible { text-decoration-thickness: 2px; }
