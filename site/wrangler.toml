@@ -3,12 +3,12 @@ name = "jwithkp-site"
 compatibility_date = "2024-11-01"
 pages_build_output_dir = "dist"
 
-# D1 database for enquiries and admin users. Create it with `npx wrangler d1 create jwithkp`
-# and replace database_id below with the id it prints. See BACKEND.md.
+# D1 database for enquiries and admin users (created in the Cloudflare dashboard; the id is not a secret).
+# The tables come from migrations/0001_init.sql. See BACKEND.md.
 [[d1_databases]]
 binding = "DB"
 database_name = "jwithkp"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "e3d57e85-e1c4-492e-ace1-6c0d2ffd3d99"
 migrations_dir = "migrations"
 
 [vars]
