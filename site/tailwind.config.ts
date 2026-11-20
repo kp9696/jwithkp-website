@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import typography from '@tailwindcss/typography'
 
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
@@ -15,5 +16,5 @@ export default {
       boxShadow: { card: '0 1px 2px rgb(11 20 40 / 0.06), 0 8px 24px -12px rgb(11 20 40 / 0.18)' },
     },
   },
-  plugins: [],
+  plugins: [typography],
 } satisfies Config

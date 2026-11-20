@@ -13,9 +13,10 @@ if (!template.includes('<!--app-html-->') || !template.includes('<!--head-tags--
 const fileFor = (p) => (p === '/' ? 'index.html' : `${p.replace(/^\//, '')}.html`)
 let count = 0
 for (const r of [...routes, notFound]) {
+  const appHtml = await render(r.meta.path)
   const html = template
     .replace('<!--head-tags-->', () => headTags(r.meta))
-    .replace('<!--app-html-->', () => render(r.meta.path))
+    .replace('<!--app-html-->', () => appHtml)
   const out = path.join(dist, fileFor(r.meta.path))
   fs.mkdirSync(path.dirname(out), { recursive: true })
   fs.writeFileSync(out, html)
