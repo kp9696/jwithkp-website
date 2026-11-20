@@ -115,11 +115,11 @@
         <li><a href="projects">Projects</a></li>
         <li><a href="insights">Insights</a></li>
         <li><a href="contact">Contact</a></li>
-        <li class="nav-menu-cta"><a href="{{cfg.contact.bookingUrl|or:contact?intent=call#smartContactForm}}" class="btn btn-primary"{{#when cfg.contact.bookingUrl}} target="_blank" rel="noopener noreferrer"{{/when}}>Get a Free Consultation &rarr;</a></li>
+        <li class="nav-menu-cta"><a href="{{cfg.contact.bookingUrl|or:contact?intent=call#smartContactForm}}" class="btn btn-primary"{{#when cfg.contact.bookingUrl}} target="_blank" rel="noopener noreferrer"{{/when}}>Get a Free Consultation <i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
       </ul>
 
       <div class="nav-right">
-        <a href="{{cfg.contact.bookingUrl|or:contact?intent=call#smartContactForm}}" class="btn btn-primary nav-cta"{{#when cfg.contact.bookingUrl}} target="_blank" rel="noopener noreferrer"{{/when}}>Get a Free Consultation &rarr;</a>
+        <a href="{{cfg.contact.bookingUrl|or:contact?intent=call#smartContactForm}}" class="btn btn-primary nav-cta"{{#when cfg.contact.bookingUrl}} target="_blank" rel="noopener noreferrer"{{/when}}>Get a Free Consultation <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
           <i class="fas fa-moon"></i>
         </button>
