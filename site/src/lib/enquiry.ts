@@ -1,5 +1,5 @@
-// Enquiry submission. Phase 3 replaces this with the Cloudflare Worker API (/api/enquiry -> D1 + email).
-// Until then it posts to FormSubmit, the same service the current site uses.
+// Enquiry submission: POST /api/enquiry (Cloudflare Pages Function: Turnstile, D1, email).
+// If the API is unreachable it falls back to FormSubmit, the service the previous site used, so no lead is lost.
 export const ENQUIRY_ENDPOINT = 'https://formsubmit.co/ajax/info@jwithkp.com'
 
 export const serviceOptions = [
@@ -40,28 +40,41 @@ export function validate(d: EnquiryInput): EnquiryErrors {
   return e
 }
 
-export async function submitEnquiry(d: EnquiryInput): Promise<'ok' | 'failed'> {
-  // Spam checks: honeypot filled, or form submitted implausibly fast. Report success silently.
-  if (d.website || Date.now() - d.startedAt < 2500) return 'ok'
-  const label = serviceOptions.find((s) => s.value === d.service)?.label ?? d.service
+export type SubmitResult =
+  | { status: 'ok'; reference?: string }
+  | { status: 'invalid'; message: string; fields?: EnquiryErrors }
+  | { status: 'failed'; message?: string }
+
+/** Legacy path, used only when the API is unreachable, so a lead is never lost. */
+async function submitViaFormSubmit(d: EnquiryInput, label: string): Promise<boolean> {
   try {
     const res = await fetch(ENQUIRY_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        _subject: `New enquiry: ${label}`,
-        _captcha: 'false',
-        name: d.name.trim(),
-        company: d.company.trim(),
-        email: d.email.trim(),
-        phone: d.phone.trim(),
-        service: label,
-        budget: d.budget,
-        message: d.message.trim(),
-      }),
+      body: JSON.stringify({ _subject: `New enquiry: ${label}`, _captcha: 'false', name: d.name.trim(), company: d.company.trim(), email: d.email.trim(), phone: d.phone.trim(), service: label, budget: d.budget, message: d.message.trim() }),
     })
-    return res.ok ? 'ok' : 'failed'
+    return res.ok
   } catch {
-    return 'failed'
+    return false
   }
+}
+
+export async function submitEnquiry(d: EnquiryInput, turnstileToken = ''): Promise<SubmitResult> {
+  const label = serviceOptions.find((s) => s.value === d.service)?.label ?? d.service
+  try {
+    const res = await fetch('/api/enquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...d, elapsedMs: Date.now() - d.startedAt, turnstileToken, sourcePage: window.location.pathname }),
+    })
+    const data = (await res.json().catch(() => ({}))) as { ok?: boolean; reference?: string; error?: string; fields?: EnquiryErrors }
+    if (res.ok && data.ok) return { status: 'ok', reference: data.reference }
+    // The visitor can fix these: show the message. Anything else falls through to the fallback below.
+    if (res.status === 400 || res.status === 403 || res.status === 429) return { status: 'invalid', message: data.error ?? 'Please check the form and try again.', fields: data.fields }
+  } catch {
+    /* network error: use the fallback */
+  }
+  // Honeypot and speed checks already ran on the server; a bot would not reach here with real values.
+  if (d.website) return { status: 'ok' }
+  return (await submitViaFormSubmit(d, label)) ? { status: 'ok' } : { status: 'failed' }
 }

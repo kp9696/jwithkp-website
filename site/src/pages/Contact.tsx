@@ -4,6 +4,7 @@ import { Layout } from '@/components/layout/Layout'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { PageHero } from '@/components/sections/common'
+import { Turnstile } from '@/components/Turnstile'
 import { budgetOptions, serviceOptions, submitEnquiry, validate, type EnquiryErrors, type EnquiryInput } from '@/lib/enquiry'
 import { site } from '@/content/site'
 
@@ -26,6 +27,9 @@ export default function Contact() {
   const [data, setData] = useState<EnquiryInput>(empty)
   const [errors, setErrors] = useState<EnquiryErrors>({})
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle')
+  const [reference, setReference] = useState('')
+  const [serverMessage, setServerMessage] = useState('')
+  const [token, setToken] = useState('')
   const started = useRef(0)
 
   useEffect(() => {
@@ -45,7 +49,16 @@ export default function Contact() {
     setErrors(errs)
     if (Object.keys(errs).length) return
     setStatus('sending')
-    setStatus((await submitEnquiry(payload)) === 'ok' ? 'sent' : 'failed')
+    setServerMessage('')
+    const r = await submitEnquiry(payload, token)
+    if (r.status === 'ok') {
+      setReference(r.reference ?? '')
+      setStatus('sent')
+    } else if (r.status === 'invalid') {
+      if (r.fields) setErrors(r.fields)
+      setServerMessage(r.message)
+      setStatus('idle')
+    } else setStatus('failed')
   }
 
   const err = (k: keyof EnquiryErrors) => (errors[k] ? { 'aria-invalid': true, 'aria-describedby': `${k}-error` } : {})
@@ -79,7 +92,8 @@ export default function Contact() {
                 <div role="status" className="py-10 text-center">
                   <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-600" aria-hidden="true" />
                   <h2 className="mt-4 text-2xl">Thank you, we have your enquiry.</h2>
-                  <p className="lead mt-2">We will reply by email, usually within 24 business hours.</p>
+                  {reference && <p className="mt-3 inline-block rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-navy">Your reference: {reference}</p>}
+                  <p className="lead mt-3">We will reply by email, usually within 24 business hours.</p>
                 </div>
               ) : (
                 <form onSubmit={onSubmit} noValidate aria-label="Enquiry form" className="grid gap-5">
@@ -111,6 +125,8 @@ export default function Contact() {
                     <label>Website<input tabIndex={-1} autoComplete="off" value={data.website} onChange={set('website')} /></label>
                   </div>
                   <p className="text-xs text-slate-500">We use your details only to reply to this enquiry. See our <a className="underline" href="/privacy-policy">Privacy Policy</a>.</p>
+                  <Turnstile onToken={setToken} />
+                  {serverMessage && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{serverMessage}</p>}
                   {status === 'failed' && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-700">Sorry, something went wrong. Please email {site.email} or call {site.phone}.</p>}
                   <Button type="submit" size="lg" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Send enquiry'}</Button>
                 </form>

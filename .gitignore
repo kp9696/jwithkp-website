@@ -27,3 +27,7 @@ TODO.md
 # New React site build output
 site/dist/
 site/dist-server/
+
+# Admin user SQL written by scripts/create-admin.mjs (contains a password hash)
+.create-admin.sql
+.wrangler/

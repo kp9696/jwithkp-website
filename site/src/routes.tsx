@@ -15,6 +15,7 @@ import Guides from '@/pages/Guides'
 import Estimator from '@/pages/Estimator'
 import Roi from '@/pages/Roi'
 import Checklist from '@/pages/Checklist'
+import Admin from '@/pages/Admin'
 import { docs, postSlugs } from '@/content/docs'
 import { lastmodByPath, pageMeta } from '@/content/meta'
 
@@ -126,6 +127,13 @@ const postRoutes: RouteDef[] = postSlugs.map((slug) => {
 })
 
 export const routes: RouteDef[] = [...base, ...service, ...tools, ...contentRoutes, ...postRoutes]
+
+/** Staff dashboard: not indexed, not in the sitemap, disallowed in robots.txt. */
+export const admin: RouteDef = {
+  meta: { path: '/admin', title: 'Team sign-in', description: 'JwithKP enquiry dashboard.', noindex: true },
+  element: <Admin />,
+  lastmod: TODAY,
+}
 
 export const notFound: RouteDef = {
   meta: { path: '/404', title: 'Page Not Found', description: 'The page you are looking for does not exist or has moved.', noindex: true },

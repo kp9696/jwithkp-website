@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { routes, notFound } from '@/routes'
+import { routes, notFound, admin } from '@/routes'
 import { fullTitle } from '@/lib/seo'
 
 /** Keeps the tab title and description right after client-side navigation (the first load is prerendered). */
 function RouteEffects() {
   const { pathname, hash } = useLocation()
   useEffect(() => {
-    const r = routes.find((x) => x.meta.path === pathname) ?? notFound
+    const r = routes.find((x) => x.meta.path === pathname) ?? (pathname === '/admin' ? admin : notFound)
     document.title = fullTitle(r.meta.title)
     document.querySelector('meta[name="description"]')?.setAttribute('content', r.meta.description)
     const canon = document.querySelector('link[rel="canonical"]')
@@ -26,6 +26,7 @@ export default function App() {
         {routes.map((r) => (
           <Route key={r.meta.path} path={r.meta.path} element={r.element} />
         ))}
+        <Route path="/admin" element={admin.element} />
         <Route path="*" element={notFound.element} />
       </Routes>
     </>

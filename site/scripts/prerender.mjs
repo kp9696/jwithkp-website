@@ -6,13 +6,13 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const dist = path.join(root, 'dist')
-const { render, routes, notFound, headTags } = await import(pathToFileURL(path.join(root, 'dist-server', 'entry-server.js')).href)
+const { render, routes, notFound, admin, headTags } = await import(pathToFileURL(path.join(root, 'dist-server', 'entry-server.js')).href)
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
 if (!template.includes('<!--app-html-->') || !template.includes('<!--head-tags-->')) throw new Error('index.html template lost its placeholders')
 
 const fileFor = (p) => (p === '/' ? 'index.html' : `${p.replace(/^\//, '')}.html`)
 let count = 0
-for (const r of [...routes, notFound]) {
+for (const r of [...routes, admin, notFound]) {
   const appHtml = await render(r.meta.path)
   const html = template
     .replace('<!--head-tags-->', () => headTags(r.meta))

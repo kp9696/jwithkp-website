@@ -14,5 +14,5 @@ export async function render(url: string) {
   )
 }
 
-export { routes, notFound } from './routes'
+export { routes, notFound, admin } from './routes'
 export { headTags } from './lib/seo'
