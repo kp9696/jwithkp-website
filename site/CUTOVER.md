@@ -49,13 +49,8 @@ Merge the branch into `main` (tell me and I will do it, or merge the pull reques
 ## Rollback (takes under a minute)
 Workers & Pages -> your project -> Deployments -> pick the last deployment from before the cutover -> "Rollback to this deployment". The old site is served again immediately. Then tell me and I will revert the merge in git.
 
-## Step 6: retire the old files (after about a week of stable running)
-The old static site is still in the repository root. Once you are happy, remove it in one commit; git history keeps everything:
-```bash
-git rm -r --quiet *.html css js images templates build.js site-config.json sitemap.xml robots.txt llms.txt manifest.json sw.js _headers _redirects Logo.png Logo.webp TODO.md .well-known package.json package-lock.json
-git commit -m "Retire the old static site; the site now lives in site/"
-```
-(`site/public` already holds the copies of the images, robots.txt, llms.txt, manifest and other static files the new site needs.) Keep `CLAUDE.md`, `README.md`, `.gitignore`, `.claude/` and `site/`.
+## Step 6: retire the old files: done
+The old static site (root `*.html`, `css/`, `js/`, `images/`, `templates/`, `build.js` and the rest) and unused images were removed from the repository after go-live. Git history keeps everything; to see an old file, use `git show <commit-before-removal>:<path>`.
 
 ## Known small items to review after launch
 - Several blog and technology images are the old, un-resized files; a per-post share image (1200x630) is still on the to-do list.
