@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { routes, notFound, admin } from '@/routes'
 import { fullTitle } from '@/lib/seo'
+import { Analytics } from '@/components/Analytics'
 
 /** Keeps the tab title and description right after client-side navigation (the first load is prerendered). */
 function RouteEffects() {
@@ -22,6 +23,7 @@ export default function App() {
   return (
     <>
       <RouteEffects />
+      <Analytics />
       <Routes>
         {routes.map((r) => (
           <Route key={r.meta.path} path={r.meta.path} element={r.element} />

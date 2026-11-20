@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { MessageCircle, Mail, Phone, MapPin } from 'lucide-react'
 import { Logo } from './Logo'
+import { Newsletter } from './Newsletter'
+import { COOKIE_SETTINGS_EVENT } from '@/components/Analytics'
 import { serviceLinks, solutionLinks } from '@/content/nav'
 import { site } from '@/content/site'
 
@@ -62,6 +64,9 @@ export function Footer() {
         <Col title="Resources" links={resources} />
       </div>
       <div className="border-t border-white/10">
+        <div className="container grid gap-6 py-8 md:grid-cols-[1fr_1.2fr] md:items-start"><Newsletter /></div>
+      </div>
+      <div className="border-t border-white/10">
         <div className="container flex flex-col gap-3 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {site.legalName}. All rights reserved.
@@ -71,6 +76,7 @@ export function Footer() {
             {legal.map((l) => (
               <li key={l.to}><Link to={l.to} className="hover:text-white">{l.label}</Link></li>
             ))}
+            <li><button type="button" className="hover:text-white" onClick={() => window.dispatchEvent(new Event(COOKIE_SETTINGS_EVENT))}>Cookie Settings</button></li>
           </ul>
         </div>
       </div>
