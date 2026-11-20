@@ -1,0 +1,565 @@
+{
+ "docs": {
+  "blog-cybersecurity-best-practices-2026": {
+   "meta": {
+    "title": "10 Cybersecurity Best Practices for 2026 | JwithKP",
+    "description": "Discover 10 cybersecurity best practices for businesses in 2026, including MFA, endpoint security, ransomware protection, network security, and monitoring.",
+    "image": "/images/security-ops.webp"
+   },
+   "hero": {
+    "badge": "Cybersecurity",
+    "h1": [
+     "Top 10 Cybersecurity Best Practices Every Business Should Follow in 2026",
+     ""
+    ],
+    "lead": "Cyber threats are evolving faster than ever. This guide covers the 10 proven cybersecurity best practices every organization — from startups to enterprises — should implement today to protect data, employees, and customers.",
+    "meta": "Published July 17, 2026 | 9 min read"
+   },
+   "article": {
+    "datePublished": "2026-07-17",
+    "dateModified": "2026-07-17",
+    "headline": "Top 10 Cybersecurity Best Practices Every Business Should Follow in 2026",
+    "image": "https://www.jwithkp.com/images/security-ops.webp"
+   },
+   "faq": [
+    {
+     "q": "Why is cybersecurity important for small businesses?",
+     "a": "Cybersecurity for small businesses is critical because SMBs are frequently targeted — they hold valuable data but often have fewer security controls than large enterprises. A single breach can cause financial losses, operational downtime, and lasting reputational damage."
+    },
+    {
+     "q": "What is the biggest cybersecurity threat today?",
+     "a": "Phishing, ransomware, compromised credentials, and social engineering remain the most common threats in 2026. Ransomware protection and MFA together address the majority of real-world attack vectors."
+    },
+    {
+     "q": "How often should businesses perform security audits?",
+     "a": "At minimum annually, with additional assessments after major infrastructure changes or security incidents. Continuous monitoring with automated alerting is the recommended standard for mature IT security programs."
+    },
+    {
+     "q": "What is Multi-Factor Authentication (MFA)?",
+     "a": "MFA requires users to verify their identity using two or more methods — such as a password combined with a one-time code or biometric. It is the most effective single control against credential-based attacks and a non-negotiable part of any cybersecurity best practices framework."
+    },
+    {
+     "q": "What should a business do after a cyberattack?",
+     "a": "Isolate affected systems immediately, notify stakeholders and regulators as required, investigate the root cause, restore data from verified backups, and conduct a post-incident review to prevent recurrence."
+    }
+   ]
+  },
+  "blog-jwithkp-hrms-pricing": {
+   "meta": {
+    "title": "HRMS Pricing: Simple, Transparent Plans | JwithKP",
+    "description": "Explore JwithKP HRMS pricing across Free, Growth, Scale and Enterprise plans, with clear features, employee limits and no hidden charges. Compare plans.",
+    "image": "/images/tech-visual-2.webp"
+   },
+   "hero": {
+    "badge": "HRMS Pricing",
+    "h1": [
+     "JwithKP HRMS Pricing - Simple, Transparent, No Hidden Charges",
+     ""
+    ],
+    "lead": "Choosing an HRMS should not feel like solving a puzzle. We built JwithKP HRMS to give growing teams powerful HR tools with clear, predictable pricing.",
+    "meta": "Published April 27, 2026 | 8 min read"
+   },
+   "article": {
+    "datePublished": "2026-04-27",
+    "dateModified": "2026-11-19",
+    "headline": "JwithKP HRMS Pricing - Simple, Transparent, No Hidden Charges",
+    "image": "https://www.jwithkp.com/images/tech-visual-2.webp"
+   },
+   "faq": [
+    {
+     "q": "Is there a free plan in JwithKP HRMS?",
+     "a": "Yes. JwithKP HRMS offers a Free plan for up to 5 employees with no credit card requirement and no time limit."
+    },
+    {
+     "q": "What is included in the Growth plan?",
+     "a": "The Growth plan includes payroll automation, compliance calculations, GPS attendance, asset management, leave accrual, expense and loan management, and priority support for up to 50 employees."
+    },
+    {
+     "q": "Does JwithKP HRMS include API and SSO access?",
+     "a": "Yes. API access and SSO are included in the Scale plan and Enterprise plan."
+    },
+    {
+     "q": "Are there hidden charges or setup fees?",
+     "a": "No. JwithKP HRMS pricing is transparent with no hidden add-ons and no setup fees."
+    },
+    {
+     "q": "What happens when we grow beyond 5 employees on the Free plan?",
+     "a": "The Free plan covers up to 5 employees. Once you pass that, you move to Growth, which covers up to 50 employees and adds payroll and compliance features."
+    },
+    {
+     "q": "Is the price per employee or per plan?",
+     "a": "Each plan has a fixed monthly price and an employee limit, so the cost per employee depends on how full the plan is."
+    },
+    {
+     "q": "Can we upgrade later as the team grows?",
+     "a": "Yes. You can start on the Free plan and upgrade as your team grows."
+    }
+   ]
+  },
+  "blog-nextcloud-vs-microsoft365": {
+   "meta": {
+    "title": "Nextcloud vs Microsoft 365 for Indian Businesses | JwithKP",
+    "description": "Compare Nextcloud and Microsoft 365 from a business perspective including cost, control, collaboration experience, and support considerations.",
+    "image": "/images/tech-visual-1.webp"
+   },
+   "hero": {
+    "badge": "Collaboration",
+    "h1": [
+     "Nextcloud vs Microsoft 365 for Indian Businesses: How to Choose",
+     ""
+    ],
+    "lead": "This is rarely a simple feature comparison. The better decision usually depends on how much a business values recurring cost control, data ownership, user expectations, and the internal capacity required to support the chosen platform.",
+    "meta": "Published March 30, 2026 | 6 min read"
+   },
+   "article": {
+    "datePublished": "2026-03-30",
+    "dateModified": "2026-11-19",
+    "headline": "Nextcloud vs Microsoft 365 for Indian Businesses: How to Choose",
+    "image": "https://www.jwithkp.com/images/tech-visual-1.webp"
+   },
+   "faq": [
+    {
+     "q": "Is Nextcloud free?",
+     "a": "The community edition has no licence fee, but running it is not free: you pay for servers or hosting, storage, backups and administration time. Paid enterprise subscriptions with vendor support are also available."
+    },
+    {
+     "q": "Can Nextcloud fully replace Microsoft 365?",
+     "a": "For file sharing, calendars, contacts and browser-based document editing, often yes. Teams that rely on Exchange email, desktop Office integration or Teams meetings usually keep some Microsoft services, which is why a hybrid approach is common."
+    },
+    {
+     "q": "Who looks after a self-hosted Nextcloud server?",
+     "a": "Someone has to. That means regular updates, backups with restore tests, monitoring and security hardening. It can be your own IT person or an IT partner such as JwithKP."
+    },
+    {
+     "q": "Can we run Microsoft 365 and Nextcloud together?",
+     "a": "Yes. Some businesses keep Microsoft 365 for email and Office apps while using Nextcloud for file sharing or for data that must stay on their own servers."
+    }
+   ]
+  },
+  "blog-ntopng-network-monitoring": {
+   "meta": {
+    "title": "ntopng: Network Traffic Monitoring Guide | JwithKP",
+    "description": "Learn how ntopng helps businesses monitor network traffic, analyze bandwidth, identify unusual activity, and improve visibility across modern IT environments.",
+    "image": "/images/security-ops.webp"
+   },
+   "hero": {
+    "badge": "Network Monitoring",
+    "h1": [
+     "ntopng: A Powerful Network Traffic Monitoring and Analysis Tool",
+     ""
+    ],
+    "lead": "For businesses that want better visibility into their network, ntopng is a practical way to monitor traffic, analyze bandwidth, identify top talkers, and improve operational awareness without stepping into unnecessary complexity.",
+    "meta": "Published April 6, 2026 | 8 min read"
+   },
+   "article": {
+    "datePublished": "2026-04-06",
+    "dateModified": "2026-04-06",
+    "headline": "ntopng: A Powerful Network Traffic Monitoring and Analysis Tool",
+    "image": "https://www.jwithkp.com/images/security-ops.webp"
+   },
+   "faq": [
+    {
+     "q": "What is ntopng used for?",
+     "a": "ntopng is used for monitoring network traffic, analyzing bandwidth usage, identifying top talkers, reviewing application traffic, and improving visibility across business networks."
+    },
+    {
+     "q": "Is ntopng free?",
+     "a": "ntopng offers open-source and commercial editions. The right choice depends on the size of the environment, reporting requirements, and business needs."
+    },
+    {
+     "q": "Can ntopng help with bandwidth monitoring?",
+     "a": "Yes. Bandwidth monitoring is one of the most useful ntopng features. It helps identify which users, devices, or applications are consuming the most network resources."
+    },
+    {
+     "q": "Can ntopng help with security monitoring?",
+     "a": "ntopng is not a full SIEM by itself, but it can still support security visibility by helping teams identify unusual traffic, suspicious destinations, and abnormal communication patterns."
+    },
+    {
+     "q": "Is ntopng suitable for business networks?",
+     "a": "Yes. ntopng is suitable for many business environments, especially where teams need practical traffic visibility, better troubleshooting, and stronger operational awareness."
+    }
+   ]
+  },
+  "blog-open-source-startup-cost-savings": {
+   "meta": {
+    "title": "How Open Source Helps Startups Cut IT Costs | JwithKP",
+    "description": "Learn how startups can reduce software and infrastructure costs with open-source tools while maintaining security, flexibility, and scalability.",
+    "image": "/images/tech-visual-2.webp"
+   },
+   "hero": {
+    "badge": "Cost Optimization",
+    "h1": [
+     "How Open-Source Solutions Help Startups Save Costs Without Cutting Corners",
+     ""
+    ],
+    "lead": "Startups rarely have the luxury of waste. Every software decision affects runway, hiring flexibility, and speed of execution. Open-source tools can reduce cost pressure significantly, but the bigger advantage is that they often give startups more control, faster experimentation, and better long-term flexibility when used properly.",
+    "meta": "Published April 2, 2026 | 5 min read"
+   },
+   "article": {
+    "datePublished": "2026-04-02",
+    "dateModified": "2026-04-02",
+    "headline": "How Open-Source Solutions Help Startups Save Costs Without Cutting Corners",
+    "image": "https://www.jwithkp.com/images/tech-visual-2.webp"
+   },
+   "faq": []
+  },
+  "blog-proxmox-vmware-alternative": {
+   "meta": {
+    "title": "Why Proxmox Is a Strong VMware Alternative | JwithKP",
+    "description": "Learn when Proxmox is a strong VMware alternative, what to evaluate before migration, and how Indian businesses can think about virtualization cost and control.",
+    "image": "/images/network-design.webp"
+   },
+   "hero": {
+    "badge": "Infrastructure",
+    "h1": [
+     "Why Proxmox Is a Strong VMware Alternative for Indian Businesses",
+     ""
+    ],
+    "lead": "For many businesses, the real question is not whether Proxmox can replace VMware in theory. It is whether it can deliver the right balance of reliability, cost control, and operational simplicity in the environment the team actually runs every day.",
+    "meta": "Published March 30, 2026 | 6 min read"
+   },
+   "article": {
+    "datePublished": "2026-03-30",
+    "dateModified": "2026-04-02",
+    "headline": "Why Proxmox Is a Strong VMware Alternative for Indian Businesses",
+    "image": "https://www.jwithkp.com/images/network-design.webp"
+   },
+   "faq": [
+    {
+     "q": "Can Proxmox completely replace VMware ESXi in production?",
+     "a": "Yes. Proxmox VE combines enterprise KVM virtualization, LXC containers, High-Availability clustering, and native Proxmox Backup Server integration, matching VMware capabilities for SMBs and mid-market enterprises."
+    },
+    {
+     "q": "How much can Indian businesses save by migrating from VMware to Proxmox?",
+     "a": "Savings depend on your environment, but eliminating per-core recurring hypervisor subscriptions and vendor lock-in can cut virtualization licensing costs significantly. We estimate the saving by comparing your current annual VMware subscription with a Proxmox VE support subscription for the same number of CPU sockets, before one-time migration effort. Your actual saving depends on your VMware edition, core count and renewal terms. How we calculate it ."
+    },
+    {
+     "q": "Is live VM migration supported in Proxmox?",
+     "a": "Yes. Proxmox VE supports live migration of running virtual machines between cluster nodes, with little or no interruption for most workloads, using shared storage (NFS, iSCSI, Ceph) or local ZFS replication."
+    }
+   ]
+  },
+  "blog-top-15-hrms-features": {
+   "meta": {
+    "title": "Top 15 HRMS Features Every Company Needs | JwithKP",
+    "description": "Discover 15 essential HRMS features for 2026, including payroll, attendance, leave management, cloud HRMS, and compliance tools for growing businesses.",
+    "image": "/images/tech-visual-2.webp"
+   },
+   "hero": {
+    "badge": "HRMS",
+    "h1": [
+     "Top 15 HRMS Features Every Company Needs in 2026",
+     ""
+    ],
+    "lead": "A complete guide for modern businesses evaluating HR software — covering the features that separate a capable HRMS from one that simply adds another layer of admin work.",
+    "meta": "Published July 16, 2026 | 10 min read"
+   },
+   "article": {
+    "datePublished": "2026-07-16",
+    "dateModified": "2026-07-16",
+    "headline": "Top 15 HRMS Features Every Company Needs in 2026",
+    "image": "https://www.jwithkp.com/images/tech-visual-2.webp"
+   },
+   "faq": [
+    {
+     "q": "What is the most important feature of an HRMS?",
+     "a": "Payroll software, an attendance management system, employee records, leave management software, and security are considered the most essential HRMS features. Together they cover the core of every HR operation."
+    },
+    {
+     "q": "Is an HRMS suitable for small businesses?",
+     "a": "Yes. Cloud HRMS solutions are scalable and work well for startups, small businesses, and large enterprises alike. JwithKP HRMS offers a Free plan for teams just starting out, with paid tiers that scale as headcount grows."
+    },
+    {
+     "q": "How does an HRMS improve productivity?",
+     "a": "By automating repetitive HR tasks such as payroll processing, leave approvals, attendance tracking, and document management, HR teams can focus on strategic work rather than manual administration."
+    },
+    {
+     "q": "What industries benefit from HRMS software?",
+     "a": "HRMS solutions are widely used in IT, healthcare, manufacturing, retail, education, finance, logistics, hospitality, and government organizations — anywhere headcount and HR processes need to scale."
+    },
+    {
+     "q": "Can an HRMS integrate with payroll and attendance systems?",
+     "a": "Yes. Most modern HRMS platforms support integrations with payroll software, biometric devices, ERP systems, accounting tools, Microsoft 365, Google Workspace, and other business applications."
+    }
+   ]
+  },
+  "blog-wazuh-security-smb": {
+   "meta": {
+    "title": "How Wazuh Improves SMB Security Affordably | JwithKP",
+    "description": "A practical guide to using Wazuh for security visibility, alerting and monitoring in a small business, without the cost of larger SIEM platforms.",
+    "image": "/images/security-ops.webp"
+   },
+   "hero": {
+    "badge": "Security",
+    "h1": [
+     "How Wazuh Helps SMBs Improve Security Without Splunk-Level Spend",
+     ""
+    ],
+    "lead": "For many growing businesses, better security visibility is not blocked by awareness. It is blocked by the assumption that serious monitoring requires a budget and tooling model designed for much larger enterprises.",
+    "meta": "Published March 30, 2026 | 6 min read"
+   },
+   "article": {
+    "datePublished": "2026-03-30",
+    "dateModified": "2026-11-19",
+    "headline": "How Wazuh Helps SMBs Improve Security Without Splunk-Level Spend",
+    "image": "https://www.jwithkp.com/images/security-ops.webp"
+   },
+   "faq": [
+    {
+     "q": "Is Wazuh free to use?",
+     "a": "The software is open source with no licence fee. You still pay for the server resources and storage it needs, and for the time to deploy, tune and run it."
+    },
+    {
+     "q": "Does Wazuh replace antivirus or endpoint protection?",
+     "a": "No. Wazuh adds visibility and alerting. It is typically used alongside endpoint protection, patching and good access control, not instead of them."
+    },
+    {
+     "q": "Do we need a dedicated security team to run Wazuh?",
+     "a": "Not necessarily, but someone must own the alerts. For a small business, that can be a trained IT person or an IT partner who reviews alerts and handles tuning."
+    },
+    {
+     "q": "How long does a Wazuh rollout take?",
+     "a": "It depends on scope. A focused pilot on a handful of systems is quick; a full rollout depends on how many systems, log sources and reports you need, and how much tuning is required."
+    }
+   ]
+  },
+  "projects": {
+   "meta": {
+    "title": "Projects & Example IT Scenarios | JwithKP",
+    "description": "Illustrative IT scenarios, not past client work: startups, a clinic, an office firewall, a two-site network, an internal tool and infrastructure cost planning.",
+    "image": "/images/tech-visual-2.webp"
+   },
+   "hero": {
+    "badge": "Projects",
+    "h1": [
+     "Example IT scenarios,",
+     "not past client work"
+    ],
+    "lead": "JwithKP is a new practice, so these are illustrative scenarios, not past client engagements. They show how we would approach common situations. The teams, tools and numbers are made up for the example, and any savings mentioned are estimates, not results already delivered.",
+    "meta": ""
+   },
+   "article": {
+    "datePublished": null,
+    "dateModified": null,
+    "headline": null,
+    "image": null
+   },
+   "faq": []
+  },
+  "technologies": {
+   "meta": {
+    "title": "Technologies: Enterprise & Open Source | JwithKP",
+    "description": "Explore JwithKP technologies for virtualization, security, collaboration, monitoring, networking, backup, analytics, and business systems.",
+    "image": "/images/tech-visual-2.webp"
+   },
+   "hero": {
+    "badge": "Technologies",
+    "h1": [
+     "Open Source Where It Fits,",
+     "Commercial Where It Matters"
+    ],
+    "lead": "We combine proven open-source platforms with selected commercial technologies to build environments that are secure, maintainable, and cost-aware. The goal is not more tools — it is the right ones for your business, team, and growth stage.",
+    "meta": ""
+   },
+   "article": {
+    "datePublished": null,
+    "dateModified": null,
+    "headline": null,
+    "image": null
+   },
+   "faq": [
+    {
+     "q": "Should the stack be fully open source?",
+     "a": "Not always. Many businesses get the best result from a hybrid model that uses open-source where it adds value and commercial tooling where support, compliance, or user expectations matter more."
+    },
+    {
+     "q": "Can the stack change over time?",
+     "a": "Yes. Good architecture makes it easier to start with one model and evolve toward a broader platform strategy as the business grows."
+    }
+   ]
+  },
+  "industries": {
+   "meta": {
+    "title": "IT by Industry for Startups & SMEs | JwithKP",
+    "description": "How JwithKP shapes IT for software startups, D2C brands, services firms, clinics, education, manufacturing, logistics and retail. No certifications claimed.",
+    "image": "/images/network-design.webp"
+   },
+   "hero": {
+    "badge": "Industries",
+    "h1": [
+     "IT shaped around how",
+     "your business works"
+    ],
+    "lead": "A software startup, a clinic and a factory all need email, secure devices, backups and a dependable network, but for different reasons. This page shows what usually matters in each setting. JwithKP is a new practice, so we describe how we would approach your setup rather than claim sector track records or certifications.",
+    "meta": ""
+   },
+   "article": {
+    "datePublished": null,
+    "dateModified": null,
+    "headline": null,
+    "image": null
+   },
+   "faq": [
+    {
+     "q": "Do you have experience in my industry?",
+     "a": "JwithKP is a new practice, so we do not claim sector track records. What we can offer is a clear plan for the IT basics in your setting. The example scenarios show how we think."
+    },
+    {
+     "q": "Do you work with regulated sectors?",
+     "a": "We can help with everyday IT such as email, devices, access and backups. We do not claim certifications or empanelment, and we do not promise that a setup meets a specific regulation. If you need a certified provider, ask us and we will tell you plainly where we stand."
+    },
+    {
+     "q": "Do different industries need different stacks?",
+     "a": "Often yes. The same platform can be used very differently depending on branch complexity, how sensitive the data is, and how people work."
+    },
+    {
+     "q": "Can you adapt one core setup across multiple sites?",
+     "a": "Yes. A common base can be reused while policies, security controls and reporting are tuned for each location."
+    }
+   ]
+  },
+  "security-practices": {
+   "meta": {
+    "title": "Security Practices | JwithKP",
+    "description": "How JwithKP works with your systems, what we do not claim, how this website handles your data, and how to report a security problem to us.",
+    "image": "/images/og-home-1200x630.jpg"
+   },
+   "hero": {
+    "badge": "Security Practices",
+    "h1": [
+     "How we handle",
+     "security"
+    ],
+    "lead": "JwithKP is a small, founder-led practice. Rather than show badges, this page says plainly how we work, what we do not claim, and how to report a problem, so you can check it against what we actually do.",
+    "meta": ""
+   },
+   "article": {
+    "datePublished": null,
+    "dateModified": null,
+    "headline": null,
+    "image": null
+   },
+   "faq": []
+  },
+  "privacy-policy": {
+   "meta": {
+    "title": "Privacy Policy & Data Protection | JwithKP",
+    "description": "How JwithKP collects, uses, shares and keeps personal data, your rights under India's DPDP Act, 2023, and how to contact us or raise a grievance.",
+    "image": "/images/tech-visual-1.webp"
+   },
+   "hero": {
+    "badge": "Trust & Transparency",
+    "h1": [
+     "Privacy Policy",
+     ""
+    ],
+    "lead": "This page explains what personal information JwithKP collects through this website and when you contact us, why we use it, who it is shared with, how long we keep it, and how you can use your rights under India’s Digital Personal Data Protection Act, 2023 (the DPDP Act).",
+    "meta": ""
+   },
+   "article": {
+    "datePublished": null,
+    "dateModified": null,
+    "headline": null,
+    "image": null
+   },
+   "faq": []
+  },
+  "terms": {
+   "meta": {
+    "title": "Terms & Conditions of Service | JwithKP",
+    "description": "Terms for using the JwithKP website, the free 30-minute call, proposals, fees, cancellation, handover and our planning tools. Read before you engage us.",
+    "image": "/images/tech-visual-1.webp"
+   },
+   "hero": {
+    "badge": "Trust & Transparency",
+    "h1": [
+     "Terms & Conditions",
+     ""
+    ],
+    "lead": "These terms cover how you may use this website, and how conversations, proposals and projects with JwithKP work before and after a formal agreement is signed.",
+    "meta": ""
+   },
+   "article": {
+    "datePublished": null,
+    "dateModified": null,
+    "headline": null,
+    "image": null
+   },
+   "faq": []
+  }
+ },
+ "cards": [
+  {
+   "slug": "blog-cybersecurity-best-practices-2026",
+   "tag": "Cybersecurity",
+   "meta": "Cybersecurity July 17, 2026",
+   "title": "Top 10 Cybersecurity Best Practices Every Business Should Follow in 2026",
+   "excerpt": "From MFA and endpoint security to ransomware protection and incident response — a complete cybersecurity guide for businesses of all sizes.",
+   "image": "/images/security-ops.webp",
+   "alt": "Top 10 cybersecurity best practices for businesses in 2026"
+  },
+  {
+   "slug": "blog-top-15-hrms-features",
+   "tag": "HRMS",
+   "meta": "HRMS July 16, 2026",
+   "title": "Top 15 HRMS Features Every Company Needs in 2026",
+   "excerpt": "A complete guide to the must-have HRMS features — covering payroll, attendance, leave, recruitment, performance management, compliance, and security for modern businesses.",
+   "image": "/images/tech-visual-2-960.webp",
+   "alt": "Top 15 HRMS features every company needs in 2026"
+  },
+  {
+   "slug": "blog-jwithkp-hrms-pricing",
+   "tag": "HRMS",
+   "meta": "HRMS April 27, 2026",
+   "title": "JwithKP HRMS Pricing: Simple, Transparent, No Hidden Charges",
+   "excerpt": "A complete breakdown of Free, Growth, Scale, and Enterprise plans with clear features, employee limits, and no surprise add-ons.",
+   "image": "/images/hero-slide-3.webp",
+   "alt": "HRMS pricing and workforce management overview"
+  },
+  {
+   "slug": "blog-ntopng-network-monitoring",
+   "tag": "Network Monitoring",
+   "meta": "Network Monitoring April 6, 2026",
+   "title": "ntopng: A Powerful Network Traffic Monitoring and Analysis Tool",
+   "excerpt": "Learn how ntopng helps businesses monitor network traffic, analyze bandwidth, identify top talkers, and improve operational visibility.",
+   "image": "/images/ntopng-dashboard-screenshot-1200.webp",
+   "alt": "ntopng traffic analytics dashboard screenshot"
+  },
+  {
+   "slug": "blog-open-source-startup-cost-savings",
+   "tag": "Cost Optimization",
+   "meta": "Cost Optimization April 2, 2026",
+   "title": "How Open-Source Solutions Help Startups Save Costs Without Cutting Corners",
+   "excerpt": "A startup-focused look at where open-source tools reduce software spend, improve flexibility, and support secure scaling without unnecessary license overhead.",
+   "image": "/images/office365-collab-800.webp",
+   "alt": "Startup team working with open-source infrastructure"
+  },
+  {
+   "slug": "blog-proxmox-vmware-alternative",
+   "tag": "Infrastructure",
+   "meta": "Infrastructure March 30, 2026",
+   "title": "Why Proxmox Is a Strong VMware Alternative for Indian Businesses",
+   "excerpt": "A practical look at where Proxmox fits best, what businesses should evaluate before migration, and how to think about savings beyond the license line item.",
+   "image": "/images/hero-slide-2.webp",
+   "alt": "Virtualization server infrastructure"
+  },
+  {
+   "slug": "blog-wazuh-security-smb",
+   "tag": "Security",
+   "meta": "Security March 30, 2026",
+   "title": "How Wazuh Helps SMBs Improve Security Without Splunk-Level Spend",
+   "excerpt": "Understand where Wazuh adds value, where it needs planning, and how to approach SIEM and endpoint visibility with realistic operational expectations.",
+   "image": "/images/wazuh.webp",
+   "alt": "Security monitoring dashboards"
+  },
+  {
+   "slug": "blog-nextcloud-vs-microsoft365",
+   "tag": "Collaboration",
+   "meta": "Collaboration March 30, 2026",
+   "title": "Nextcloud vs Microsoft 365 for Indian Businesses: How to Choose",
+   "excerpt": "A business-first comparison of data control, recurring cost, collaboration experience, user expectations, and support complexity.",
+   "image": "/images/nextcloud.jpg",
+   "alt": "Cloud and self-hosted collaboration systems"
+  }
+ ]
+}

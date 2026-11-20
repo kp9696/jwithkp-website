@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-white font-sans text-slate-700 antialiased; }
+  h1, h2, h3, h4 { @apply font-semibold tracking-tight text-navy; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-brand; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+}
+@layer components {
+  .section { @apply py-16 sm:py-20; }
+  .eyebrow { @apply mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-brand; }
+  .eyebrow-dark { @apply text-cyan2; }
+  .h2 { @apply text-3xl sm:text-4xl; }
+  .lead { @apply text-lg leading-relaxed text-slate-600; }
+}
+
+/* Converted long-form content (blog posts, projects, legal pages ...): typography plus a few card/grid helpers. */
+@layer components {
+  .legacy { @apply prose prose-lg prose-slate max-w-none prose-headings:scroll-mt-24 prose-headings:text-navy prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-th:text-navy; }
+  .legacy h2 { @apply mt-12; }
+  .legacy .c-head { @apply mx-auto my-12 max-w-3xl text-center; }
+  .legacy .c-head h2 { @apply mt-0 text-3xl font-semibold text-navy; }
+  .legacy .c-head p { @apply mt-3 text-lg text-slate-600; }
+  .legacy .c-grid { @apply my-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3; }
+  .legacy .c-card { @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-card; }
+  .legacy .c-card img { @apply mb-4 h-auto max-h-72 w-full rounded-lg object-cover; }
+  .legacy .c-card img.c-logo { @apply mb-3 h-10 max-h-10 w-auto max-w-[8rem] object-contain; }
+  .legacy .c-card h3 { @apply mb-2 mt-3 text-lg font-semibold text-navy; }
+  .legacy .c-card p { @apply mb-2 text-base leading-relaxed text-slate-600; }
+  .legacy .c-card ul { @apply mb-2 list-disc space-y-1 pl-5 text-sm text-slate-600; }
+  .legacy .c-card a { @apply font-semibold text-brand hover:underline; }
+  .legacy .c-badge { @apply mr-1.5 inline-block rounded-full bg-brand/10 px-2.5 py-0.5 text-xs font-semibold text-brand; }
+  .legacy .c-plan { @apply my-4; }
+  .legacy .c-faqs { @apply my-6 grid gap-4; }
+  .legacy .c-faq { @apply rounded-xl border border-slate-200 bg-white p-5; }
+  .legacy .c-faq h3 { @apply mb-2 mt-0 text-base font-semibold text-navy; }
+  .legacy .c-faq p { @apply mb-0 text-base text-slate-600; }
+  .legacy .c-table-wrap { @apply my-6 overflow-x-auto rounded-xl border border-slate-200; }
+  .legacy .c-table-wrap table { @apply my-0 min-w-[560px]; }
+  .legacy .c-btn { @apply inline-flex rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white no-underline hover:bg-brand-dark hover:no-underline; }
+  .legacy .c-checks { @apply list-none pl-0; }
+  .legacy figure, .legacy img { @apply max-w-full; }
+}

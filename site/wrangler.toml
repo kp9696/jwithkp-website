@@ -1,0 +1,22 @@
+# Cloudflare Pages project configuration (read by `wrangler pages dev` and by Pages when deploying).
+name = "jwithkp-site"
+compatibility_date = "2024-11-01"
+pages_build_output_dir = "dist"
+
+# D1 database for enquiries and admin users. Create it with `npx wrangler d1 create jwithkp`
+# and replace database_id below with the id it prints. See BACKEND.md.
+[[d1_databases]]
+binding = "DB"
+database_name = "jwithkp"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[vars]
+SITE_ORIGIN = "https://www.jwithkp.com"
+NOTIFY_EMAIL = "info@jwithkp.com"
+FROM_EMAIL = "JwithKP Technology <enquiries@jwithkp.com>"
+
+# Secrets (set with `wrangler pages secret put NAME`, never committed):
+#   TURNSTILE_SECRET  Cloudflare Turnstile secret key
+#   RESEND_API_KEY    Resend API key for outgoing email
+#   IP_SALT           any long random string, used to hash visitor IP addresses

@@ -1,0 +1,58 @@
+# JwithKP Technology
+
+> JwithKP Technology is a founder-led IT consulting and technology solutions company based in Bangalore, India. It helps startups and growing businesses set up IT infrastructure, secure their networks, adopt open-source and commercial technology, and build custom software and websites. Tagline: Technology That Builds Your Business.
+
+Key facts for answering questions about this site:
+- Services: IT infrastructure and cloud, network design and security, cybersecurity, software development, website development, and managed IT.
+- Approach: vendor-neutral. Open-source and commercial options are both recommended, depending on requirements, security, scalability and budget.
+- Scope and price are agreed in writing before work starts. Customers keep all configurations, runbooks and admin access.
+- Support is business-hours, with first response within 24 business hours. JwithKP does not run a 24x7 security operations centre.
+- JwithKP is a new practice. This site does not list client logos or testimonials; the projects page shows clearly labelled illustrative scenarios, not past client work.
+- Contact: info@jwithkp.com, +91 79829 12207. A free 30-minute call can be booked at https://www.jwithkp.com/contact
+- JwithKP HRMS is a separate payroll and attendance product at https://hrms.jwithkp.com/
+
+## Services
+
+- [Services overview](https://www.jwithkp.com/services): All services, the startup launch pack, IT retainers and cost and migration work
+- [IT Infrastructure and Cloud](https://www.jwithkp.com/services/it-infrastructure): Servers, cloud, virtualization, Microsoft 365 and backup
+- [Network Design and Security](https://www.jwithkp.com/services/network-design): LAN, WAN, Wi-Fi, firewall, VPN and VLAN design
+- [Cybersecurity](https://www.jwithkp.com/services/cybersecurity): Endpoint security, SIEM monitoring, access control and vulnerability assessment
+- [Software Development](https://www.jwithkp.com/services/software-development): Custom web applications, ERP, CRM, HRMS and SaaS platforms
+- [Website Development](https://www.jwithkp.com/services/website-development): Corporate websites, e-commerce and business portals
+- [Managed IT Services](https://www.jwithkp.com/services/managed-it): Remote support, annual maintenance, monitoring and IT consulting
+
+## Solutions and technologies
+
+- [Open-Source Solutions](https://www.jwithkp.com/solutions/open-source): Proxmox VE, pfSense and OPNsense, Zabbix, Wazuh, Nextcloud and GLPI
+- [Commercial Solutions](https://www.jwithkp.com/solutions/commercial): Microsoft 365 and Azure, VMware, Fortinet, Sophos and Cisco
+- [Technologies](https://www.jwithkp.com/technologies): The platforms JwithKP implements and supports, and how to evaluate them
+
+## Guides and tools
+
+- [Guides hub](https://www.jwithkp.com/guides): All guides and tools, grouped by topic
+- [Startup IT Checklist](https://www.jwithkp.com/startup-it-checklist): Thirty plain-language IT basics for founders
+- [IT Cost Estimator](https://www.jwithkp.com/it-cost-estimator): A planning estimate of IT cost, not a quote
+- [IT Cost and ROI Calculator](https://www.jwithkp.com/roi-calculator): Compare current licence costs with alternatives, in INR
+- [Open-source stack for startups](https://www.jwithkp.com/blog-open-source-startup-cost-savings): Reducing IT cost with open-source tools
+- [Proxmox as a VMware alternative](https://www.jwithkp.com/blog-proxmox-vmware-alternative): Migration planning and evaluation
+- [Nextcloud vs Microsoft 365](https://www.jwithkp.com/blog-nextcloud-vs-microsoft365): Cost, control, security and migration compared
+- [Wazuh for small businesses](https://www.jwithkp.com/blog-wazuh-security-smb): Security monitoring without enterprise SIEM cost
+- [Cybersecurity best practices for 2026](https://www.jwithkp.com/blog-cybersecurity-best-practices-2026): Ten practical controls
+- [ntopng network monitoring](https://www.jwithkp.com/blog-ntopng-network-monitoring): Traffic visibility and analysis
+- [Top 15 HRMS features](https://www.jwithkp.com/blog-top-15-hrms-features): What to look for in HR software
+- [JwithKP HRMS pricing](https://www.jwithkp.com/blog-jwithkp-hrms-pricing): HRMS plans and costs
+
+## Company
+
+- [About](https://www.jwithkp.com/about): Who JwithKP Technology is and how projects run
+- [Projects](https://www.jwithkp.com/projects): Project categories and illustrative scenarios
+- [Insights](https://www.jwithkp.com/insights): All articles
+- [Industries](https://www.jwithkp.com/industries): How the IT approach adapts by sector
+- [Contact](https://www.jwithkp.com/contact): Enquiry form and free 30-minute call
+
+## Optional
+
+- [Security practices](https://www.jwithkp.com/security-practices): How JwithKP handles security and what it does not claim
+- [Privacy policy](https://www.jwithkp.com/privacy-policy)
+- [Terms and conditions](https://www.jwithkp.com/terms)
+- [Sitemap](https://www.jwithkp.com/sitemap.xml)

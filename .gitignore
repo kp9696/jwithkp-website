@@ -23,3 +23,11 @@ Thumbs.db
 # Dev scratch files
 TODO.md
 .batch_replacements_note.txt
+
+# New React site build output
+site/dist/
+site/dist-server/
+
+# Admin user SQL written by scripts/create-admin.mjs (contains a password hash)
+.create-admin.sql
+.wrangler/
