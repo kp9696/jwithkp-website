@@ -23,3 +23,7 @@ Thumbs.db
 # Dev scratch files
 TODO.md
 .batch_replacements_note.txt
+
+# New React site build output
+site/dist/
+site/dist-server/

@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%" role="img" aria-label="JwithKP Technology Hexagonal Ecosystem">
+  <defs>
+    <linearGradient id="hx-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="100%" stop-color="#0a0f1e"/>
+    </linearGradient>
+    <linearGradient id="hx-center" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="50%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="hx-node-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="hx-node-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b0764" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="hx-node-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#164e63" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="hx-node-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="hx-node-amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#451a03" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <radialGradient id="hx-glow-center" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity=".4"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="hx-glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="hx-glow-sm">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <clipPath id="hx-clip"><rect width="800" height="500" rx="16"/></clipPath>
+  </defs>
+
+  <style>
+    .hx-float1 { animation: hxFloat1 5s ease-in-out infinite; transform-origin: center; }
+    .hx-float2 { animation: hxFloat2 6s ease-in-out infinite; transform-origin: center; }
+    .hx-float3 { animation: hxFloat3 4.5s ease-in-out infinite; transform-origin: center; }
+    .hx-float4 { animation: hxFloat4 5.5s ease-in-out infinite; transform-origin: center; }
+    .hx-float5 { animation: hxFloat5 7s ease-in-out infinite; transform-origin: center; }
+    .hx-float6 { animation: hxFloat6 4s ease-in-out infinite; transform-origin: center; }
+    .hx-pulse-line { animation: hxPulseLine 2.5s ease-in-out infinite; }
+    .hx-spin { animation: hxSpin 24s linear infinite; transform-origin: 400px 250px; }
+    .hx-spin-rev { animation: hxSpinRev 18s linear infinite; transform-origin: 400px 250px; }
+    @keyframes hxFloat1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(0,-8px)} }
+    @keyframes hxFloat2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(3px,-6px)} }
+    @keyframes hxFloat3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(3px,7px)} }
+    @keyframes hxFloat4 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(0,8px)} }
+    @keyframes hxFloat5 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-4px,6px)} }
+    @keyframes hxFloat6 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-3px,-7px)} }
+    @keyframes hxPulseLine { 0%,100%{opacity:.3;stroke-dashoffset:0} 50%{opacity:.9;stroke-dashoffset:-20} }
+    @keyframes hxSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes hxSpinRev { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+  </style>
+
+  <g clip-path="url(#hx-clip)">
+    <!-- Background -->
+    <rect width="800" height="500" fill="url(#hx-bg)" rx="16"/>
+
+    <!-- Subtle dot grid -->
+    <g fill="rgba(255,255,255,0.025)">
+      <circle cx="50" cy="50" r="1.5"/><circle cx="150" cy="50" r="1.5"/><circle cx="250" cy="50" r="1.5"/>
+      <circle cx="350" cy="50" r="1.5"/><circle cx="450" cy="50" r="1.5"/><circle cx="550" cy="50" r="1.5"/>
+      <circle cx="650" cy="50" r="1.5"/><circle cx="750" cy="50" r="1.5"/>
+      <circle cx="100" cy="100" r="1.5"/><circle cx="200" cy="100" r="1.5"/><circle cx="300" cy="100" r="1.5"/>
+      <circle cx="500" cy="100" r="1.5"/><circle cx="600" cy="100" r="1.5"/><circle cx="700" cy="100" r="1.5"/>
+      <circle cx="50" cy="150" r="1.5"/><circle cx="150" cy="150" r="1.5"/><circle cx="650" cy="150" r="1.5"/><circle cx="750" cy="150" r="1.5"/>
+      <circle cx="50" cy="350" r="1.5"/><circle cx="150" cy="350" r="1.5"/><circle cx="650" cy="350" r="1.5"/><circle cx="750" cy="350" r="1.5"/>
+      <circle cx="100" cy="400" r="1.5"/><circle cx="200" cy="400" r="1.5"/><circle cx="300" cy="400" r="1.5"/>
+      <circle cx="500" cy="400" r="1.5"/><circle cx="600" cy="400" r="1.5"/><circle cx="700" cy="400" r="1.5"/>
+      <circle cx="50" cy="450" r="1.5"/><circle cx="150" cy="450" r="1.5"/><circle cx="250" cy="450" r="1.5"/>
+      <circle cx="350" cy="450" r="1.5"/><circle cx="450" cy="450" r="1.5"/><circle cx="550" cy="450" r="1.5"/>
+      <circle cx="650" cy="450" r="1.5"/><circle cx="750" cy="450" r="1.5"/>
+    </g>
+
+    <!-- Ambient glow behind center -->
+    <circle cx="400" cy="250" r="160" fill="url(#hx-glow-center)" opacity=".9"/>
+
+    <!-- Outer rotating ring -->
+    <g class="hx-spin">
+      <circle cx="400" cy="250" r="155" fill="none" stroke="url(#hx-center)" stroke-width="1.5" stroke-dasharray="16 32" stroke-opacity=".5"/>
+    </g>
+    <!-- Inner rotating ring (reverse) -->
+    <g class="hx-spin-rev">
+      <circle cx="400" cy="250" r="110" fill="none" stroke="#4f46e5" stroke-width="1" stroke-dasharray="8 20" stroke-opacity=".4"/>
+    </g>
+
+    <!-- Connection lines (center to each node edge) -->
+    <!-- Top: (400,250) → (400,155) [just before top hex edge] -->
+    <line x1="400" y1="193" x2="400" y2="155" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 4" class="hx-pulse-line"/>
+    <!-- Top-right: (400,250) → (535,173) [direction to top-right] -->
+    <line x1="447" y1="222" x2="490" y2="197" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5 4" class="hx-pulse-line" style="animation-delay:.4s"/>
+    <!-- Bottom-right: →  -->
+    <line x1="447" y1="278" x2="490" y2="303" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="5 4" class="hx-pulse-line" style="animation-delay:.8s"/>
+    <!-- Bottom: → -->
+    <line x1="400" y1="307" x2="400" y2="345" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5 4" class="hx-pulse-line" style="animation-delay:1.2s"/>
+    <!-- Bottom-left: → -->
+    <line x1="353" y1="278" x2="310" y2="303" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5 4" class="hx-pulse-line" style="animation-delay:1.6s"/>
+    <!-- Top-left: → -->
+    <line x1="353" y1="222" x2="310" y2="197" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="5 4" class="hx-pulse-line" style="animation-delay:2s"/>
+
+    <!-- ═══ CENTER HEX (400,250) r=70 flat-top ═══ -->
+    <!-- Flat-top hex points: (cx+r,cy) (cx+r/2,cy+r*0.866) (cx-r/2,cy+r*0.866) (cx-r,cy) (cx-r/2,cy-r*0.866) (cx+r/2,cy-r*0.866) -->
+    <!-- r=70: offsets (70,0)(35,60.6)(-35,60.6)(-70,0)(-35,-60.6)(35,-60.6) -->
+    <polygon points="470,250 435,310.6 365,310.6 330,250 365,189.4 435,189.4" fill="url(#hx-center)" filter="url(#hx-glow)" opacity=".95"/>
+    <polygon points="470,250 435,310.6 365,310.6 330,250 365,189.4 435,189.4" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+    <!-- Center text -->
+    <text x="400" y="238" font-family="system-ui,sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle" opacity=".95">J</text>
+    <text x="400" y="260" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="rgba(255,255,255,.7)" text-anchor="middle" letter-spacing="3">JwithKP</text>
+    <text x="400" y="276" font-family="system-ui,sans-serif" font-size="8.5" fill="rgba(255,255,255,.45)" text-anchor="middle" letter-spacing="1">Enterprise IT</text>
+
+    <!-- ═══ TOP NODE — Proxmox VE (400,88) r=52 ═══ -->
+    <!-- r=52: offsets (52,0)(26,45)(-26,45)(-52,0)(-26,-45)(26,-45) -->
+    <g class="hx-float1">
+      <polygon points="452,88 426,133 374,133 348,88 374,43 426,43" fill="url(#hx-node-blue)" stroke="#2563eb" stroke-width="2" filter="url(#hx-glow-sm)"/>
+      <polygon points="452,88 426,133 374,133 348,88 374,43 426,43" fill="none" stroke="#3b82f6" stroke-width="1" opacity=".4"/>
+      <!-- Server rack icon -->
+      <rect x="382" y="70" width="36" height="7" rx="1.5" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+      <circle cx="392" cy="73.5" r="1.5" fill="#10b981"/>
+      <rect x="382" y="81" width="36" height="7" rx="1.5" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+      <circle cx="392" cy="84.5" r="1.5" fill="#10b981"/>
+      <rect x="382" y="92" width="36" height="7" rx="1.5" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+      <circle cx="392" cy="95.5" r="1.5" fill="#f59e0b"/>
+      <text x="400" y="117" font-family="system-ui,sans-serif" font-size="10.5" font-weight="700" fill="#93c5fd" text-anchor="middle">Proxmox VE</text>
+      <text x="400" y="129" font-family="system-ui,sans-serif" font-size="8.5" fill="#475569" text-anchor="middle">Virtualization</text>
+    </g>
+
+    <!-- ═══ TOP-RIGHT NODE — Wazuh SIEM (535,169) r=52 ═══ -->
+    <g class="hx-float2">
+      <polygon points="587,169 561,214 509,214 483,169 509,124 561,124" fill="url(#hx-node-purple)" stroke="#7c3aed" stroke-width="2" filter="url(#hx-glow-sm)"/>
+      <polygon points="587,169 561,214 509,214 483,169 509,124 561,124" fill="none" stroke="#8b5cf6" stroke-width="1" opacity=".4"/>
+      <!-- Shield icon -->
+      <path d="M535,150 L552,158 V171 C552,181 543,188 535,191 C527,188 518,181 518,171 V158 Z" fill="none" stroke="#a78bfa" stroke-width="1.8"/>
+      <path d="M530,170 L534,174 L542,163" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="535" y="204" font-family="system-ui,sans-serif" font-size="10.5" font-weight="700" fill="#c4b5fd" text-anchor="middle">Wazuh SIEM</text>
+      <text x="535" y="216" font-family="system-ui,sans-serif" font-size="8.5" fill="#475569" text-anchor="middle">SOC · Security</text>
+    </g>
+
+    <!-- ═══ BOTTOM-RIGHT NODE — pfSense (535,331) r=52 ═══ -->
+    <g class="hx-float3">
+      <polygon points="587,331 561,376 509,376 483,331 509,286 561,286" fill="url(#hx-node-cyan)" stroke="#06b6d4" stroke-width="2" filter="url(#hx-glow-sm)"/>
+      <polygon points="587,331 561,376 509,376 483,331 509,286 561,286" fill="none" stroke="#22d3ee" stroke-width="1" opacity=".4"/>
+      <!-- Firewall grid icon -->
+      <rect x="519" y="315" width="32" height="24" rx="2" fill="none" stroke="#22d3ee" stroke-width="1.5"/>
+      <line x1="519" y1="323" x2="551" y2="323" stroke="#22d3ee" stroke-width="1"/>
+      <line x1="519" y1="331" x2="551" y2="331" stroke="#22d3ee" stroke-width="1"/>
+      <line x1="535" y1="315" x2="535" y2="339" stroke="#22d3ee" stroke-width="1"/>
+      <!-- Signal dots -->
+      <circle cx="527" cy="319" r="2" fill="#10b981"/>
+      <circle cx="543" cy="335" r="2" fill="#10b981"/>
+      <circle cx="543" cy="319" r="2" fill="#f59e0b"/>
+      <text x="535" y="363" font-family="system-ui,sans-serif" font-size="10.5" font-weight="700" fill="#67e8f9" text-anchor="middle">pfSense</text>
+      <text x="535" y="375" font-family="system-ui,sans-serif" font-size="8.5" fill="#475569" text-anchor="middle">Firewall · VPN</text>
+    </g>
+
+    <!-- ═══ BOTTOM NODE — Nextcloud (400,412) r=52 ═══ -->
+    <g class="hx-float4">
+      <polygon points="452,412 426,457 374,457 348,412 374,367 426,367" fill="url(#hx-node-blue)" stroke="#2563eb" stroke-width="2" filter="url(#hx-glow-sm)"/>
+      <polygon points="452,412 426,457 374,457 348,412 374,367 426,367" fill="none" stroke="#60a5fa" stroke-width="1" opacity=".4"/>
+      <!-- Cloud icon -->
+      <path d="M384,400 A10,10 0 0,1 384,386 A14,14 0 0,1 408,385 A12,12 0 0,1 416,400 Z" fill="none" stroke="#60a5fa" stroke-width="1.8"/>
+      <line x1="391" y1="400" x2="391" y2="408" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="400" y1="400" x2="400" y2="411" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="409" y1="400" x2="409" y2="408" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="400" y="442" font-family="system-ui,sans-serif" font-size="10.5" font-weight="700" fill="#93c5fd" text-anchor="middle">Nextcloud</text>
+      <text x="400" y="454" font-family="system-ui,sans-serif" font-size="8.5" fill="#475569" text-anchor="middle">Private Cloud</text>
+    </g>
+
+    <!-- ═══ BOTTOM-LEFT NODE — HRMS SaaS (265,331) r=52 ═══ -->
+    <g class="hx-float5">
+      <polygon points="317,331 291,376 239,376 213,331 239,286 291,286" fill="url(#hx-node-green)" stroke="#10b981" stroke-width="2" filter="url(#hx-glow-sm)"/>
+      <polygon points="317,331 291,376 239,376 213,331 239,286 291,286" fill="none" stroke="#34d399" stroke-width="1" opacity=".4"/>
+      <!-- Person/HR icon -->
+      <circle cx="265" cy="317" r="7" fill="none" stroke="#34d399" stroke-width="1.8"/>
+      <path d="M251,335 C251,326 258,323 265,323 C272,323 279,326 279,335" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round"/>
+      <text x="265" y="363" font-family="system-ui,sans-serif" font-size="10.5" font-weight="700" fill="#6ee7b7" text-anchor="middle">HRMS SaaS</text>
+      <text x="265" y="375" font-family="system-ui,sans-serif" font-size="8.5" fill="#475569" text-anchor="middle">Payroll · HR</text>
+    </g>
+
+    <!-- ═══ TOP-LEFT NODE — Cloud / Azure (265,169) r=52 ═══ -->
+    <g class="hx-float6">
+      <polygon points="317,169 291,214 239,214 213,169 239,124 291,124" fill="url(#hx-node-amber)" stroke="#f59e0b" stroke-width="2" filter="url(#hx-glow-sm)"/>
+      <polygon points="317,169 291,214 239,214 213,169 239,124 291,124" fill="none" stroke="#fbbf24" stroke-width="1" opacity=".4"/>
+      <!-- Cloud layers icon -->
+      <path d="M252,160 A8,8 0 0,1 252,150 A11,11 0 0,1 271,149 A9,9 0 0,1 278,160 Z" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+      <path d="M249,168 A6,6 0 0,1 249,160 A9,9 0 0,1 265,159 A7,7 0 0,1 281,160 A6,6 0 0,1 281,168 Z" fill="none" stroke="#fbbf24" stroke-width="1.5" opacity=".6"/>
+      <text x="265" y="193" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#fde68a" text-anchor="middle">Azure · AWS</text>
+      <text x="265" y="205" font-family="system-ui,sans-serif" font-size="8.5" fill="#475569" text-anchor="middle">Cloud Infra</text>
+    </g>
+
+    <!-- Corner accent glows -->
+    <circle cx="720" cy="60" r="50" fill="#2563eb" opacity=".04"/>
+    <circle cx="80" cy="440" r="40" fill="#06b6d4" opacity=".05"/>
+    <circle cx="720" cy="440" r="35" fill="#7c3aed" opacity=".04"/>
+    <circle cx="80" cy="60" r="35" fill="#10b981" opacity=".04"/>
+
+    <!-- Brand tagline -->
+    <text x="400" y="492" font-family="system-ui,sans-serif" font-size="11" fill="#1e3a8a" text-anchor="middle" font-weight="700" letter-spacing="3">ENTERPRISE INFRASTRUCTURE  ·  SECURITY  ·  SAAS</text>
+  </g>
+</svg>

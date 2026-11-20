@@ -29,3 +29,8 @@ Static HTML site, built in place by `build.js`, deployed by Cloudflare Pages fro
 
 ## Sitemap
 - `lastmod` comes from the Article `dateModified`, then git history, then the committed value. After a real content change, bump `dateModified` (posts) or the sitemap date by hand.
+
+## New site (rebuild in progress, `site/`)
+- React + Vite + TypeScript + Tailwind, prerendered to static HTML at build. The live site is still the root static files until cutover; do not push `site/` to `main` before that (Pages would publish the source folder).
+- `cd site && npm ci && npm run build` -> `site/dist`. Content lives in `site/src/content/*.ts`, pages in `site/src/pages`, routes and SEO meta in `site/src/routes.tsx`. Icons: add the name to `site/src/components/Icon.tsx`.
+- Keep every existing URL. Phases: 1 shell + home + services (done), 2 remaining pages and tools, 3 Worker/D1 enquiries and admin, 4 cutover.

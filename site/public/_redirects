@@ -1,0 +1,7 @@
+# Section renames (permanent redirects keep rankings and old links working)
+/blog              /insights            301
+/blog.html         /insights            301
+/technology-stack  /technologies        301
+/technology-stack.html /technologies    301
+/case-studies      /projects            301
+/case-studies.html /projects            301
